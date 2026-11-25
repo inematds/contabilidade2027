@@ -65,6 +65,11 @@
       "texto": "0,5",
       "origem": "saldo_final ÷ saidas_medias_mes"
     },
+    "compras_credito_ano": {
+      "valor": 119200.0,
+      "texto": "R$ 119.200,00",
+      "origem": "compras_com_credito de mensal.csv, 12/2025 a 11/2026 (12 meses), anualizado (× 12 ÷ 12)"
+    },
     "pis_cofins_ano": {
       "valor": 35952.5,
       "texto": "R$ 35.952,50",
@@ -74,6 +79,11 @@
       "valor": 0.1,
       "texto": "0,1%",
       "origem": "IBS de 2027 (art. 344 LC 214: 0,05% estadual + 0,05% municipal)"
+    },
+    "ibs_pp": {
+      "valor": 0.1,
+      "texto": "0,1",
+      "origem": "redução da CBS em 2027, em pontos percentuais (art. 347 LC 214)"
     },
     "cbs_8_8_aliq": {
       "valor": 8.8,

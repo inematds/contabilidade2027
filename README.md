@@ -1,8 +1,8 @@
 # Diagnóstico Reforma + Caixa
 
-[![Diagnóstico Reforma + Caixa](guia/assets/banner.jpg)](https://inematds.github.io/contabilidade2027/guia/)
-
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
+
+[![Diagnóstico Reforma + Caixa](guia/assets/banner.jpg)](https://inematds.github.io/contabilidade2027/guia/)
 
 ## O que é
 

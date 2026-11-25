@@ -11,7 +11,7 @@ Quero fazer o Diagnóstico Reforma + Caixa de um cliente meu. Neste computador:
 3. Rode kit/diagnostico.py na pasta do cliente.
 4. Reescreva o relatorio-base.md num relatorio.md em linguagem simples, para o dono da empresa,
    sem mudar nenhum número (copie os valores exatamente como estão).
-5. Rode kit/conferir.py relatorio.md dados.json. Se acusar número sem origem, corrija e rode de novo.
+5. Rode kit/conferir.py relatorio.md saida/dados.json (os dois dentro da pasta do cliente). Se acusar número sem origem, corrija e rode de novo.
 6. Me mostre o relatório e as premissas (alíquota, crédito, redução). Não envie nada a ninguém:
    eu reviso e sou eu quem fala com o cliente.
 ```

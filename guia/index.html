@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Diagnóstico Reforma + Caixa: mostre ao seu cliente quanto a Reforma pesa no caixa dele</title>
+<meta content="Kit grátis (não oficial) para contadores: com os dados que você já tem, a sua IA monta um relatório de 2 páginas para o dono da empresa, com o caixa, a margem, a CBS/IBS de 2027 em dois cenários, o split payment e 3 prioridades." name="description"/>
+<meta content="Diagnóstico Reforma + Caixa: quanto a Reforma pesa no caixa do seu cliente" property="og:title"/>
+<meta content="O seu cliente vai perguntar. Responda com os números dele, em 2 páginas. Kit grátis para contadores." property="og:description"/>
+<meta content="https://inematds.github.io/contabilidade2027/guia/assets/banner.jpg" property="og:image"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    --fill:#FACC15; --tint:rgba(250,204,21,.12); --ok:#7CE0C6; --bad:#F0918A;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    --fill:#FACC15; --tint:#FEF9C3; --ok:#0E6B55; --bad:#A83426;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  body.light pre .k{color:#f0c070}
+  body.light nav{background:rgba(246,247,249,.85)}
+  body.light .amb{color:var(--txt);background:linear-gradient(transparent 55%,#FACC15 55%)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  body.light main a:not(.btn),body.light footer a{color:#854d0e;text-decoration:underline;text-decoration-color:#FACC15;text-decoration-thickness:3px}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  p code,li code,td code{font-size:.9em;background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:.05em .35em}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb);white-space:nowrap}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:var(--tint)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--fill);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  nav .links a.sec{white-space:nowrap}
+  @media(max-width:1360px){nav .links a.opt{display:none}}
+  @media(max-width:860px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.18),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.15rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:44ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .oficial{display:inline-flex;align-items:center;gap:12px;margin-top:18px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg2);color:var(--txt);font-size:.92rem;max-width:100%}
+  .oficial img{width:40px;height:40px;border-radius:8px;background:#fff;flex:none}
+  .oficial small{display:block;color:var(--mut,#9a9aa6);font-size:.8rem}
+  .quem-img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;margin:0 0 14px;display:block;border:1px solid var(--line)}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:66ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.95rem;margin:0}
+  .card p+p{margin-top:.6em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0;margin:.4em 0 0}
+  pre .c{color:#7d7d8a} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:28px}
+  .step>div{min-width:0}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--fill);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .5em}
+  .quem{display:inline-block;font-family:Sora;font-size:.75rem;letter-spacing:.06em;color:var(--txt);background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:.1em .7em;margin-left:.5em;vertical-align:middle;font-weight:600}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:4px}
+  /* números */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  @media(max-width:720px){.stats{grid-template-columns:1fr}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .stat b{display:block;font:800 clamp(1.9rem,4vw,2.6rem)/1.05 Sora,sans-serif;letter-spacing:-.02em;color:var(--amb)}
+  body.light .stat b{color:var(--txt)}
+  .stat span{display:block;color:var(--mut);font-size:.93rem;margin-top:.5em}
+  .fonte{font-size:.86rem;color:var(--mut);margin-top:14px;max-width:80ch}
+  /* trocas */
+  .troca{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:26px 0;border-top:1px solid var(--line)}
+  .troca:first-of-type{border-top:none}
+  .troca .n{width:64px;height:64px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;font:800 1.6rem Sora,sans-serif;color:var(--amb)}
+  body.light .troca .n{color:var(--txt);background:var(--fill);border-color:var(--fill)}
+  .troca h3{font-size:1.3rem;margin-bottom:.35em}
+  .troca p{margin:.35em 0;max-width:72ch}
+  .troca .ex{margin-top:.8em;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--fill);border-radius:10px;padding:12px 16px;font-size:.95rem;color:var(--mut);max-width:76ch}
+  .troca .ex b{color:var(--txt)}
+  @media(max-width:540px){.troca{grid-template-columns:1fr}}
+  /* três finais */
+  .vs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;max-width:900px}
+  @media(max-width:720px){.vs{grid-template-columns:1fr}}
+  .vs div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.93rem}
+  .vs strong{display:block;font-family:Sora;margin-bottom:.25em}
+  .vs .r{display:block;margin-top:.5em;font-weight:600}
+  .vs .r.bad{color:var(--bad)} .vs .r.ok{color:var(--ok)}
+  .card ul{margin:8px 0 0;padding-left:20px}.card li{margin:5px 0}
+  /* prova */
+  .prova{background:var(--card);border:1px solid var(--amb);border-radius:16px;padding:26px 26px 22px;margin-top:6px}
+  body.light .prova{border-color:#EAB308}
+  .tl{list-style:none;margin:0;padding:0;counter-reset:t}
+  .tl li{position:relative;padding:0 0 18px 48px;counter-increment:t}
+  .tl li::before{content:counter(t);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:10px;background:var(--fill);color:#1a1206;font:800 .95rem/32px Sora,sans-serif;text-align:center}
+  .tl li::after{content:"";position:absolute;left:15px;top:36px;bottom:4px;width:2px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .tl b{font-family:Sora}
+  blockquote{margin:6px 0 0;padding:14px 18px;border-left:3px solid var(--fill);background:var(--bg2);border-radius:0 10px 10px 0;font-size:1.02rem}
+  .prova .rod{font-size:.86rem;color:var(--mut);margin-top:14px}
+  /* parte técnica */
+  .techhead{background:var(--bg2);border-top:3px solid var(--fill);padding:58px 0 8px}
+  .techhead h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em;margin:.3em 0 0}
+  .techhead .sub{color:var(--mut);margin:.6em 0 1.2em;max-width:66ch}
+  .techzone{background:var(--bg2)}
+  .techzone .card{background:var(--card)}
+  .tbl{width:100%;border-collapse:collapse;font-size:.93rem}
+  .tbl th,.tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl th{font-family:Sora;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  @media(max-width:600px){.tbl thead{display:none} .tbl tr{display:block;border-bottom:1px solid var(--line);padding:6px 0} .tbl tr:last-child{border-bottom:none} .tbl td{display:block;border:none;padding:4px 14px}}
+</style>
+<style>
+  .rel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:.93rem}
+  .rel h4{font-family:Sora;font-size:.95rem;margin:.9em 0 .3em}
+  .rel h4:first-child{margin-top:0}
+  .rel p{margin:.2em 0;color:var(--mut)}
+  .rel .sim{display:inline-block;font:700 .7rem Sora;letter-spacing:.1em;color:#1a1206;background:var(--fill);border-radius:6px;padding:.1em .5em;margin-left:.4em;vertical-align:middle}
+</style>
+<link href="https://inematds.github.io/contabilidade2027/guia/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/es/" hreflang="es" rel="alternate"/></head>
+<body>
+<nav><div class="wrap">
+<a class="brand" href="#top"><span class="emoji">📊</span> Reforma + Caixa</a>
+<span class="sep">|</span>
+<span class="clubpro">
+<a class="inema" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a>
+<span class="sep">-</span>
+<a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a>
+</span>
+<div class="links">
+<a class="sec" href="#explicado">O ganho</a>
+<a class="sec" href="#quem">Para quem</a>
+<a class="sec opt" href="#dia">No seu dia</a>
+<a class="sec opt" href="#como">Como funciona</a>
+<a class="sec" href="#comecar">Como começar</a>
+<a class="sec opt" href="#base">Base</a>
+<a class="sec" href="#prova">A prova</a>
+<span class="lang"><a class="on" href="./">PT</a><a href="en/">EN</a><a href="es/">ES</a></span>
+<button aria-label="Alternar tema" class="tgl" id="themeToggle" title="Alternar tema">🌙</button>
+<a class="btn" href="https://github.com/inematds/contabilidade2027" rel="noopener" target="_blank">GitHub</a>
+</div>
+</div></nav>
+<header class="hero" id="top">
+<div class="glow"></div>
+<div class="wrap">
+<div>
+<span class="chip">Kit grátis para contadores · não oficial · regras de 2027 conferidas na lei</span>
+<h1>O seu cliente vai perguntar quanto a Reforma pesa no caixa dele. Responda com o <span class="amb">Diagnóstico Reforma + Caixa</span></h1>
+<p class="lead">Em 2027 a CBS substitui o PIS e a Cofins, e o empresário só quer saber de uma coisa: quanto isso muda para ele. Com os números que você já tem do cliente, a sua IA monta um relatório de 2 páginas que ele entende. Traz o caixa, a margem, o imposto novo em dois cenários e 3 prioridades. E nenhum número sai sem origem. A pergunta que hoje é dúvida vira um serviço que você oferece.</p>
+<div class="cta">
+<a class="btn" href="#explicado">O que você ganha</a>
+<a class="btn ghost" href="#comecar">Como começar</a>
+</div>
+</div>
+<figure><img alt="Diagnóstico Reforma + Caixa: quanto a Reforma pesa no caixa do seu cliente, em 2 páginas" src="assets/banner.jpg"/></figure>
+</div>
+</header>
+<main>
+<section class="resumo" id="resumo"><div class="wrap">
+<span class="chip">Em uma frase</span>
+<p><strong>O empresário não pede "consultoria". Ele pede para saber se vai pagar mais imposto e se o caixa aguenta.</strong> Este kit gratuito é para o contador que quer responder isso com os números do próprio cliente. Você junta o que já tem (o resumo mensal de receita, custos, impostos e saldo e, se quiser, despesas e preços), e a sua IA monta um relatório de 2 páginas. Ele diz quanto sobra, como está o caixa, quanto a empresa recolheria de CBS e IBS em 2027 em dois cenários, o efeito do split payment (o imposto descontado na hora em que o cliente paga), o que chamou a atenção e 3 prioridades. A CBS é o imposto federal que substitui o PIS e a Cofins; o IBS vai substituir o ICMS e o ISS aos poucos, e em 2027 é só 0,1% de teste, com o ICMS e o ISS ainda valendo. Precisa de um computador e de uma IA como o Claude Code ou o Codex. Não é produto oficial e não substitui a sua análise técnica (<a href="#base">veja as fontes</a>).</p>
+<figure style="margin:22px 0 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img alt="Diagnóstico Reforma + Caixa: o que muda em 2027, o caixa do cliente, preço e margem, 3 prioridades, números conferidos, como começar" loading="lazy" src="assets/banner-grade.jpg" style="width:100%;display:block"/></figure>
+</div></section>
+<section id="explicado"><div class="wrap">
+<span class="chip">O ganho</span>
+<h2>Da pergunta solta <span class="amb">ao relatório na mesa</span></h2>
+<div class="grid g2">
+<div class="card"><h3>😟 Hoje</h3><p>O cliente viu no YouTube que "em 2027 vai pagar muito mais imposto" e liga para você. Você explica a Reforma em geral, ele não entende o que muda para ele e desliga com medo.</p><p>A conversa não vira serviço: fica parecendo custo.</p></div>
+<div class="card"><h3>😌 Com o diagnóstico</h3><p>Você leva 2 páginas com os números dele: quanto ele recolheria em 2027 em dois cenários, quanto do imposto deixa de passar pelo caixa, qual preço ficou apertado e o que fazer primeiro.</p><p>A reunião termina com uma decisão, e a decisão vira o próximo serviço.</p></div>
+</div>
+<div class="stats">
+<div class="stat"><b>2027</b><span>é o ano em que a CBS passa a ser cobrada no lugar do PIS e da Cofins. Cada cliente seu vai ter um número diferente.</span></div>
+<div class="stat"><b>+60%</b><span>das empresas (em geral, não só clientes de contador) ainda não mediram o impacto da Reforma no próprio negócio.</span></div>
+<div class="stat"><b>2 páginas</b><span>em linguagem de empresário, com uma pauta de reunião de 30 minutos no fim.</span></div>
+</div>
+<p class="fonte">+60%: pesquisa Panorama do Contas a Pagar 2026, da Qive, noticiada pelo <a href="https://www.infomoney.com.br/minhas-financas/reforma-tributaria-mais-de-60-das-empresas-ainda-nao-mediram-o-impacto-nos-negocios/" rel="noopener" target="_blank">InfoMoney</a>.</p>
+</div></section>
+<section id="quem"><div class="wrap">
+<span class="chip">Para quem</span>
+<h2>O que cada um <span class="amb">ganha</span></h2>
+<p class="sub">O kit é feito para o contador. Quem recebe o relatório é o dono da empresa.</p>
+<div class="grid g2">
+<div class="card"><img alt="Contadora autônoma no home office com o notebook aberto" class="quem-img" loading="lazy" src="assets/quem-autonomo.jpg"/><h3>🧑‍💼 Contador autônomo</h3><p><strong>Ganha:</strong> um serviço novo com começo, meio e fim, que você faz sozinho para cada cliente da carteira.</p><p><strong>E mais:</strong> o relatório mostra em reais por que vale contratar o próximo passo.</p></div>
+<div class="card"><img alt="Sócio de escritório contábil mostra um relatório impresso à analista" class="quem-img" loading="lazy" src="assets/quem-escritorio.jpg"/><h3>🏢 Escritório contábil</h3><p><strong>Ganha:</strong> o mesmo diagnóstico, no mesmo formato, para dezenas de clientes. A analista prepara e o sócio revisa e apresenta.</p><p><strong>E mais:</strong> as 3 prioridades de cada cliente mostram quem precisa de qual serviço.</p></div>
+<div class="card"><img alt="Dono de uma pequena agência lê um relatório de duas páginas" class="quem-img" loading="lazy" src="assets/quem-empresario.jpg"/><h3>🏪 Dono da empresa</h3><p><strong>Ganha:</strong> entender em 2 páginas o que a Reforma muda no imposto e no caixa dele, sem precisar saber contabilidade.</p><p><strong>E mais:</strong> sair da reunião com uma decisão, e não com mais dúvida.</p></div>
+<div class="card"><img alt="Contador recém-formado compara o relatório no notebook com o caderno" class="quem-img" loading="lazy" src="assets/quem-iniciante.jpg"/><h3>🎓 Contador começando a carteira</h3><p><strong>Ganha:</strong> uma porta de entrada para conquistar cliente: um diagnóstico com preço fechado, em vez de "faço sua contabilidade".</p><p><strong>E mais:</strong> aprender, com os números de verdade, o que a Reforma muda em cada regime.</p></div>
+</div>
+</div></section>
+<section id="dia"><div class="wrap">
+<span class="chip">No seu dia a dia</span>
+<h2>Como isso muda o seu <span class="amb">trabalho</span></h2>
+<div class="grid g2">
+<div class="card"><h3>📞 "Vou pagar mais em 2027?"</h3><p><strong>Hoje:</strong> você responde "depende", e o cliente fica com o vídeo do YouTube na cabeça.</p><p><strong>Com o kit:</strong> você responde com o número dele: o cenário principal, com os 11,3% calculados pelo TCU, e um de comparação, com os 8,8% do exemplo da Receita. E mostra o que pesa a favor dele: quem compra dele pode usar o imposto como crédito (abater do imposto que ele mesmo paga).</p></div>
+<div class="card"><h3>💸 "Meu caixa vai apertar?"</h3><p><strong>Hoje:</strong> ninguém olhou o saldo do cliente mês a mês.</p><p><strong>Com o kit:</strong> o relatório mostra quantos meses de saídas o caixa cobre, os meses de aperto e quanto de imposto deixa de passar pelo caixa quando o split payment chegar. O split payment é o imposto descontado na hora em que o cliente paga.</p></div>
+<div class="card"><h3>🏷️ "Meu preço ainda dá lucro?"</h3><p><strong>Hoje:</strong> o empresário reajusta no chute.</p><p><strong>Com o kit:</strong> para cada produto ou serviço, a margem de hoje, a de 2027 no pior cenário e o preço mínimo para manter a margem que ele quer.</p></div>
+<div class="card"><h3>📅 "O que eu faço primeiro?"</h3><p><strong>Hoje:</strong> uma lista enorme de "pontos de atenção".</p><p><strong>Com o kit:</strong> 3 prioridades, da que vale mais reais para a que vale menos, cada uma ligada a um serviço que você pode oferecer.</p></div>
+</div>
+</div></section>
+<section id="video"><div class="wrap">
+<span class="chip">Em vídeo</span>
+<h2>Vídeo em produção</h2>
+<!-- VIDEO: entra o explicavideo do projeto quando publicado -->
+<p class="sub">O vídeo explicativo deste kit está em produção e entra aqui quando for publicado. Enquanto isso, o passo a passo está logo abaixo, em "Como começar".</p>
+</div></section>
+<section id="como"><div class="wrap">
+<span class="chip">Como funciona</span>
+<h2>Três peças, <span class="amb">sem jargão</span></h2>
+<div class="grid g3">
+<div class="card"><h3>📁 A pasta do cliente</h3><p>É o <strong>checklist de dados do cliente</strong>: uma planilha com o resumo de cada mês (receita, custos, impostos pagos e saldo) e algumas respostas sobre a empresa, como o regime e o prazo médio de recebimento. Despesas por tipo e preços dos produtos são opcionais e deixam o diagnóstico mais rico.</p></div>
+<div class="card"><h3>🧮 O diagnóstico</h3><p>É a <strong>calculadora que não esquece nada</strong>. Faz as mesmas contas, do mesmo jeito, para todo cliente, e anota de onde saiu cada número. Não manda nada para a internet.</p></div>
+<div class="card"><h3>🔍 O conferidor</h3><p>É o <strong>revisor de rodapé</strong>. Depois que a IA reescreve o relatório em linguagem simples, ele confere se cada valor em reais, cada porcentagem e cada prazo veio dos dados. Se a IA arredondar para "uns 60 mil", ele barra.</p></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>📄 O que vem nas 2 páginas</h3>
+<div class="rel" style="margin-top:10px">
+<h4>1. Quanto sobra</h4><p>O que vendeu, o que sobrou e a margem, e se a margem caiu nos últimos 3 meses.</p>
+<h4>2. Seu caixa</h4><p>Quantos meses de saídas o caixa cobre, e os meses de aperto.</p>
+<h4>3. Reforma em 2027 <span class="sim">SIMULADO</span></h4><p>PIS/Cofins de hoje × CBS/IBS em dois cenários, o efeito do split payment e, se ele vende para empresas, a nota de que elas podem usar o imposto como crédito.</p>
+<h4>4. O que chamou a atenção</h4><p>A despesa que fugiu da média e o produto com margem apertada, com o preço mínimo.</p>
+<h4>5. Suas 3 prioridades</h4><p>Da que vale mais à que vale menos, com uma pauta de reunião de 30 minutos.</p>
+</div></div>
+<div class="card" style="margin-top:16px"><h3>⚠️ O que ele NÃO é</h3><ul>
+<li><strong>Não é parecer.</strong> É uma simulação com premissas escritas no relatório. Quem decide e assina é você, o contador.</li>
+<li><strong>Não sabe a alíquota final.</strong> O Senado fixa até 15/12/2026 a alíquota de referência, a alíquota-padrão de onde cada atividade parte (com ou sem redução). Por isso o kit usa dois cenários e marca 2027 como SIMULADO. Refaça quando sair.</li>
+<li><strong>Não muda o DAS do Simples.</strong> Para quem é do Simples, o relatório avisa sobre o crédito dos clientes que são empresas, mas não simula o DAS.</li>
+<li><strong>Não manda nada ao cliente.</strong> Você revisa e apresenta.</li>
+</ul></div>
+</div></section>
+<section id="comecar"><div class="wrap">
+<span class="chip">Como começar</span>
+<h2>Peça para a sua IA <span class="amb">montar o primeiro</span></h2>
+<p class="sub">Você não precisa instalar nada à mão nem entender os arquivos. A IA lê o kit, mostra um exemplo pronto e ajuda você a montar a pasta do seu cliente.</p>
+<div class="grid g3">
+<div class="card"><h3>1. Abra a sua IA no computador</h3><p>O <strong>Claude Code</strong> (do Claude) ou o <strong>Codex</strong> (do ChatGPT): assistentes que trabalham dentro do seu computador e vêm com a assinatura paga deles. Os dois têm versão para Windows e Mac. Abrem numa janela de texto, mas você só conversa em português.</p></div>
+<div class="card"><h3>2. Cole o pedido abaixo</h3><p>Ele manda a IA rodar o exemplo de uma agência fictícia, para você ver o relatório antes de usar com um cliente.</p></div>
+<div class="card"><h3>3. Monte a pasta do seu cliente</h3><p>A IA pergunta o que falta e monta a planilha com você: os últimos meses de receita, custos, impostos pagos e saldo. Tudo isso já está no seu sistema contábil. Depois ela gera e confere o relatório.</p></div>
+</div>
+<p class="mut" style="margin-top:20px">Não precisa entender o texto abaixo: ele é para a IA. Copie e cole.</p>
+<div class="pedido" style="margin-top:8px;position:relative">
+<pre id="pedidoTxt" style="white-space:pre-wrap">Leia o kit "contabilidade2027" em https://github.com/inematds/contabilidade2027 (o README explica tudo).
+Quero fazer o Diagnóstico Reforma + Caixa de um cliente meu. Neste computador:
+1. Baixe o kit (ZIP ou git) e rode primeiro o exemplo da agência, para eu ver como fica o relatório.
+2. Me ajude a montar a pasta do meu cliente no formato de kit/modelo/ (empresa.json, mensal.csv e,
+   se eu tiver, despesas.csv e produtos.csv). Pergunte o que faltar. Não invente número.
+3. Rode kit/diagnostico.py na pasta do cliente.
+4. Reescreva o relatorio-base.md num relatorio.md em linguagem simples, para o dono da empresa,
+   sem mudar nenhum número (copie os valores exatamente como estão).
+5. Rode kit/conferir.py relatorio.md saida/dados.json (os dois dentro da pasta do cliente). Se acusar número sem origem, corrija e rode de novo.
+6. Me mostre o relatório e as premissas (alíquota, crédito, redução). Não envie nada a ninguém:
+   eu reviso e sou eu quem fala com o cliente.</pre>
+<button class="btn" id="copiarPedido" style="margin-top:10px">Copiar o pedido</button>
+</div>
+<div class="grid g2" style="margin-top:16px">
+<div class="card"><h3>🌐 Quer só ver, sem instalar nada?</h3><p>Não há versão online. O kit roda no seu computador de propósito, porque os dados são do seu cliente. Para ver como fica, abra o relatório de exemplo da agência fictícia direto no GitHub.</p><p><a class="btn ghost" href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-exemplo/relatorio-base.md" rel="noopener" target="_blank">Ver o relatório de exemplo</a></p></div>
+<div class="card"><h3>⬇️ Onde baixar o programa?</h3><p>Não tem instalador: o kit é uma pasta pequena, com o programa, os exemplos e a planilha modelo. O pedido acima já manda a IA baixar. Se quiser os arquivos:</p><p><a class="btn ghost" href="https://github.com/inematds/contabilidade2027/archive/refs/heads/main.zip">Baixar o kit (ZIP)</a></p></div>
+</div>
+<div class="grid g2" style="margin-top:16px">
+<div class="card"><h3>🔒 E os dados do cliente?</h3><p>O programa do kit não manda nada para a internet. Mas a IA que você usa (Claude Code ou Codex) lê os arquivos que você abre para ela, e o que ela lê passa pelo serviço dela. Se preferir, tire o nome e o CNPJ da pasta antes. O relatório sai igual.</p></div>
+<div class="card"><h3>🛠️ É técnico e prefere fazer à mão?</h3><p>Os comandos, as colunas da planilha, as fórmulas e os testes estão no README do GitHub.</p><p><a class="btn ghost" href="https://github.com/inematds/contabilidade2027#instalação-técnica" rel="noopener" target="_blank">Ver a instalação técnica</a></p></div>
+</div>
+</div></section>
+<section id="base"><div class="wrap">
+<span class="chip">De onde vem</span>
+<h2>As regras de 2027 vêm <span class="amb">da lei</span>; o kit é nosso</h2>
+<p class="sub">As contas seguem a lei da Reforma e os números oficiais que existiam em 24/11/2026. O kit (programa, exemplos e textos) é do INEMA, sem ligação com a Receita.</p>
+<div class="grid g3">
+<div class="card"><h3>📜 A lei da Reforma</h3><p>Lei Complementar 214/2025. Em 2027 a CBS é a alíquota de referência menos 0,1 ponto (art. 347), e o IBS é 0,05% estadual + 0,05% municipal (art. 344). Por isso, no kit, os dois somam a própria alíquota de referência. O split payment entra aos poucos (art. 35).</p><p><a href="https://legis.senado.leg.br/norma/40180341/publicacao/40181429" rel="noopener" target="_blank">Texto da LC 214 no Senado</a></p></div>
+<div class="card"><h3>⚖️ Os dois cenários</h3><p><strong>8,8%</strong> é só o valor usado no exemplo oficial do simulador da Receita, não uma proposta. <strong>11,3%</strong> é a alíquota de referência calculada pelo TCU em 28/10/2026. O Senado fixa a definitiva até 15/12/2026. Usar os dois mostra ao cliente uma faixa, e não um número só.</p><p><a href="https://portal.tcu.gov.br/imprensa/noticias/tcu-calcula-aliquota-de-referencia-de-113-para-novo-tributo-sobre-consumo" rel="noopener" target="_blank">Nota do TCU</a></p></div>
+<div class="card"><h3>🏪 O Simples</h3><p>Quem é do Simples pode recolher a CBS e o IBS fora do DAS, para dar crédito cheio aos clientes que são empresas. A opção é semestral, feita em setembro e em março.</p><p><a href="https://www2.camara.leg.br/legin/fed/leicom/2026/leicomplementar-227-13-janeiro-2026-798657-normaatualizada-pl.html" rel="noopener" target="_blank">LC 227/2026 na Câmara</a></p></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>🧮 Quer conferir item por item no motor oficial?</h3><p>Este kit faz a conta da empresa inteira, por mês. Para conferir uma nota, item por item, na calculadora que a própria Receita abriu, use o nosso outro kit, a <strong>calculadora-da-reforma</strong>.</p><p><a href="https://inematds.github.io/calculadora-da-reforma/guia/" rel="noopener" target="_blank">Guia da calculadora-da-reforma</a></p></div>
+</div></section>
+<section id="prova"><div class="wrap">
+<span class="chip">A prova</span>
+<h2>Rodamos numa <span class="amb">agência fictícia</span></h2>
+<p class="sub">Uma agência de marketing do Lucro Presumido, com 12 meses de dados inventados para o teste (24/11/2026). Os números de 2027 são SIMULADOS e valem para um prestador de serviço com pouca compra que gera crédito, o caso em que a Reforma pesa mais. Um comércio que compra muito tende a ver outro número.</p>
+<div class="stats">
+<div class="stat"><b>R$ 35.952,50</b><span>de PIS e Cofins por ano, hoje.</span></div>
+<div class="stat"><b>R$ 97.835,40</b><span>de CBS + IBS por ano em 2027 no cenário de 11,3% (valor máximo, base simplificada), porque só R$ 119.200,00 das compras dela no ano geram crédito.</span></div>
+<div class="stat"><b>R$ 2.785,81</b><span>é o preço mínimo da campanha de anúncios para manter 15% de margem. Hoje ela cobra R$ 2.500,00.</span></div>
+</div>
+<div class="prova" style="margin-top:20px">
+<ol class="tl">
+<li><b>O diagnóstico achou as 3 prioridades.</b><br/><span class="mut">Rever regime, créditos e preços antes de 2027; rever o preço da campanha de anúncios; olhar a conta de softwares, que subiu R$ 1.980,00 acima da média.</span></li>
+<li><b>E lembrou o que pesa a favor.</b><br/><span class="mut">90% das vendas dela são para empresas, que poderão usar o imposto como crédito. Parte do aumento pode ir no preço sem pesar para elas.</span></li>
+<li><b>Pusemos a IA para "errar" de propósito.</b><br/><span class="mut">Um texto com "cerca de 62 mil a mais" e uma margem de 25% inventada: o conferidor barrou os dois.</span></li>
+<li><b>15 testes conferem as contas à mão.</b><br/><span class="mut">Lucro Presumido, Lucro Real com crédito, atividade com redução de 60% e Simples.</span></li>
+</ol>
+<p class="rod">O relatório completo do exemplo está em <a href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-exemplo/relatorio-base.md" rel="noopener" target="_blank">relatorio-base.md</a>, e as fórmulas, no README.</p>
+</div>
+</div></section>
+<section id="faq"><div class="wrap">
+<span class="chip">Perguntas comuns</span>
+<h2>Antes de você <span class="amb">começar</span></h2>
+<div class="grid g2">
+<div class="card"><h3>Preciso saber programar?</h3><p>Não. Você cola o pedido e a IA faz o resto. Os comandos estão no README, para quem preferir.</p></div>
+<div class="card"><h3>Quanto custa?</h3><p>O kit e este guia são grátis. O caminho mais fácil usa o Claude Code ou o Codex, que vêm com a assinatura paga do Claude ou do ChatGPT. Quem souber rodar um programa em Python pode usar sem IA.</p></div>
+<div class="card"><h3>Serve para qualquer regime?</h3><p>Lucro Presumido e Lucro Real têm a simulação da CBS/IBS. O Simples tem o caixa, a margem e o aviso sobre crédito dos clientes. Ficam de fora o MEI e os casos com regras próprias (combustíveis, monofásico, substituição tributária, regimes específicos): neles, use o kit só para o caixa e a margem.</p></div>
+<div class="card"><h3>E se a atividade tem redução de alíquota?</h3><p>Você informa a redução (30% ou 60%, conforme a atividade) e o kit refaz a conta. Saúde e educação, por exemplo, têm redução.</p></div>
+<div class="card"><h3>Posso cobrar pelo diagnóstico?</h3><p>Pode. O kit é aberto (licença MIT). O serviço, a revisão e a responsabilidade técnica são seus.</p></div>
+<div class="card"><h3>O resultado vale para declarar?</h3><p>Não. É simulação para conversar e decidir. A apuração continua no seu sistema.</p></div>
+</div>
+<p class="fonte" style="margin-top:22px">E você: quantos clientes seus já perguntaram quanto vão pagar em 2027, e quantos receberam a resposta com os números deles? Grátis no inema.club, direto na internet.</p>
+</div></section>
+</main>
+<footer>
+<div class="wrap">
+<div class="pill">Kit grátis e não oficial</div><div class="pill">Para contadores</div><div class="pill">PT · EN · ES</div>
+<p style="margin-top:18px">Diagnóstico Reforma + Caixa · kit do INEMA, não oficial · não substitui a análise técnica do contador · grátis no inema.club, direto na internet ·
+      <a href="https://github.com/inematds/contabilidade2027">inematds/contabilidade2027</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script>
+  (function(){
+    var KEY='contabilidade2027-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+    });
+  })();
+  (function(){
+    var bt=document.getElementById('copiarPedido'), tx=document.getElementById('pedidoTxt');
+    if(!bt||!tx) return;
+    bt.addEventListener('click',function(){
+      try{ navigator.clipboard.writeText(tx.textContent).then(function(){ bt.textContent='Copiado ✓'; setTimeout(function(){bt.textContent='Copiar o pedido';},2000); }); }catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>

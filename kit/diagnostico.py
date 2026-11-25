@@ -171,9 +171,11 @@ def diagnosticar(empresa, mensal, despesas, produtos):
     red = empresa["reducao_aliquota_pct"] / 100
     ibs = empresa["ibs_2027_pct"]
     compras = soma("compras_com_credito")
+    N.add("compras_credito_ano", compras * fator_ano, "brl", f"compras_com_credito de {periodo}, anualizado (× 12 ÷ {n})")
     N.add("pis_cofins_ano", pis_cof * fator_ano, "brl", f"pis_cofins_pago de {periodo}, anualizado (× 12 ÷ {n})")
     if empresa["regime"] in ("presumido", "real"):
         N.add("ibs_pct", ibs, "pct", "IBS de 2027 (art. 344 LC 214: 0,05% estadual + 0,05% municipal)")
+        N.itens["ibs_pp"] = {"valor": ibs, "texto": f"{ibs:.1f}".replace(".", ","), "origem": "redução da CBS em 2027, em pontos percentuais (art. 347 LC 214)"}
         for aliq in empresa["cenarios_cbs_pct"]:
             total_pct = aliq * (1 - red)  # (referência − 0,1 de CBS) + 0,1 de IBS
             debito = receita * total_pct / 100
@@ -266,7 +268,7 @@ def diagnosticar(empresa, mensal, despesas, produtos):
                      "texto": "Rever regime, créditos, cadastros e preços antes de 2027: no pior cenário, o que você recolhe de CBS/IBS fica {v} por ano acima do PIS/Cofins de hoje."})
     if empresa["regime"] in ("presumido", "real") and reforma.get("split_giro", 0) > 0:
         cand.append({"valor": reforma["split_giro"], "chave": "split_giro", "servico": "Painel do Empresário",
-                     "texto": "Preparar o caixa para o split payment, que vai chegar aos poucos: cerca de {v} de imposto deixam de passar pelo seu caixa antes do vencimento."})
+                     "texto": "Preparar o caixa para o split payment, que vai chegar aos poucos: até {v} de imposto deixam de passar pelo seu caixa antes do vencimento."})
     if fora:
         f0 = fora[0]
         cand.append({"valor": f0["acima"] * 12, "chave": f"desp_{f0['i']}_acima", "servico": "Painel do Empresário",
@@ -283,6 +285,20 @@ def diagnosticar(empresa, mensal, despesas, produtos):
         cand.append({"valor": 0, "chave": "saidas_medias_mes", "servico": "Painel do Empresário",
                      "texto": "Montar a previsão de caixa: em " + ", ".join(meses_aperto) + " o saldo ficou abaixo de meio mês de saídas (saídas médias de {v} por mês)."})
     cand.sort(key=lambda c: -c["valor"])
+    # sempre 3 prioridades: completa com as de acompanhamento, que valem para todo cliente
+    extras = [{"valor": -1, "chave": "margem_pct", "servico": "Painel do Empresário",
+               "texto": "Acompanhar a margem todo mês, numa conversa curta: no período ela foi {v}."},
+              {"valor": -2, "chave": "saidas_medias_mes", "servico": "Painel do Empresário",
+               "texto": "Montar a previsão de caixa dos próximos 3 meses, com as saídas médias de {v} por mês."},
+              {"valor": -3, "chave": "meses", "servico": "Reforma Tributária Pronta",
+               "texto": "Refazer este diagnóstico quando o Senado fixar a alíquota de referência da CBS (período analisado: {v} meses)."}]
+    usadas = {c["chave"] for c in cand}
+    for e in extras:
+        if len(cand) >= 3:
+            break
+        if e["chave"] not in usadas:
+            cand.append(e)
+            usadas.add(e["chave"])
     prioridades = []
     for c in cand[:3]:
         prioridades.append({"texto": c["texto"].format(v=N.itens[c["chave"]]["texto"]), "servico": c["servico"], "chave": c["chave"]})
@@ -320,11 +336,11 @@ def relatorio(d):
         for c in r["cenarios"]:
             k = c["chave"]
             sinal = "a mais" if c["diferenca_ano"] > 0 else "a menos"
-            L.append(f"- Com CBS de {T(f'cbs_{k}_aliq')}: você recolheria {T(f'cbs_{k}_imposto_ano')} por ano, {d['numeros'][f'cbs_{k}_diferenca_ano']['texto'].replace('-', '')} {sinal} que hoje.")
+            L.append(f"- Com alíquota de referência de {T(f'cbs_{k}_aliq')}: você recolheria {T(f'cbs_{k}_imposto_ano')} por ano de CBS + IBS, {d['numeros'][f'cbs_{k}_diferenca_ano']['texto'].replace('-', '')} {sinal} que hoje (valor máximo: base simplificada).")
         if r.get("b2b", 0) >= 50:
             L.append(f"- {T('vendas_empresas_pct')} das suas vendas são para empresas. Elas poderão usar a CBS/IBS que você destaca como crédito, então parte desse valor pode ir no preço sem pesar para elas. O contador avalia o repasse.")
-        L.append(f"- Premissas: em 2027 a CBS é a alíquota de referência menos {T('ibs_pct')} e o IBS é {T('ibs_pct')}, então o total é a própria referência. Base = receita informada (simplificação). Crédito só sobre as compras com crédito informadas; fornecedor do Simples gera crédito limitado ao que ele paga no Simples. Atividade com redução de alíquota: o contador informa em empresa.json.")
-        L.append(f"- **Split payment:** a implantação é gradual e ainda depende de ato do Comitê Gestor e da Receita. Quando valer para você, o imposto sai na hora do pagamento. Hoje cerca de {T('split_giro')} ficam no seu caixa até o vencimento"
+        L.append(f"- Premissas: em 2027 a CBS é a alíquota de referência menos {T('ibs_pp')} ponto percentual e o IBS é {T('ibs_pct')}, então CBS + IBS somam a própria referência. Base = receita informada (simplificação). Crédito só sobre as compras com crédito informadas ({T('compras_credito_ano')} por ano); fornecedor do Simples gera crédito limitado ao que ele paga no Simples. Atividade com redução de alíquota: o contador informa em empresa.json.")
+        L.append(f"- **Split payment:** a implantação é gradual e ainda depende de ato do Comitê Gestor e da Receita. Quando valer para você, o imposto sai na hora do pagamento. Hoje até {T('split_giro')} ficam no seu caixa até o vencimento"
                  + (f" ({T('split_giro_pct_saldo')} do saldo atual)." if "split_giro_pct_saldo" in d["numeros"] else "."))
     else:
         L.append("- No Simples Nacional, a CBS e o IBS ficam dentro do DAS; este diagnóstico não prevê mudança no valor do DAS em 2027.")

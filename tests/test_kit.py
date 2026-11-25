@@ -70,6 +70,7 @@ class Simples(unittest.TestCase):
         d = roda(EX / "loja-simples")
         self.assertFalse(any(k.startswith("cbs_") for k in d["numeros"]))
         self.assertIn("fora do DAS", d["prioridades"][0]["texto"])
+        self.assertEqual(len(d["prioridades"]), 3)  # sempre 3, mesmo com poucos dados
         self.assertEqual(C.conferir(D.relatorio(d), d), [])
 
 
