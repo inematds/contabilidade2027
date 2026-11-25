@@ -1,0 +1,12 @@
+{
+  "nome": "Nome da empresa",
+  "regime": "presumido",
+  "atividade": "o que a empresa faz",
+  "reducao_aliquota_pct": 0,
+  "cenarios_cbs_pct": [8.8, 11.3],
+  "ibs_2027_pct": 0.1,
+  "prazo_medio_recebimento_dias": 0,
+  "dia_vencimento_impostos": 25,
+  "vendas_para_empresas_pct": 0,
+  "margem_alvo_pct": 15
+}

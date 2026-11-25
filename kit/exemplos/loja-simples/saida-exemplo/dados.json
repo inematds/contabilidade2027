@@ -1,0 +1,107 @@
+{
+  "versao": "1.0.0",
+  "empresa": {
+    "nome": "Loja Exemplo ME (dados fictícios)",
+    "regime": "simples",
+    "atividade": "comércio de material elétrico"
+  },
+  "premissas": {
+    "cenarios_cbs_pct": [
+      8.8,
+      11.3
+    ],
+    "ibs_2027_pct": 0.1,
+    "reducao_aliquota_pct": 0,
+    "prazo_medio_recebimento_dias": 0,
+    "dia_vencimento_impostos": 25,
+    "vendas_para_empresas_pct": 60,
+    "despesa_alerta_fator": 1.3,
+    "despesa_alerta_minimo": 300.0,
+    "margem_alvo_pct": 15.0
+  },
+  "numeros": {
+    "receita_periodo": {
+      "valor": 276000.0,
+      "texto": "R$ 276.000,00",
+      "origem": "soma de receita em mensal.csv, 06/2026 a 11/2026 (6 meses)"
+    },
+    "lucro_periodo": {
+      "valor": 19220.0,
+      "texto": "R$ 19.220,00",
+      "origem": "receita − custo_direto − despesas_operacionais − pis_cofins_pago − outros_impostos"
+    },
+    "margem_pct": {
+      "valor": 6.9638,
+      "texto": "7,0%",
+      "origem": "lucro_periodo ÷ receita_periodo"
+    },
+    "meses": {
+      "valor": 6,
+      "texto": "6",
+      "origem": "mensal.csv, 06/2026 a 11/2026 (6 meses)"
+    },
+    "margem_ult3_pct": {
+      "valor": 7.1408,
+      "texto": "7,1%",
+      "origem": "margem dos 3 últimos meses de mensal.csv"
+    },
+    "margem_antes_pct": {
+      "valor": 6.7761,
+      "texto": "6,8%",
+      "origem": "margem dos meses anteriores aos 3 últimos"
+    },
+    "saldo_final": {
+      "valor": 14500.0,
+      "texto": "R$ 14.500,00",
+      "origem": "saldo_caixa_fim de 11/2026 (mensal.csv linha 7)"
+    },
+    "saidas_medias_mes": {
+      "valor": 42796.6667,
+      "texto": "R$ 42.796,67",
+      "origem": "média mensal de custo_direto + despesas_operacionais + impostos"
+    },
+    "meses_folego": {
+      "valor": 0.3,
+      "texto": "0,3",
+      "origem": "saldo_final ÷ saidas_medias_mes"
+    },
+    "pis_cofins_ano": {
+      "valor": 0.0,
+      "texto": "R$ 0,00",
+      "origem": "pis_cofins_pago de mensal.csv, 06/2026 a 11/2026 (6 meses), anualizado (× 12 ÷ 6)"
+    },
+    "vendas_empresas_pct": {
+      "valor": 60.0,
+      "texto": "60,0%",
+      "origem": "empresa.json (vendas_para_empresas_pct)"
+    }
+  },
+  "reforma": {
+    "regime": "simples",
+    "simulado": true,
+    "cenarios": [],
+    "b2b": 60
+  },
+  "despesas_fora": [],
+  "itens_margem_baixa": [],
+  "meses_aperto": [
+    "06/2026",
+    "07/2026",
+    "08/2026",
+    "09/2026",
+    "10/2026",
+    "11/2026"
+  ],
+  "prioridades": [
+    {
+      "texto": "Avaliar com o contador se vale recolher CBS/IBS fora do DAS: 60,0% das vendas são para empresas, que vão querer crédito cheio.",
+      "servico": "Reforma Tributária Pronta",
+      "chave": "vendas_empresas_pct"
+    },
+    {
+      "texto": "Montar a previsão de caixa: em 06/2026, 07/2026, 08/2026, 09/2026, 10/2026, 11/2026 o saldo ficou abaixo de meio mês de saídas (saídas médias de R$ 42.796,67 por mês).",
+      "servico": "Painel do Empresário",
+      "chave": "saidas_medias_mes"
+    }
+  ]
+}

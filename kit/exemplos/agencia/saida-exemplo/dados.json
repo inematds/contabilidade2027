@@ -1,0 +1,266 @@
+{
+  "versao": "1.0.0",
+  "empresa": {
+    "nome": "Agência Exemplo Ltda (dados fictícios)",
+    "regime": "presumido",
+    "atividade": "agência de marketing digital (serviços)"
+  },
+  "premissas": {
+    "cenarios_cbs_pct": [
+      8.8,
+      11.3
+    ],
+    "ibs_2027_pct": 0.1,
+    "reducao_aliquota_pct": 0,
+    "prazo_medio_recebimento_dias": 20,
+    "dia_vencimento_impostos": 25,
+    "vendas_para_empresas_pct": 90,
+    "despesa_alerta_fator": 1.3,
+    "despesa_alerta_minimo": 300.0,
+    "margem_alvo_pct": 15
+  },
+  "numeros": {
+    "receita_periodo": {
+      "valor": 985000.0,
+      "texto": "R$ 985.000,00",
+      "origem": "soma de receita em mensal.csv, 12/2025 a 11/2026 (12 meses)"
+    },
+    "lucro_periodo": {
+      "valor": 195047.5,
+      "texto": "R$ 195.047,50",
+      "origem": "receita − custo_direto − despesas_operacionais − pis_cofins_pago − outros_impostos"
+    },
+    "margem_pct": {
+      "valor": 19.8018,
+      "texto": "19,8%",
+      "origem": "lucro_periodo ÷ receita_periodo"
+    },
+    "meses": {
+      "valor": 12,
+      "texto": "12",
+      "origem": "mensal.csv, 12/2025 a 11/2026 (12 meses)"
+    },
+    "margem_ult3_pct": {
+      "valor": 20.3649,
+      "texto": "20,4%",
+      "origem": "margem dos 3 últimos meses de mensal.csv"
+    },
+    "margem_antes_pct": {
+      "valor": 19.5902,
+      "texto": "19,6%",
+      "origem": "margem dos meses anteriores aos 3 últimos"
+    },
+    "saldo_final": {
+      "valor": 34000.0,
+      "texto": "R$ 34.000,00",
+      "origem": "saldo_caixa_fim de 11/2026 (mensal.csv linha 13)"
+    },
+    "saidas_medias_mes": {
+      "valor": 65829.375,
+      "texto": "R$ 65.829,38",
+      "origem": "média mensal de custo_direto + despesas_operacionais + impostos"
+    },
+    "meses_folego": {
+      "valor": 0.5,
+      "texto": "0,5",
+      "origem": "saldo_final ÷ saidas_medias_mes"
+    },
+    "pis_cofins_ano": {
+      "valor": 35952.5,
+      "texto": "R$ 35.952,50",
+      "origem": "pis_cofins_pago de mensal.csv, 12/2025 a 11/2026 (12 meses), anualizado (× 12 ÷ 12)"
+    },
+    "cbs_8_8_aliq": {
+      "valor": 8.8,
+      "texto": "8,8%",
+      "origem": "cenário de alíquota da CBS (empresa.json)"
+    },
+    "cbs_8_8_imposto_ano": {
+      "valor": 77056.2,
+      "texto": "R$ 77.056,20",
+      "origem": "(receita − compras_com_credito) × (8,8% CBS + 0,1% IBS) × (1 − 0% de redução), anualizado"
+    },
+    "cbs_8_8_diferenca_ano": {
+      "valor": 41103.7,
+      "texto": "R$ 41.103,70",
+      "origem": "cbs_8_8_imposto_ano − pis_cofins_ano"
+    },
+    "cbs_11_3_aliq": {
+      "valor": 11.3,
+      "texto": "11,3%",
+      "origem": "cenário de alíquota da CBS (empresa.json)"
+    },
+    "cbs_11_3_imposto_ano": {
+      "valor": 98701.2,
+      "texto": "R$ 98.701,20",
+      "origem": "(receita − compras_com_credito) × (11,3% CBS + 0,1% IBS) × (1 − 0% de redução), anualizado"
+    },
+    "cbs_11_3_diferenca_ano": {
+      "valor": 62748.7,
+      "texto": "R$ 62.748,70",
+      "origem": "cbs_11_3_imposto_ano − pis_cofins_ano"
+    },
+    "split_dias": {
+      "valor": 20,
+      "texto": "20",
+      "origem": "venda no meio do mês, recebida em 20 dias, imposto vence dia 25 do mês seguinte"
+    },
+    "split_imposto_bruto_mes": {
+      "valor": 9357.5,
+      "texto": "R$ 9.357,50",
+      "origem": "receita média × (11,3% + 0,1%) × (1 − redução)"
+    },
+    "split_giro": {
+      "valor": 6238.3333,
+      "texto": "R$ 6.238,33",
+      "origem": "split_imposto_bruto_mes × split_dias ÷ 30 (estimativa máxima, sem descontar créditos)"
+    },
+    "split_giro_pct_saldo": {
+      "valor": 18.348,
+      "texto": "18,3%",
+      "origem": "split_giro ÷ saldo_final"
+    },
+    "vendas_empresas_pct": {
+      "valor": 90.0,
+      "texto": "90,0%",
+      "origem": "empresa.json (vendas_para_empresas_pct)"
+    },
+    "desp_0_atual": {
+      "valor": 4600.0,
+      "texto": "R$ 4.600,00",
+      "origem": "despesas.csv, Softwares e assinaturas em 11/2026"
+    },
+    "desp_0_media": {
+      "valor": 2620.0,
+      "texto": "R$ 2.620,00",
+      "origem": "despesas.csv, média de Softwares e assinaturas nos 5 meses anteriores"
+    },
+    "desp_0_acima": {
+      "valor": 1980.0,
+      "texto": "R$ 1.980,00",
+      "origem": "desp_0_atual − desp_0_media"
+    },
+    "fator_credito_pct": {
+      "valor": 39.8662,
+      "texto": "39,9%",
+      "origem": "compras_com_credito ÷ custo_direto (parte do custo que gera crédito)"
+    },
+    "prod_0_margem_hoje": {
+      "valor": 42.0643,
+      "texto": "42,1%",
+      "origem": "produtos.csv linha 2: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+    },
+    "prod_0_margem_2027": {
+      "valor": 36.7814,
+      "texto": "36,8%",
+      "origem": "produtos.csv linha 2: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+    },
+    "prod_1_margem_hoje": {
+      "valor": 49.6833,
+      "texto": "49,7%",
+      "origem": "produtos.csv linha 3: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+    },
+    "prod_1_margem_2027": {
+      "valor": 44.0542,
+      "texto": "44,1%",
+      "origem": "produtos.csv linha 3: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+    },
+    "prod_2_margem_hoje": {
+      "valor": 10.35,
+      "texto": "10,3%",
+      "origem": "produtos.csv linha 4: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+    },
+    "prod_2_margem_2027": {
+      "valor": 6.5085,
+      "texto": "6,5%",
+      "origem": "produtos.csv linha 4: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+    },
+    "prod_2_preco_min": {
+      "valor": 2788.4346,
+      "texto": "R$ 2.788,43",
+      "origem": "preço que devolve a margem-alvo de 15% no pior cenário"
+    },
+    "prod_3_margem_hoje": {
+      "valor": 66.35,
+      "texto": "66,3%",
+      "origem": "produtos.csv linha 5: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+    },
+    "prod_3_margem_2027": {
+      "valor": 59.9634,
+      "texto": "60,0%",
+      "origem": "produtos.csv linha 5: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+    },
+    "margem_alvo": {
+      "valor": 15,
+      "texto": "15,0%",
+      "origem": "empresa.json (margem_alvo_pct)"
+    }
+  },
+  "reforma": {
+    "regime": "presumido",
+    "simulado": true,
+    "cenarios": [
+      {
+        "aliq": 8.8,
+        "imposto_ano": 77056.2,
+        "diferenca_ano": 41103.7,
+        "chave": "8_8"
+      },
+      {
+        "aliq": 11.3,
+        "imposto_ano": 98701.2,
+        "diferenca_ano": 62748.7,
+        "chave": "11_3"
+      }
+    ],
+    "pior": {
+      "aliq": 11.3,
+      "imposto_ano": 98701.2,
+      "diferenca_ano": 62748.7,
+      "chave": "11_3"
+    },
+    "split_giro": 6238.333333333333,
+    "b2b": 90
+  },
+  "despesas_fora": [
+    {
+      "categoria": "Softwares e assinaturas",
+      "mes": "11/2026",
+      "atual": 4600.0,
+      "media": 2620.0,
+      "acima": 1980.0,
+      "i": 0
+    }
+  ],
+  "itens_margem_baixa": [
+    {
+      "item": "Campanha de anúncios (mensal)",
+      "j": 2,
+      "m_hoje": 10.35,
+      "m_2027": 6.508484280936456,
+      "preco": 2500.0,
+      "preco_min": 2788.4346371964516,
+      "qtd": 8.0
+    }
+  ],
+  "meses_aperto": [
+    "01/2026"
+  ],
+  "prioridades": [
+    {
+      "texto": "Rever regime, créditos, cadastros e preços antes de 2027: no pior cenário, o que você recolhe de CBS/IBS fica R$ 62.748,70 por ano acima do PIS/Cofins de hoje.",
+      "servico": "Reforma Tributária Pronta",
+      "chave": "cbs_11_3_diferenca_ano"
+    },
+    {
+      "texto": "Rever o preço de Campanha de anúncios (mensal): para manter a margem-alvo, o preço mínimo é R$ 2.788,43.",
+      "servico": "Preço certo na Reforma",
+      "chave": "prod_2_preco_min"
+    },
+    {
+      "texto": "Olhar a despesa de Softwares e assinaturas: em 11/2026 ficou R$ 1.980,00 acima da média.",
+      "servico": "Painel do Empresário",
+      "chave": "desp_0_acima"
+    }
+  ]
+}
