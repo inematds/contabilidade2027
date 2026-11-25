@@ -13,7 +13,7 @@ Arquivos da pasta (os mesmos do Diagnóstico + dois específicos):
   fornecedores.csv   opcional     fornecedor;regime;compras_ano   (regime = regular, simples ou mei)
   prontidao.json     opcional     respostas sim/não sobre sistema, notas, contratos, preços e equipe
 
-Gera em saida/: plano.md (o plano em linguagem simples), pendencias.csv (uma linha por pendência)
+Gera em saida/reforma-pronta/ (para não apagar o dados.json do Diagnóstico, que fica em saida/): plano.md (o plano em linguagem simples), pendencias.csv (uma linha por pendência)
 e dados.json (todos os números, cada um com a origem). Só lê e confere: não chama internet nem IA.
 O kit confere o FORMATO e a coerência dos códigos; se o código é o certo para o item, quem diz
 é o contador, com a tabela oficial ou o teste do motor da calculadora-da-reforma.
@@ -107,6 +107,11 @@ def conferir_item(it):
     if red and red not in REDUCOES_USUAIS:
         p.append(("reducao_pct", f"redução de {pct(red, 0)} fora das faixas usuais (30%, 60% ou 100%)",
                   "conferir a redução da atividade na lei"))
+    if red and cst == "000":
+        p.append(("reducao_pct", "redução informada com CST 000, que é tributação integral",
+                  "conferir: com redução, o CST costuma ser o de alíquota reduzida (200)"))
+    if not red and cst == "200":
+        p.append(("reducao_pct", "CST 200 (alíquota reduzida) sem redução informada", "conferir a redução do item"))
     if red and not cct:
         p.append(("reducao_pct", "redução informada sem cClassTrib que a justifique",
                   "definir o cClassTrib da redução, ou tirar a redução"))
@@ -293,7 +298,7 @@ def main(argv):
         print(__doc__)
         return 0 if argv else 2
     pasta = Path(argv[0])
-    saida = Path(argv[argv.index("--saida") + 1]) if "--saida" in argv else pasta / "saida"
+    saida = Path(argv[argv.index("--saida") + 1]) if "--saida" in argv else pasta / "saida" / "reforma-pronta"  # não apaga o dados.json do Diagnóstico
     hoje = dt.date.fromisoformat(argv[argv.index("--hoje") + 1]) if "--hoje" in argv else dt.date.today()
     try:
         d = planejar(*carregar(pasta), hoje)

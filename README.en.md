@@ -1,12 +1,21 @@
-# Tax Reform + Cash Flow Diagnosis
+# contabilidade2027 — Reform + Cash Flow Diagnostic and 3 more kits for accountants
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
-[![Tax Reform + Cash Flow Diagnosis](guia/assets/banner-en.jpg)](https://inematds.github.io/contabilidade2027/guia/en/)
+[![Diagnóstico Reforma + Caixa](guia/assets/banner-en.jpg)](https://inematds.github.io/contabilidade2027/guia/en/)
 
 ## What it is
 
-Your client will ask how much the Tax Reform will affect their cash flow in 2027. This free kit helps accountants answer with the client’s own numbers. Put what you already have in a folder (the monthly summary of revenue, costs, taxes, and balance and, if you want, expenses and prices), and your AI will create a 2-page report for the business owner: how much is left over, the state of their cash flow, how much they would pay in CBS/IBS in 2027 under two tax rate scenarios, the effect of split payment, what stood out, and 3 priorities. A checker ensures every number in the report came from the data. This is an INEMA kit, not an official resource, and it does not replace the accountant’s technical analysis.
+Your client is going to ask how much the Tax Reform will weigh on their cash flow in 2027. This free kit helps the accountant answer with the client's own numbers. You put what you already have in a folder (the monthly summary of revenue, costs, taxes, and balance and, if you want, expenses and prices) and your AI builds a 2-page report for the business owner: how much is left over, how the cash flow looks, how much they would pay in CBS/IBS in 2027 under two rate scenarios, the effect of split payment, what stood out, and 3 priorities. A checker ensures that every number in the report came from the data. In the same client folder, 3 more kits run: **Reforma Tributária Pronta** (what's missing in the registry, the system, and the contracts), **Preço certo na Reforma** (minimum price and target price per product), and **Painel do Empresário** (the month-end close in plain text). It is an INEMA kit, unofficial, and does not replace the accountant's technical analysis.
+
+## The 4 kits (the same client folder works for all of them)
+
+| Kit | What it delivers | Program | Guide |
+|---|---|---|---|
+| 1. Reform + Cash Flow Diagnostic | 2-page report: cash flow, margin, 2027 CBS/IBS, split payment, 3 priorities | `kit/diagnostico.py` | [guide](https://inematds.github.io/contabilidade2027/guia/en/) |
+| 2. Reforma Tributária Pronta (Tax Reform Ready) | Plan per CNPJ: registry pending items (NCM/NBS, CST, cClassTrib), suppliers and credit, checklist and deadlines | `kit/reforma_pronta.py` | [guide](https://inematds.github.io/contabilidade2027/guia/en/reforma-pronta/) |
+| 3. Preço certo na Reforma (Right Price under the Reform) | Per item: margin today and in 2027, minimum price, target price, and maximum discount | `kit/preco_certo.py` | [guide](https://inematds.github.io/contabilidade2027/guia/en/preco-certo/) |
+| 4. Painel do Empresário (Business Owner Dashboard) | Month-end close in plain text: result, comparisons, 3-month cash flow, accounts, alerts, and what to do | `kit/painel.py` | [guide](https://inematds.github.io/contabilidade2027/guia/en/painel/) |
 
 ## 📖 User guide
 
@@ -16,89 +25,171 @@ Full guide: **https://inematds.github.io/contabilidade2027/guia/en/**
 
 ## Ask your AI
 
-Open Claude Code or Codex in a folder on your computer and paste the request from [`kit/PEDIDO.md`](kit/PEDIDO.md). It tells the AI to run the example, create your client’s folder, generate the report, rewrite it in plain language without changing the numbers, and check it. Nothing is sent to anyone: you review it and talk with the client.
+Open Claude Code or Codex in a folder on your computer and paste the request for the kit you want, from [`kit/PEDIDO.md`](kit/PEDIDO.md) (one per kit). It tells the AI to run the example, set up your client's folder, generate the report, rewrite it in plain language without changing the numbers, and check it. Nothing is sent to anyone: you review it and talk to the client.
 
 ## What the report includes
 
-1. **How much is left over:** revenue, profit, and margin for the period, and the margin for the last 3 months compared with the previous months.
-2. **Your cash flow:** balance, average outflows, how many months of outflows the cash balance covers, and the tight months.
-3. **Tax Reform in 2027 (SIMULATED):** today’s PIS/Cofins × CBS/IBS under two scenarios (8,8% from the official Receita example and 11,3% from the TCU recommendation), a note for those who sell to businesses, and how much tax no longer passes through cash flow with split payment. For Simples, a notice about tax credits for business customers.
-4. **What stood out:** an expense above average and an item with a margin below target, with the minimum price.
-5. **3 priorities**, ordered by value in R$, each tied to a service the accountant can offer, plus a 30-minute meeting agenda.
+1. **How much is left over:** revenue, profit, and margin for the period, and the margin of the last 3 months compared with the previous ones.
+2. **Your cash flow:** balance, average outflows, how many months of outflows the cash covers, and the tight months.
+3. **Reform in 2027 (SIMULATED):** today's PIS/Cofins × CBS/IBS in two scenarios (8.8% from the official Receita example and 11.3% from the TCU recommendation), the note for those who sell to businesses, and how much tax stops passing through the cash flow with split payment. Under Simples, the warning about credit for business customers.
+4. **What stood out:** expense above average and an item with margin below target, with the minimum price.
+5. **3 priorities**, ordered by the value in R$, each tied to a service the accountant can offer, plus a 30-minute meeting agenda.
 
-Ready-made examples: [`kit/exemplos/agencia/saida-exemplo/relatorio-base.md`](kit/exemplos/agencia/saida-exemplo/relatorio-base.md) (Lucro Presumido) and [`kit/exemplos/loja-simples/saida-exemplo/relatorio-base.md`](kit/exemplos/loja-simples/saida-exemplo/relatorio-base.md) (Simples). All data is fictional.
+Ready-made examples: [`kit/exemplos/agencia/saida-exemplo/relatorio-base.md`](kit/exemplos/agencia/saida-exemplo/relatorio-base.md) (Lucro Presumido) and [`kit/exemplos/loja-simples/saida-exemplo/relatorio-base.md`](kit/exemplos/loja-simples/saida-exemplo/relatorio-base.md) (Simples). All data is fictitious.
 
 ---
 
 ## Technical installation
 
-Requires only **Python 3.9+**, with no extra libraries. It does not use the internet or an AI model: the script only reads and calculates.
+It only needs **Python 3.9+**, with no extra libraries. It uses no internet and no AI model: the script only reads and calculates.
 
 ```bash
 git clone https://github.com/inematds/contabilidade2027 && cd contabilidade2027
-# or download the ZIP: https://github.com/inematds/contabilidade2027/archive/refs/heads/main.zip
+# ou baixe o ZIP: https://github.com/inematds/contabilidade2027/archive/refs/heads/main.zip
 
-python3 kit/diagnostico.py kit/exemplos/agencia            # generates kit/exemplos/agencia/saida/
+python3 kit/diagnostico.py kit/exemplos/agencia            # gera kit/exemplos/agencia/saida/
 python3 kit/conferir.py kit/exemplos/agencia/saida/relatorio-base.md kit/exemplos/agencia/saida/dados.json
-python3 -m unittest discover -s tests                        # 15 tests
+python3 -m unittest discover -s tests                        # 15 testes
 ```
 
-### The client’s folder
+### The client folder
 
-Copy `kit/modelo/` and fill it in. CSV files use `;` as the separator and a comma as the decimal mark, as Excel saves them in Portuguese.
+Copy `kit/modelo/` and fill it in. CSV with `;` separator and decimal comma, as Excel saves in Portuguese.
 
 | File | Required | Columns |
 |---|---|---|
 | `empresa.json` | yes | `nome`, `regime` (`simples`, `presumido` or `real`), `atividade`, `reducao_aliquota_pct` (0, 30 or 60), `cenarios_cbs_pct`, `ibs_2027_pct`, `prazo_medio_recebimento_dias`, `dia_vencimento_impostos`, `vendas_para_empresas_pct`, `margem_alvo_pct` |
 | `mensal.csv` | yes (3+ months) | `mes;receita;compras_com_credito;custo_direto;despesas_operacionais;pis_cofins_pago;outros_impostos;saldo_caixa_fim` |
-| `despesas.csv` | no | `mes;categoria;valor` (the last month is compared with the average of the previous months) |
+| `despesas.csv` | no | `mes;categoria;valor` (the last month is compared with the average of the previous ones) |
 | `produtos.csv` | no | `item;preco;custo_direto;qtd_mes` |
 
-`compras_com_credito` is the portion of purchases that will generate CBS/IBS credits (inputs and services from suppliers under the regular regime). Payroll is not included.
+`compras_com_credito` is the portion of purchases that will generate CBS/IBS credit (inputs and services from suppliers in the regular regime). Payroll is not included.
 
-### How the calculation works (assumptions)
+### How the calculation is done (assumptions)
 
-- **2027 CBS/IBS (regular regime):** `(revenue − compras_com_credito) × reference tax rate × (1 − reduction)`, annualized and compared with the PIS/Cofins paid. In 2027, CBS is the reference minus 0,1 percentage point (LC 214, art. 347) and IBS is 0,05% state + 0,05% municipal (art. 344), so the two add up to the reference itself. This is a simplification: the tax base is the reported revenue, with no adjustment for other taxes (LC 214, art. 12, excludes CBS/IBS and IPI from the base).
-- **Credit:** only on what you report in `compras_com_credito`. Purchases from a Simples supplier generate credits limited to what that supplier pays under Simples. Adjust the column.
-- **Product:** uses the same credit rule as the company. The portion of the cost that generates credit is `compras_com_credito ÷ custo_direto` for the period. The minimum price achieves `margem_alvo_pct` in the worst-case scenario.
-- **Split payment:** `average revenue × worst-case tax rate × days ÷ 30`, with the sale in the middle of the month, payment received within `prazo_medio_recebimento_dias`, and taxes due on `dia_vencimento_impostos` of the following month. This is a maximum estimate, with no credits deducted. Implementation is gradual and depends on a joint act by the Comitê Gestor and Receita (LC 214, art. 35).
-- **Simples:** does not simulate a change in DAS. It gives a notice when most sales are to businesses. The option to pay CBS/IBS outside DAS is semiannual, exercised in September and March (LC 123, art. 13, §§ 9–10, as worded in LC 227/2026).
-- **Everything for 2027 is marked SIMULATED.** The reference CBS rate is set by the Senate (deadline: 15/12/2026). Recalculate when it is announced.
+- **2027 CBS/IBS (regular regime):** `(receita − compras_com_credito) × reference rate × (1 − reduction)`, annualized, compared with the PIS/Cofins paid. In 2027 the CBS is the reference minus 0.1 point (LC 214, art. 347) and the IBS is 0.05% state plus 0.05% municipal (art. 344), so the two together add up to the reference itself. This is a simplification: the base is the reported revenue, with no adjustment for other taxes (LC 214, art. 12, removes the CBS/IBS itself and the IPI from the base).
+- **Credit:** only on what you report in `compras_com_credito`. A purchase from a Simples supplier generates credit limited to what that supplier pays under Simples. Adjust the column.
+- **Product:** uses the same credit rule as the company. The portion of the cost that generates credit is `compras_com_credito ÷ custo_direto` for the period. The minimum price restores the `margem_alvo_pct` in the worst-case scenario.
+- **Split payment:** `average revenue × worst-case scenario rate × days ÷ 30`, with the sale in the middle of the month, receipt in `prazo_medio_recebimento_dias`, and due date on day `dia_vencimento_impostos` of the following month. It is a maximum estimate, without deducting credits. The rollout is gradual and depends on a joint act of the Management Committee and the Receita (LC 214, art. 35).
+- **Simples:** does not simulate a change in the DAS. It warns when most sales are to businesses. The option to pay CBS/IBS outside the DAS is semiannual, made in September and in March (LC 123, art. 13, §§ 9–10, as worded by LC 227/2026).
+- **Everything for 2027 comes out marked as SIMULATED.** The CBS reference rate is set by the Senate (deadline 12/15/2026). Redo it when it comes out.
+
+### Kit 2 — Reforma Tributária Pronta
+
+```bash
+python3 kit/reforma_pronta.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/plano.md, pendencias.csv e dados.json
+```
+
+Additional files in the client folder (templates in `kit/modelo/`):
+
+| File | Required | Columns |
+|---|---|---|
+| `itens.csv` | yes | `item;tipo;codigo;cst;cclasstrib;reducao_pct;vendas_ano`. The `tipo` is `produto` (NCM code, 8 digits) or `servico` (NBS code, 9 digits) |
+| `fornecedores.csv` | no | `fornecedor;regime;compras_ano`. The `regime` is `regular`, `simples` or `mei` |
+| `prontidao.json` | no | `erp_atualizado`, `nota_teste`, `cadastro_revisado`, `contratos_revisados`, `precos_revisados`, `equipe_treinada`: `true`, `false` or `null` (don't know) |
+
+What it checks:
+- Code format: NCM with 8 digits, NBS with 9, CST with 3, cClassTrib with 6.
+- Whether the cClassTrib starts with the CST. In the official examples of the Receita's open calculator, 000 comes with 000001 and 200 with 200xxx; here it is only "check," not an error.
+- Reduction other than 30/60/100%, or reduction without a cClassTrib.
+- The items that add up to 80% of sales.
+- The share of purchases from Simples or MEI suppliers, which generate credit limited to what the supplier pays under Simples (LC 214, art. 47).
+- Under Simples, the next window for the option to pay CBS/IBS outside the DAS (September and March; LC 123, art. 13, § 10).
+
+It does **not** say whether the code is the right one for the item: that is up to the accountant, using the official table or the [Receita's engine](https://github.com/inematds/calculadora-da-reforma).
+
+### Kit 3 — Preço certo na Reforma
+
+```bash
+python3 kit/preco_certo.py kit/exemplos/agencia        # gera saida/precos.md, precos.csv e dados.json
+```
+
+Uses `empresa.json`, `mensal.csv`, and `produtos.csv`. The `produtos.csv` accepts these optional columns:
+- `custo_com_credito`: R$ of the item's cost that generates credit. Without it, the kit uses the same proportion as the company, `compras_com_credito ÷ custo_direto`.
+- `comissao_pct` and `taxa_pct`: card, marketplace, and gateway.
+
+Under Simples, `empresa.json` needs `aliquota_simples_pct` (the effective DAS rate, from the PGDAS-D).
+
+How it calculates:
+- Margin = `(preço − custo − preço × (comissão + taxa) − imposto) ÷ preço`.
+- 2027 tax (regular regime) = `(preço − custo com crédito) × reference rate × (1 − reduction)`.
+- Minimum price = zero margin. Target price = `margem_alvo_pct`.
+- Maximum discount = how much today's price can drop without leaving the target margin.
+- The main scenario is the higher one (11.3%). The target price matches the Diagnostic's, and a test ensures this.
+
+### Kit 4 — Painel do Empresário
+
+```bash
+python3 kit/painel.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/painel.md e dados.json
+```
+
+The dashboard's month is the last one in `mensal.csv`. Optional files (templates in `kit/modelo/`):
+- `contas_receber.csv`: `cliente;valor;vencimento`
+- `contas_pagar.csv`: `fornecedor;valor;vencimento`
+
+The due date can be AAAA-MM-DD or DD/MM/AAAA.
+
+What the dashboard includes:
+- **Result:** managerial income statement for the month, with variation against the previous month and against the average.
+- **Projection:** 3 months, based on the average of inflows and outflows of the last 3 months.
+- **Accounts:** receivable and payable in the next 30 days, overdue ones, and days late.
+- **Alerts:**
+  - margin 3 points below the average;
+  - out-of-pattern expense;
+  - overdue items;
+  - cash covering less than half a month;
+  - negative projection;
+  - negative slack.
+- **Split payment reserve:** the same calculation as the Diagnostic.
 
 ### The checker
 
-`kit/conferir.py relatorio.md dados.json` exits with code 1 if the text contains:
-- a value in R$, %, or a number with a comma that is not in `dados.json`;
-- a number rounded in words (“62 thousand”);
+`kit/conferir.py relatorio.md dados.json` exits with code 1 if the text has:
+- an amount in R$, %, or number with a comma that is not in `dados.json`;
+- spelled-out rounding ("62 mil");
 - an invented number of days or months.
 
-It is intended for the step where the AI rewrites the report in plain language.
+It serves the step where the AI rewrites the report in plain language.
 
 ### The tests
 
-`tests/test_kit.py` (15) covers:
-- the calculation checked by hand in the agency example (CBS, PIS/Cofins, split, expense, minimum price);
+`tests/test_kit.py` (15, kit 1) covers:
+- the hand-checked calculation in the agency example (CBS, PIS/Cofins, split, expense, minimum price);
 - Simples;
 - Lucro Real with credit;
 - the 60% reduction;
 - the checker catching an invented number, a rounded number, and an assumption used as a number;
 - input errors and the command line.
 
+`tests/test_reforma_pronta.py` (11, kit 2) covers:
+- the count of pending items for the agency and the sales at risk;
+- the items that add up to 80% of sales;
+- the Simples suppliers;
+- priority 1;
+- each format rule;
+- the Simples window on 3 dates;
+- input errors and the command line.
+
+`tests/test_preco_certo.py` (9, kit 3) and `tests/test_painel.py` (9, kit 4) check the calculations by hand on the two examples, consistency with the Diagnostic, and input errors. Total: 44 tests.
+
 ## The process, from start to finish
 
-1. 🧠 Accountant opens Claude Code or Codex and pastes the request from `kit/PEDIDO.md`.
+1. 🧠 The accountant opens Claude Code or Codex and pastes the request from `kit/PEDIDO.md`.
 2. ⚙️ `python3 kit/diagnostico.py kit/exemplos/agencia`: the example, to see the format.
-3. 🧠 Creates the client’s folder from `kit/modelo/`, using the data already available.
+3. 🧠 Sets up the client's folder from `kit/modelo/`, with the data they already have.
 4. ⚙️ `python3 kit/diagnostico.py <pasta-do-cliente>` → `saida/relatorio-base.md` + `saida/dados.json`.
-5. 🧠 The AI rewrites it in `relatorio.md` in plain language without changing the numbers.
-6. ⚙️ `python3 kit/conferir.py relatorio.md saida/dados.json`: it must return `ok`.
-7. 🧠 The accountant reviews the assumptions and brings the report to the client meeting.
-8. ⚙️ `python3 -m unittest discover -s tests`: before changing the code.
+5. 🧠 The AI rewrites it in `relatorio.md`, in plain language, without changing the numbers.
+6. ⚙️ `python3 kit/conferir.py relatorio.md saida/dados.json`: it must come out `ok`.
+7. 🧠 The accountant reviews the assumptions and takes the report to the meeting with the client.
+8. ⚙️ Kit 2: `python3 kit/reforma_pronta.py <pasta-do-cliente>` → `saida/plano.md` + `saida/pendencias.csv`. The folder must have the `itens.csv`.
+9. ⚙️ Kit 3: `python3 kit/preco_certo.py <pasta-do-cliente>` → `saida/precos.md` + `saida/precos.csv`.
+10. ⚙️ Kit 4, every month: add the month to `mensal.csv` (and the accounts, if you have them) → `python3 kit/painel.py <pasta-do-cliente>` → `saida/painel.md`.
+11. ⚙️ `python3 -m unittest discover -s tests`: before changing the code.
 
-## Sources
+## Basis
 
-- Scenario tax rates: [kit calculadora-da-reforma](https://github.com/inematds/calculadora-da-reforma) (official Receita example with CBS at 8,8%) and [TCU, 28/10/2026](https://portal.tcu.gov.br/imprensa/noticias/tcu-calcula-aliquota-de-referencia-de-113-para-novo-tributo-sobre-consumo) (reference tax rate of 11,3%; the Senate sets it by 15/12).
-- 2027 rules: [LC 214/2025, text at the Senate](https://legis.senado.leg.br/norma/40180341/publicacao/40181429) (arts. 12, 35, 47, 344 and 347) and [LC 227/2026, updated text at the Chamber of Deputies](https://www2.camara.leg.br/legin/fed/leicom/2026/leicomplementar-227-13-janeiro-2026-798657-normaatualizada-pl.html) (Simples option). Checked on 24/11/2026.
-- To check the calculation item by item in Receita’s official engine, use the calculadora-da-reforma calculator engine test.
+- Scenario rates: [kit calculadora-da-reforma](https://github.com/inematds/calculadora-da-reforma) (official Receita example with CBS at 8.8%) and [TCU, 10/28/2026](https://portal.tcu.gov.br/imprensa/noticias/tcu-calcula-aliquota-de-referencia-de-113-para-novo-tributo-sobre-consumo) (reference rate of 11.3%; the Senate sets it by 12/15).
+- 2027 rules: [LC 214/2025, text at the Senate](https://legis.senado.leg.br/norma/40180341/publicacao/40181429) (arts. 12, 35, 47, 344 and 347) and [LC 227/2026, updated text at the Chamber](https://www2.camara.leg.br/legin/fed/leicom/2026/leicomplementar-227-13-janeiro-2026-798657-normaatualizada-pl.html) (Simples option). Checked on 11/24/2026.
+- To check the calculation item by item in the Receita's official engine, use the calculadora-da-reforma engine test.
 
-MIT License. An unofficial INEMA kit. It does not replace the accountant’s technical analysis. Free at inema.club, directly on the internet.
+MIT License. INEMA kit, unofficial. Does not replace the accountant's technical analysis. Free at inema.club, directly on the internet.

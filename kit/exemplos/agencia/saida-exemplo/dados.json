@@ -155,55 +155,65 @@
       "texto": "R$ 1.980,00",
       "origem": "desp_0_atual − desp_0_media"
     },
+    "outros_impostos_pct": {
+      "valor": 10.0,
+      "texto": "10,0%",
+      "origem": "outros impostos sobre a venda ÷ receita (ISS/ICMS, IR/CSLL do Presumido ou DAS)"
+    },
+    "rateio_fixas_pct": {
+      "valor": 36.1929,
+      "texto": "36,2%",
+      "origem": "despesas_operacionais ÷ receita (rateio das despesas fixas pelo preço)"
+    },
     "fator_credito_pct": {
       "valor": 39.8662,
       "texto": "39,9%",
       "origem": "compras_com_credito ÷ custo_direto (parte do custo que gera crédito)"
     },
     "prod_0_margem_hoje": {
-      "valor": 42.0643,
-      "texto": "42,1%",
-      "origem": "produtos.csv linha 2: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+      "valor": 27.3,
+      "texto": "27,3%",
+      "origem": "produtos.csv linha 2: lucro por venda ÷ preço, hoje (comum.margem_item)"
     },
     "prod_0_margem_2027": {
-      "valor": 36.8598,
-      "texto": "36,9%",
-      "origem": "produtos.csv linha 2: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+      "valor": 20.6797,
+      "texto": "20,7%",
+      "origem": "produtos.csv linha 2: lucro por venda ÷ preço, 2027 no pior cenário"
     },
     "prod_1_margem_hoje": {
-      "valor": 49.6833,
-      "texto": "49,7%",
-      "origem": "produtos.csv linha 3: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+      "valor": 25.1571,
+      "texto": "25,2%",
+      "origem": "produtos.csv linha 3: lucro por venda ÷ preço, hoje (comum.margem_item)"
     },
     "prod_1_margem_2027": {
-      "valor": 44.1356,
-      "texto": "44,1%",
-      "origem": "produtos.csv linha 3: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+      "valor": 18.6333,
+      "texto": "18,6%",
+      "origem": "produtos.csv linha 3: lucro por venda ÷ preço, 2027 no pior cenário"
     },
     "prod_2_margem_hoje": {
-      "valor": 10.35,
-      "texto": "10,3%",
-      "origem": "produtos.csv linha 4: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+      "valor": -5.8429,
+      "texto": "-5,8%",
+      "origem": "produtos.csv linha 4: lucro por venda ÷ preço, hoje (comum.margem_item)"
     },
     "prod_2_margem_2027": {
-      "valor": 6.5742,
-      "texto": "6,6%",
-      "origem": "produtos.csv linha 4: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+      "valor": -10.9702,
+      "texto": "-11,0%",
+      "origem": "produtos.csv linha 4: lucro por venda ÷ preço, 2027 no pior cenário"
     },
     "prod_2_preco_min": {
-      "valor": 2785.8141,
-      "texto": "R$ 2.785,81",
-      "origem": "preço-alvo: devolve a margem-alvo de 15% no pior cenário"
+      "valor": 4860.3136,
+      "texto": "R$ 4.860,31",
+      "origem": "preço-alvo: dá a margem-alvo de 15% no pior cenário (comum.preco_para_margem)"
     },
     "prod_3_margem_hoje": {
-      "valor": 66.35,
-      "texto": "66,3%",
-      "origem": "produtos.csv linha 5: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+      "valor": 36.4071,
+      "texto": "36,4%",
+      "origem": "produtos.csv linha 5: lucro por venda ÷ preço, hoje (comum.margem_item)"
     },
     "prod_3_margem_2027": {
-      "valor": 60.0515,
-      "texto": "60,1%",
-      "origem": "produtos.csv linha 5: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+      "valor": 29.3765,
+      "texto": "29,4%",
+      "origem": "produtos.csv linha 5: lucro por venda ÷ preço, 2027 no pior cenário"
     },
     "margem_alvo": {
       "valor": 15,
@@ -251,10 +261,10 @@
     {
       "item": "Campanha de anúncios (mensal)",
       "j": 2,
-      "m_hoje": 10.35,
-      "m_2027": 6.574199331103679,
+      "m_hoje": -5.842893401015235,
+      "m_2027": -10.970158952854698,
       "preco": 2500.0,
-      "preco_min": 2785.814133951707,
+      "preco_min": 4860.3135847277,
       "qtd": 8.0
     }
   ],
@@ -263,14 +273,14 @@
   ],
   "prioridades": [
     {
+      "texto": "Rever o preço de Campanha de anúncios (mensal): para manter a margem-alvo, o preço precisa ser de R$ 4.860,31 (preço-alvo).",
+      "servico": "Preço certo na Reforma",
+      "chave": "prod_2_preco_min"
+    },
+    {
       "texto": "Rever regime, créditos, cadastros e preços antes de 2027: no pior cenário, o que você recolhe de CBS/IBS fica R$ 61.882,90 por ano acima do PIS/Cofins de hoje.",
       "servico": "Reforma Tributária Pronta",
       "chave": "cbs_11_3_diferenca_ano"
-    },
-    {
-      "texto": "Rever o preço de Campanha de anúncios (mensal): para manter a margem-alvo, o preço precisa ser de R$ 2.785,81 (preço-alvo).",
-      "servico": "Preço certo na Reforma",
-      "chave": "prod_2_preco_min"
     },
     {
       "texto": "Olhar a despesa de Softwares e assinaturas: em 11/2026 ficou R$ 1.980,00 acima da média.",

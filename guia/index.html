@@ -163,6 +163,14 @@
   .rel p{margin:.2em 0;color:var(--mut)}
   .rel .sim{display:inline-block;font:700 .7rem Sora;letter-spacing:.1em;color:#1a1206;background:var(--fill);border-radius:6px;padding:.1em .5em;margin-left:.4em;vertical-align:middle}
 </style>
+<style>
+  .kits{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+  @media(max-width:820px){.kits{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.kits{grid-template-columns:1fr}}
+  .kits a,.kits div{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--txt);font-size:.92rem}
+  .kits b{display:block;font-family:Sora;margin-bottom:.2em}
+  .kits .aqui{border-color:var(--amb)}
+</style>
 <link href="https://inematds.github.io/contabilidade2027/guia/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/es/" hreflang="es" rel="alternate"/></head>
 <body>
 <nav><div class="wrap">
@@ -236,7 +244,7 @@
 <div class="grid g2">
 <div class="card"><h3>📞 "Vou pagar mais em 2027?"</h3><p><strong>Hoje:</strong> você responde "depende", e o cliente fica com o vídeo do YouTube na cabeça.</p><p><strong>Com o kit:</strong> você responde com o número dele: o cenário principal, com os 11,3% calculados pelo TCU, e um de comparação, com os 8,8% do exemplo da Receita. E mostra o que pesa a favor dele: quem compra dele pode usar o imposto como crédito (abater do imposto que ele mesmo paga).</p></div>
 <div class="card"><h3>💸 "Meu caixa vai apertar?"</h3><p><strong>Hoje:</strong> ninguém olhou o saldo do cliente mês a mês.</p><p><strong>Com o kit:</strong> o relatório mostra quantos meses de saídas o caixa cobre, os meses de aperto e quanto de imposto deixa de passar pelo caixa quando o split payment chegar. O split payment é o imposto descontado na hora em que o cliente paga.</p></div>
-<div class="card"><h3>🏷️ "Meu preço ainda dá lucro?"</h3><p><strong>Hoje:</strong> o empresário reajusta no chute.</p><p><strong>Com o kit:</strong> para cada produto ou serviço, a margem de hoje, a de 2027 no pior cenário e o preço mínimo para manter a margem que ele quer.</p></div>
+<div class="card"><h3>🏷️ "Meu preço ainda dá lucro?"</h3><p><strong>Hoje:</strong> o empresário reajusta no chute.</p><p><strong>Com o kit:</strong> para cada produto ou serviço, a margem de hoje, a de 2027 no pior cenário e o preço-alvo para manter a margem que ele quer, já contando os impostos e a parte das despesas fixas.</p></div>
 <div class="card"><h3>📅 "O que eu faço primeiro?"</h3><p><strong>Hoje:</strong> uma lista enorme de "pontos de atenção".</p><p><strong>Com o kit:</strong> 3 prioridades, da que vale mais reais para a que vale menos, cada uma ligada a um serviço que você pode oferecer.</p></div>
 </div>
 </div></section>
@@ -260,7 +268,7 @@
 <h4>1. Quanto sobra</h4><p>O que vendeu, o que sobrou e a margem, e se a margem caiu nos últimos 3 meses.</p>
 <h4>2. Seu caixa</h4><p>Quantos meses de saídas o caixa cobre, e os meses de aperto.</p>
 <h4>3. Reforma em 2027 <span class="sim">SIMULADO</span></h4><p>PIS/Cofins de hoje × CBS/IBS em dois cenários, o efeito do split payment e, se ele vende para empresas, a nota de que elas podem usar o imposto como crédito.</p>
-<h4>4. O que chamou a atenção</h4><p>A despesa que fugiu da média e o produto com margem apertada, com o preço mínimo.</p>
+<h4>4. O que chamou a atenção</h4><p>A despesa que fugiu da média e o produto com margem apertada, com o preço-alvo.</p>
 <h4>5. Suas 3 prioridades</h4><p>Da que vale mais à que vale menos, com uma pauta de reunião de 30 minutos.</p>
 </div></div>
 <div class="card" style="margin-top:16px"><h3>⚠️ O que ele NÃO é</h3><ul>
@@ -321,16 +329,26 @@ Quero fazer o Diagnóstico Reforma + Caixa de um cliente meu. Neste computador:
 <div class="stats">
 <div class="stat"><b>R$ 35.952,50</b><span>de PIS e Cofins por ano, hoje.</span></div>
 <div class="stat"><b>R$ 97.835,40</b><span>de CBS + IBS por ano em 2027 no cenário de 11,3% (valor máximo, base simplificada), porque só R$ 119.200,00 das compras dela no ano geram crédito.</span></div>
-<div class="stat"><b>R$ 2.785,81</b><span>é o preço mínimo da campanha de anúncios para manter 15% de margem. Hoje ela cobra R$ 2.500,00.</span></div>
+<div class="stat"><b>R$ 4.860,31</b><span>é o preço-alvo da campanha de anúncios para 15% de margem, contando os impostos e a parte dela nas despesas fixas. Hoje ela cobra R$ 2.500,00.</span></div>
 </div>
 <div class="prova" style="margin-top:20px">
 <ol class="tl">
-<li><b>O diagnóstico achou as 3 prioridades.</b><br/><span class="mut">Rever regime, créditos e preços antes de 2027; rever o preço da campanha de anúncios; olhar a conta de softwares, que subiu R$ 1.980,00 acima da média.</span></li>
+<li><b>O diagnóstico achou as 3 prioridades.</b><br/><span class="mut">Rever o preço da campanha de anúncios, que não paga a parte dela na estrutura; rever regime, créditos e preços antes de 2027; olhar a conta de softwares, que subiu R$ 1.980,00 acima da média.</span></li>
 <li><b>E lembrou o que pesa a favor.</b><br/><span class="mut">90% das vendas dela são para empresas, que poderão usar o imposto como crédito. Parte do aumento pode ir no preço sem pesar para elas.</span></li>
 <li><b>Pusemos a IA para "errar" de propósito.</b><br/><span class="mut">Um texto com "cerca de 62 mil a mais" e uma margem de 25% inventada: o conferidor barrou os dois.</span></li>
 <li><b>15 testes conferem as contas à mão.</b><br/><span class="mut">Lucro Presumido, Lucro Real com crédito, atividade com redução de 60% e Simples.</span></li>
 </ol>
 <p class="rod">O relatório completo do exemplo está em <a href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-exemplo/relatorio-base.md" rel="noopener" target="_blank">relatorio-base.md</a>, e as fórmulas, no README.</p>
+</div>
+</div></section>
+<section id="kits"><div class="wrap">
+<span class="chip">Os 4 kits</span>
+<h2>A mesma pasta do cliente, <span class="amb">quatro serviços</span></h2>
+<div class="kits">
+<div class="aqui"><b>1. Diagnóstico Reforma + Caixa</b>Quanto a Reforma pesa no caixa do cliente, em 2 páginas. Você está aqui.</div>
+<a href="reforma-pronta/"><b>2. Reforma Tributária Pronta</b>O que falta no cadastro, no sistema e nos contratos.</a>
+<a href="preco-certo/"><b>3. Preço certo na Reforma</b>Preço mínimo, preço-alvo e desconto máximo por produto em 2027.</a>
+<a href="painel/"><b>4. Painel do Empresário</b>O fechamento do mês em texto simples: resultado, caixa e alertas.</a>
 </div>
 </div></section>
 <section id="faq"><div class="wrap">

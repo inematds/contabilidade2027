@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comum import ErroDados, Numeros, brl, ler_csv, num, pct  # noqa: E402
+from comum import ErroDados, Numeros, brl, fracoes_estrutura, ler_csv, margem_item, num, pct, preco_para_margem  # noqa: E402
 VERSAO = "1.0.0"
 
 PADROES = {
@@ -187,32 +187,39 @@ def diagnosticar(empresa, mensal, despesas, produtos):
         fora.sort(key=lambda x: -x["acima"])
 
     # ---------- produtos e preço ----------
-    # Mesma regra de crédito da empresa: só a parte do custo que é compra com crédito
-    # (compras_com_credito ÷ custo_direto do período). Folha e MEI/Simples não dão crédito cheio.
+    # Mesma conta do kit Preço certo (comum.margem_item): o preço cobre custo, outros impostos sobre a
+    # venda e o rateio das despesas fixas (frações da receita do mensal.csv), mais o imposto sobre o consumo.
+    # Crédito só sobre a parte do custo que é compra com crédito (compras_com_credito ÷ custo_direto).
     itens_baixos = []
     fc = min(1.0, compras / custo) if custo else 0.0
     if produtos:
         alvo = empresa["margem_alvo_pct"]
+        out, fix = fracoes_estrutura(empresa, receita, outros, desp)
         imp_hoje = pis_cof / receita if receita else 0.0  # PIS/Cofins efetivo sobre a receita
         regular = empresa["regime"] in ("presumido", "real") and pior
         t = pior["aliq"] * (1 - red) / 100 if regular else 0.0
+        N.add("outros_impostos_pct", out * 100, "pct", "outros impostos sobre a venda ÷ receita (ISS/ICMS, IR/CSLL do Presumido ou DAS)")
+        N.add("rateio_fixas_pct", fix * 100, "pct", "despesas_operacionais ÷ receita (rateio das despesas fixas pelo preço)")
         if regular:
             N.add("fator_credito_pct", fc * 100, "pct", "compras_com_credito ÷ custo_direto (parte do custo que gera crédito)")
         for j, p in enumerate(produtos):
             P, c = p["preco"], p["custo_direto"]
             if P <= 0:
                 continue
-            m_hoje = (P - c - P * imp_hoje) / P * 100
-            m_2027 = (P - c - (P - c * fc) * t) / P * 100 if regular else m_hoje
-            N.add(f"prod_{j}_margem_hoje", m_hoje, "pct", f"produtos.csv linha {p['_linha']}: (preço − custo − PIS/Cofins efetivo) ÷ preço")
-            N.add(f"prod_{j}_margem_2027", m_2027, "pct",
-                  f"produtos.csv linha {p['_linha']}: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço")
+            m_hoje = margem_item(P, c, out=out, fix=fix, imp_preco=imp_hoje) * 100
+            m_2027 = margem_item(P, c, out=out, fix=fix, t=t, ccred=c * fc) * 100 if regular else m_hoje
+            N.add(f"prod_{j}_margem_hoje", m_hoje, "pct", f"produtos.csv linha {p['_linha']}: lucro por venda ÷ preço, hoje (comum.margem_item)")
+            N.add(f"prod_{j}_margem_2027", m_2027, "pct", f"produtos.csv linha {p['_linha']}: lucro por venda ÷ preço, 2027 no pior cenário")
             if m_2027 < alvo:
-                denom = (1 - t) - alvo / 100
-                preco_min = c * (1 - fc * t) / denom if denom > 0 else 0.0
-                N.add(f"prod_{j}_preco_min", preco_min, "brl", f"preço-alvo: devolve a margem-alvo de {pct(alvo,0)} no pior cenário")
+                if regular:
+                    pa = preco_para_margem(alvo / 100, c, out=out, fix=fix, t=t, ccred=c * fc)
+                else:
+                    pa = preco_para_margem(alvo / 100, c, out=out, fix=fix, imp_preco=imp_hoje)
+                if pa is None:
+                    continue
+                N.add(f"prod_{j}_preco_min", pa, "brl", f"preço-alvo: dá a margem-alvo de {pct(alvo,0)} no pior cenário (comum.preco_para_margem)")
                 itens_baixos.append({"item": p["item"], "j": j, "m_hoje": m_hoje, "m_2027": m_2027,
-                                     "preco": P, "preco_min": preco_min, "qtd": p["qtd_mes"]})
+                                     "preco": P, "preco_min": pa, "qtd": p["qtd_mes"]})
         N.add("margem_alvo", alvo, "pct", "empresa.json (margem_alvo_pct)")
         itens_baixos.sort(key=lambda x: x["m_2027"])
 
@@ -309,7 +316,7 @@ def relatorio(d):
     if d["itens_margem_baixa"]:
         for b in d["itens_margem_baixa"][:3]:
             j = b["j"]
-            L.append(f"- {b['item']}: margem depois do custo e do PIS/Cofins de {T(f'prod_{j}_margem_hoje')} hoje e {T(f'prod_{j}_margem_2027')} em 2027 no pior cenário; preço-alvo para a margem de {T('margem_alvo')}: {T(f'prod_{j}_preco_min')}.")
+            L.append(f"- {b['item']}: sobra por venda (depois de custo, impostos e da parte das despesas fixas) de {T(f'prod_{j}_margem_hoje')} hoje e {T(f'prod_{j}_margem_2027')} em 2027 no pior cenário; preço-alvo para a margem de {T('margem_alvo')}: {T(f'prod_{j}_preco_min')}.")
     if not d["despesas_fora"] and not d["itens_margem_baixa"]:
         L.append("- Nenhuma despesa fora do padrão nem item com margem baixa nos dados enviados.")
     L.append("")

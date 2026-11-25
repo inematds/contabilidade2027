@@ -1,1 +1,1 @@
-item;preco;custo_direto;qtd_mes
+item;preco;custo_direto;qtd_mes;custo_com_credito;comissao_pct;taxa_pct

@@ -163,6 +163,14 @@
   .rel p{margin:.2em 0;color:var(--mut)}
   .rel .sim{display:inline-block;font:700 .7rem Sora;letter-spacing:.1em;color:#1a1206;background:var(--fill);border-radius:6px;padding:.1em .5em;margin-left:.4em;vertical-align:middle}
 </style>
+<style>
+  .kits{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+  @media(max-width:820px){.kits{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.kits{grid-template-columns:1fr}}
+  .kits a,.kits div{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--txt);font-size:.92rem}
+  .kits b{display:block;font-family:Sora;margin-bottom:.2em}
+  .kits .aqui{border-color:var(--amb)}
+</style>
 <link href="https://inematds.github.io/contabilidade2027/guia/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/es/" hreflang="es" rel="alternate"/></head>
 <body>
 <nav><div class="wrap">
@@ -191,7 +199,7 @@
 <div class="wrap hero2">
 <div class="h-top"><span class="chip">Free kit for accountants · unofficial · 2027 rules checked against the law</span>
 <h1>Your client will ask how much the Tax Reform affects their cash flow. Answer with the <span class="amb">Tax Reform + Cash Flow Diagnosis</span></h1></div>
-<figure class="f1"><img alt="An accountant shows the business owner the 2-page report with cash flow charts" src="../assets/hero.jpg"/></figure>
+<figure class="f1"><img alt="The accountant shows the business owner the 2-page report with the cash charts" src="../assets/hero.jpg"/></figure>
 <div class="h-bot"><p class="lead">In 2027, the CBS replaces PIS and Cofins, and business owners only want to know one thing: how much this changes for them. With the numbers you already have from your client, your AI builds a 2-page report they can understand. It covers cash flow, margin, the new tax in two scenarios, and 3 priorities. And no number appears without a source. The question that today is just a doubt becomes a service you offer.</p>
 <div class="cta">
 <a class="btn" href="#explicado">What you get</a>
@@ -284,7 +292,7 @@
 <pre id="pedidoTxt" style="white-space:pre-wrap">Read the "contabilidade2027" kit at https://github.com/inematds/contabilidade2027 (the README explains everything).
 I want to prepare the Tax Reform + Cash Flow Diagnosis for one of my clients. On this computer:
 1. Download the kit (ZIP or git) and first run the agency example so I can see what the report looks like.
-2. Help me set up my client’s folder in the kit/modelo/ format (empresa.json, mensal.csv, and,
+2. Help me set up my client’s folder in the kit/model/ format (empresa.json, mensal.csv, and,
    if I have them, despesas.csv and produtos.csv). Ask for anything missing. Don’t make up any numbers.
 3. Run kit/diagnostico.py in the client’s folder.
 4. Rewrite relatorio-base.md as relatorio.md in plain language for the business owner,
@@ -332,6 +340,16 @@ I want to prepare the Tax Reform + Cash Flow Diagnosis for one of my clients. On
 <li><b>15 tests check the calculations by hand.</b><br/><span class="mut">Presumed Profit, Actual Profit with credits, activities with a 60% reduction, and Simples.</span></li>
 </ol>
 <p class="rod">The complete sample report is at <a href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-exemplo/relatorio-base.md" rel="noopener" target="_blank">relatorio-base.md</a>, and the formulas, in the README.</p>
+</div>
+</div></section>
+<section id="kits"><div class="wrap">
+<span class="chip">The 4 kits</span>
+<h2>The same client folder, <span class="amb">four services</span></h2>
+<div class="kits">
+<div class="aqui"><b>1. Diagnóstico Reforma + Caixa</b>How much the Reform weighs on your client's cash flow, in 2 pages. You are here.</div>
+<a href="../reforma-pronta/en/"><b>2. Reforma Tributária Pronta</b>What's missing in your records, your system, and your contracts.</a>
+<a href="../preco-certo/en/"><b>3. Preço certo na Reforma</b>Minimum price, target price, and maximum discount per product in 2027.</a>
+<a href="../painel/en/"><b>4. Painel do Empresário</b>The month-end close in plain text: results, cash, and alerts.</a>
 </div>
 </div></section>
 <section id="faq"><div class="wrap">

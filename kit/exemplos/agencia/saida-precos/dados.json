@@ -22,6 +22,16 @@
       "texto": "39,9%",
       "origem": "compras_com_credito ÷ custo_direto (mensal.csv); usado quando o item não informa custo_com_credito"
     },
+    "outros_impostos_pct": {
+      "valor": 10.0,
+      "texto": "10,0%",
+      "origem": "outros impostos sobre a venda ÷ receita (ISS/ICMS e IR/CSLL do Presumido); 0 no Simples"
+    },
+    "rateio_fixas_pct": {
+      "valor": 36.1929,
+      "texto": "36,2%",
+      "origem": "despesas_operacionais ÷ receita: rateio das despesas fixas pelo preço (ou empresa.json)"
+    },
     "margem_alvo": {
       "valor": 15.0,
       "texto": "15,0%",
@@ -43,48 +53,48 @@
       "origem": "produtos.csv linha 2"
     },
     "p0_margem_hoje": {
-      "valor": 42.0643,
-      "texto": "42,1%",
-      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+      "valor": 27.3,
+      "texto": "27,3%",
+      "origem": "lucro por venda ÷ preço, hoje (custo, comissão/taxa, impostos e rateio das despesas fixas)"
     },
     "p0_11_3_margem": {
-      "valor": 36.8598,
-      "texto": "36,9%",
-      "origem": "margem em 2027 com 11,3%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+      "valor": 20.6797,
+      "texto": "20,7%",
+      "origem": "lucro por venda ÷ preço em 2027 com 11,3% (CBS+IBS com crédito sobre o custo com crédito)"
     },
     "p0_11_3_preco_min": {
-      "valor": 2045.5549,
-      "texto": "R$ 2.045,55",
-      "origem": "preço com margem zero no cenário"
+      "valor": 1797.2546,
+      "texto": "R$ 1.797,25",
+      "origem": "preço de equilíbrio (lucro zero) no cenário"
     },
     "p0_11_3_preco_alvo": {
-      "valor": 2461.8823,
-      "texto": "R$ 2.461,88",
+      "valor": 2777.322,
+      "texto": "R$ 2.777,32",
       "origem": "preço que dá a margem-alvo de 15% no cenário"
     },
     "p0_11_3_desc_max": {
-      "valor": 29.6605,
-      "texto": "29,7%",
+      "valor": 20.6479,
+      "texto": "20,6%",
       "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
     },
     "p0_8_8_margem": {
-      "valor": 38.8188,
-      "texto": "38,8%",
-      "origem": "margem em 2027 com 8,8%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+      "valor": 22.9518,
+      "texto": "23,0%",
+      "origem": "lucro por venda ÷ preço em 2027 com 8,8% (CBS+IBS com crédito sobre o custo com crédito)"
     },
     "p0_8_8_preco_min": {
-      "valor": 2010.2453,
-      "texto": "R$ 2.010,25",
-      "origem": "preço com margem zero no cenário"
+      "valor": 1715.1384,
+      "texto": "R$ 1.715,14",
+      "origem": "preço de equilíbrio (lucro zero) no cenário"
     },
     "p0_8_8_preco_alvo": {
-      "valor": 2405.9628,
-      "texto": "R$ 2.405,96",
+      "valor": 2572.5045,
+      "texto": "R$ 2.572,50",
       "origem": "preço que dá a margem-alvo de 15% no cenário"
     },
     "p0_8_8_desc_max": {
-      "valor": 31.2582,
-      "texto": "31,3%",
+      "valor": 26.4999,
+      "texto": "26,5%",
       "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
     },
     "p1_preco": {
@@ -93,48 +103,48 @@
       "origem": "produtos.csv linha 3"
     },
     "p1_margem_hoje": {
-      "valor": 49.6833,
-      "texto": "49,7%",
-      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+      "valor": 25.1571,
+      "texto": "25,2%",
+      "origem": "lucro por venda ÷ preço, hoje (custo, comissão/taxa, impostos e rateio das despesas fixas)"
     },
     "p1_11_3_margem": {
-      "valor": 44.1356,
-      "texto": "44,1%",
-      "origem": "margem em 2027 com 11,3%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+      "valor": 18.6333,
+      "texto": "18,6%",
+      "origem": "lucro por venda ÷ preço em 2027 com 11,3% (CBS+IBS com crédito sobre o custo com crédito)"
     },
     "p1_11_3_preco_min": {
-      "valor": 3014.502,
-      "texto": "R$ 3.014,50",
-      "origem": "preço com margem zero no cenário"
+      "valor": 3369.8524,
+      "texto": "R$ 3.369,85",
+      "origem": "preço de equilíbrio (lucro zero) no cenário"
     },
     "p1_11_3_preco_alvo": {
-      "valor": 3628.037,
-      "texto": "R$ 3.628,04",
+      "valor": 5207.4788,
+      "texto": "R$ 5.207,48",
       "origem": "preço que dá a margem-alvo de 15% no cenário"
     },
     "p1_11_3_desc_max": {
-      "valor": 39.5327,
-      "texto": "39,5%",
+      "valor": 13.2087,
+      "texto": "13,2%",
       "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
     },
     "p1_8_8_margem": {
-      "valor": 46.1705,
-      "texto": "46,2%",
-      "origem": "margem em 2027 com 8,8%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+      "valor": 20.8842,
+      "texto": "20,9%",
+      "origem": "lucro por venda ÷ preço em 2027 com 8,8% (CBS+IBS com crédito sobre o custo com crédito)"
     },
     "p1_8_8_preco_min": {
-      "valor": 2962.4667,
-      "texto": "R$ 2.962,47",
-      "origem": "preço com margem zero no cenário"
+      "valor": 3215.8846,
+      "texto": "R$ 3.215,88",
+      "origem": "preço de equilíbrio (lucro zero) no cenário"
     },
     "p1_8_8_preco_alvo": {
-      "valor": 3545.6294,
-      "texto": "R$ 3.545,63",
+      "valor": 4823.446,
+      "texto": "R$ 4.823,45",
       "origem": "preço que dá a margem-alvo de 15% no cenário"
     },
     "p1_8_8_desc_max": {
-      "valor": 40.9062,
-      "texto": "40,9%",
+      "valor": 19.6092,
+      "texto": "19,6%",
       "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
     },
     "p2_preco": {
@@ -143,23 +153,23 @@
       "origem": "produtos.csv linha 4"
     },
     "p2_margem_hoje": {
-      "valor": 10.35,
-      "texto": "10,3%",
-      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+      "valor": -5.8429,
+      "texto": "-5,8%",
+      "origem": "lucro por venda ÷ preço, hoje (custo, comissão/taxa, impostos e rateio das despesas fixas)"
     },
     "p2_11_3_margem": {
-      "valor": 6.5742,
-      "texto": "6,6%",
-      "origem": "margem em 2027 com 11,3%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+      "valor": -10.9702,
+      "texto": "-11,0%",
+      "origem": "lucro por venda ÷ preço em 2027 com 11,3% (CBS+IBS com crédito sobre o custo com crédito)"
     },
     "p2_11_3_preco_min": {
-      "valor": 2314.7069,
-      "texto": "R$ 2.314,71",
-      "origem": "preço com margem zero no cenário"
+      "valor": 3145.1956,
+      "texto": "R$ 3.145,20",
+      "origem": "preço de equilíbrio (lucro zero) no cenário"
     },
     "p2_11_3_preco_alvo": {
-      "valor": 2785.8141,
-      "texto": "R$ 2.785,81",
+      "valor": 4860.3136,
+      "texto": "R$ 4.860,31",
       "origem": "preço que dá a margem-alvo de 15% no cenário"
     },
     "p2_11_3_desc_max": {
@@ -168,18 +178,18 @@
       "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
     },
     "p2_8_8_margem": {
-      "valor": 8.2171,
-      "texto": "8,2%",
-      "origem": "margem em 2027 com 8,8%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+      "valor": -9.0283,
+      "texto": "-9,0%",
+      "origem": "lucro por venda ÷ preço em 2027 com 8,8% (CBS+IBS com crédito sobre o custo com crédito)"
     },
     "p2_8_8_preco_min": {
-      "valor": 2274.7512,
-      "texto": "R$ 2.274,75",
-      "origem": "preço com margem zero no cenário"
+      "valor": 3001.4922,
+      "texto": "R$ 3.001,49",
+      "origem": "preço de equilíbrio (lucro zero) no cenário"
     },
     "p2_8_8_preco_alvo": {
-      "valor": 2722.5369,
-      "texto": "R$ 2.722,54",
+      "valor": 4501.883,
+      "texto": "R$ 4.501,88",
       "origem": "preço que dá a margem-alvo de 15% no cenário"
     },
     "p2_8_8_desc_max": {
@@ -193,53 +203,53 @@
       "origem": "produtos.csv linha 5"
     },
     "p3_margem_hoje": {
-      "valor": 66.35,
-      "texto": "66,3%",
-      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+      "valor": 36.4071,
+      "texto": "36,4%",
+      "origem": "lucro por venda ÷ preço, hoje (custo, comissão/taxa, impostos e rateio das despesas fixas)"
     },
     "p3_11_3_margem": {
-      "valor": 60.0515,
-      "texto": "60,1%",
-      "origem": "margem em 2027 com 11,3%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+      "valor": 29.3765,
+      "texto": "29,4%",
+      "origem": "lucro por venda ÷ preço em 2027 com 11,3% (CBS+IBS com crédito sobre o custo com crédito)"
     },
     "p3_11_3_preco_min": {
-      "valor": 129.1929,
-      "texto": "R$ 129,19",
-      "origem": "preço com margem zero no cenário"
+      "valor": 123.5613,
+      "texto": "R$ 123,56",
+      "origem": "preço de equilíbrio (lucro zero) no cenário"
     },
     "p3_11_3_preco_alvo": {
-      "valor": 155.4873,
-      "texto": "R$ 155,49",
+      "valor": 190.9409,
+      "texto": "R$ 190,94",
       "origem": "preço que dá a margem-alvo de 15% no cenário"
     },
     "p3_11_3_desc_max": {
-      "valor": 61.1282,
-      "texto": "61,1%",
+      "valor": 52.2648,
+      "texto": "52,3%",
       "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
     },
     "p3_8_8_margem": {
-      "valor": 62.2525,
-      "texto": "62,3%",
-      "origem": "margem em 2027 com 8,8%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+      "valor": 31.7395,
+      "texto": "31,7%",
+      "origem": "lucro por venda ÷ preço em 2027 com 8,8% (CBS+IBS com crédito sobre o custo com crédito)"
     },
     "p3_8_8_preco_min": {
-      "valor": 126.9629,
-      "texto": "R$ 126,96",
-      "origem": "preço com margem zero no cenário"
+      "valor": 117.9158,
+      "texto": "R$ 117,92",
+      "origem": "preço de equilíbrio (lucro zero) no cenário"
     },
     "p3_8_8_preco_alvo": {
-      "valor": 151.9555,
-      "texto": "R$ 151,96",
+      "valor": 176.8597,
+      "texto": "R$ 176,86",
       "origem": "preço que dá a margem-alvo de 15% no cenário"
     },
     "p3_8_8_desc_max": {
-      "valor": 62.0111,
-      "texto": "62,0%",
+      "valor": 55.7851,
+      "texto": "55,8%",
       "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
     },
     "p2_falta_ano": {
-      "valor": 27438.1569,
-      "texto": "R$ 27.438,16",
+      "valor": 226590.1041,
+      "texto": "R$ 226.590,10",
       "origem": "(preço-alvo − preço de hoje) × qtd_mes × 12"
     },
     "itens_total": {
@@ -259,21 +269,21 @@
       "k": "p0",
       "preco": 3500.0,
       "qtd": 12.0,
-      "margem_hoje": 0.42064285714285715,
+      "margem_hoje": 0.2729996374184191,
       "cen": [
         {
           "aliq": 11.3,
           "kk": "p0_11_3",
-          "margem": 0.3685979359770664,
-          "preco_min": 2045.5549313193546,
-          "preco_alvo": 2461.882257910811
+          "margem": 0.20679651271703353,
+          "preco_min": 1797.2546182973922,
+          "preco_alvo": 2777.3220484158282
         },
         {
           "aliq": 8.8,
           "kk": "p0_8_8",
-          "margem": 0.3881875203057812,
-          "preco_min": 2010.2452619843923,
-          "preco_alvo": 2405.9628332411626
+          "margem": 0.22951844296070287,
+          "preco_min": 1715.1384279819915,
+          "preco_alvo": 2572.5045434008066
         }
       ]
     },
@@ -282,21 +292,21 @@
       "k": "p1",
       "preco": 6000.0,
       "qtd": 2.0,
-      "margem_hoje": 0.49683333333333335,
+      "margem_hoje": 0.2515710659898477,
       "cen": [
         {
           "aliq": 11.3,
           "kk": "p1_11_3",
-          "margem": 0.4413561204013378,
-          "preco_min": 3014.502004049575,
-          "preco_alvo": 3628.037011658037
+          "margem": 0.18633327334770722,
+          "preco_min": 3369.8524093076107,
+          "preco_alvo": 5207.478840779679
         },
         {
           "aliq": 8.8,
           "kk": "p1_8_8",
-          "margem": 0.4617050613154961,
-          "preco_min": 2962.466701871736,
-          "preco_alvo": 3545.629438460661
+          "margem": 0.20884163455172056,
+          "preco_min": 3215.8845524662347,
+          "preco_alvo": 4823.446018876512
         }
       ]
     },
@@ -305,21 +315,21 @@
       "k": "p2",
       "preco": 2500.0,
       "qtd": 8.0,
-      "margem_hoje": 0.1035,
+      "margem_hoje": -0.05842893401015235,
       "cen": [
         {
           "aliq": 11.3,
           "kk": "p2_11_3",
-          "margem": 0.06574199331103679,
-          "preco_min": 2314.706895966638,
-          "preco_alvo": 2785.814133951707
+          "margem": -0.10970158952854699,
+          "preco_min": 3145.195582020436,
+          "preco_alvo": 4860.3135847277
         },
         {
           "aliq": 8.8,
           "kk": "p2_8_8",
-          "margem": 0.08217075585284281,
-          "preco_min": 2274.7512175086545,
-          "preco_alvo": 2722.536890246579
+          "margem": -0.09028286043155703,
+          "preco_min": 3001.4922489684855,
+          "preco_alvo": 4501.882950951412
         }
       ]
     },
@@ -328,37 +338,37 @@
       "k": "p3",
       "preco": 400.0,
       "qtd": 20.0,
-      "margem_hoje": 0.6635,
+      "margem_hoje": 0.3640710659898477,
       "cen": [
         {
           "aliq": 11.3,
           "kk": "p3_11_3",
-          "margem": 0.6005146488294314,
-          "preco_min": 129.19294303069609,
-          "preco_alvo": 155.48730049963015
+          "margem": 0.2937652800366704,
+          "preco_min": 123.56125500794572,
+          "preco_alvo": 190.9408908285882
         },
         {
           "aliq": 8.8,
           "kk": "p3_8_8",
-          "margem": 0.6225246822742475,
-          "preco_min": 126.96285865164583,
-          "preco_alvo": 151.95554736259973
+          "margem": 0.3173948786988777,
+          "preco_min": 117.91576692376192,
+          "preco_alvo": 176.85968735880545
         }
       ]
     }
   ],
   "prioridades": [
     {
-      "texto": "Rever o preço de Campanha de anúncios (mensal): para a margem-alvo, ele precisa ir de R$ 2.500,00 para R$ 2.785,81 (R$ 27.438,16 por ano, na quantidade de hoje).",
+      "texto": "Rever o preço de Campanha de anúncios (mensal): para a margem-alvo, ele precisa ir de R$ 2.500,00 para R$ 4.860,31 (R$ 226.590,10 por ano, na quantidade de hoje).",
       "chave": "p2_11_3_preco_alvo"
+    },
+    {
+      "texto": "Rever ou parar de vender o que não paga a sua parte da estrutura: Campanha de anúncios (mensal) fica com margem negativa.",
+      "chave": "margem_alvo"
     },
     {
       "texto": "Pedir aos fornecedores a nota com a CBS/IBS destacada: o crédito sobre o custo é o que segura o preço em 2027.",
       "chave": "fator_credito_pct"
-    },
-    {
-      "texto": "Refazer a tabela quando o Senado fixar a alíquota de referência e a cada reajuste de custo.",
-      "chave": "margem_alvo"
     }
   ]
 }

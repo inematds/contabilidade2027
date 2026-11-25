@@ -15,12 +15,14 @@ Período analisado: 6 meses. Regime: simples. Números de 2027 = **SIMULADO** (a
 - Ponto de atenção: 60,0% das suas vendas são para empresas. Quem compra de você só aproveita como crédito o imposto que você paga no DAS.
 
 ## 4. O que chamou a atenção
-- Nenhuma despesa fora do padrão nem item com margem baixa nos dados enviados.
+- Lâmpada LED 9 W: sobra por venda (depois de custo, impostos e da parte das despesas fixas) de 1,8% hoje e 1,8% em 2027 no pior cenário; preço-alvo para a margem de 12,0%: R$ 17,63.
+- Fio elétrico 2,5 mm (rolo 100 m): sobra por venda (depois de custo, impostos e da parte das despesas fixas) de 8,2% hoje e 8,2% em 2027 no pior cenário; preço-alvo para a margem de 12,0%: R$ 341,85.
+- Disjuntor 20 A: sobra por venda (depois de custo, impostos e da parte das despesas fixas) de 9,7% hoje e 9,7% em 2027 no pior cenário; preço-alvo para a margem de 12,0%: R$ 39,58.
 
 ## 5. Suas 3 prioridades
-1. Avaliar com o contador se vale recolher CBS/IBS fora do DAS (a opção é semestral, feita em setembro e março): 60,0% das vendas são para empresas, que vão querer crédito cheio. *(serviço: Reforma Tributária Pronta)*
-2. Montar a previsão de caixa: em 06/2026, 07/2026, 08/2026, 09/2026, 10/2026, 11/2026 o saldo ficou abaixo de meio mês de saídas (saídas médias de R$ 42.796,67 por mês). *(serviço: Painel do Empresário)*
-3. Acompanhar a margem todo mês, numa conversa curta: no período ela foi 7,0%. *(serviço: Painel do Empresário)*
+1. Rever o preço de Lâmpada LED 9 W: para manter a margem-alvo, o preço precisa ser de R$ 17,63 (preço-alvo). *(serviço: Preço certo na Reforma)*
+2. Avaliar com o contador se vale recolher CBS/IBS fora do DAS (a opção é semestral, feita em setembro e março): 60,0% das vendas são para empresas, que vão querer crédito cheio. *(serviço: Reforma Tributária Pronta)*
+3. Montar a previsão de caixa: em 06/2026, 07/2026, 08/2026, 09/2026, 10/2026, 11/2026 o saldo ficou abaixo de meio mês de saídas (saídas médias de R$ 42.796,67 por mês). *(serviço: Painel do Empresário)*
 
 ## Pauta da reunião (30 min)
 1. Confirmar os números acima (5 min).

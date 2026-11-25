@@ -48,15 +48,17 @@ class Agencia(unittest.TestCase):
         itens = [b["item"] for b in self.d["itens_margem_baixa"]]
         self.assertEqual(itens, ["Campanha de anúncios (mensal)"])
         b = self.d["itens_margem_baixa"][0]
-        t, fc = 0.113, 119200 / 299000  # mesma regra de crédito da empresa
-        self.assertLess(b["m_2027"], b["m_hoje"])  # crédito parcial: margem piora, coerente com o imposto da empresa
+        # markup: custo 1.400, outros impostos 98.500/985.000, rateio das fixas 356.500/985.000, CBS+IBS 11,3% com crédito
+        out, fix, t, fc = 98500 / 985000, 356500 / 985000, 0.113, 119200 / 299000
         p = b["preco_min"]
-        self.assertAlmostEqual((p - 2150 - (p - 2150 * fc) * t) / p, 0.15, places=6)  # o preço mínimo devolve a margem-alvo
+        self.assertAlmostEqual((p - 1400 - p * (out + fix) - (p - 1400 * fc) * t) / p, 0.15, places=6)
+        self.assertLess(b["m_2027"], b["m_hoje"])
 
     def test_tres_prioridades_e_maior_primeiro(self):
         pr = self.d["prioridades"]
         self.assertEqual(len(pr), 3)
-        self.assertEqual(pr[0]["servico"], "Reforma Tributária Pronta")
+        self.assertEqual(pr[0]["servico"], "Preço certo na Reforma")  # campanha: R$ por ano maior que o aumento de imposto
+        self.assertTrue(any(x["servico"] == "Reforma Tributária Pronta" for x in pr))
 
     def test_todo_numero_do_relatorio_tem_origem(self):
         txt = D.relatorio(self.d)
@@ -69,7 +71,7 @@ class Simples(unittest.TestCase):
     def test_simples_nao_simula_cbs_e_avisa_b2b(self):
         d = roda(EX / "loja-simples")
         self.assertFalse(any(k.startswith("cbs_") for k in d["numeros"]))
-        self.assertIn("fora do DAS", d["prioridades"][0]["texto"])
+        self.assertTrue(any("fora do DAS" in x["texto"] for x in d["prioridades"]))
         self.assertEqual(len(d["prioridades"]), 3)  # sempre 3, mesmo com poucos dados
         self.assertEqual(C.conferir(D.relatorio(d), d), [])
 

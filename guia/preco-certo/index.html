@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Preço certo na Reforma: descubra se o preço do seu cliente ainda dá lucro em 2027</title>
+<meta content="Kit grátis (não oficial) para contadores: para cada produto ou serviço do cliente, a margem de hoje, a margem em 2027 com a CBS/IBS, o preço mínimo, o preço-alvo e o desconto máximo." name="description"/>
+<meta content="Preço certo na Reforma: o preço do seu cliente ainda dá lucro em 2027?" property="og:title"/>
+<meta content="Preço mínimo, preço-alvo e desconto máximo por produto, com o imposto novo. Kit grátis para contadores." property="og:description"/>
+<meta content="https://inematds.github.io/contabilidade2027/guia/assets/banner-preco.jpg" property="og:image"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://inematds.github.io/contabilidade2027/guia/preco-certo/" hreflang="pt-BR" rel="alternate"/>
+<link href="https://inematds.github.io/contabilidade2027/guia/preco-certo/en/" hreflang="en" rel="alternate"/>
+<link href="https://inematds.github.io/contabilidade2027/guia/preco-certo/es/" hreflang="es" rel="alternate"/>
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    --fill:#FACC15; --tint:rgba(250,204,21,.12); --ok:#7CE0C6; --bad:#F0918A;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    --fill:#FACC15; --tint:#FEF9C3; --ok:#0E6B55; --bad:#A83426;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  body.light pre .k{color:#f0c070}
+  body.light nav{background:rgba(246,247,249,.85)}
+  body.light .amb{color:var(--txt);background:linear-gradient(transparent 55%,#FACC15 55%)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  body.light main a:not(.btn),body.light footer a{color:#854d0e;text-decoration:underline;text-decoration-color:#FACC15;text-decoration-thickness:3px}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  p code,li code,td code{font-size:.9em;background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:.05em .35em}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb);white-space:nowrap}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:var(--tint)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--fill);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  nav .links a.sec{white-space:nowrap}
+  @media(max-width:1360px){nav .links a.opt{display:none}}
+  @media(max-width:860px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.18),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.15rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:44ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .oficial{display:inline-flex;align-items:center;gap:12px;margin-top:18px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg2);color:var(--txt);font-size:.92rem;max-width:100%}
+  .oficial img{width:40px;height:40px;border-radius:8px;background:#fff;flex:none}
+  .oficial small{display:block;color:var(--mut,#9a9aa6);font-size:.8rem}
+  .quem-img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;margin:0 0 14px;display:block;border:1px solid var(--line)}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:66ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.95rem;margin:0}
+  .card p+p{margin-top:.6em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0;margin:.4em 0 0}
+  pre .c{color:#7d7d8a} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:28px}
+  .step>div{min-width:0}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--fill);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .5em}
+  .quem{display:inline-block;font-family:Sora;font-size:.75rem;letter-spacing:.06em;color:var(--txt);background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:.1em .7em;margin-left:.5em;vertical-align:middle;font-weight:600}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:4px}
+  /* números */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  @media(max-width:720px){.stats{grid-template-columns:1fr}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .stat b{display:block;font:800 clamp(1.9rem,4vw,2.6rem)/1.05 Sora,sans-serif;letter-spacing:-.02em;color:var(--amb)}
+  body.light .stat b{color:var(--txt)}
+  .stat span{display:block;color:var(--mut);font-size:.93rem;margin-top:.5em}
+  .fonte{font-size:.86rem;color:var(--mut);margin-top:14px;max-width:80ch}
+  /* trocas */
+  .troca{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:26px 0;border-top:1px solid var(--line)}
+  .troca:first-of-type{border-top:none}
+  .troca .n{width:64px;height:64px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;font:800 1.6rem Sora,sans-serif;color:var(--amb)}
+  body.light .troca .n{color:var(--txt);background:var(--fill);border-color:var(--fill)}
+  .troca h3{font-size:1.3rem;margin-bottom:.35em}
+  .troca p{margin:.35em 0;max-width:72ch}
+  .troca .ex{margin-top:.8em;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--fill);border-radius:10px;padding:12px 16px;font-size:.95rem;color:var(--mut);max-width:76ch}
+  .troca .ex b{color:var(--txt)}
+  @media(max-width:540px){.troca{grid-template-columns:1fr}}
+  /* três finais */
+  .vs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;max-width:900px}
+  @media(max-width:720px){.vs{grid-template-columns:1fr}}
+  .vs div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.93rem}
+  .vs strong{display:block;font-family:Sora;margin-bottom:.25em}
+  .vs .r{display:block;margin-top:.5em;font-weight:600}
+  .vs .r.bad{color:var(--bad)} .vs .r.ok{color:var(--ok)}
+  .card ul{margin:8px 0 0;padding-left:20px}.card li{margin:5px 0}
+  /* prova */
+  .prova{background:var(--card);border:1px solid var(--amb);border-radius:16px;padding:26px 26px 22px;margin-top:6px}
+  body.light .prova{border-color:#EAB308}
+  .tl{list-style:none;margin:0;padding:0;counter-reset:t}
+  .tl li{position:relative;padding:0 0 18px 48px;counter-increment:t}
+  .tl li::before{content:counter(t);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:10px;background:var(--fill);color:#1a1206;font:800 .95rem/32px Sora,sans-serif;text-align:center}
+  .tl li::after{content:"";position:absolute;left:15px;top:36px;bottom:4px;width:2px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .tl b{font-family:Sora}
+  blockquote{margin:6px 0 0;padding:14px 18px;border-left:3px solid var(--fill);background:var(--bg2);border-radius:0 10px 10px 0;font-size:1.02rem}
+  .prova .rod{font-size:.86rem;color:var(--mut);margin-top:14px}
+  /* parte técnica */
+  .techhead{background:var(--bg2);border-top:3px solid var(--fill);padding:58px 0 8px}
+  .techhead h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em;margin:.3em 0 0}
+  .techhead .sub{color:var(--mut);margin:.6em 0 1.2em;max-width:66ch}
+  .techzone{background:var(--bg2)}
+  .techzone .card{background:var(--card)}
+  .tbl{width:100%;border-collapse:collapse;font-size:.93rem}
+  .tbl th,.tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl th{font-family:Sora;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  @media(max-width:600px){.tbl thead{display:none} .tbl tr{display:block;border-bottom:1px solid var(--line);padding:6px 0} .tbl tr:last-child{border-bottom:none} .tbl td{display:block;border:none;padding:4px 14px}}
+</style>
+<style>
+  .hero .wrap.hero2{grid-template-columns:1.05fr .95fr;grid-template-areas:"top f1" "bot f2";column-gap:40px;row-gap:28px;align-items:center}
+  .hero2 .h-top{grid-area:top}.hero2 .h-bot{grid-area:bot}.hero2 .f1{grid-area:f1}.hero2 .f2{grid-area:f2}
+  .hero2 .h-bot p.lead{margin-top:0}
+  @media(max-width:780px){.hero .wrap.hero2{grid-template-columns:1fr;grid-template-areas:"top" "f1" "bot" "f2"}}
+  .rel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:.93rem}
+  .rel h4{font-family:Sora;font-size:.95rem;margin:.9em 0 .3em}
+  .rel h4:first-child{margin-top:0}
+  .rel p{margin:.2em 0;color:var(--mut)}
+  .rel .sim{display:inline-block;font:700 .7rem Sora;letter-spacing:.1em;color:#1a1206;background:var(--fill);border-radius:6px;padding:.1em .5em;margin-left:.4em;vertical-align:middle}
+</style>
+<link href="https://inematds.github.io/contabilidade2027/guia/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/es/" hreflang="es" rel="alternate"/><style>
+  .kits{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+  @media(max-width:820px){.kits{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.kits{grid-template-columns:1fr}}
+  .kits a,.kits div{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--txt);font-size:.92rem}
+  .kits b{display:block;font-family:Sora;margin-bottom:.2em}
+  .kits .aqui{border-color:var(--amb)}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a class="brand" href="#top"><span class="emoji">🏷️</span> Preço certo</a>
+<span class="sep">|</span>
+<span class="clubpro">
+<a class="inema" href="https://inema.club" rel="noopener" target="_blank">INEMA.CLUB</a>
+<span class="sep">-</span>
+<a class="pro" href="https://inema.pro" rel="noopener" target="_blank">PRO</a>
+</span>
+<div class="links">
+<a class="sec" href="#explicado">O ganho</a>
+<a class="sec" href="#quem">Para quem</a>
+<a class="sec opt" href="#dia">No seu dia</a>
+<a class="sec opt" href="#como">Como funciona</a>
+<a class="sec" href="#comecar">Como começar</a>
+<a class="sec opt" href="#base">Base</a>
+<a class="sec" href="#prova">A prova</a>
+<span class="lang"><a class="on" href="./">PT</a><a href="en/">EN</a><a href="es/">ES</a></span>
+<button aria-label="Alternar tema" class="tgl" id="themeToggle" title="Alternar tema">🌙</button>
+<a class="btn" href="https://github.com/inematds/contabilidade2027" rel="noopener" target="_blank">GitHub</a>
+</div>
+</div></nav>
+<header class="hero" id="top">
+<div class="glow"></div>
+<div class="wrap hero2">
+<div class="h-top"><span class="chip">Kit grátis para contadores · não oficial · kit 3 de 4</span>
+<h1>Em 2027 o seu cliente pode vender mais e lucrar menos. Descubra o preço que ainda dá lucro com o <span class="amb">Preço certo na Reforma</span></h1></div>
+<figure class="f1"><img alt="Contadora mostra ao dono de uma loja, no tablet, a tabela de preços com setas para cima e para baixo" src="../assets/preco-hero.jpg"/></figure>
+<div class="h-bot"><p class="lead">Na Reforma, o imposto sobre a venda muda, e o crédito sobre o que se compra também. Preço que hoje dá lucro pode deixar de dar. A sua IA pega os produtos e serviços do cliente e mostra, item por item, contando os impostos e a parte de cada um nas despesas fixas: a margem de hoje e a de 2027, o preço mínimo, o preço-alvo e o desconto que ainda dá para dar.</p>
+<div class="cta">
+<a class="btn" href="#explicado">O que você ganha</a>
+<a class="btn ghost" href="#comecar">Como começar</a>
+</div></div>
+<figure class="f2"><img alt="Preço certo na Reforma: quanto cada produto do seu cliente precisa custar em 2027" src="../assets/banner-preco.jpg"/></figure>
+</div>
+</header>
+<main>
+<section class="resumo" id="resumo"><div class="wrap">
+<span class="chip">Em uma frase</span>
+<p><strong>Quase todo pequeno empresário forma preço "pelo mercado" e só descobre que perdeu margem quando o caixa aperta.</strong> Este kit gratuito é para o contador que quer mostrar, antes de 2027, quanto cada produto ou serviço precisa custar. Você usa a mesma pasta do cliente do Diagnóstico e acrescenta, se tiver, a comissão e a taxa de cartão ou de marketplace de cada item. A sua IA monta a tabela pelo método do markup: o preço precisa cobrir o custo, a comissão e a taxa, os impostos e a parte do item nas despesas fixas. Para cada item saem a margem de hoje, a margem em 2027 com a CBS e o IBS (os impostos novos) em dois cenários, o preço mínimo (abaixo dele a venda não paga a sua parte da estrutura), o preço-alvo (o que dá a margem que o cliente quer) e o desconto máximo. No Simples, a conta usa a alíquota efetiva do DAS. Como a CBS e o IBS ficam dentro do DAS, a tabela vale para 2027 enquanto a empresa não optar por recolher fora dele. Precisa de um computador e de uma IA como o Claude Code ou o Codex. É o kit 3 de 4 do <a href="../">Diagnóstico Reforma + Caixa</a> e não é oficial.</p>
+</div></section>
+<section id="explicado"><div class="wrap">
+<span class="chip">O ganho</span>
+<h2>Do preço no chute <span class="amb">ao preço que dá lucro</span></h2>
+<div class="grid g2">
+<div class="card"><h3>😟 Hoje</h3><p>O empresário copia o preço do concorrente, dá desconto para fechar e não sabe quanto sobra em cada venda. Em 2027 o imposto muda e ele reajusta tudo pela mesma porcentagem, ou não reajusta nada.</p></div>
+<div class="card"><h3>😌 Com a tabela</h3><p>Cada item tem três números claros: o preço mínimo, o preço-alvo e o desconto máximo. O empresário sabe onde subir, onde pode baixar e o que parar de vender. Você vira quem ajuda a decidir o preço.</p></div>
+</div>
+<div class="stats">
+<div class="stat"><b>3 preços</b><span>por item: o mínimo (margem zero), o alvo (a margem que o cliente quer) e o desconto máximo sobre o preço de hoje.</span></div>
+<div class="stat"><b>2 cenários</b><span>de alíquota de referência (a alíquota-padrão que o Senado fixa e de onde cada atividade parte): 11,3% (calculada pelo TCU) e 8,8% (o exemplo da Receita).</span></div>
+<div class="stat"><b>+60%</b><span>das empresas (em geral) ainda não mediram o impacto da Reforma no próprio negócio.</span></div>
+</div>
+<p class="fonte">+60%: pesquisa Panorama do Contas a Pagar 2026, da Qive, noticiada pelo <a href="https://www.infomoney.com.br/minhas-financas/reforma-tributaria-mais-de-60-das-empresas-ainda-nao-mediram-o-impacto-nos-negocios/" rel="noopener" target="_blank">InfoMoney</a>. Alíquotas: <a href="#base">Base</a>.</p>
+</div></section>
+<section id="quem"><div class="wrap">
+<span class="chip">Para quem</span>
+<h2>O que cada um <span class="amb">ganha</span></h2>
+<div class="grid g2">
+<div class="card"><img alt="Contadora autônoma no home office com o notebook aberto" class="quem-img" loading="lazy" src="../assets/quem-autonomo.jpg"/><h3>🧑‍💼 Contador autônomo</h3><p><strong>Ganha:</strong> um serviço que o cliente entende na hora: "vejo se o seu preço ainda dá lucro em 2027".</p><p><strong>E mais:</strong> uma revisão de preços a cada trimestre, que vira serviço recorrente.</p></div>
+<div class="card"><img alt="Sócio de escritório contábil mostra um relatório impresso à analista" class="quem-img" loading="lazy" src="../assets/quem-escritorio.jpg"/><h3>🏢 Escritório contábil</h3><p><strong>Ganha:</strong> a mesma tabela para cada cliente de comércio e serviço da carteira, gerada em minutos depois que a planilha está pronta.</p><p><strong>E mais:</strong> a tabela em planilha, para o cliente filtrar e ordenar.</p></div>
+<div class="card"><img alt="Dono de uma pequena empresa lê um relatório de duas páginas" class="quem-img" loading="lazy" src="../assets/quem-empresario.jpg"/><h3>🏪 Dono da empresa</h3><p><strong>Ganha:</strong> saber quais produtos subir, quais segurar e quanto desconto ainda dá para dar.</p><p><strong>E mais:</strong> parar de vender abaixo do custo sem perceber.</p></div>
+<div class="card"><img alt="Contador recém-formado compara o relatório no notebook com o caderno" class="quem-img" loading="lazy" src="../assets/quem-iniciante.jpg"/><h3>🎓 Contador começando</h3><p><strong>Ganha:</strong> uma porta de entrada que não depende de assumir a contabilidade inteira do cliente.</p><p><strong>E mais:</strong> entender, com números, como o crédito sobre o custo segura o preço em 2027.</p></div>
+</div>
+</div></section>
+<section id="dia"><div class="wrap">
+<span class="chip">No seu dia a dia</span>
+<h2>Como isso muda o seu <span class="amb">trabalho</span></h2>
+<div class="grid g2">
+<div class="card"><h3>💬 "Quanto eu aumento em 2027?"</h3><p><strong>Hoje:</strong> a resposta é "depende".</p><p><strong>Com o kit:</strong> o preço-alvo de cada item nos dois cenários, e quanto falta por ano para chegar nele, na quantidade que ele vende hoje.</p></div>
+<div class="card"><h3>🤝 "Posso dar 10% de desconto?"</h3><p><strong>Hoje:</strong> ele dá e depois descobre que não podia.</p><p><strong>Com o kit:</strong> o desconto máximo de cada item, já com os impostos, a comissão, a taxa de cartão e a parte das despesas fixas.</p></div>
+<div class="card"><h3>📦 "Esse produto vale a pena?"</h3><p><strong>Hoje:</strong> ninguém sabe a margem item por item.</p><p><strong>Com o kit:</strong> a margem de cada um, e o aviso quando ela fica negativa.</p></div>
+<div class="card"><h3>🧾 "O fornecedor importa?"</h3><p><strong>Hoje:</strong> parece que só o preço de compra importa.</p><p><strong>Com o kit:</strong> você mostra que o custo que gera crédito pesa menos em 2027, e que pedir a nota com a CBS/IBS destacada ajuda a segurar o preço.</p></div>
+</div>
+</div></section>
+<section id="video"><div class="wrap">
+<span class="chip">Em vídeo</span>
+<h2>Vídeo em produção</h2>
+<!-- VIDEO: entra o explicavideo do projeto quando publicado -->
+<p class="sub">O vídeo explicativo deste kit está em produção e entra aqui quando for publicado. Enquanto isso, o passo a passo está logo abaixo, em "Como começar".</p>
+</div></section>
+<section id="como"><div class="wrap">
+<span class="chip">Como funciona</span>
+<h2>Três preços por item, <span class="amb">sem jargão</span></h2>
+<figure style="margin:18px 0 22px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img alt="Preço certo na Reforma: margem de hoje, margem em 2027, preço mínimo, preço-alvo, desconto máximo, como começar" loading="lazy" src="../assets/banner-preco-grade.jpg" style="width:100%;display:block"/></figure>
+<div class="grid g3">
+<div class="card"><h3>🧱 Preço mínimo</h3><p>É o <strong>chão</strong>. Paga o custo, a comissão, a taxa, todos os impostos sobre a venda e a parte do item nas despesas fixas, e não sobra nada. Abaixo dele, a venda não paga a sua parte da estrutura.</p></div>
+<div class="card"><h3>🎯 Preço-alvo</h3><p>É o <strong>preço que dá a margem que o cliente quer</strong> (ele escolhe: 15%, 20%…). É a meta para os próximos reajustes.</p></div>
+<div class="card"><h3>✂️ Desconto máximo</h3><p>É o <strong>limite do vendedor</strong>: quanto dá para baixar o preço de hoje sem sair da margem-alvo. Se o preço já está abaixo do alvo, o desconto máximo é zero.</p></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>🧮 Como a conta é feita</h3><p>É o markup que o contador conhece: o preço cobre o custo, a comissão e a taxa, os outros impostos sobre a venda (ISS ou ICMS, que continuam em 2027, e o IR/CSLL do Presumido), a parte das despesas fixas (rateadas pela receita, ou pelo rateio que você informar) e o imposto sobre o consumo. No Lucro Presumido e no Real, o kit compara o PIS/Cofins de hoje com a CBS e o IBS de 2027. Em 2027 a CBS é a alíquota de referência menos 0,1 ponto, e o IBS é 0,1%, então os dois somam a própria referência. O imposto novo incide sobre o preço, com crédito sobre a parte do custo que vem de compra com o imposto destacado. Se você não informar essa parte item por item, o kit usa a mesma proporção da empresa, a mesma regra do Diagnóstico. No Simples, o imposto é a alíquota efetiva do DAS.</p></div>
+<div class="card" style="margin-top:16px"><h3>⚠️ O que ele NÃO é</h3><ul>
+<li><strong>Não é o preço que o mercado aceita.</strong> É o preço que dá a margem. Se o mercado não paga, a conversa é sobre custo ou sobre parar de vender o item.</li>
+<li><strong>Não tem a alíquota final.</strong> Por isso usa dois cenários e marca 2027 como SIMULADO.</li>
+<li><strong>A base é simplificada:</strong> a CBS e o IBS são cobrados "por fora", mas o kit trata o imposto como parte do preço informado, o que deixa a conta um pouco mais pesada (conservadora). Itens com redução de alíquota, substituição tributária ou regime específico precisam do olhar do contador.</li>
+<li><strong>No Lucro Real o IR/CSLL é sobre o lucro,</strong> e aqui ele entra como fração da receita: é uma aproximação.</li>
+</ul></div>
+</div></section>
+<section id="comecar"><div class="wrap">
+<span class="chip">Como começar</span>
+<h2>Peça para a sua IA <span class="amb">montar a tabela</span></h2>
+<p class="sub">Se você já fez o Diagnóstico, a pasta do cliente já existe: falta só completar a lista de produtos.</p>
+<div class="grid g3">
+<div class="card"><h3>1. Abra a sua IA no computador</h3><p>O <strong>Claude Code</strong> (do Claude) ou o <strong>Codex</strong> (do ChatGPT), que vêm com a assinatura paga deles.</p></div>
+<div class="card"><h3>2. Cole o pedido abaixo</h3><p>A IA roda o exemplo de uma agência fictícia, para você ver a tabela antes de usar com um cliente.</p></div>
+<div class="card"><h3>3. Passe a lista de produtos</h3><p>Preço, custo e quanto vende por mês de cada item. Se tiver, a comissão e a taxa de cartão. A planilha mensal precisa ter os impostos pagos, as despesas e as compras com crédito, porque é dali que sai a parte de cada item. No Simples, a alíquota efetiva do DAS, que sai do PGDAS-D.</p></div>
+</div>
+<p class="mut" style="margin-top:20px">Não precisa entender o texto abaixo: ele é para a IA. Copie e cole.</p>
+<div class="pedido" style="margin-top:8px;position:relative">
+<pre id="pedidoTxt" style="white-space:pre-wrap">Leia o kit "contabilidade2027" em https://github.com/inematds/contabilidade2027 (o README explica tudo).
+Quero montar a tabela Preço certo na Reforma de um cliente meu. Neste computador:
+1. Baixe o kit (ZIP ou git) e rode primeiro kit/preco_certo.py no exemplo da agência, para eu ver como fica a tabela.
+2. Me ajude a montar na pasta do meu cliente o produtos.csv (item, preço, custo, quantidade por mês e, se eu tiver,
+   comissão e taxa de cartão), além do empresa.json e do mensal.csv (com impostos pagos, despesas e compras com crédito),
+   no formato de kit/modelo/. No Simples, pergunte a alíquota efetiva do DAS. Não invente número.
+3. Rode kit/preco_certo.py na pasta do cliente.
+4. Me explique o saida/preco-certo/precos.md em linguagem simples, sem mudar nenhum número, e me mostre o precos.csv.
+5. Se você reescrever o texto, rode kit/conferir.py no texto novo com o saida/preco-certo/dados.json e corrija o que ele acusar.
+6. Não envie nada a ninguém: eu reviso e sou eu quem fala com o cliente.</pre>
+<button class="btn" id="copiarPedido" style="margin-top:10px">Copiar o pedido</button>
+</div>
+<div class="grid g2" style="margin-top:16px">
+<div class="card"><h3>🌐 Quer só ver, sem instalar nada?</h3><p>Não há versão online: o kit roda no seu computador, porque os dados são do seu cliente. Para ver como fica, abra o exemplo da agência fictícia.</p><p><a class="btn ghost" href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-precos/precos.md" rel="noopener" target="_blank">Ver a tabela de exemplo</a></p></div>
+<div class="card"><h3>⬇️ Onde baixar?</h3><p>É o mesmo kit do Diagnóstico: uma pasta pequena, com os programas, os exemplos e as planilhas modelo.</p><p><a class="btn ghost" href="https://github.com/inematds/contabilidade2027/archive/refs/heads/main.zip">Baixar o kit (ZIP)</a></p></div>
+</div>
+<div class="grid g2" style="margin-top:16px">
+<div class="card"><h3>🔒 E os dados do cliente?</h3><p>O programa não manda nada para a internet. A IA que você usa lê os arquivos que você abre para ela. Se preferir, tire o nome e o CNPJ antes: o resultado sai igual.</p></div>
+<div class="card"><h3>🛠️ É técnico e prefere fazer à mão?</h3><p>As colunas da planilha, as fórmulas e os testes estão no README.</p><p><a class="btn ghost" href="https://github.com/inematds/contabilidade2027#instalação-técnica" rel="noopener" target="_blank">Ver a instalação técnica</a></p></div>
+</div>
+</div></section>
+<section id="base"><div class="wrap">
+<span class="chip">De onde vem</span>
+<h2>As regras de 2027 vêm <span class="amb">da lei</span>; o kit é nosso</h2>
+<div class="grid g3">
+<div class="card"><h3>📜 A lei da Reforma</h3><p>LC 214/2025: em 2027 a CBS é a alíquota de referência menos 0,1 ponto (art. 347), e o IBS é 0,05% estadual + 0,05% municipal (art. 344).</p><p><a href="https://legis.senado.leg.br/norma/40180341/publicacao/40181429" rel="noopener" target="_blank">Texto da LC 214 no Senado</a></p></div>
+<div class="card"><h3>⚖️ Os dois cenários</h3><p><strong>11,3%</strong> é a alíquota de referência calculada pelo TCU em 28/10/2026 (cenário principal). <strong>8,8%</strong> é só o valor usado no exemplo oficial do simulador da Receita, para comparação.</p><p><a href="https://portal.tcu.gov.br/imprensa/noticias/tcu-calcula-aliquota-de-referencia-de-113-para-novo-tributo-sobre-consumo" rel="noopener" target="_blank">Nota do TCU</a></p></div>
+<div class="card"><h3>🧮 Mesma conta do Diagnóstico</h3><p>O preço-alvo usa a mesma conta do kit 1. No exemplo, a campanha de anúncios dá o mesmo R$ 4.860,31 nos dois kits, e um teste garante que continue assim.</p><p><a href="../">Diagnóstico Reforma + Caixa</a></p></div>
+</div>
+</div></section>
+<section id="prova"><div class="wrap">
+<span class="chip">A prova</span>
+<h2>Rodamos em <span class="amb">dois exemplos fictícios</span></h2>
+<p class="sub">A agência do Lucro Presumido do Diagnóstico e uma loja de material elétrico do Simples, com dados inventados (25/11/2026). Os números de 2027 são SIMULADOS.</p>
+<div class="stats">
+<div class="stat"><b>-5,8%</b><span>é a margem de hoje da campanha de anúncios da agência: com a parte dela nas despesas fixas, ela já dá prejuízo. Em 2027, -11,0%.</span></div>
+<div class="stat"><b>R$ 4.860,31</b><span>é o preço-alvo da campanha em 2027, no cenário de 11,3%. Hoje ela cobra R$ 2.500,00: ou o preço sobe, ou o custo cai, ou ela sai do cardápio.</span></div>
+<div class="stat"><b>R$ 19,38</b><span>é o preço-alvo da lâmpada da loja do Simples, que hoje sai a R$ 14,90, com comissão, taxa de cartão e o DAS.</span></div>
+</div>
+<div class="prova" style="margin-top:20px">
+<ol class="tl">
+<li><b>Os outros serviços da agência têm folga.</b><br/><span class="mut">A consultoria aguenta até 52,3% de desconto sem sair da margem-alvo; a campanha, nenhum. A média das margens dos itens fecha com a margem da empresa (cerca de 19,8%).</span></li>
+<li><b>O mesmo número nos dois kits.</b><br/><span class="mut">O preço-alvo da campanha é igual no Diagnóstico e aqui, porque os dois usam a mesma conta.</span></li>
+<li><b>10 testes conferem as contas.</b><br/><span class="mut">Preço-alvo e preço mínimo devolvem a margem certa, a média das margens bate com a da empresa, o desconto máximo, o Simples com comissão, taxa e DAS, e os erros de entrada.</span></li>
+</ol>
+<p class="rod">A tabela completa do exemplo está em <a href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-precos/precos.md" rel="noopener" target="_blank">precos.md</a>.</p>
+</div>
+</div></section>
+<section id="kits"><div class="wrap">
+<span class="chip">Os 4 kits</span>
+<h2>A mesma pasta do cliente, <span class="amb">quatro serviços</span></h2>
+<div class="kits">
+<a href="../"><b>1. Diagnóstico Reforma + Caixa</b>Quanto a Reforma pesa no caixa do cliente, em 2 páginas.</a>
+<a href="../reforma-pronta/"><b>2. Reforma Tributária Pronta</b>O que falta no cadastro, no sistema e nos contratos.</a>
+<div class="aqui"><b>3. Preço certo na Reforma</b>Preço mínimo, preço-alvo e desconto máximo por produto em 2027. Você está aqui.</div>
+<a href="../painel/"><b>4. Painel do Empresário</b>O fechamento do mês em texto simples: resultado, caixa e alertas.</a>
+</div>
+</div></section>
+<section id="faq"><div class="wrap">
+<span class="chip">Perguntas comuns</span>
+<h2>Antes de você <span class="amb">começar</span></h2>
+<div class="grid g2">
+<div class="card"><h3>Preciso saber programar?</h3><p>Não. Você cola o pedido e a IA faz o resto.</p></div>
+<div class="card"><h3>Quanto custa?</h3><p>O kit e este guia são grátis. O caminho mais fácil usa o Claude Code ou o Codex, que vêm com a assinatura paga deles.</p></div>
+<div class="card"><h3>E se o mercado não aceita o preço-alvo?</h3><p>Aí o número mostrou o problema: ou o custo cai, ou o item deixa de valer a pena. A tabela não decide, ela mostra.</p></div>
+<div class="card"><h3>Serve para serviço?</h3><p>Serve. O "custo" do serviço é o que você paga para entregá-lo: horas de terceiros, ferramentas, mídia.</p></div>
+</div>
+<p class="fonte" style="margin-top:22px">E você: quantos clientes seus sabem o preço mínimo de cada produto que vendem, e quantos vão reajustar 2027 no chute? Grátis no inema.club, direto na internet.</p>
+</div></section>
+</main>
+<footer>
+<div class="wrap">
+<div class="pill">Kit grátis e não oficial</div><div class="pill">Para contadores</div><div class="pill">PT · EN · ES</div>
+<p style="margin-top:18px">Preço certo na Reforma · kit 3 de 4 do contabilidade2027 · kit do INEMA, não oficial · grátis no inema.club, direto na internet ·
+      <a href="https://github.com/inematds/contabilidade2027">inematds/contabilidade2027</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+</div>
+</footer>
+<script>
+  (function(){
+    var KEY='contabilidade2027-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+    });
+  })();
+  (function(){
+    var bt=document.getElementById('copiarPedido'), tx=document.getElementById('pedidoTxt');
+    if(!bt||!tx) return;
+    bt.addEventListener('click',function(){
+      try{ navigator.clipboard.writeText(tx.textContent).then(function(){ bt.textContent='Copiado ✓'; setTimeout(function(){bt.textContent='Copiar o pedido';},2000); }); }catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
+

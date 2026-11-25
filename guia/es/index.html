@@ -163,6 +163,14 @@
   .rel p{margin:.2em 0;color:var(--mut)}
   .rel .sim{display:inline-block;font:700 .7rem Sora;letter-spacing:.1em;color:#1a1206;background:var(--fill);border-radius:6px;padding:.1em .5em;margin-left:.4em;vertical-align:middle}
 </style>
+<style>
+  .kits{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+  @media(max-width:820px){.kits{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.kits{grid-template-columns:1fr}}
+  .kits a,.kits div{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--txt);font-size:.92rem}
+  .kits b{display:block;font-family:Sora;margin-bottom:.2em}
+  .kits .aqui{border-color:var(--amb)}
+</style>
 <link href="https://inematds.github.io/contabilidade2027/guia/" hreflang="pt-BR" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/en/" hreflang="en" rel="alternate"/><link href="https://inematds.github.io/contabilidade2027/guia/es/" hreflang="es" rel="alternate"/></head>
 <body>
 <nav><div class="wrap">
@@ -191,7 +199,7 @@
 <div class="wrap hero2">
 <div class="h-top"><span class="chip">Kit gratis para contadores · no oficial · reglas de 2027 verificadas en la ley</span>
 <h1>Tu cliente preguntará cuánto pesa la Reforma en su flujo de caja. Respóndele con el <span class="amb">Diagnóstico Reforma + Caja</span></h1></div>
-<figure class="f1"><img alt="Un contador le muestra al dueño de la empresa el informe de 2 páginas con los gráficos de caja" src="../assets/hero.jpg"/></figure>
+<figure class="f1"><img alt="El contador le muestra al dueño de la empresa el informe de 2 páginas con los gráficos de caja" src="../assets/hero.jpg"/></figure>
 <div class="h-bot"><p class="lead">En 2027 la CBS sustituye al PIS y a la Cofins, y al empresario solo le interesa una cosa: cuánto cambia eso para él. Con los números que ya tienes del cliente, tu IA arma un informe de 2 páginas que él entiende. Incluye la caja, el margen, el impuesto nuevo en dos escenarios y 3 prioridades. Y ningún número sale sin origen. La pregunta que hoy es una duda se convierte en un servicio que ofreces.</p>
 <div class="cta">
 <a class="btn" href="#explicado">Lo que ganas</a>
@@ -332,6 +340,16 @@ Quiero hacer el Diagnóstico Reforma + Caja de un cliente mío. En esta computad
 <li><b>15 pruebas verifican los cálculos a mano.</b><br/><span class="mut">Lucro Presumido, Lucro Real con crédito, actividad con reducción del 60% y Simples.</span></li>
 </ol>
 <p class="rod">El informe completo del ejemplo está en <a href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-exemplo/relatorio-base.md" rel="noopener" target="_blank">relatorio-base.md</a>y las fórmulas, en el README.</p>
+</div>
+</div></section>
+<section id="kits"><div class="wrap">
+<span class="chip">Los 4 kits</span>
+<h2>La misma carpeta del cliente, <span class="amb">cuatro servicios</span></h2>
+<div class="kits">
+<div class="aqui"><b>1. Diagnóstico Reforma + Caixa</b>Cuánto pesa la Reforma en la caja del cliente, en 2 páginas. Estás aquí.</div>
+<a href="../reforma-pronta/es/"><b>2. Reforma Tributária Pronta</b>Lo que falta en el registro, en el sistema y en los contratos.</a>
+<a href="../preco-certo/es/"><b>3. Preço certo na Reforma</b>Precio mínimo, precio objetivo y descuento máximo por producto en 2027.</a>
+<a href="../painel/es/"><b>4. Painel do Empresário</b>El cierre del mes en texto simple: resultado, caja y alertas.</a>
 </div>
 </div></section>
 <section id="faq"><div class="wrap">

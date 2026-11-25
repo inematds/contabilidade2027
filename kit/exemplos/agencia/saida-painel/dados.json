@@ -93,6 +93,11 @@
       "texto": "19,8%",
       "origem": "margem média dos 11 meses anteriores"
     },
+    "meses_hist": {
+      "valor": 11,
+      "texto": "11",
+      "origem": "meses anteriores usados nas médias"
+    },
     "margem_dif": {
       "valor": -1.3375,
       "texto": "-1,3%",
@@ -118,20 +123,45 @@
       "texto": "R$ 71.406,17",
       "origem": "saídas médias dos 3 últimos meses (custo + despesas + impostos)"
     },
+    "var_saldo": {
+      "valor": -2333.3333,
+      "texto": "-R$ 2.333,33",
+      "origem": "variação média do saldo_caixa_fim nos últimos 3 meses"
+    },
+    "var_saldo_abs": {
+      "valor": 2333.3333,
+      "texto": "R$ 2.333,33",
+      "origem": "variação média do saldo, sem o sinal"
+    },
+    "lucro_3m": {
+      "valor": 18260.5,
+      "texto": "R$ 18.260,50",
+      "origem": "lucro médio dos 3 últimos meses"
+    },
+    "meses_var": {
+      "valor": 3,
+      "texto": "3",
+      "origem": "meses usados na variação do saldo"
+    },
     "proj_1": {
-      "valor": 52260.5,
-      "texto": "R$ 52.260,50",
-      "origem": "saldo + (entrada_media − saida_media) × 1  (12/2026)"
+      "valor": 31666.6667,
+      "texto": "R$ 31.666,67",
+      "origem": "saldo + variação média do saldo × 1  (12/2026)"
     },
     "proj_2": {
-      "valor": 70521.0,
-      "texto": "R$ 70.521,00",
-      "origem": "saldo + (entrada_media − saida_media) × 2  (01/2027)"
+      "valor": 29333.3333,
+      "texto": "R$ 29.333,33",
+      "origem": "saldo + variação média do saldo × 2  (01/2027)"
     },
     "proj_3": {
-      "valor": 88781.5,
-      "texto": "R$ 88.781,50",
-      "origem": "saldo + (entrada_media − saida_media) × 3  (02/2027)"
+      "valor": 27000.0,
+      "texto": "R$ 27.000,00",
+      "origem": "saldo + variação média do saldo × 3  (02/2027)"
+    },
+    "fora_dre": {
+      "valor": 20593.8333,
+      "texto": "R$ 20.593,83",
+      "origem": "lucro médio − variação média do saldo: dinheiro que saiu fora do resultado"
     },
     "receber_vencido": {
       "valor": 17000.0,
@@ -212,17 +242,17 @@
   "projecao": [
     {
       "mes": "12/2026",
-      "saldo": 52260.5,
+      "saldo": 31666.666666666668,
       "k": 1
     },
     {
       "mes": "01/2027",
-      "saldo": 70521.0,
+      "saldo": 29333.333333333336,
       "k": 2
     },
     {
       "mes": "02/2027",
-      "saldo": 88781.5,
+      "saldo": 27000.000000000004,
       "k": 3
     }
   ],
@@ -247,11 +277,12 @@
   "alertas": [
     "Softwares e assinaturas ficou R$ 1.980,00 acima da média.",
     "Há R$ 17.000,00 a receber já vencidos (3 contas).",
-    "O caixa cobre só 0,48 mês de saídas: qualquer atraso de cliente aperta."
+    "O caixa cobre só 0,48 mês de saídas: qualquer atraso de cliente aperta.",
+    "O resultado e o caixa não batem: sobraram em média R$ 18.260,50 por mês no resultado, mas o saldo caiu R$ 2.333,33 por mês. Cerca de R$ 20.593,83 por mês saem fora do resultado: confira retiradas dos sócios, parcelas de empréstimo e investimentos."
   ],
   "fazer": [
     "Cobrar Clínica Exemplo (campanha de outubro): R$ 7.500,00 vencidos há 26 dias.",
-    "Montar uma reserva de caixa: hoje o saldo cobre só 0,48 mês de saídas.",
-    "Entender por que Softwares e assinaturas subiu e decidir se continua."
+    "Conferir com o dono para onde foi o dinheiro que sobrou no resultado (retiradas, parcelas, investimentos).",
+    "Montar uma reserva de caixa: hoje o saldo cobre só 0,48 mês de saídas."
   ]
 }

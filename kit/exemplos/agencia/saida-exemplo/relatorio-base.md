@@ -20,11 +20,11 @@ Período analisado: 12 meses. Regime: presumido. Números de 2027 = **SIMULADO**
 
 ## 4. O que chamou a atenção
 - Softwares e assinaturas: R$ 4.600,00 em 11/2026, contra média de R$ 2.620,00.
-- Campanha de anúncios (mensal): margem depois do custo e do PIS/Cofins de 10,3% hoje e 6,6% em 2027 no pior cenário; preço-alvo para a margem de 15,0%: R$ 2.785,81.
+- Campanha de anúncios (mensal): sobra por venda (depois de custo, impostos e da parte das despesas fixas) de -5,8% hoje e -11,0% em 2027 no pior cenário; preço-alvo para a margem de 15,0%: R$ 4.860,31.
 
 ## 5. Suas 3 prioridades
-1. Rever regime, créditos, cadastros e preços antes de 2027: no pior cenário, o que você recolhe de CBS/IBS fica R$ 61.882,90 por ano acima do PIS/Cofins de hoje. *(serviço: Reforma Tributária Pronta)*
-2. Rever o preço de Campanha de anúncios (mensal): para manter a margem-alvo, o preço precisa ser de R$ 2.785,81 (preço-alvo). *(serviço: Preço certo na Reforma)*
+1. Rever o preço de Campanha de anúncios (mensal): para manter a margem-alvo, o preço precisa ser de R$ 4.860,31 (preço-alvo). *(serviço: Preço certo na Reforma)*
+2. Rever regime, créditos, cadastros e preços antes de 2027: no pior cenário, o que você recolhe de CBS/IBS fica R$ 61.882,90 por ano acima do PIS/Cofins de hoje. *(serviço: Reforma Tributária Pronta)*
 3. Olhar a despesa de Softwares e assinaturas: em 11/2026 ficou R$ 1.980,00 acima da média. *(serviço: Painel do Empresário)*
 
 ## Pauta da reunião (30 min)

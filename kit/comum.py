@@ -69,3 +69,31 @@ def gravar(saida, dados, nome_md, texto_md, extras=None):
     (saida / nome_md).write_text(texto_md, encoding="utf-8")
     for nome, conteudo in (extras or {}).items():
         (saida / nome).write_text(conteudo, encoding="utf-8")
+
+
+# ---------- preço e margem por item (mesma conta no Diagnóstico e no Preço certo) ----------
+# Método do markup: o preço cobre o custo direto, a comissão/taxa (var), os outros impostos sobre a
+# venda (out: ISS/ICMS, IR/CSLL do Presumido, ou o DAS no Simples), o rateio das despesas fixas (fix),
+# o imposto sobre o consumo (imp_preco: % do preço hoje; t: CBS+IBS de 2027 com crédito sobre ccred)
+# e o lucro. Todas as frações são do preço (0,10 = 10%).
+
+def margem_item(P, c, var=0.0, out=0.0, fix=0.0, imp_preco=0.0, t=0.0, ccred=0.0):
+    """Lucro por venda ÷ preço, depois de custo, comissão/taxa, impostos e rateio das despesas fixas."""
+    imposto = P * imp_preco + (P - ccred) * t
+    return (P - c - P * (var + out + fix) - imposto) / P
+
+
+def preco_para_margem(m, c, var=0.0, out=0.0, fix=0.0, imp_preco=0.0, t=0.0, ccred=0.0):
+    """Preço que dá a margem m. None quando os percentuais somam 100% ou mais (não há preço que feche)."""
+    den = 1 - var - out - fix - imp_preco - t - m
+    return (c - ccred * t) / den if den > 0 else None
+
+
+def fracoes_estrutura(empresa, receita, outros_impostos, despesas_operacionais):
+    """Frações do preço para os outros impostos sobre a venda e o rateio das despesas fixas.
+    Vêm do mensal.csv (÷ receita), ou de empresa.json (outros_impostos_pct, rateio_fixas_pct) quando informados."""
+    o = empresa.get("outros_impostos_pct")
+    f = empresa.get("rateio_fixas_pct")
+    out = o / 100 if o is not None else (outros_impostos / receita if receita else 0.0)
+    fix = f / 100 if f is not None else (despesas_operacionais / receita if receita else 0.0)
+    return out, fix

@@ -37,12 +37,20 @@ class Agencia(unittest.TestCase):
         self.assertLess(self.n["var_luc_ant"]["valor"], 0)
         self.assertEqual(self.n["var_luc_ant_abs"]["texto"], self.n["var_luc_ant"]["texto"].lstrip("-"))
 
-    def test_projecao_de_caixa(self):
-        ent = (90000 + 87000 + 92000) / 3
-        sai = ((27000 + 30500 + 3285 + 9000) + (26500 + 31000 + 3175.5 + 8700) + (28000 + 34500 + 3358 + 9200)) / 3
-        self.assertAlmostEqual(self.n["proj_1"]["valor"], 34000 + ent - sai, places=2)
-        self.assertAlmostEqual(self.n["proj_3"]["valor"], 34000 + 3 * (ent - sai), places=2)
+    def test_projecao_pelo_saldo_real(self):
+        # saldo de 08 a 11/2026: 41.000 → 39.000 → 37.000 → 34.000 (média −2.333,33 por mês)
+        self.assertAlmostEqual(self.n["var_saldo"]["valor"], -7000 / 3, places=2)
+        self.assertAlmostEqual(self.n["proj_1"]["valor"], 34000 - 7000 / 3, places=2)
+        self.assertAlmostEqual(self.n["proj_3"]["valor"], 27000.0, places=2)
         self.assertEqual([p["mes"] for p in self.d["projecao"]], ["12/2026", "01/2027", "02/2027"])
+
+    def test_alerta_quando_resultado_e_caixa_nao_batem(self):
+        # lucro médio dos 3 últimos meses positivo e saldo caindo → dinheiro saindo fora do resultado
+        self.assertTrue(any("não batem" in a for a in self.d["alertas"]))
+        self.assertAlmostEqual(self.n["fora_dre"]["valor"], self.n["lucro_3m"]["valor"] + 7000 / 3, places=2)
+
+    def test_reserva_do_split_sempre_aparece(self):
+        self.assertIn("split payment", PN.painel_md(self.d))
 
     def test_contas_vencidas_e_30_dias(self):
         self.assertAlmostEqual(self.n["receber_vencido"]["valor"], 7500 + 6000 + 3500)

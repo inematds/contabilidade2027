@@ -1,4 +1,4 @@
-# Diagnóstico Reforma + Caixa
+# contabilidade2027 — Diagnóstico Reforma + Caixa e mais 3 kits para contadores
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
@@ -6,7 +6,7 @@
 
 ## O que é
 
-O seu cliente vai perguntar quanto a Reforma Tributária pesa no caixa dele em 2027. Este kit gratuito ajuda o contador a responder com os números do próprio cliente. Você coloca numa pasta o que já tem (o resumo mensal de receitas, custos, impostos e saldo e, se quiser, despesas e preços) e a sua IA monta um relatório de 2 páginas para o dono da empresa: quanto sobra, como está o caixa, quanto ele recolheria de CBS/IBS em 2027 em dois cenários de alíquota, o efeito do split payment, o que chamou a atenção e 3 prioridades. Um conferidor garante que todo número do relatório veio dos dados. É um kit do INEMA, não oficial, e não substitui a análise técnica do contador.
+O seu cliente vai perguntar quanto a Reforma Tributária pesa no caixa dele em 2027. Este kit gratuito ajuda o contador a responder com os números do próprio cliente. Você coloca numa pasta o que já tem (o resumo mensal de receitas, custos, impostos e saldo e, se quiser, despesas e preços) e a sua IA monta um relatório de 2 páginas para o dono da empresa: quanto sobra, como está o caixa, quanto ele recolheria de CBS/IBS em 2027 em dois cenários de alíquota, o efeito do split payment, o que chamou a atenção e 3 prioridades. Um conferidor garante que todo número do relatório veio dos dados. Na mesma pasta do cliente rodam mais 3 kits: o **Reforma Tributária Pronta** (o que falta no cadastro, no sistema e nos contratos), o **Preço certo na Reforma** (preço mínimo e preço-alvo por produto) e o **Painel do Empresário** (o fechamento do mês em texto simples). É um kit do INEMA, não oficial, e não substitui a análise técnica do contador.
 
 ## Os 4 kits (a mesma pasta do cliente serve para todos)
 
@@ -14,8 +14,8 @@ O seu cliente vai perguntar quanto a Reforma Tributária pesa no caixa dele em 2
 |---|---|---|---|
 | 1. Diagnóstico Reforma + Caixa | Relatório de 2 páginas: caixa, margem, CBS/IBS de 2027, split payment, 3 prioridades | `kit/diagnostico.py` | [guia](https://inematds.github.io/contabilidade2027/guia/) |
 | 2. Reforma Tributária Pronta | Plano por CNPJ: pendências do cadastro (NCM/NBS, CST, cClassTrib), fornecedores e crédito, checklist e prazos | `kit/reforma_pronta.py` | [guia](https://inematds.github.io/contabilidade2027/guia/reforma-pronta/) |
-| 3. Preço certo na Reforma | Preço mínimo e preço-alvo por produto em 2027 | em breve | — |
-| 4. Painel do Empresário | Caixa projetado e resultado do mês em texto simples | em breve | — |
+| 3. Preço certo na Reforma | Por item: margem de hoje e em 2027, preço mínimo, preço-alvo e desconto máximo | `kit/preco_certo.py` | [guia](https://inematds.github.io/contabilidade2027/guia/preco-certo/) |
+| 4. Painel do Empresário | Fechamento do mês em texto simples: resultado, comparações, caixa de 3 meses, contas, alertas e o que fazer | `kit/painel.py` | [guia](https://inematds.github.io/contabilidade2027/guia/painel/) |
 
 ## 📖 Guia de uso
 
@@ -25,7 +25,7 @@ Guia completo: **https://inematds.github.io/contabilidade2027/guia/**
 
 ## Peça para a sua IA
 
-Abra o Claude Code ou o Codex numa pasta do seu computador e cole o pedido de [`kit/PEDIDO.md`](kit/PEDIDO.md). Ele manda a IA rodar o exemplo, montar a pasta do seu cliente, gerar o relatório, reescrever em linguagem simples sem mexer nos números e conferir. Nada é enviado a ninguém: você revisa e fala com o cliente.
+Abra o Claude Code ou o Codex numa pasta do seu computador e cole o pedido do kit que você quer, em [`kit/PEDIDO.md`](kit/PEDIDO.md) (um por kit). Ele manda a IA rodar o exemplo, montar a pasta do seu cliente, gerar o relatório, reescrever em linguagem simples sem mexer nos números e conferir. Nada é enviado a ninguém: você revisa e fala com o cliente.
 
 ## O que o relatório traz
 
@@ -58,7 +58,7 @@ Copie `kit/modelo/` e preencha. CSV com separador `;` e vírgula decimal, como o
 
 | Arquivo | Obrigatório | Colunas |
 |---|---|---|
-| `empresa.json` | sim | `nome`, `regime` (`simples`, `presumido` ou `real`), `atividade`, `reducao_aliquota_pct` (0, 30 ou 60), `cenarios_cbs_pct`, `ibs_2027_pct`, `prazo_medio_recebimento_dias`, `dia_vencimento_impostos`, `vendas_para_empresas_pct`, `margem_alvo_pct` |
+| `empresa.json` | sim | `nome`, `regime` (`simples`, `presumido` ou `real`), `atividade`, `reducao_aliquota_pct` (0, 30 ou 60), `cenarios_cbs_pct`, `ibs_2027_pct`, `prazo_medio_recebimento_dias`, `dia_vencimento_impostos`, `vendas_para_empresas_pct`, `margem_alvo_pct`; opcionais: `aliquota_simples_pct` (Simples, kit 3), `outros_impostos_pct` e `rateio_fixas_pct` (kits 1 e 3) |
 | `mensal.csv` | sim (3+ meses) | `mes;receita;compras_com_credito;custo_direto;despesas_operacionais;pis_cofins_pago;outros_impostos;saldo_caixa_fim` |
 | `despesas.csv` | não | `mes;categoria;valor` (o último mês é comparado com a média dos anteriores) |
 | `produtos.csv` | não | `item;preco;custo_direto;qtd_mes` |
@@ -77,7 +77,7 @@ Copie `kit/modelo/` e preencha. CSV com separador `;` e vírgula decimal, como o
 ### Kit 2 — Reforma Tributária Pronta
 
 ```bash
-python3 kit/reforma_pronta.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/plano.md, pendencias.csv e dados.json
+python3 kit/reforma_pronta.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/reforma-pronta/plano.md, pendencias.csv e dados.json
 ```
 
 Arquivos a mais na pasta do cliente (modelos em `kit/modelo/`):
@@ -91,12 +91,61 @@ Arquivos a mais na pasta do cliente (modelos em `kit/modelo/`):
 O que ele confere:
 - Formato dos códigos: NCM com 8 dígitos, NBS com 9, CST com 3, cClassTrib com 6.
 - Se o cClassTrib começa pelo CST. Nos exemplos oficiais da calculadora aberta da Receita, 000 vem com 000001 e 200 com 200xxx; aqui é só "conferir", não erro.
-- Redução fora de 30/60/100%, ou redução sem cClassTrib.
+- Redução contra o CST: redução com CST 000 (tributação integral), CST 200 (alíquota reduzida) sem redução, redução sem cClassTrib. Redução fora de 30/60/100% vira "conferir".
 - Os itens que somam 80% das vendas.
 - A fatia das compras de fornecedor do Simples ou MEI, que geram crédito limitado ao que o fornecedor paga no Simples (LC 214, art. 47).
 - No Simples, a próxima janela da opção de recolher a CBS/IBS fora do DAS (setembro e março; LC 123, art. 13, § 10).
 
 Ele **não** diz se o código é o certo para o item: isso é com o contador, na tabela oficial ou no [motor da Receita](https://github.com/inematds/calculadora-da-reforma).
+
+### Kit 3 — Preço certo na Reforma
+
+```bash
+python3 kit/preco_certo.py kit/exemplos/agencia        # gera saida/preco-certo/precos.md, precos.csv e dados.json
+```
+
+Usa `empresa.json`, `mensal.csv` e `produtos.csv`. O `produtos.csv` aceita estas colunas opcionais:
+- `custo_com_credito`: R$ do custo do item que gera crédito. Sem ela, o kit usa a mesma proporção da empresa, `compras_com_credito ÷ custo_direto`.
+- `comissao_pct` e `taxa_pct`: cartão, marketplace e gateway.
+
+No Simples, o `empresa.json` precisa de `aliquota_simples_pct` (a alíquota efetiva do DAS, do PGDAS-D).
+
+Como calcula (método do markup, a mesma conta do Diagnóstico, em `kit/comum.py`):
+- O preço cobre o custo, a comissão e a taxa, os outros impostos sobre a venda e o rateio das despesas fixas.
+  - Os outros impostos (ISS/ICMS, IR/CSLL do Presumido) são `outros_impostos ÷ receita` do `mensal.csv`, ou `outros_impostos_pct` no `empresa.json`. No Simples são zero, porque o DAS já os reúne.
+  - O rateio das despesas fixas é `despesas_operacionais ÷ receita`, ou `rateio_fixas_pct`.
+- O imposto sobre o consumo é o PIS/Cofins efetivo hoje e, em 2027, `(preço − custo com crédito) × alíquota de referência × (1 − redução)`. No Simples, é a alíquota do DAS.
+- Margem = lucro por venda ÷ preço. Preço mínimo = equilíbrio (lucro zero). Preço-alvo = `margem_alvo_pct`. Desconto máximo = quanto o preço de hoje pode cair sem sair da margem-alvo.
+- Simplificações:
+  - o imposto é tratado como parte do preço informado (conservador, porque a CBS/IBS é "por fora");
+  - no Lucro Real, o IR/CSLL entra como fração da receita;
+  - o rateio pela receita pesa mais nos itens de custo alto.
+- O cenário principal é o maior (11,3%). O preço-alvo bate com o do Diagnóstico, e um teste garante isso.
+
+### Kit 4 — Painel do Empresário
+
+```bash
+python3 kit/painel.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/painel/painel.md e dados.json
+```
+
+O mês do painel é o último do `mensal.csv`. Arquivos opcionais (modelos em `kit/modelo/`):
+- `contas_receber.csv`: `cliente;valor;vencimento`
+- `contas_pagar.csv`: `fornecedor;valor;vencimento`
+
+O vencimento pode ser AAAA-MM-DD ou DD/MM/AAAA.
+
+O que o painel traz:
+- **Resultado:** DRE gerencial do mês, com variação contra o mês anterior e contra a média.
+- **Projeção:** 3 meses, pela variação média real do `saldo_caixa_fim` (o lucro não é caixa: retiradas, parcelas e investimentos ficam fora do DRE). Há um alerta quando o lucro médio é positivo e o saldo cai.
+- **Contas:** a receber e a pagar nos próximos 30 dias, os vencidos e os dias de atraso.
+- **Alertas:**
+  - margem 3 pontos abaixo da média;
+  - despesa fora do padrão;
+  - vencidos;
+  - caixa que cobre menos de meio mês;
+  - projeção negativa;
+  - folga negativa.
+- **Reserva do split payment:** sempre aparece, no Presumido e no Real. É a mesma conta do Diagnóstico.
 
 ### O conferidor
 
@@ -126,6 +175,8 @@ Serve para o passo em que a IA reescreve o relatório em linguagem simples.
 - a janela do Simples em 3 datas;
 - os erros de entrada e a linha de comando.
 
+`tests/test_reforma_pronta.py` (12, kit 2), `tests/test_preco_certo.py` (10, kit 3) e `tests/test_painel.py` (11, kit 4) conferem as contas à mão nos dois exemplos, a coerência com o Diagnóstico e os erros de entrada. Total: 48 testes.
+
 ## O processo, do início ao fim
 
 1. 🧠 Contador abre o Claude Code ou o Codex e cola o pedido de `kit/PEDIDO.md`.
@@ -135,8 +186,10 @@ Serve para o passo em que a IA reescreve o relatório em linguagem simples.
 5. 🧠 A IA reescreve em `relatorio.md`, em linguagem simples, sem mexer nos números.
 6. ⚙️ `python3 kit/conferir.py relatorio.md saida/dados.json`: tem de sair `ok`.
 7. 🧠 O contador revisa as premissas e leva o relatório para a reunião com o cliente.
-8. ⚙️ Kit 2: `python3 kit/reforma_pronta.py <pasta-do-cliente>` → `saida/plano.md` + `saida/pendencias.csv`. A pasta precisa ter o `itens.csv`.
-9. ⚙️ `python3 -m unittest discover -s tests`: antes de mudar o código.
+8. ⚙️ Kit 2: `python3 kit/reforma_pronta.py <pasta-do-cliente>` → `saida/reforma-pronta/` (plano.md, pendencias.csv). A pasta precisa ter o `itens.csv`.
+9. ⚙️ Kit 3: `python3 kit/preco_certo.py <pasta-do-cliente>` → `saida/preco-certo/` (precos.md, precos.csv).
+10. ⚙️ Kit 4, todo mês: acrescentar o mês no `mensal.csv` (e as contas, se tiver) → `python3 kit/painel.py <pasta-do-cliente>` → `saida/painel/painel.md`.
+11. ⚙️ `python3 -m unittest discover -s tests`: antes de mudar o código.
 
 ## Base
 

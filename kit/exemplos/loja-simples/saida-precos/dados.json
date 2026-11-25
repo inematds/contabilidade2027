@@ -14,6 +14,16 @@
       "texto": "8,0%",
       "origem": "alíquota efetiva do DAS (empresa.json, aliquota_simples_pct)"
     },
+    "outros_impostos_pct": {
+      "valor": 0.0,
+      "texto": "0,0%",
+      "origem": "outros impostos sobre a venda ÷ receita (ISS/ICMS e IR/CSLL do Presumido); 0 no Simples"
+    },
+    "rateio_fixas_pct": {
+      "valor": 24.4203,
+      "texto": "24,4%",
+      "origem": "despesas_operacionais ÷ receita: rateio das despesas fixas pelo preço (ou empresa.json)"
+    },
     "margem_alvo": {
       "valor": 12.0,
       "texto": "12,0%",
@@ -25,23 +35,23 @@
       "origem": "produtos.csv linha 2"
     },
     "p0_margem_hoje": {
-      "valor": 15.125,
-      "texto": "15,1%",
-      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+      "valor": 3.2047,
+      "texto": "3,2%",
+      "origem": "lucro por venda ÷ preço, hoje (custo, comissão/taxa, impostos e rateio das despesas fixas)"
     },
     "p0_preco_min": {
-      "valor": 264.3678,
-      "texto": "R$ 264,37",
-      "origem": "preço com margem zero (alíquota do DAS)"
+      "valor": 303.6128,
+      "texto": "R$ 303,61",
+      "origem": "preço de equilíbrio (lucro zero), com o DAS"
     },
     "p0_preco_alvo": {
-      "valor": 306.6667,
-      "texto": "R$ 306,67",
+      "valor": 375.6447,
+      "texto": "R$ 375,64",
       "origem": "preço que dá a margem-alvo de 12% (alíquota do DAS)"
     },
     "p0_desc_max": {
-      "valor": 4.1667,
-      "texto": "4,2%",
+      "valor": 0.0,
+      "texto": "0,0%",
       "origem": "desconto máximo que ainda mantém a margem-alvo"
     },
     "p1_preco": {
@@ -50,23 +60,23 @@
       "origem": "produtos.csv linha 3"
     },
     "p1_margem_hoje": {
-      "valor": 23.8421,
-      "texto": "23,8%",
-      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+      "valor": 4.685,
+      "texto": "4,7%",
+      "origem": "lucro por venda ÷ preço, hoje (custo, comissão/taxa, impostos e rateio das despesas fixas)"
     },
     "p1_preco_min": {
-      "valor": 27.5862,
-      "texto": "R$ 27,59",
-      "origem": "preço com margem zero (alíquota do DAS)"
+      "valor": 35.1552,
+      "texto": "R$ 35,16",
+      "origem": "preço de equilíbrio (lucro zero), com o DAS"
     },
     "p1_preco_alvo": {
-      "valor": 32.0,
-      "texto": "R$ 32,00",
+      "valor": 43.4957,
+      "texto": "R$ 43,50",
       "origem": "preço que dá a margem-alvo de 12% (alíquota do DAS)"
     },
     "p1_desc_max": {
-      "valor": 15.7895,
-      "texto": "15,8%",
+      "valor": 0.0,
+      "texto": "0,0%",
       "origem": "desconto máximo que ainda mantém a margem-alvo"
     },
     "p2_preco": {
@@ -75,18 +85,18 @@
       "origem": "produtos.csv linha 4"
     },
     "p2_margem_hoje": {
-      "valor": 9.8188,
-      "texto": "9,8%",
-      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+      "valor": -3.1921,
+      "texto": "-3,2%",
+      "origem": "lucro por venda ÷ preço, hoje (custo, comissão/taxa, impostos e rateio das despesas fixas)"
     },
     "p2_preco_min": {
-      "valor": 13.2184,
-      "texto": "R$ 13,22",
-      "origem": "preço com margem zero (alíquota do DAS)"
+      "valor": 15.66,
+      "texto": "R$ 15,66",
+      "origem": "preço de equilíbrio (lucro zero), com o DAS"
     },
     "p2_preco_alvo": {
-      "valor": 15.3333,
-      "texto": "R$ 15,33",
+      "valor": 19.3754,
+      "texto": "R$ 19,38",
       "origem": "preço que dá a margem-alvo de 12% (alíquota do DAS)"
     },
     "p2_desc_max": {
@@ -100,28 +110,43 @@
       "origem": "produtos.csv linha 5"
     },
     "p3_margem_hoje": {
-      "valor": 26.6985,
-      "texto": "26,7%",
-      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+      "valor": 7.3033,
+      "texto": "7,3%",
+      "origem": "lucro por venda ÷ preço, hoje (custo, comissão/taxa, impostos e rateio das despesas fixas)"
     },
     "p3_preco_min": {
-      "valor": 13.7931,
-      "texto": "R$ 13,79",
-      "origem": "preço com margem zero (alíquota do DAS)"
+      "valor": 17.5776,
+      "texto": "R$ 17,58",
+      "origem": "preço de equilíbrio (lucro zero), com o DAS"
     },
     "p3_preco_alvo": {
-      "valor": 16.0,
-      "texto": "R$ 16,00",
+      "valor": 21.7479,
+      "texto": "R$ 21,75",
       "origem": "preço que dá a margem-alvo de 12% (alíquota do DAS)"
     },
     "p3_desc_max": {
-      "valor": 19.598,
-      "texto": "19,6%",
+      "valor": 0.0,
+      "texto": "0,0%",
       "origem": "desconto máximo que ainda mantém a margem-alvo"
     },
+    "p0_falta_ano": {
+      "valor": 30048.1375,
+      "texto": "R$ 30.048,14",
+      "origem": "(preço-alvo − preço de hoje) × qtd_mes × 12"
+    },
+    "p1_falta_ano": {
+      "valor": 13849.1691,
+      "texto": "R$ 13.849,17",
+      "origem": "(preço-alvo − preço de hoje) × qtd_mes × 12"
+    },
     "p2_falta_ano": {
-      "valor": 1768.0,
-      "texto": "R$ 1.768,00",
+      "valor": 18259.4613,
+      "texto": "R$ 18.259,46",
+      "origem": "(preço-alvo − preço de hoje) × qtd_mes × 12"
+    },
+    "p3_falta_ano": {
+      "valor": 3769.616,
+      "texto": "R$ 3.769,62",
       "origem": "(preço-alvo − preço de hoje) × qtd_mes × 12"
     },
     "itens_total": {
@@ -130,8 +155,8 @@
       "origem": "produtos.csv (número de linhas)"
     },
     "itens_abaixo": {
-      "valor": 1,
-      "texto": "1",
+      "valor": 4,
+      "texto": "4",
       "origem": "itens abaixo da margem-alvo no cenário principal"
     }
   },
@@ -141,11 +166,11 @@
       "k": "p0",
       "preco": 320.0,
       "qtd": 45.0,
-      "margem_hoje": 0.15125,
+      "margem_hoje": 0.03204710144927538,
       "cen": [],
       "simples": {
-        "preco_min": 264.367816091954,
-        "preco_alvo": 306.6666666666667
+        "preco_min": 303.61278369615565,
+        "preco_alvo": 375.64469914040114
       }
     },
     {
@@ -153,11 +178,11 @@
       "k": "p1",
       "preco": 38.0,
       "qtd": 210.0,
-      "margem_hoje": 0.23842105263157892,
+      "margem_hoje": 0.04684973302822276,
       "cen": [],
       "simples": {
-        "preco_min": 27.586206896551726,
-        "preco_alvo": 32.0
+        "preco_min": 35.15516442797591,
+        "preco_alvo": 43.49570200573066
       }
     },
     {
@@ -165,11 +190,11 @@
       "k": "p2",
       "preco": 14.9,
       "qtd": 340.0,
-      "margem_hoje": 0.09818791946308726,
+      "margem_hoje": -0.03192101935609376,
       "cen": [],
       "simples": {
-        "preco_min": 13.218390804597702,
-        "preco_alvo": 15.333333333333334
+        "preco_min": 15.660027790643818,
+        "preco_alvo": 19.375358166189113
       }
     },
     {
@@ -177,25 +202,25 @@
       "k": "p3",
       "preco": 19.9,
       "qtd": 170.0,
-      "margem_hoje": 0.2669849246231155,
+      "margem_hoje": 0.07303328235379794,
       "cen": [],
       "simples": {
-        "preco_min": 13.793103448275863,
-        "preco_alvo": 16.0
+        "preco_min": 17.577582213987956,
+        "preco_alvo": 21.74785100286533
       }
     }
   ],
   "prioridades": [
     {
-      "texto": "Rever o preço de Lâmpada LED 9 W: para a margem-alvo, ele precisa ir de R$ 14,90 para R$ 15,33 (R$ 1.768,00 por ano, na quantidade de hoje).",
+      "texto": "Rever o preço de Fio elétrico 2,5 mm (rolo 100 m): para a margem-alvo, ele precisa ir de R$ 320,00 para R$ 375,64 (R$ 30.048,14 por ano, na quantidade de hoje).",
+      "chave": "p0_preco_alvo"
+    },
+    {
+      "texto": "Rever o preço de Lâmpada LED 9 W: para a margem-alvo, ele precisa ir de R$ 14,90 para R$ 19,38 (R$ 18.259,46 por ano, na quantidade de hoje).",
       "chave": "p2_preco_alvo"
     },
     {
-      "texto": "Conferir todo mês a alíquota efetiva do DAS (hoje 8,0%): ela muda com a receita dos últimos doze meses, e com ela o preço mínimo.",
-      "chave": "imp_hoje_pct"
-    },
-    {
-      "texto": "Refazer a tabela quando o Senado fixar a alíquota de referência e a cada reajuste de custo.",
+      "texto": "Rever ou parar de vender o que não paga a sua parte da estrutura: Lâmpada LED 9 W fica com margem negativa.",
       "chave": "margem_alvo"
     }
   ]

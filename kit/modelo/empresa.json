@@ -8,5 +8,8 @@
   "prazo_medio_recebimento_dias": 0,
   "dia_vencimento_impostos": 25,
   "vendas_para_empresas_pct": 0,
-  "margem_alvo_pct": 15
+  "margem_alvo_pct": 15,
+  "aliquota_simples_pct": null,
+  "outros_impostos_pct": null,
+  "rateio_fixas_pct": null
 }

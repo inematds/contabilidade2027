@@ -1,4 +1,4 @@
-# Diagnóstico Reforma + Caixa
+# contabilidade2027 — Diagnóstico Reforma + Caixa y 3 kits más para contadores
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
@@ -6,7 +6,16 @@
 
 ## Qué es
 
-Tu cliente va a preguntar cuánto impacta la Reforma Tributaria en su flujo de caja en 2027. Este kit gratuito ayuda al contador a responder con los números del propio cliente. Colocas en una carpeta lo que ya tienes (el resumen mensual de ingresos, costos, impuestos y saldo y, si quieres, gastos y precios) y tu IA prepara un informe de 2 páginas para el dueño de la empresa: cuánto queda, cómo está el flujo de caja, cuánto pagaría de CBS/IBS en 2027 en dos escenarios de tasa, el efecto del split payment, qué llamó la atención y 3 prioridades. Un verificador garantiza que todos los números del informe provengan de los datos. Es un kit de INEMA, no oficial, y no sustituye el análisis técnico del contador.
+Tu cliente va a preguntar cuánto pesa la Reforma Tributaria en su caja en 2027. Este kit gratuito ayuda al contador a responder con los números del propio cliente. Pones en una carpeta lo que ya tienes (el resumen mensual de ingresos, costos, impuestos y saldo y, si quieres, gastos y precios) y tu IA arma un informe de 2 páginas para el dueño de la empresa: cuánto sobra, cómo está la caja, cuánto recaudaría de CBS/IBS en 2027 en dos escenarios de alícuota, el efecto del split payment, lo que llamó la atención y 3 prioridades. Un verificador garantiza que cada número del informe salió de los datos. En la misma carpeta del cliente corren 3 kits más: el **Reforma Tributária Pronta** (lo que falta en el registro, en el sistema y en los contratos), el **Preço certo na Reforma** (precio mínimo y precio objetivo por producto) y el **Painel do Empresário** (el cierre del mes en texto simple). Es un kit de INEMA, no oficial, y no sustituye el análisis técnico del contador.
+
+## Los 4 kits (la misma carpeta del cliente sirve para todos)
+
+| Kit | Qué entrega | Programa | Guía |
+|---|---|---|---|
+| 1. Diagnóstico Reforma + Caixa | Informe de 2 páginas: caja, margen, CBS/IBS de 2027, split payment, 3 prioridades | `kit/diagnostico.py` | [guía](https://inematds.github.io/contabilidade2027/guia/es/) |
+| 2. Reforma Tributária Pronta | Plan por CNPJ: pendientes del registro (NCM/NBS, CST, cClassTrib), proveedores y crédito, checklist y plazos | `kit/reforma_pronta.py` | [guía](https://inematds.github.io/contabilidade2027/guia/es/reforma-pronta/) |
+| 3. Preço certo na Reforma | Por ítem: margen de hoy y en 2027, precio mínimo, precio objetivo y descuento máximo | `kit/preco_certo.py` | [guía](https://inematds.github.io/contabilidade2027/guia/es/preco-certo/) |
+| 4. Painel do Empresário | Cierre del mes en texto simple: resultado, comparaciones, caja de 3 meses, cuentas, alertas y qué hacer | `kit/painel.py` | [guía](https://inematds.github.io/contabilidade2027/guia/es/painel/) |
 
 ## 📖 Guía de uso
 
@@ -14,17 +23,17 @@ Guía completa: **https://inematds.github.io/contabilidade2027/guia/es/**
 
 <!-- VIDEO: entra o explicavideo do projeto quando publicado -->
 
-## Pídele ayuda a tu IA
+## Pídele a tu IA
 
-Abre Claude Code o Codex en una carpeta de tu computadora y pega la solicitud de [`kit/PEDIDO.md`](kit/PEDIDO.md). La IA ejecutará el ejemplo, preparará la carpeta de tu cliente, generará el informe, lo reescribirá en lenguaje sencillo sin modificar los números y lo verificará. No se envía nada a nadie: tú revisas el informe y hablas con el cliente.
+Abre Claude Code o Codex en una carpeta de tu computadora y pega el pedido del kit que quieres, en [`kit/PEDIDO.md`](kit/PEDIDO.md) (uno por kit). Le indica a la IA que ejecute el ejemplo, arme la carpeta de tu cliente, genere el informe, lo reescriba en lenguaje simple sin tocar los números y lo verifique. Nada se envía a nadie: tú revisas y hablas con el cliente.
 
-## Qué incluye el informe
+## Qué trae el informe
 
-1. **Cuánto queda:** ingresos, ganancias y margen del período, y el margen de los últimos 3 meses comparado con el de los meses anteriores.
-2. **Tu flujo de caja:** saldo, salidas promedio, cuántos meses de salidas cubre el saldo y los meses de mayor presión.
-3. **Reforma en 2027 (SIMULADO):** PIS/Cofins actual × CBS/IBS en dos escenarios (8,8% del ejemplo oficial de Receita y 11,3% de la recomendación del TCU), una nota para quienes venden a empresas y cuánto impuesto deja de pasar por el flujo de caja con el split payment. En el Simples, el aviso sobre créditos para clientes empresariales.
-4. **Qué llamó la atención:** gastos por encima del promedio y artículos con margen por debajo de la meta, con el precio mínimo.
-5. **3 prioridades**, ordenadas por valor en R$, cada una vinculada a un servicio que el contador puede ofrecer, más una agenda para una reunión de 30 minutos.
+1. **Cuánto sobra:** ingresos, ganancia y margen del período, y el margen de los 3 últimos meses comparado con el de los anteriores.
+2. **Tu caja:** saldo, salidas promedio, cuántos meses de salidas cubre la caja y los meses de aprieto.
+3. **Reforma en 2027 (SIMULADO):** PIS/Cofins de hoy × CBS/IBS en dos escenarios (8,8% del ejemplo oficial de la Receita y 11,3% de la recomendación del TCU), la nota para quien vende a empresas y cuánto impuesto deja de pasar por la caja con el split payment. En el Simples, el aviso sobre crédito para clientes empresas.
+4. **Lo que llamó la atención:** gasto por encima del promedio e ítem con margen por debajo de la meta, con el precio mínimo.
+5. **3 prioridades**, ordenadas por el valor en R$, cada una ligada a un servicio que el contador puede ofrecer, más una agenda de reunión de 30 minutos.
 
 Ejemplos listos: [`kit/exemplos/agencia/saida-exemplo/relatorio-base.md`](kit/exemplos/agencia/saida-exemplo/relatorio-base.md) (Lucro Presumido) y [`kit/exemplos/loja-simples/saida-exemplo/relatorio-base.md`](kit/exemplos/loja-simples/saida-exemplo/relatorio-base.md) (Simples). Todos los datos son ficticios.
 
@@ -32,7 +41,7 @@ Ejemplos listos: [`kit/exemplos/agencia/saida-exemplo/relatorio-base.md`](kit/ex
 
 ## Instalación técnica
 
-Solo necesitas **Python 3.9+**, sin bibliotecas adicionales. No usa internet ni modelos de IA: el script solo lee y calcula.
+Solo necesita **Python 3.9+**, sin bibliotecas extra. No usa internet ni modelo de IA: el script solo lee y calcula.
 
 ```bash
 git clone https://github.com/inematds/contabilidade2027 && cd contabilidade2027
@@ -45,60 +54,142 @@ python3 -m unittest discover -s tests                        # 15 testes
 
 ### La carpeta del cliente
 
-Copia `kit/modelo/` y complétala. CSV con separador `;` y coma decimal, como los guarda Excel en portugués.
+Copia `kit/modelo/` y complétala. CSV con separador `;` y coma decimal, como Excel lo guarda en portugués.
 
 | Archivo | Obligatorio | Columnas |
 |---|---|---|
-| `empresa.json` | sí | `nome`, `regime` (`simples`, `presumido` ou `real`), `atividade`, `reducao_aliquota_pct` (0, 30 ou 60), `cenarios_cbs_pct`, `ibs_2027_pct`, `prazo_medio_recebimento_dias`, `dia_vencimento_impostos`, `vendas_para_empresas_pct`, `margem_alvo_pct` |
+| `empresa.json` | sí | `nome`, `regime` (`simples`, `presumido` o `real`), `atividade`, `reducao_aliquota_pct` (0, 30 o 60), `cenarios_cbs_pct`, `ibs_2027_pct`, `prazo_medio_recebimento_dias`, `dia_vencimento_impostos`, `vendas_para_empresas_pct`, `margem_alvo_pct` |
 | `mensal.csv` | sí (3+ meses) | `mes;receita;compras_com_credito;custo_direto;despesas_operacionais;pis_cofins_pago;outros_impostos;saldo_caixa_fim` |
 | `despesas.csv` | no | `mes;categoria;valor` (el último mes se compara con el promedio de los anteriores) |
 | `produtos.csv` | no | `item;preco;custo_direto;qtd_mes` |
 
-`compras_com_credito` es la parte de las compras que generará crédito de CBS/IBS (insumos y servicios de proveedores del régimen regular). La nómina no se incluye.
+`compras_com_credito` es la parte de las compras que va a generar crédito de CBS/IBS (insumos y servicios de proveedores del régimen regular). La nómina no entra.
 
 ### Cómo se hace el cálculo (premisas)
 
-- **CBS/IBS de 2027 (régimen regular):** `(receita − compras_com_credito) × alíquota de referência × (1 − redução)`, anualizado, comparado con el PIS/Cofins pagado. En 2027, la CBS es la referencia menos 0,1 punto (LC 214, art. 347) y el IBS es 0,05% estatal + 0,05% municipal (art. 344), por lo que ambos suman la propia referencia. Es una simplificación: la base es el ingreso informado, sin ajustes por otros impuestos (la LC 214, art. 12, excluye de la base la propia CBS/IBS y el IPI).
-- **Crédito:** solo sobre lo que informes en `compras_com_credito`. Las compras a proveedores del Simples generan un crédito limitado a lo que pagan en el Simples. Ajusta la columna.
-- **Producto:** usa la misma regla de crédito que la empresa. La parte del costo que genera crédito es `compras_com_credito ÷ custo_direto` del período. El precio mínimo devuelve la `margem_alvo_pct` en el peor escenario.
-- **Split payment:** `receita média × alíquota do pior cenário × dias ÷ 30`, con ventas a mitad de mes, cobro en `prazo_medio_recebimento_dias` y vencimiento el día `dia_vencimento_impostos` del mes siguiente. Es una estimación máxima, sin descontar créditos. La implementación es gradual y depende de un acto conjunto del Comité Gestor y de Receita (LC 214, art. 35).
-- **Simples:** no simula cambios en el DAS. Avisa cuando la mayor parte de las ventas es a empresas. La opción de pagar la CBS/IBS fuera del DAS es semestral, se elige en septiembre y marzo (LC 123, art. 13, §§ 9–10, con la redacción de la LC 227/2026).
-- **Todo lo de 2027 aparece marcado como SIMULADO.** La tasa de referencia de la CBS la fija el Senado (plazo: 15/12/2026). Vuelve a hacer el cálculo cuando se publique.
+- **CBS/IBS de 2027 (régimen regular):** `(receita − compras_com_credito) × alíquota de referência × (1 − redução)`, anualizado, comparado con el PIS/Cofins pagado. En 2027 la CBS es la referencia menos 0,1 punto (LC 214, art. 347) y el IBS es 0,05% estatal + 0,05% municipal (art. 344), así que los dos suman la propia referencia. Es una simplificación: la base es el ingreso informado, sin ajuste de otros tributos (la LC 214, art. 12, saca de la base la propia CBS/IBS y el IPI).
+- **Crédito:** solo sobre lo que informes en `compras_com_credito`. La compra a un proveedor del Simples genera crédito limitado a lo que él paga en el Simples. Ajusta la columna.
+- **Producto:** usa la misma regla de crédito de la empresa. La parte del costo que genera crédito es `compras_com_credito ÷ custo_direto` del período. El precio mínimo devuelve la `margem_alvo_pct` en el peor escenario.
+- **Split payment:** `receita média × alíquota do pior cenário × dias ÷ 30`, con venta a mitad de mes, cobro en `prazo_medio_recebimento_dias` y vencimiento el día `dia_vencimento_impostos` del mes siguiente. Es una estimación máxima, sin descontar créditos. La implantación es gradual y depende de un acto conjunto del Comité Gestor y de la Receita (LC 214, art. 35).
+- **Simples:** no simula cambio en el DAS. Avisa cuando la mayor parte de las ventas es a empresas. La opción de recaudar CBS/IBS fuera del DAS es semestral, hecha en septiembre y en marzo (LC 123, art. 13, §§ 9–10, con la redacción de la LC 227/2026).
+- **Todo lo de 2027 sale marcado como SIMULADO.** La alícuota de referencia de la CBS la fija el Senado (plazo 15/12/2026). Rehaz el cálculo cuando salga.
+
+### Kit 2 — Reforma Tributária Pronta
+
+```bash
+python3 kit/reforma_pronta.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/plano.md, pendencias.csv e dados.json
+```
+
+Archivos adicionales en la carpeta del cliente (modelos en `kit/modelo/`):
+
+| Archivo | Obligatorio | Columnas |
+|---|---|---|
+| `itens.csv` | sí | `item;tipo;codigo;cst;cclasstrib;reducao_pct;vendas_ano`. El `tipo` es `produto` (código NCM, 8 dígitos) o `servico` (código NBS, 9 dígitos) |
+| `fornecedores.csv` | no | `fornecedor;regime;compras_ano`. El `regime` es `regular`, `simples` o `mei` |
+| `prontidao.json` | no | `erp_atualizado`, `nota_teste`, `cadastro_revisado`, `contratos_revisados`, `precos_revisados`, `equipe_treinada`: `true`, `false` o `null` (no sé) |
+
+Qué verifica:
+- Formato de los códigos: NCM con 8 dígitos, NBS con 9, CST con 3, cClassTrib con 6.
+- Si el cClassTrib empieza por el CST. En los ejemplos oficiales de la calculadora abierta de la Receita, 000 viene con 000001 y 200 con 200xxx; aquí es solo "verificar", no error.
+- Reducción fuera de 30/60/100%, o reducción sin cClassTrib.
+- Los ítems que suman el 80% de las ventas.
+- La porción de las compras a proveedores del Simples o MEI, que generan crédito limitado a lo que el proveedor paga en el Simples (LC 214, art. 47).
+- En el Simples, la próxima ventana de la opción de recaudar la CBS/IBS fuera del DAS (septiembre y marzo; LC 123, art. 13, § 10).
+
+**No** dice si el código es el correcto para el ítem: eso le corresponde al contador, en la tabla oficial o en el [motor de la Receita](https://github.com/inematds/calculadora-da-reforma).
+
+### Kit 3 — Preço certo na Reforma
+
+```bash
+python3 kit/preco_certo.py kit/exemplos/agencia        # gera saida/precos.md, precos.csv e dados.json
+```
+
+Usa `empresa.json`, `mensal.csv` y `produtos.csv`. El `produtos.csv` acepta estas columnas opcionales:
+- `custo_com_credito`: R$ del costo del ítem que genera crédito. Sin ella, el kit usa la misma proporción de la empresa, `compras_com_credito ÷ custo_direto`.
+- `comissao_pct` y `taxa_pct`: tarjeta, marketplace y gateway.
+
+En el Simples, el `empresa.json` necesita `aliquota_simples_pct` (la alícuota efectiva del DAS, del PGDAS-D).
+
+Cómo calcula:
+- Margen = `(preço − custo − preço × (comissão + taxa) − imposto) ÷ preço`.
+- Impuesto de 2027 (régimen regular) = `(preço − custo com crédito) × alíquota de referência × (1 − redução)`.
+- Precio mínimo = margen cero. Precio objetivo = `margem_alvo_pct`.
+- Descuento máximo = cuánto puede caer el precio de hoy sin salir del margen objetivo.
+- El escenario principal es el mayor (11,3%). El precio objetivo coincide con el del Diagnóstico, y una prueba lo garantiza.
+
+### Kit 4 — Painel do Empresário
+
+```bash
+python3 kit/painel.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/painel.md e dados.json
+```
+
+El mes del panel es el último del `mensal.csv`. Archivos opcionales (modelos en `kit/modelo/`):
+- `contas_receber.csv`: `cliente;valor;vencimento`
+- `contas_pagar.csv`: `fornecedor;valor;vencimento`
+
+El vencimiento puede ser AAAA-MM-DD o DD/MM/AAAA.
+
+Qué trae el panel:
+- **Resultado:** DRE gerencial del mes, con variación contra el mes anterior y contra el promedio.
+- **Proyección:** 3 meses, por el promedio de entradas y salidas de los 3 últimos meses.
+- **Cuentas:** por cobrar y por pagar en los próximos 30 días, las vencidas y los días de atraso.
+- **Alertas:**
+  - margen 3 puntos por debajo del promedio;
+  - gasto fuera de lo normal;
+  - vencidas;
+  - caja que cubre menos de medio mes;
+  - proyección negativa;
+  - holgura negativa.
+- **Reserva del split payment:** la misma cuenta del Diagnóstico.
 
 ### El verificador
 
-`kit/conferir.py relatorio.md dados.json` devuelve el código 1 si el texto contiene:
-- un valor en R$, % o un número con coma que no esté en `dados.json`;
-- un redondeo expresado con palabras («62 mil»);
-- una cantidad de días o meses inventada.
+`kit/conferir.py relatorio.md dados.json` sale con código 1 si el texto tiene:
+- valor en R$, % o número con coma que no esté en el `dados.json`;
+- redondeo por extenso ("62 mil");
+- cantidad de días o meses inventada.
 
-Sirve para la etapa en que la IA reescribe el informe en lenguaje sencillo.
+Sirve para el paso en que la IA reescribe el informe en lenguaje simple.
 
 ### Las pruebas
 
-`tests/test_kit.py` (15) cubre:
-- el cálculo verificado manualmente en el ejemplo de la agencia (CBS, PIS/Cofins, split, gastos, precio mínimo);
+`tests/test_kit.py` (15, kit 1) cubre:
+- la cuenta verificada a mano en el ejemplo de la agencia (CBS, PIS/Cofins, split, gasto, precio mínimo);
 - el Simples;
 - el Lucro Real con crédito;
 - la reducción del 60%;
-- el verificador detectando números inventados, redondeados y premisas usadas como números;
-- errores de entrada y la línea de comandos.
+- el verificador detectando número inventado, redondeado y premisa usada como número;
+- los errores de entrada y la línea de comando.
+
+`tests/test_reforma_pronta.py` (11, kit 2) cubre:
+- el conteo de pendientes de la agencia y las ventas en riesgo;
+- los ítems que suman el 80% de las ventas;
+- los proveedores del Simples;
+- la prioridad 1;
+- cada regla de formato;
+- la ventana del Simples en 3 fechas;
+- los errores de entrada y la línea de comando.
+
+`tests/test_preco_certo.py` (9, kit 3) y `tests/test_painel.py` (9, kit 4) verifican las cuentas a mano en los dos ejemplos, la coherencia con el Diagnóstico y los errores de entrada. Total: 44 pruebas.
 
 ## El proceso, de principio a fin
 
-1. 🧠 El contador abre Claude Code o Codex y pega la solicitud de `kit/PEDIDO.md`.
-2. ⚙️ `python3 kit/diagnostico.py kit/exemplos/agencia`: ejecuta el ejemplo para ver el formato.
-3. 🧠 Prepara la carpeta del cliente a partir de `kit/modelo/`, con los datos que ya tiene.
+1. 🧠 El contador abre Claude Code o Codex y pega el pedido de `kit/PEDIDO.md`.
+2. ⚙️ `python3 kit/diagnostico.py kit/exemplos/agencia`: el ejemplo, para ver el formato.
+3. 🧠 Arma la carpeta del cliente a partir de `kit/modelo/`, con los datos que ya tiene.
 4. ⚙️ `python3 kit/diagnostico.py <pasta-do-cliente>` → `saida/relatorio-base.md` + `saida/dados.json`.
-5. 🧠 La IA reescribe el informe en `relatorio.md`, en lenguaje sencillo y sin modificar los números.
-6. ⚙️ `python3 kit/conferir.py relatorio.md saida/dados.json`: debe devolver `ok`.
+5. 🧠 La IA reescribe en `relatorio.md`, en lenguaje simple, sin tocar los números.
+6. ⚙️ `python3 kit/conferir.py relatorio.md saida/dados.json`: tiene que salir `ok`.
 7. 🧠 El contador revisa las premisas y lleva el informe a la reunión con el cliente.
-8. ⚙️ `python3 -m unittest discover -s tests`: antes de modificar el código.
+8. ⚙️ Kit 2: `python3 kit/reforma_pronta.py <pasta-do-cliente>` → `saida/plano.md` + `saida/pendencias.csv`. La carpeta debe tener el `itens.csv`.
+9. ⚙️ Kit 3: `python3 kit/preco_certo.py <pasta-do-cliente>` → `saida/precos.md` + `saida/precos.csv`.
+10. ⚙️ Kit 4, cada mes: agregar el mes en el `mensal.csv` (y las cuentas, si las hay) → `python3 kit/painel.py <pasta-do-cliente>` → `saida/painel.md`.
+11. ⚙️ `python3 -m unittest discover -s tests`: antes de cambiar el código.
 
-## Fuentes
+## Base
 
-- Tasas de los escenarios: [kit calculadora-da-reforma](https://github.com/inematds/calculadora-da-reforma) (ejemplo oficial de Receita con CBS de 8,8%) y [TCU, 28/10/2026](https://portal.tcu.gov.br/imprensa/noticias/tcu-calcula-aliquota-de-referencia-de-113-para-novo-tributo-sobre-consumo) (tasa de referencia de 11,3%; el Senado la fija hasta el 15/12).
-- Reglas de 2027: [LC 214/2025, texto no Senado](https://legis.senado.leg.br/norma/40180341/publicacao/40181429) (arts. 12, 35, 47, 344 e 347) y [LC 227/2026, texto atualizado na Câmara](https://www2.camara.leg.br/legin/fed/leicom/2026/leicomplementar-227-13-janeiro-2026-798657-normaatualizada-pl.html) (opção do Simples). Verificado el 24/11/2026.
-- Para verificar el cálculo ítem por ítem en el motor oficial de Receita, usa la prueba del motor de calculadora-da-reforma.
+- Alícuotas de escenario: [kit calculadora-da-reforma](https://github.com/inematds/calculadora-da-reforma) (ejemplo oficial de la Receita con CBS de 8,8%) y [TCU, 28/10/2026](https://portal.tcu.gov.br/imprensa/noticias/tcu-calcula-aliquota-de-referencia-de-113-para-novo-tributo-sobre-consumo) (alícuota de referencia de 11,3%; el Senado fija hasta el 15/12).
+- Reglas de 2027: [LC 214/2025, texto en el Senado](https://legis.senado.leg.br/norma/40180341/publicacao/40181429) (arts. 12, 35, 47, 344 y 347) y [LC 227/2026, texto actualizado en la Cámara](https://www2.camara.leg.br/legin/fed/leicom/2026/leicomplementar-227-13-janeiro-2026-798657-normaatualizada-pl.html) (opción del Simples). Verificado el 24/11/2026.
+- Para verificar el cálculo ítem por ítem en el motor oficial de la Receita, usa la prueba del motor de la calculadora-da-reforma.
 
-Licencia MIT. Kit de INEMA, no oficial. No sustituye el análisis técnico del contador. Gratis en inema.club, directamente en internet.
+Licencia MIT. Kit de INEMA, no oficial. No sustituye el análisis técnico del contador. Gratis en inema.club, directo en internet.

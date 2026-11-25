@@ -63,8 +63,13 @@ class Regras(unittest.TestCase):
         self.assertEqual(self.item(codigo="8544.49"), ["codigo"])          # NCM com 6 dígitos
         self.assertEqual(self.item(cst="00"), ["cst"])
         self.assertEqual(self.item(cclasstrib="200001"), ["cclasstrib"])  # não começa pelo CST 000
-        self.assertEqual(self.item(reducao_pct=45), ["reducao_pct"])      # fora de 30/60/100
-        self.assertEqual(self.item(reducao_pct=60, cclasstrib=""), ["cclasstrib", "reducao_pct"])
+        self.assertEqual(self.item(reducao_pct=45, cst="200", cclasstrib="200003"), ["reducao_pct"])  # fora de 30/60/100
+        self.assertEqual(self.item(reducao_pct=60, cst="200", cclasstrib=""), ["cclasstrib", "reducao_pct"])
+
+    def test_cst_contra_reducao(self):
+        self.assertEqual(self.item(reducao_pct=60), ["reducao_pct"])                      # CST 000 é tributação integral
+        self.assertEqual(self.item(cst="200", cclasstrib="200003"), ["reducao_pct"])     # CST 200 sem redução
+        self.assertEqual(self.item(reducao_pct=60, cst="200", cclasstrib="200028"), [])
 
     def test_janela_do_simples(self):
         self.assertEqual(R.proxima_janela_simples(dt.date(2026, 11, 25)), (dt.date(2027, 3, 1), dt.date(2027, 7, 1)))

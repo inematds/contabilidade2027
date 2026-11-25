@@ -13,7 +13,7 @@ Arquivos da pasta (os mesmos do Diagnóstico + dois opcionais):
   contas_receber.csv            opcional  cliente;valor;vencimento   (vencimento AAAA-MM-DD ou DD/MM/AAAA)
   contas_pagar.csv              opcional  fornecedor;valor;vencimento
 
-Gera em saida/: painel.md (para mandar ao cliente ou ler na reunião) e dados.json.
+Gera em saida/painel/ (para não apagar o dados.json do Diagnóstico, que fica em saida/): painel.md (para mandar ao cliente ou ler na reunião) e dados.json.
 Só lê e calcula. A projeção é uma estimativa simples (média dos últimos 3 meses + contas lançadas).
 """
 import datetime as dt
@@ -92,26 +92,39 @@ def painel(emp, mensal, despesas, receber, pagar, hoje):
     N.add("janela_dias", 30, "int", "janela de curto prazo do painel")
     N.add("meses_media", 3, "int", "meses usados na média da projeção")
     N.add("margem_media", med_mar, "pct", f"margem média dos {len(hist)} meses anteriores")
+    N.add("meses_hist", len(hist), "int", "meses anteriores usados nas médias")
     N.add("margem_dif", margem(m) - med_mar, "pct", "margem do mês − margem média (pontos percentuais)")
     N.add("lucro_medio", med_luc, "brl", f"lucro médio dos {len(hist)} meses anteriores")
 
-    # caixa: projeção simples de 3 meses
+    # caixa: projeção pela variação REAL do saldo (o lucro não é caixa: retiradas, parcelas e investimentos saem fora do DRE)
     ult3 = mensal[-3:]
     ent = sum(x["receita"] for x in ult3) / 3
     sai = sum(x["custo_direto"] + x["despesas_operacionais"] + x["pis_cofins_pago"] + x["outros_impostos"] for x in ult3) / 3
+    base = mensal[-4:] if len(mensal) >= 4 else mensal
+    deltas = [b["saldo_caixa_fim"] - a["saldo_caixa_fim"] for a, b in zip(base, base[1:])]
+    var_saldo = sum(deltas) / len(deltas) if deltas else 0.0
+    luc3 = sum(lucro(x) for x in ult3) / 3
     N.add("saldo", m["saldo_caixa_fim"], "brl", f"saldo_caixa_fim de {mes}")
     N.add("entrada_media", ent, "brl", "receita média dos 3 últimos meses")
     N.add("saida_media", sai, "brl", "saídas médias dos 3 últimos meses (custo + despesas + impostos)")
+    N.add("var_saldo", var_saldo, "brl", f"variação média do saldo_caixa_fim nos últimos {len(deltas)} meses")
+    N.add("var_saldo_abs", abs(var_saldo), "brl", "variação média do saldo, sem o sinal")
+    N.add("lucro_3m", luc3, "brl", "lucro médio dos 3 últimos meses")
+    N.add("meses_var", len(deltas), "int", "meses usados na variação do saldo")
     fim = dt.date(int(mes.split("/")[1]), int(mes.split("/")[0]), 1)
     proj = []
     saldo = m["saldo_caixa_fim"]
     for k in range(1, 4):
         a, mm = fim.year + (fim.month - 1 + k) // 12, (fim.month - 1 + k) % 12 + 1
         rot = f"{mm:02d}/{a}"
-        saldo += ent - sai
-        N.add(f"proj_{k}", saldo, "brl", f"saldo + (entrada_media − saida_media) × {k}  ({rot})")
+        saldo += var_saldo
+        N.add(f"proj_{k}", saldo, "brl", f"saldo + variação média do saldo × {k}  ({rot})")
         proj.append({"mes": rot, "saldo": saldo, "k": k})
     negativo = [p for p in proj if p["saldo"] < 0]
+    # o resultado e o caixa contam histórias diferentes? (lucro positivo e saldo caindo)
+    diverge = luc3 > 0 and var_saldo < luc3 * 0.5 and luc3 - var_saldo >= 1000
+    if diverge:
+        N.add("fora_dre", luc3 - var_saldo, "brl", "lucro médio − variação média do saldo: dinheiro que saiu fora do resultado")
 
     # contas a receber e a pagar
     rec = {}
@@ -155,6 +168,10 @@ def painel(emp, mensal, despesas, receber, pagar, hoje):
     curto = folego < 0.5
     if curto:
         alertas.append(f"O caixa cobre só {N.itens['folego']['texto']} mês de saídas: qualquer atraso de cliente aperta.")
+    if diverge:
+        alertas.append(f"O resultado e o caixa não batem: sobraram em média {N.itens['lucro_3m']['texto']} por mês no resultado, mas o saldo "
+                       + ("caiu" if var_saldo < 0 else "subiu só") + f" {N.itens['var_saldo_abs']['texto']} por mês. Cerca de {N.itens['fora_dre']['texto']} por mês saem "
+                       "fora do resultado: confira retiradas dos sócios, parcelas de empréstimo e investimentos.")
     if negativo:
         alertas.append(f"O caixa projetado fica negativo em {negativo[0]['mes']} ({N.itens['proj_' + str(negativo[0]['k'])]['texto']}), "
                        "se nada mudar.")
@@ -166,6 +183,8 @@ def painel(emp, mensal, despesas, receber, pagar, hoje):
     if rec.get("vencidos"):
         c0 = rec["vencidos"][0]
         fazer.append(f"Cobrar {c0['cliente']}: {N.itens['venc_0']['texto']} vencidos há {N.itens['venc_0_dias']['texto']} dias.")
+    if diverge:
+        fazer.append("Conferir com o dono para onde foi o dinheiro que sobrou no resultado (retiradas, parcelas, investimentos).")
     if negativo or ("folga_30" in N.itens and N.itens["folga_30"]["valor"] < 0):
         fazer.append("Rever as saídas dos próximos meses ou antecipar recebimentos: o caixa projetado aperta.")
     if curto:
@@ -175,8 +194,6 @@ def painel(emp, mensal, despesas, receber, pagar, hoje):
         fazer.append(f"Entender por que {f0['categoria']} subiu e decidir se continua.")
     if N.itens["margem_dif"]["valor"] <= -3:
         fazer.append("Rever preços e custos dos itens que mais vendem (kit Preço certo na Reforma).")
-    if "split_giro" in N.itens:
-        fazer.append(f"Guardar uma reserva para o split payment, que vai chegar aos poucos: até {N.itens['split_giro']['texto']} deixam de passar pelo caixa antes do vencimento.")
     if receber is None or pagar is None:
         fazer.append("Lançar as contas a receber e a pagar no próximo painel: assim a folga dos próximos 30 dias aparece.")
     fazer.append("Manter a conversa curta de fechamento todo mês, com este painel.")
@@ -196,24 +213,27 @@ def painel_md(d):
          "O fechamento do mês em linguagem simples. Preparado pelo seu contador com o kit aberto do INEMA (não oficial).", "",
          "## 1. Como foi o mês",
          f"- Você vendeu {T('receita')} e sobrou {T('lucro')}: margem de {T('margem')}.",
-         f"- A venda {sobe('var_rec_ant')} contra o mês anterior e {sobe('var_rec_med')} contra a média.",
-         f"- O lucro {sobe('var_luc_ant')} contra o mês anterior. A margem média dos meses anteriores foi {T('margem_media')}.", "",
+         f"- A venda {sobe('var_rec_ant')} contra o mês anterior e {sobe('var_rec_med')} contra a média dos {T('meses_hist')} meses anteriores.",
+         f"- O lucro {sobe('var_luc_ant')} contra o mês anterior. A margem média dos {T('meses_hist')} meses anteriores foi {T('margem_media')}.", "",
          "## 2. O resultado, linha por linha",
          f"- Vendas: {T('receita')}",
          f"- (−) Custo direto: {T('custo')}",
          f"- (=) Sobra depois do custo: {T('bruta')}",
          f"- (−) Despesas do dia a dia: {T('despesas')}",
          f"- (−) Impostos: {T('impostos')}",
-         f"- (=) Lucro do mês: {T('lucro')}", "",
+         f"- (=) Lucro do mês: {T('lucro')} (antes das retiradas dos sócios e das parcelas de empréstimo)", "",
          "## 3. O caixa"]
-    L.append(f"- Saldo no fim do mês: {T('saldo')}. Nos últimos 3 meses entraram em média {T('entrada_media')} e saíram {T('saida_media')} por mês.")
-    L.append("- Se o ritmo continuar: " + "; ".join(f"{p['mes']}: {T('proj_' + str(p['k']))}" for p in d["projecao"]) + ".")
+    L.append(f"- Saldo no fim do mês: {T('saldo')}. Nos últimos {T('meses_var')} meses o saldo "
+             + ("caiu" if d["numeros"]["var_saldo"]["valor"] < 0 else "subiu") + f" em média {T('var_saldo_abs')} por mês.")
+    L.append("- Se o saldo continuar nesse ritmo: " + "; ".join(f"{p['mes']}: {T('proj_' + str(p['k']))}" for p in d["projecao"]) + ".")
     if d["tem_receber"]:
         L.append(f"- A receber nos próximos 30 dias: {T('receber_30')}. Já vencido: {T('receber_vencido')}.")
     if d["tem_pagar"]:
         L.append(f"- A pagar nos próximos 30 dias: {T('pagar_30')}.")
     if "folga_30" in d["numeros"]:
-        L.append(f"- Folga dos próximos 30 dias (saldo + a receber − a pagar, só com as contas lançadas): {T('folga_30')}.")
+        L.append(f"- Folga dos próximos 30 dias (saldo + a receber − a pagar): {T('folga_30')}. É um teto: só conta as contas lançadas e não conta os vencidos.")
+    if "split_giro" in d["numeros"]:
+        L.append(f"- Reforma: quando o split payment chegar (ele vai entrar aos poucos), até {T('split_giro')} de imposto deixam de passar pelo caixa antes do vencimento. Vale guardar essa reserva.")
     L.append("")
     L.append("## 4. Alertas")
     L += [f"- {a}" for a in d["alertas"]] or ["- Nenhum alerta neste mês."]
@@ -222,7 +242,7 @@ def painel_md(d):
     for i, f in enumerate(d["fazer"], 1):
         L.append(f"{i}. {f}")
     L.append("")
-    L.append("Como ler: a projeção do caixa repete a média dos últimos 3 meses e não conta com venda nova nem corte; serve para enxergar a tendência.")
+    L.append("Como ler: a projeção do caixa repete a variação média do saldo dos últimos meses e não conta com venda nova nem corte; serve para enxergar a tendência.")
     L.append("")
     L.append(f"---\nOrigem de cada número: `dados.json`. Kit Painel do Empresário v{d['versao']} (INEMA, não oficial).")
     return "\n".join(L) + "\n"
@@ -233,7 +253,7 @@ def main(argv):
         print(__doc__)
         return 0 if argv else 2
     pasta = Path(argv[0])
-    saida = Path(argv[argv.index("--saida") + 1]) if "--saida" in argv else pasta / "saida"
+    saida = Path(argv[argv.index("--saida") + 1]) if "--saida" in argv else pasta / "saida" / "painel"  # não apaga o dados.json do Diagnóstico
     hoje = dt.date.fromisoformat(argv[argv.index("--hoje") + 1]) if "--hoje" in argv else dt.date.today()
     try:
         d = painel(*carregar(pasta), hoje)

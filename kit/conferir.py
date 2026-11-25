@@ -50,6 +50,7 @@ def conferir(texto, dados):
     validos = set()
     for item in dados["numeros"].values():
         validos.add(normal(item["texto"]))
+        validos.add(normal(item["texto"]).lstrip("-"))  # o padrão de busca não pega o sinal de menos
     inteiros = {item["texto"] for item in dados["numeros"].values() if isinstance(item["valor"], int)}
     sem_origem = []
     for m in PADRAO.finditer(texto):

@@ -15,14 +15,15 @@ Arquivos da pasta (os mesmos do Diagnóstico):
                               custo_com_credito (R$ do custo que gera crédito), comissao_pct, taxa_pct
                               (cartão, marketplace, gateway)
 
-Gera em saida/: precos.md (a tabela explicada), precos.csv e dados.json (cada número com a origem).
+Gera em saida/preco-certo/ (para não apagar o dados.json do Diagnóstico, que fica em saida/): precos.md (a tabela explicada), precos.csv e dados.json (cada número com a origem).
 Só lê e calcula. Tudo de 2027 é SIMULADO: a alíquota de referência da CBS ainda não é a definitiva.
 """
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comum import ErroDados, Numeros, brl, carregar_empresa, gravar, ler_csv, num, pct  # noqa: E402
+from comum import (ErroDados, Numeros, brl, carregar_empresa, fracoes_estrutura, gravar, ler_csv,  # noqa: E402
+                   margem_item, num, pct, preco_para_margem)
 import diagnostico as D  # noqa: E402  (reaproveita a leitura do mensal.csv)
 
 VERSAO = "1.0.0"
@@ -60,18 +61,14 @@ def carregar(pasta):
     return emp, mensal, itens
 
 
-def preco_para_margem(c_liq, var, t, m):
-    """Preço P tal que (P − custo − P·var − (P − custo_cred)·t) / P = m, com c_liq = custo − custo_cred·t."""
-    den = 1 - var - t - m
-    return c_liq / den if den > 0 else None
-
-
 def calcular(emp, mensal, itens):
     N = Numeros()
     receita = sum(m["receita"] for m in mensal)
     compras = sum(m["compras_com_credito"] for m in mensal)
     custo = sum(m["custo_direto"] for m in mensal)
     pis_cof = sum(m["pis_cofins_pago"] for m in mensal)
+    outros = sum(m["outros_impostos"] for m in mensal)
+    desp = sum(m["despesas_operacionais"] for m in mensal)
     alvo = emp["margem_alvo_pct"] / 100
     regular = emp["regime"] in ("presumido", "real")
     red = emp["reducao_aliquota_pct"] / 100
@@ -81,11 +78,16 @@ def calcular(emp, mensal, itens):
         N.add("imp_hoje_pct", imp_hoje * 100, "pct", "PIS/Cofins pagos ÷ receita (mensal.csv)")
         N.add("fator_credito_pct", fc * 100, "pct", "compras_com_credito ÷ custo_direto (mensal.csv); usado quando o item não informa custo_com_credito")
         cenarios = sorted(emp["cenarios_cbs_pct"], reverse=True)  # o maior primeiro (cenário principal)
+        out, fix = fracoes_estrutura(emp, receita, outros, desp)
     else:
         imp_hoje = emp["aliquota_simples_pct"] / 100
         fc = 0.0
         N.add("imp_hoje_pct", imp_hoje * 100, "pct", "alíquota efetiva do DAS (empresa.json, aliquota_simples_pct)")
         cenarios = []
+        _, fix = fracoes_estrutura(emp, receita, 0.0, desp)
+        out = 0.0  # no Simples o DAS já reúne os impostos sobre a venda
+    N.add("outros_impostos_pct", out * 100, "pct", "outros impostos sobre a venda ÷ receita (ISS/ICMS e IR/CSLL do Presumido); 0 no Simples")
+    N.add("rateio_fixas_pct", fix * 100, "pct", "despesas_operacionais ÷ receita: rateio das despesas fixas pelo preço (ou empresa.json)")
     N.add("margem_alvo", alvo * 100, "pct", "empresa.json (margem_alvo_pct)")
     for a in cenarios:
         N.add(f"aliq_{str(a).replace('.', '_')}", a, "pct", "cenário de alíquota de referência (empresa.json)")
@@ -95,31 +97,30 @@ def calcular(emp, mensal, itens):
         P, c, var = it["preco"], it["custo"], it["comissao"] + it["taxa"]
         ccred = it["custo_cred"] if it["custo_cred"] is not None else c * fc
         k = f"p{j}"
-        m_hoje = (P - c - P * var - P * imp_hoje) / P
+        m_hoje = margem_item(P, c, var, out, fix, imp_preco=imp_hoje)
         N.add(f"{k}_preco", P, "brl", f"produtos.csv linha {it['_linha']}")
-        N.add(f"{k}_margem_hoje", m_hoje * 100, "pct", "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço")
+        N.add(f"{k}_margem_hoje", m_hoje * 100, "pct", "lucro por venda ÷ preço, hoje (custo, comissão/taxa, impostos e rateio das despesas fixas)")
         res = {"item": it["item"], "k": k, "preco": P, "qtd": it["qtd"], "margem_hoje": m_hoje, "cen": []}
         if regular:
             for a in cenarios:
                 t = a / 100 * (1 - red)
-                m27 = (P - c - P * var - (P - ccred) * t) / P
-                c_liq = c - ccred * t
-                p0 = preco_para_margem(c_liq, var, t, 0.0)
-                pa = preco_para_margem(c_liq, var, t, alvo)
+                m27 = margem_item(P, c, var, out, fix, t=t, ccred=ccred)
+                p0 = preco_para_margem(0.0, c, var, out, fix, t=t, ccred=ccred)
+                pa = preco_para_margem(alvo, c, var, out, fix, t=t, ccred=ccred)
                 kk = f"{k}_{str(a).replace('.', '_')}"
-                N.add(f"{kk}_margem", m27 * 100, "pct", f"margem em 2027 com {pct(a)}: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço")
+                N.add(f"{kk}_margem", m27 * 100, "pct", f"lucro por venda ÷ preço em 2027 com {pct(a)} (CBS+IBS com crédito sobre o custo com crédito)")
                 if p0:
-                    N.add(f"{kk}_preco_min", p0, "brl", "preço com margem zero no cenário")
+                    N.add(f"{kk}_preco_min", p0, "brl", "preço de equilíbrio (lucro zero) no cenário")
                 if pa:
                     N.add(f"{kk}_preco_alvo", pa, "brl", f"preço que dá a margem-alvo de {pct(alvo * 100, 0)} no cenário")
                     desc = max(0.0, 1 - pa / P)
                     N.add(f"{kk}_desc_max", desc * 100, "pct", "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo")
                 res["cen"].append({"aliq": a, "kk": kk, "margem": m27, "preco_min": p0, "preco_alvo": pa})
         else:
-            pa = preco_para_margem(c, var, imp_hoje, alvo)
-            p0 = preco_para_margem(c, var, imp_hoje, 0.0)
+            pa = preco_para_margem(alvo, c, var, out, fix, imp_preco=imp_hoje)
+            p0 = preco_para_margem(0.0, c, var, out, fix, imp_preco=imp_hoje)
             if p0:
-                N.add(f"{k}_preco_min", p0, "brl", "preço com margem zero (alíquota do DAS)")
+                N.add(f"{k}_preco_min", p0, "brl", "preço de equilíbrio (lucro zero), com o DAS")
             if pa:
                 N.add(f"{k}_preco_alvo", pa, "brl", f"preço que dá a margem-alvo de {pct(alvo * 100, 0)} (alíquota do DAS)")
                 N.add(f"{k}_desc_max", max(0.0, 1 - pa / P) * 100, "pct", "desconto máximo que ainda mantém a margem-alvo")
@@ -146,7 +147,7 @@ def calcular(emp, mensal, itens):
                      "chave": chave_pa})
     negativos = [r for r in linhas if (r["cen"][0]["margem"] if regular else r["margem_hoje"]) < 0]
     if negativos:
-        prio.append({"texto": "Parar de vender abaixo do custo: " + ", ".join(r["item"] for r in negativos) + " fica com margem negativa.",
+        prio.append({"texto": "Rever ou parar de vender o que não paga a sua parte da estrutura: " + ", ".join(r["item"] for r in negativos) + (" fica" if len(negativos) == 1 else " ficam") + " com margem negativa.",
                      "chave": "margem_alvo"})
     if regular:
         prio.append({"texto": "Pedir aos fornecedores a nota com a CBS/IBS destacada: o crédito sobre o custo é o que segura o preço em 2027.",
@@ -154,7 +155,10 @@ def calcular(emp, mensal, itens):
     else:
         prio.append({"texto": f"Conferir todo mês a alíquota efetiva do DAS (hoje {N.itens['imp_hoje_pct']['texto']}): ela muda com a receita "
                               "dos últimos doze meses, e com ela o preço mínimo.", "chave": "imp_hoje_pct"})
-    prio.append({"texto": "Refazer a tabela quando o Senado fixar a alíquota de referência e a cada reajuste de custo.", "chave": "margem_alvo"})
+    if regular:
+        prio.append({"texto": "Refazer a tabela quando o Senado fixar a alíquota de referência e a cada reajuste de custo.", "chave": "margem_alvo"})
+    else:
+        prio.append({"texto": "Refazer a tabela a cada reajuste de custo e quando a empresa mudar de faixa no Simples.", "chave": "margem_alvo"})
     prio = prio[:3]
     N.add("itens_total", len(linhas), "int", "produtos.csv (número de linhas)")
     N.add("itens_abaixo", len(abaixo), "int", "itens abaixo da margem-alvo no cenário principal")
@@ -170,11 +174,13 @@ def precos_md(d):
         L.append(f"Regime: {e['regime']}. Margem-alvo: {T('margem_alvo')}. Números de 2027 = **SIMULADO**, nos cenários de alíquota de referência de "
                  + " e ".join(T('aliq_' + str(a).replace('.', '_')) for a in d["cenarios"])
                  + f" (o primeiro é o principal). O imposto de hoje é o PIS/Cofins efetivo da empresa ({T('imp_hoje_pct')} da receita).")
-        L.append(f"Premissa: crédito sobre a parte do custo informada em custo_com_credito ou, sem ela, sobre {T('fator_credito_pct')} do custo "
-                 "(a fatia das compras da empresa que gera crédito). Base = preço informado (simplificação). Kit aberto do INEMA, não oficial.")
+        L.append(f"Premissas: o preço cobre o custo, a comissão/taxa, o imposto sobre o consumo, os outros impostos sobre a venda ({T('outros_impostos_pct')} da receita: ISS/ICMS e IR/CSLL) "
+                 f"e a parte das despesas fixas ({T('rateio_fixas_pct')} da receita, rateadas pelo preço). Crédito de CBS/IBS sobre a parte do custo informada em custo_com_credito ou, sem ela, "
+                 f"sobre {T('fator_credito_pct')} do custo. O imposto é tratado como parte do preço informado (conservador). Kit aberto do INEMA, não oficial.")
     else:
-        L.append(f"Regime: Simples. Margem-alvo: {T('margem_alvo')}. Imposto = alíquota efetiva do DAS ({T('imp_hoje_pct')}); "
-                 "este kit não prevê mudança no DAS em 2027. Kit aberto do INEMA, não oficial.")
+        L.append(f"Regime: Simples. Margem-alvo: {T('margem_alvo')}. O preço cobre o custo, a comissão/taxa, o DAS ({T('imp_hoje_pct')}, que já reúne os impostos sobre a venda) "
+                 f"e a parte das despesas fixas ({T('rateio_fixas_pct')} da receita). No Simples a CBS e o IBS ficam dentro do DAS, então esta tabela vale para 2027 "
+                 "enquanto a empresa não optar por recolher fora do DAS (veja o kit Reforma Tributária Pronta). Kit aberto do INEMA, não oficial.")
     L.append("")
     L.append("## Item por item")
     for r in d["linhas"]:
@@ -193,8 +199,10 @@ def precos_md(d):
     for i, p in enumerate(d["prioridades"], 1):
         L.append(f"{i}. {p['texto']}")
     L.append("")
-    L.append("Como ler: preço mínimo = margem zero (abaixo dele, cada venda dá prejuízo). Preço-alvo = o preço que dá a margem que a empresa quer. "
-             "Desconto máximo = quanto dá para baixar o preço de hoje sem sair da margem-alvo (0,0% quando o preço já está abaixo).")
+    L.append("Como ler: margem = o que sobra de cada venda depois do custo, da comissão/taxa, dos impostos e da parte das despesas fixas. "
+             "Preço mínimo = o preço de equilíbrio (lucro zero): abaixo dele a venda não paga a sua parte da estrutura. "
+             "Preço-alvo = o preço que dá a margem que a empresa quer. Desconto máximo = quanto dá para baixar o preço de hoje sem sair da margem-alvo "
+             "(0,0% quando o preço já está abaixo). O rateio pela receita pesa mais nos itens de custo alto; se a empresa usa outro rateio, informe rateio_fixas_pct no empresa.json.")
     L.append("")
     L.append(f"---\nOrigem de cada número: `dados.json`. Tabela: `precos.csv`. Kit Preço certo na Reforma v{d['versao']} (INEMA, não oficial).")
     return "\n".join(L) + "\n"
@@ -229,7 +237,7 @@ def main(argv):
         print(__doc__)
         return 0 if argv else 2
     pasta = Path(argv[0])
-    saida = Path(argv[argv.index("--saida") + 1]) if "--saida" in argv else pasta / "saida"
+    saida = Path(argv[argv.index("--saida") + 1]) if "--saida" in argv else pasta / "saida" / "preco-certo"  # não apaga o dados.json do Diagnóstico
     try:
         d = calcular(*carregar(pasta))
     except ErroDados as e:
