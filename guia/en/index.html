@@ -153,11 +153,10 @@
   @media(max-width:600px){.tbl thead{display:none} .tbl tr{display:block;border-bottom:1px solid var(--line);padding:6px 0} .tbl tr:last-child{border-bottom:none} .tbl td{display:block;border:none;padding:4px 14px}}
 </style>
 <style>
-  .resumo .duo{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
-  .resumo .duo p{margin:0}
-  .resumo figure.lado{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
-  .resumo figure.lado img{width:100%;height:auto;display:block}
-  @media(max-width:860px){.resumo .duo{grid-template-columns:1fr}}
+  .hero .wrap.hero2{grid-template-columns:1.05fr .95fr;grid-template-areas:"top f1" "bot f2";column-gap:40px;row-gap:28px;align-items:center}
+  .hero2 .h-top{grid-area:top}.hero2 .h-bot{grid-area:bot}.hero2 .f1{grid-area:f1}.hero2 .f2{grid-area:f2}
+  .hero2 .h-bot p.lead{margin-top:0}
+  @media(max-width:780px){.hero .wrap.hero2{grid-template-columns:1fr;grid-template-areas:"top" "f1" "bot" "f2"}}
   .rel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:.93rem}
   .rel h4{font-family:Sora;font-size:.95rem;margin:.9em 0 .3em}
   .rel h4:first-child{margin-top:0}
@@ -189,23 +188,22 @@
 </div></nav>
 <header class="hero" id="top">
 <div class="glow"></div>
-<div class="wrap">
-<div>
-<span class="chip">Free kit for accountants · unofficial · 2027 rules checked against the law</span>
-<h1>Your client will ask how much the Tax Reform affects their cash flow. Answer with the <span class="amb">Tax Reform + Cash Flow Diagnosis</span></h1>
-<p class="lead">In 2027, the CBS replaces PIS and Cofins, and business owners only want to know one thing: how much this changes for them. With the numbers you already have from your client, your AI builds a 2-page report they can understand. It covers cash flow, margin, the new tax in two scenarios, and 3 priorities. And no number appears without a source. The question that today is just a doubt becomes a service you offer.</p>
+<div class="wrap hero2">
+<div class="h-top"><span class="chip">Free kit for accountants · unofficial · 2027 rules checked against the law</span>
+<h1>Your client will ask how much the Tax Reform affects their cash flow. Answer with the <span class="amb">Tax Reform + Cash Flow Diagnosis</span></h1></div>
+<figure class="f1"><img alt="An accountant shows the business owner the 2-page report with cash flow charts" src="../assets/hero.jpg"/></figure>
+<div class="h-bot"><p class="lead">In 2027, the CBS replaces PIS and Cofins, and business owners only want to know one thing: how much this changes for them. With the numbers you already have from your client, your AI builds a 2-page report they can understand. It covers cash flow, margin, the new tax in two scenarios, and 3 priorities. And no number appears without a source. The question that today is just a doubt becomes a service you offer.</p>
 <div class="cta">
 <a class="btn" href="#explicado">What you get</a>
 <a class="btn ghost" href="#comecar">How to get started</a>
-</div>
-</div>
-<figure><img alt="An accountant shows the business owner the 2-page report with cash flow charts" src="../assets/hero.jpg"/></figure>
+</div></div>
+<figure class="f2"><img alt="Tax Reform + Cash Flow Diagnosis: how much the Tax Reform affects your client’s cash flow, in 2 pages" src="../assets/banner-en.jpg"/></figure>
 </div>
 </header>
 <main>
 <section class="resumo" id="resumo"><div class="wrap">
 <span class="chip">In one sentence</span>
-<div class="duo"><p><strong>Business owners don’t ask for “consulting.” They want to know if they’ll pay more tax and whether their cash flow can handle it.</strong> This free kit is for accountants who want to answer that with their own client's numbers. You gather what you already have (the monthly summary of revenue, costs, taxes, and balance and, if you want, expenses and prices), and your AI builds a 2-page report. It tells you how much is left over, how cash flow looks, how much CBS and IBS the company would pay in 2027 under two scenarios, the effect of split payment (the tax withheld at the moment the customer pays), what stood out, and 3 priorities. CBS is the federal tax that replaces PIS and Cofins; IBS will gradually replace ICMS and ISS, and in 2027 it is only a 0.1% test rate, with ICMS and ISS still in effect. You need a computer and an AI such as Claude Code or Codex. It is not an official product and does not replace your technical analysis (<a href="#base">see the sources</a>).</p><figure class="lado"><img alt="Tax Reform + Cash Flow Diagnosis: how much the Tax Reform affects your client’s cash flow, in 2 pages" loading="lazy" src="../assets/banner-en.jpg"/></figure></div>
+<p><strong>Business owners don’t ask for “consulting.” They want to know if they’ll pay more tax and whether their cash flow can handle it.</strong> This free kit is for accountants who want to answer that with their own client's numbers. You gather what you already have (the monthly summary of revenue, costs, taxes, and balance and, if you want, expenses and prices), and your AI builds a 2-page report. It tells you how much is left over, how cash flow looks, how much CBS and IBS the company would pay in 2027 under two scenarios, the effect of split payment (the tax withheld at the moment the customer pays), what stood out, and 3 priorities. CBS is the federal tax that replaces PIS and Cofins; IBS will gradually replace ICMS and ISS, and in 2027 it is only a 0.1% test rate, with ICMS and ISS still in effect. You need a computer and an AI such as Claude Code or Codex. It is not an official product and does not replace your technical analysis (<a href="#base">see the sources</a>).</p>
 </div></section>
 <section id="explicado"><div class="wrap">
 <span class="chip">The benefit</span>

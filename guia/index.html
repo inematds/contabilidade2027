@@ -153,11 +153,10 @@
   @media(max-width:600px){.tbl thead{display:none} .tbl tr{display:block;border-bottom:1px solid var(--line);padding:6px 0} .tbl tr:last-child{border-bottom:none} .tbl td{display:block;border:none;padding:4px 14px}}
 </style>
 <style>
-  .resumo .duo{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
-  .resumo .duo p{margin:0}
-  .resumo figure.lado{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
-  .resumo figure.lado img{width:100%;height:auto;display:block}
-  @media(max-width:860px){.resumo .duo{grid-template-columns:1fr}}
+  .hero .wrap.hero2{grid-template-columns:1.05fr .95fr;grid-template-areas:"top f1" "bot f2";column-gap:40px;row-gap:28px;align-items:center}
+  .hero2 .h-top{grid-area:top}.hero2 .h-bot{grid-area:bot}.hero2 .f1{grid-area:f1}.hero2 .f2{grid-area:f2}
+  .hero2 .h-bot p.lead{margin-top:0}
+  @media(max-width:780px){.hero .wrap.hero2{grid-template-columns:1fr;grid-template-areas:"top" "f1" "bot" "f2"}}
   .rel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:.93rem}
   .rel h4{font-family:Sora;font-size:.95rem;margin:.9em 0 .3em}
   .rel h4:first-child{margin-top:0}
@@ -189,23 +188,22 @@
 </div></nav>
 <header class="hero" id="top">
 <div class="glow"></div>
-<div class="wrap">
-<div>
-<span class="chip">Kit grátis para contadores · não oficial · regras de 2027 conferidas na lei</span>
-<h1>O seu cliente vai perguntar quanto a Reforma pesa no caixa dele. Responda com o <span class="amb">Diagnóstico Reforma + Caixa</span></h1>
-<p class="lead">Em 2027 a CBS substitui o PIS e a Cofins, e o empresário só quer saber de uma coisa: quanto isso muda para ele. Com os números que você já tem do cliente, a sua IA monta um relatório de 2 páginas que ele entende. Traz o caixa, a margem, o imposto novo em dois cenários e 3 prioridades. E nenhum número sai sem origem. A pergunta que hoje é dúvida vira um serviço que você oferece.</p>
+<div class="wrap hero2">
+<div class="h-top"><span class="chip">Kit grátis para contadores · não oficial · regras de 2027 conferidas na lei</span>
+<h1>O seu cliente vai perguntar quanto a Reforma pesa no caixa dele. Responda com o <span class="amb">Diagnóstico Reforma + Caixa</span></h1></div>
+<figure class="f1"><img alt="Contador mostra ao dono da empresa o relatório de 2 páginas com os gráficos de caixa" src="assets/hero.jpg"/></figure>
+<div class="h-bot"><p class="lead">Em 2027 a CBS substitui o PIS e a Cofins, e o empresário só quer saber de uma coisa: quanto isso muda para ele. Com os números que você já tem do cliente, a sua IA monta um relatório de 2 páginas que ele entende. Traz o caixa, a margem, o imposto novo em dois cenários e 3 prioridades. E nenhum número sai sem origem. A pergunta que hoje é dúvida vira um serviço que você oferece.</p>
 <div class="cta">
 <a class="btn" href="#explicado">O que você ganha</a>
 <a class="btn ghost" href="#comecar">Como começar</a>
-</div>
-</div>
-<figure><img alt="Contador mostra ao dono da empresa o relatório de 2 páginas com os gráficos de caixa" src="assets/hero.jpg"/></figure>
+</div></div>
+<figure class="f2"><img alt="Diagnóstico Reforma + Caixa: quanto a Reforma pesa no caixa do seu cliente, em 2 páginas" src="assets/banner.jpg"/></figure>
 </div>
 </header>
 <main>
 <section class="resumo" id="resumo"><div class="wrap">
 <span class="chip">Em uma frase</span>
-<div class="duo"><p><strong>O empresário não pede "consultoria". Ele pede para saber se vai pagar mais imposto e se o caixa aguenta.</strong> Este kit gratuito é para o contador que quer responder isso com os números do próprio cliente. Você junta o que já tem (o resumo mensal de receita, custos, impostos e saldo e, se quiser, despesas e preços), e a sua IA monta um relatório de 2 páginas. Ele diz quanto sobra, como está o caixa, quanto a empresa recolheria de CBS e IBS em 2027 em dois cenários, o efeito do split payment (o imposto descontado na hora em que o cliente paga), o que chamou a atenção e 3 prioridades. A CBS é o imposto federal que substitui o PIS e a Cofins; o IBS vai substituir o ICMS e o ISS aos poucos, e em 2027 é só 0,1% de teste, com o ICMS e o ISS ainda valendo. Precisa de um computador e de uma IA como o Claude Code ou o Codex. Não é produto oficial e não substitui a sua análise técnica (<a href="#base">veja as fontes</a>).</p><figure class="lado"><img alt="Diagnóstico Reforma + Caixa: quanto a Reforma pesa no caixa do seu cliente, em 2 páginas" loading="lazy" src="assets/banner.jpg"/></figure></div>
+<p><strong>O empresário não pede "consultoria". Ele pede para saber se vai pagar mais imposto e se o caixa aguenta.</strong> Este kit gratuito é para o contador que quer responder isso com os números do próprio cliente. Você junta o que já tem (o resumo mensal de receita, custos, impostos e saldo e, se quiser, despesas e preços), e a sua IA monta um relatório de 2 páginas. Ele diz quanto sobra, como está o caixa, quanto a empresa recolheria de CBS e IBS em 2027 em dois cenários, o efeito do split payment (o imposto descontado na hora em que o cliente paga), o que chamou a atenção e 3 prioridades. A CBS é o imposto federal que substitui o PIS e a Cofins; o IBS vai substituir o ICMS e o ISS aos poucos, e em 2027 é só 0,1% de teste, com o ICMS e o ISS ainda valendo. Precisa de um computador e de uma IA como o Claude Code ou o Codex. Não é produto oficial e não substitui a sua análise técnica (<a href="#base">veja as fontes</a>).</p>
 </div></section>
 <section id="explicado"><div class="wrap">
 <span class="chip">O ganho</span>

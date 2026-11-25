@@ -153,11 +153,10 @@
   @media(max-width:600px){.tbl thead{display:none} .tbl tr{display:block;border-bottom:1px solid var(--line);padding:6px 0} .tbl tr:last-child{border-bottom:none} .tbl td{display:block;border:none;padding:4px 14px}}
 </style>
 <style>
-  .resumo .duo{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
-  .resumo .duo p{margin:0}
-  .resumo figure.lado{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
-  .resumo figure.lado img{width:100%;height:auto;display:block}
-  @media(max-width:860px){.resumo .duo{grid-template-columns:1fr}}
+  .hero .wrap.hero2{grid-template-columns:1.05fr .95fr;grid-template-areas:"top f1" "bot f2";column-gap:40px;row-gap:28px;align-items:center}
+  .hero2 .h-top{grid-area:top}.hero2 .h-bot{grid-area:bot}.hero2 .f1{grid-area:f1}.hero2 .f2{grid-area:f2}
+  .hero2 .h-bot p.lead{margin-top:0}
+  @media(max-width:780px){.hero .wrap.hero2{grid-template-columns:1fr;grid-template-areas:"top" "f1" "bot" "f2"}}
   .rel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:.93rem}
   .rel h4{font-family:Sora;font-size:.95rem;margin:.9em 0 .3em}
   .rel h4:first-child{margin-top:0}
@@ -189,23 +188,22 @@
 </div></nav>
 <header class="hero" id="top">
 <div class="glow"></div>
-<div class="wrap">
-<div>
-<span class="chip">Kit gratis para contadores · no oficial · reglas de 2027 verificadas en la ley</span>
-<h1>Tu cliente preguntará cuánto pesa la Reforma en su flujo de caja. Respóndele con el <span class="amb">Diagnóstico Reforma + Caja</span></h1>
-<p class="lead">En 2027 la CBS sustituye al PIS y a la Cofins, y al empresario solo le interesa una cosa: cuánto cambia eso para él. Con los números que ya tienes del cliente, tu IA arma un informe de 2 páginas que él entiende. Incluye la caja, el margen, el impuesto nuevo en dos escenarios y 3 prioridades. Y ningún número sale sin origen. La pregunta que hoy es una duda se convierte en un servicio que ofreces.</p>
+<div class="wrap hero2">
+<div class="h-top"><span class="chip">Kit gratis para contadores · no oficial · reglas de 2027 verificadas en la ley</span>
+<h1>Tu cliente preguntará cuánto pesa la Reforma en su flujo de caja. Respóndele con el <span class="amb">Diagnóstico Reforma + Caja</span></h1></div>
+<figure class="f1"><img alt="Un contador le muestra al dueño de la empresa el informe de 2 páginas con los gráficos de caja" src="../assets/hero.jpg"/></figure>
+<div class="h-bot"><p class="lead">En 2027 la CBS sustituye al PIS y a la Cofins, y al empresario solo le interesa una cosa: cuánto cambia eso para él. Con los números que ya tienes del cliente, tu IA arma un informe de 2 páginas que él entiende. Incluye la caja, el margen, el impuesto nuevo en dos escenarios y 3 prioridades. Y ningún número sale sin origen. La pregunta que hoy es una duda se convierte en un servicio que ofreces.</p>
 <div class="cta">
 <a class="btn" href="#explicado">Lo que ganas</a>
 <a class="btn ghost" href="#comecar">Cómo empezar</a>
-</div>
-</div>
-<figure><img alt="Un contador le muestra al dueño de la empresa el informe de 2 páginas con los gráficos de caja" src="../assets/hero.jpg"/></figure>
+</div></div>
+<figure class="f2"><img alt="Diagnóstico Reforma + Caja: cuánto pesa la Reforma en el flujo de caja de tu cliente, en 2 páginas" src="../assets/banner-es.jpg"/></figure>
 </div>
 </header>
 <main>
 <section class="resumo" id="resumo"><div class="wrap">
 <span class="chip">En una frase</span>
-<div class="duo"><p><strong>El empresario no pide «consultoría». Pide saber si va a pagar más impuestos y si el flujo de caja aguantará.</strong> Este kit gratuito es para el contador que quiere responder esto con los números del propio cliente. Juntas lo que ya tienes (el resumen mensual de ingresos, costos, impuestos y saldo y, si quieres, gastos y precios), y tu IA arma un informe de 2 páginas. Dice cuánto sobra, cómo está el flujo de caja, cuánto la empresa recaudaría de CBS e IBS en 2027 en dos escenarios, el efecto del split payment (el impuesto descontado en el momento en que el cliente paga), qué llamó la atención y 3 prioridades. La CBS es el impuesto federal que sustituye al PIS y a la Cofins; el IBS sustituirá al ICMS y al ISS poco a poco, y en 2027 es solo 0,1% de prueba, con el ICMS y el ISS todavía vigentes. Necesitas una computadora y una IA como Claude Code o Codex. No es un producto oficial y no sustituye tu análisis técnico (<a href="#base">consulta las fuentes</a>).</p><figure class="lado"><img alt="Diagnóstico Reforma + Caja: cuánto pesa la Reforma en el flujo de caja de tu cliente, en 2 páginas" loading="lazy" src="../assets/banner-es.jpg"/></figure></div>
+<p><strong>El empresario no pide «consultoría». Pide saber si va a pagar más impuestos y si el flujo de caja aguantará.</strong> Este kit gratuito es para el contador que quiere responder esto con los números del propio cliente. Juntas lo que ya tienes (el resumen mensual de ingresos, costos, impuestos y saldo y, si quieres, gastos y precios), y tu IA arma un informe de 2 páginas. Dice cuánto sobra, cómo está el flujo de caja, cuánto la empresa recaudaría de CBS e IBS en 2027 en dos escenarios, el efecto del split payment (el impuesto descontado en el momento en que el cliente paga), qué llamó la atención y 3 prioridades. La CBS es el impuesto federal que sustituye al PIS y a la Cofins; el IBS sustituirá al ICMS y al ISS poco a poco, y en 2027 es solo 0,1% de prueba, con el ICMS y el ISS todavía vigentes. Necesitas una computadora y una IA como Claude Code o Codex. No es un producto oficial y no sustituye tu análisis técnico (<a href="#base">consulta las fuentes</a>).</p>
 </div></section>
 <section id="explicado"><div class="wrap">
 <span class="chip">El beneficio</span>
