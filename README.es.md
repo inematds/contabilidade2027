@@ -6,7 +6,7 @@
 
 ## Qué es
 
-Su cliente le va a preguntar cuánto pesa la Reforma Tributaria en su caja en 2027. Este kit gratuito ayuda al contador a responder con los números del propio cliente. Usted coloca en una carpeta lo que ya tiene (el resumen mensual de ingresos, costos, impuestos y saldo y, si quiere, gastos y precios) y su IA arma un informe de 2 páginas para el dueño de la empresa: cuánto sobra, cómo está la caja, cuánto recaudaría de CBS/IBS en 2027 en dos escenarios de alícuota, el efecto del split payment, lo que llamó la atención y 3 prioridades. Un verificador garantiza que todo número del informe salió de los datos. En la misma carpeta del cliente corren otros 3 kits: el **Reforma Tributária Pronta** (lo que falta en el registro, en el sistema y en los contratos), el **Preço certo na Reforma** (precio mínimo y precio objetivo por producto) y el **Painel do Empresário** (el cierre del mes en texto simple). Es un kit de INEMA, no oficial, y no sustituye el análisis técnico del contador.
+Su cliente le va a preguntar cuánto pesa la Reforma Tributaria en su caja en 2027. Este kit gratuito ayuda al contador a responder con los números del propio cliente. Usted coloca en una carpeta lo que ya tiene (el resumen mensual de ingresos, costos, impuestos y saldo y, si quiere, gastos y precios) y su IA arma un informe de 2 páginas para el dueño de la empresa: cuánto sobra, cómo está la caja, cuánto pagaría de CBS/IBS en 2027 en dos escenarios de alícuota, el efecto del split payment, qué llamó la atención y 3 prioridades. Un verificador garantiza que todo número del informe salió de los datos. En la misma carpeta del cliente funcionan otros 3 kits: **Reforma Tributária Pronta** (lo que falta en el registro, en el sistema y en los contratos), **Preço certo na Reforma** (precio mínimo y precio objetivo por producto) y **Painel do Empresário** (el cierre del mes en texto simple). Es un kit de INEMA, no oficial, y no sustituye el análisis técnico del contador.
 
 ## Los 4 kits (la misma carpeta del cliente sirve para todos)
 
@@ -29,10 +29,10 @@ Abra Claude Code o Codex en una carpeta de su computadora y pegue el pedido del 
 
 ## Qué trae el informe
 
-1. **Cuánto sobra:** ingresos, utilidad y margen del período, y el margen de los 3 últimos meses comparado con el de los anteriores.
+1. **Cuánto sobra:** ingresos, ganancia y margen del período, y el margen de los 3 últimos meses comparado con el de los anteriores.
 2. **Su caja:** saldo, salidas promedio, cuántos meses de salidas cubre la caja y los meses de aprieto.
 3. **Reforma en 2027 (SIMULADO):** PIS/Cofins de hoy × CBS/IBS en dos escenarios (8,8% del ejemplo oficial de la Receita y 11,3% de la recomendación del TCU), la nota para quien vende a empresas y cuánto impuesto deja de pasar por la caja con el split payment. En el Simples, el aviso sobre crédito para clientes empresas.
-4. **Lo que llamó la atención:** gasto por encima del promedio e ítem con margen por debajo de la meta, con el precio mínimo.
+4. **Qué llamó la atención:** gasto por encima del promedio e ítem con margen por debajo de la meta, con el precio mínimo.
 5. **3 prioridades**, ordenadas por el valor en R$, cada una vinculada a un servicio que el contador puede ofrecer, más una agenda de reunión de 30 minutos.
 
 Ejemplos listos: [`kit/exemplos/agencia/saida-exemplo/relatorio-base.md`](kit/exemplos/agencia/saida-exemplo/relatorio-base.md) (Lucro Presumido) y [`kit/exemplos/loja-simples/saida-exemplo/relatorio-base.md`](kit/exemplos/loja-simples/saida-exemplo/relatorio-base.md) (Simples). Todos los datos son ficticios.
@@ -49,7 +49,7 @@ git clone https://github.com/inematds/contabilidade2027 && cd contabilidade2027
 
 python3 kit/diagnostico.py kit/exemplos/agencia            # gera kit/exemplos/agencia/saida/
 python3 kit/conferir.py kit/exemplos/agencia/saida/relatorio-base.md kit/exemplos/agencia/saida/dados.json
-python3 -m unittest discover -s tests                        # 48 testes
+python3 -m unittest discover -s tests                        # 49 testes
 ```
 
 ### La carpeta del cliente
@@ -72,7 +72,7 @@ Copie `kit/modelo/` y complete. CSV con separador `;` y coma decimal, como Excel
 - **Producto:** usa la misma cuenta del kit 3 (markup con impuestos y prorrateo de los gastos fijos, en `kit/comum.py`) y la misma regla de crédito de la empresa. La parte del costo que genera crédito es `compras_com_credito ÷ custo_direto` del período. El precio objetivo devuelve el `margem_alvo_pct` en el peor escenario (el mismo precio objetivo del kit 3).
 - **Split payment:** `receita média × alíquota do pior cenário × dias ÷ 30`, con venta a mitad de mes, cobro en `prazo_medio_recebimento_dias` y vencimiento el día `dia_vencimento_impostos` del mes siguiente. Es una estimación máxima, sin descontar créditos. La implantación es gradual y depende de un acto conjunto del Comité Gestor y de la Receita (LC 214, art. 35).
 - **Simples:** no simula cambio en el DAS. Avisa cuando la mayor parte de las ventas es a empresas. La opción de recaudar CBS/IBS fuera del DAS es semestral, hecha en septiembre y en marzo (LC 123, art. 13, §§ 9–10, con la redacción de la LC 227/2026).
-- **Todo lo de 2027 sale marcado como SIMULADO.** La alícuota de referencia de la CBS la fija el Senado (plazo 15/12/2026). Rehágalo cuando salga.
+- **Todo lo de 2027 sale marcado como SIMULADO.** La alícuota de referencia de la CBS la fija el Senado (plazo 15/12/2026). Rehaga cuando salga.
 
 ### Kit 2 — Reforma Tributária Pronta
 
@@ -90,7 +90,7 @@ Archivos adicionales en la carpeta del cliente (modelos en `kit/modelo/`):
 
 Qué verifica:
 - Formato de los códigos: NCM con 8 dígitos, NBS con 9, CST con 3, cClassTrib con 6.
-- Si el cClassTrib empieza por el CST. En los ejemplos oficiales de la calculadora abierta de la Receita, 000 viene con 000001 y 200 con 200xxx; aquí es solo "verificar", no error.
+- Si el cClassTrib empieza con el CST. En los ejemplos oficiales de la calculadora abierta de la Receita, 000 viene con 000001 y 200 con 200xxx; aquí es solo "verificar", no error.
 - Reducción contra el CST: reducción con CST 000 (tributación integral), CST 200 (alícuota reducida) sin reducción, reducción sin cClassTrib. Una reducción fuera de 30/60/100% pasa a "verificar".
 - Los ítems que suman el 80% de las ventas.
 - La porción de las compras a proveedores del Simples o MEI, que generan crédito limitado a lo que el proveedor paga en el Simples (LC 214, art. 47).
@@ -115,7 +115,7 @@ Cómo calcula (método del markup, la misma cuenta del Diagnóstico, en `kit/com
   - Los otros impuestos (ISS/ICMS, IR/CSLL del Presumido) son `outros_impostos ÷ receita` del `mensal.csv`, o `outros_impostos_pct` en el `empresa.json`. En el Simples son cero, porque el DAS ya los reúne.
   - El prorrateo de los gastos fijos es `despesas_operacionais ÷ receita`, o `rateio_fixas_pct`.
 - El impuesto sobre el consumo es el PIS/Cofins efectivo hoy y, en 2027, `(preço − custo com crédito) × alíquota de referência × (1 − redução)`. En el Simples, es la alícuota del DAS.
-- Margen = utilidad por venta ÷ precio. Precio mínimo = equilibrio (utilidad cero). Precio objetivo = `margem_alvo_pct`. Descuento máximo = cuánto puede bajar el precio de hoy sin salir del margen objetivo.
+- Margen = ganancia por venta ÷ precio. Precio mínimo = equilibrio (ganancia cero). Precio objetivo = `margem_alvo_pct`. Descuento máximo = cuánto puede bajar el precio de hoy sin salir del margen objetivo.
 - Simplificaciones:
   - el impuesto se trata como parte del precio informado (conservador, porque la CBS/IBS es "por fuera");
   - en el Lucro Real, el IR/CSLL entra como fracción del ingreso;
@@ -128,15 +128,16 @@ Cómo calcula (método del markup, la misma cuenta del Diagnóstico, en `kit/com
 python3 kit/painel.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/painel/painel.md e dados.json
 ```
 
-El mes del panel es el último del `mensal.csv` (necesita al menos 3 meses; con 12 los promedios mejoran). Archivos opcionales (modelos en `kit/modelo/`):
+El mes del panel es el último del `mensal.csv` (necesita al menos 3 meses; con 12 los promedios quedan mejores). Archivos opcionales (modelos en `kit/modelo/`):
+- `despesas.csv`: `mes;categoria;valor`. Actualícelo junto con el `mensal.csv`: si el último mes de este es otro, el panel no da la alerta de gasto y lo avisa.
 - `contas_receber.csv`: `cliente;valor;vencimento`
 - `contas_pagar.csv`: `fornecedor;valor;vencimento`
 
 El vencimiento puede ser AAAA-MM-DD o DD/MM/AAAA.
 
 Qué trae el panel:
-- **Resultado:** DRE gerencial del mes, con variación contra el mes anterior y contra el promedio.
-- **Proyección:** 3 meses, por la variación promedio real del `saldo_caixa_fim` (la utilidad no es caja: retiros, cuotas e inversiones quedan fuera del DRE). Hay una alerta cuando la utilidad promedio es positiva y el saldo cae.
+- **Resultado:** DRE gerencial del mes, con variación frente al mes anterior y frente al promedio.
+- **Proyección:** 3 meses, por la variación promedio real del `saldo_caixa_fim` (la ganancia no es caja: retiros, cuotas e inversiones quedan fuera del DRE). Hay una alerta cuando la ganancia promedio es positiva y el saldo cae.
 - **Cuentas:** por cobrar y por pagar en los próximos 30 días, las vencidas y los días de atraso.
 - **Alertas:**
   - margen 3 puntos por debajo del promedio;
@@ -150,9 +151,9 @@ Qué trae el panel:
 ### El verificador
 
 `kit/conferir.py relatorio.md dados.json` sale con código 1 si el texto tiene:
-- valor en R$, % o número con coma que no esté en el `dados.json`;
+- un valor en R$, % o número con coma que no esté en el `dados.json`;
 - redondeo por extenso ("62 mil");
-- cantidad de días o meses inventada.
+- una cantidad de días o meses inventada.
 
 Sirve para el paso en que la IA reescribe el informe en lenguaje simple.
 
@@ -164,7 +165,7 @@ Sirve para el paso en que la IA reescribe el informe en lenguaje simple.
 - el Lucro Real con crédito;
 - la reducción del 60%;
 - el verificador detectando número inventado, redondeado y premisa usada como número;
-- los errores de entrada y la línea de comando.
+- los errores de entrada y la línea de comandos.
 
 `tests/test_reforma_pronta.py` (12, kit 2) cubre:
 - el conteo de pendientes de la agencia y las ventas en riesgo;
@@ -173,9 +174,9 @@ Sirve para el paso en que la IA reescribe el informe en lenguaje simple.
 - la prioridad 1;
 - cada regla de formato;
 - la ventana del Simples en 3 fechas;
-- los errores de entrada y la línea de comando.
+- los errores de entrada y la línea de comandos.
 
-`tests/test_reforma_pronta.py` (12, kit 2), `tests/test_preco_certo.py` (10, kit 3) y `tests/test_painel.py` (11, kit 4) verifican las cuentas a mano en los dos ejemplos, la coherencia con el Diagnóstico y los errores de entrada. Total: 48 pruebas.
+`tests/test_reforma_pronta.py` (12, kit 2), `tests/test_preco_certo.py` (10, kit 3) y `tests/test_painel.py` (12, kit 4) verifican las cuentas a mano en los dos ejemplos, la coherencia con el Diagnóstico y los errores de entrada. Total: 49 pruebas.
 
 ## El proceso, de principio a fin
 
