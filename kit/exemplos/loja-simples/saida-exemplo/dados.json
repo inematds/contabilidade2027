@@ -17,7 +17,7 @@
     "vendas_para_empresas_pct": 60,
     "despesa_alerta_fator": 1.3,
     "despesa_alerta_minimo": 300.0,
-    "margem_alvo_pct": 15.0
+    "margem_alvo_pct": 12
   },
   "numeros": {
     "receita_periodo": {
@@ -79,6 +79,51 @@
       "valor": 60.0,
       "texto": "60,0%",
       "origem": "empresa.json (vendas_para_empresas_pct)"
+    },
+    "prod_0_margem_hoje": {
+      "valor": 28.125,
+      "texto": "28,1%",
+      "origem": "produtos.csv linha 2: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+    },
+    "prod_0_margem_2027": {
+      "valor": 28.125,
+      "texto": "28,1%",
+      "origem": "produtos.csv linha 2: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+    },
+    "prod_1_margem_hoje": {
+      "valor": 36.8421,
+      "texto": "36,8%",
+      "origem": "produtos.csv linha 3: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+    },
+    "prod_1_margem_2027": {
+      "valor": 36.8421,
+      "texto": "36,8%",
+      "origem": "produtos.csv linha 3: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+    },
+    "prod_2_margem_hoje": {
+      "valor": 22.8188,
+      "texto": "22,8%",
+      "origem": "produtos.csv linha 4: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+    },
+    "prod_2_margem_2027": {
+      "valor": 22.8188,
+      "texto": "22,8%",
+      "origem": "produtos.csv linha 4: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+    },
+    "prod_3_margem_hoje": {
+      "valor": 39.6985,
+      "texto": "39,7%",
+      "origem": "produtos.csv linha 5: (preço − custo − PIS/Cofins efetivo) ÷ preço"
+    },
+    "prod_3_margem_2027": {
+      "valor": 39.6985,
+      "texto": "39,7%",
+      "origem": "produtos.csv linha 5: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
+    },
+    "margem_alvo": {
+      "valor": 12,
+      "texto": "12,0%",
+      "origem": "empresa.json (margem_alvo_pct)"
     }
   },
   "reforma": {

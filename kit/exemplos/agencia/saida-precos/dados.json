@@ -1,0 +1,364 @@
+{
+  "versao": "1.0.0",
+  "kit": "preco_certo",
+  "empresa": {
+    "nome": "Agência Exemplo Ltda (dados fictícios)",
+    "regime": "presumido",
+    "atividade": "agência de marketing digital (serviços)"
+  },
+  "regular": true,
+  "cenarios": [
+    11.3,
+    8.8
+  ],
+  "numeros": {
+    "imp_hoje_pct": {
+      "valor": 3.65,
+      "texto": "3,6%",
+      "origem": "PIS/Cofins pagos ÷ receita (mensal.csv)"
+    },
+    "fator_credito_pct": {
+      "valor": 39.8662,
+      "texto": "39,9%",
+      "origem": "compras_com_credito ÷ custo_direto (mensal.csv); usado quando o item não informa custo_com_credito"
+    },
+    "margem_alvo": {
+      "valor": 15.0,
+      "texto": "15,0%",
+      "origem": "empresa.json (margem_alvo_pct)"
+    },
+    "aliq_11_3": {
+      "valor": 11.3,
+      "texto": "11,3%",
+      "origem": "cenário de alíquota de referência (empresa.json)"
+    },
+    "aliq_8_8": {
+      "valor": 8.8,
+      "texto": "8,8%",
+      "origem": "cenário de alíquota de referência (empresa.json)"
+    },
+    "p0_preco": {
+      "valor": 3500.0,
+      "texto": "R$ 3.500,00",
+      "origem": "produtos.csv linha 2"
+    },
+    "p0_margem_hoje": {
+      "valor": 42.0643,
+      "texto": "42,1%",
+      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+    },
+    "p0_11_3_margem": {
+      "valor": 36.8598,
+      "texto": "36,9%",
+      "origem": "margem em 2027 com 11,3%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+    },
+    "p0_11_3_preco_min": {
+      "valor": 2045.5549,
+      "texto": "R$ 2.045,55",
+      "origem": "preço com margem zero no cenário"
+    },
+    "p0_11_3_preco_alvo": {
+      "valor": 2461.8823,
+      "texto": "R$ 2.461,88",
+      "origem": "preço que dá a margem-alvo de 15% no cenário"
+    },
+    "p0_11_3_desc_max": {
+      "valor": 29.6605,
+      "texto": "29,7%",
+      "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
+    },
+    "p0_8_8_margem": {
+      "valor": 38.8188,
+      "texto": "38,8%",
+      "origem": "margem em 2027 com 8,8%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+    },
+    "p0_8_8_preco_min": {
+      "valor": 2010.2453,
+      "texto": "R$ 2.010,25",
+      "origem": "preço com margem zero no cenário"
+    },
+    "p0_8_8_preco_alvo": {
+      "valor": 2405.9628,
+      "texto": "R$ 2.405,96",
+      "origem": "preço que dá a margem-alvo de 15% no cenário"
+    },
+    "p0_8_8_desc_max": {
+      "valor": 31.2582,
+      "texto": "31,3%",
+      "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
+    },
+    "p1_preco": {
+      "valor": 6000.0,
+      "texto": "R$ 6.000,00",
+      "origem": "produtos.csv linha 3"
+    },
+    "p1_margem_hoje": {
+      "valor": 49.6833,
+      "texto": "49,7%",
+      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+    },
+    "p1_11_3_margem": {
+      "valor": 44.1356,
+      "texto": "44,1%",
+      "origem": "margem em 2027 com 11,3%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+    },
+    "p1_11_3_preco_min": {
+      "valor": 3014.502,
+      "texto": "R$ 3.014,50",
+      "origem": "preço com margem zero no cenário"
+    },
+    "p1_11_3_preco_alvo": {
+      "valor": 3628.037,
+      "texto": "R$ 3.628,04",
+      "origem": "preço que dá a margem-alvo de 15% no cenário"
+    },
+    "p1_11_3_desc_max": {
+      "valor": 39.5327,
+      "texto": "39,5%",
+      "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
+    },
+    "p1_8_8_margem": {
+      "valor": 46.1705,
+      "texto": "46,2%",
+      "origem": "margem em 2027 com 8,8%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+    },
+    "p1_8_8_preco_min": {
+      "valor": 2962.4667,
+      "texto": "R$ 2.962,47",
+      "origem": "preço com margem zero no cenário"
+    },
+    "p1_8_8_preco_alvo": {
+      "valor": 3545.6294,
+      "texto": "R$ 3.545,63",
+      "origem": "preço que dá a margem-alvo de 15% no cenário"
+    },
+    "p1_8_8_desc_max": {
+      "valor": 40.9062,
+      "texto": "40,9%",
+      "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
+    },
+    "p2_preco": {
+      "valor": 2500.0,
+      "texto": "R$ 2.500,00",
+      "origem": "produtos.csv linha 4"
+    },
+    "p2_margem_hoje": {
+      "valor": 10.35,
+      "texto": "10,3%",
+      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+    },
+    "p2_11_3_margem": {
+      "valor": 6.5742,
+      "texto": "6,6%",
+      "origem": "margem em 2027 com 11,3%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+    },
+    "p2_11_3_preco_min": {
+      "valor": 2314.7069,
+      "texto": "R$ 2.314,71",
+      "origem": "preço com margem zero no cenário"
+    },
+    "p2_11_3_preco_alvo": {
+      "valor": 2785.8141,
+      "texto": "R$ 2.785,81",
+      "origem": "preço que dá a margem-alvo de 15% no cenário"
+    },
+    "p2_11_3_desc_max": {
+      "valor": 0.0,
+      "texto": "0,0%",
+      "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
+    },
+    "p2_8_8_margem": {
+      "valor": 8.2171,
+      "texto": "8,2%",
+      "origem": "margem em 2027 com 8,8%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+    },
+    "p2_8_8_preco_min": {
+      "valor": 2274.7512,
+      "texto": "R$ 2.274,75",
+      "origem": "preço com margem zero no cenário"
+    },
+    "p2_8_8_preco_alvo": {
+      "valor": 2722.5369,
+      "texto": "R$ 2.722,54",
+      "origem": "preço que dá a margem-alvo de 15% no cenário"
+    },
+    "p2_8_8_desc_max": {
+      "valor": 0.0,
+      "texto": "0,0%",
+      "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
+    },
+    "p3_preco": {
+      "valor": 400.0,
+      "texto": "R$ 400,00",
+      "origem": "produtos.csv linha 5"
+    },
+    "p3_margem_hoje": {
+      "valor": 66.35,
+      "texto": "66,3%",
+      "origem": "(preço − custo − comissão/taxa − imposto de hoje) ÷ preço"
+    },
+    "p3_11_3_margem": {
+      "valor": 60.0515,
+      "texto": "60,1%",
+      "origem": "margem em 2027 com 11,3%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+    },
+    "p3_11_3_preco_min": {
+      "valor": 129.1929,
+      "texto": "R$ 129,19",
+      "origem": "preço com margem zero no cenário"
+    },
+    "p3_11_3_preco_alvo": {
+      "valor": 155.4873,
+      "texto": "R$ 155,49",
+      "origem": "preço que dá a margem-alvo de 15% no cenário"
+    },
+    "p3_11_3_desc_max": {
+      "valor": 61.1282,
+      "texto": "61,1%",
+      "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
+    },
+    "p3_8_8_margem": {
+      "valor": 62.2525,
+      "texto": "62,3%",
+      "origem": "margem em 2027 com 8,8%: (preço − custo − comissão/taxa − (preço − custo com crédito) × alíquota) ÷ preço"
+    },
+    "p3_8_8_preco_min": {
+      "valor": 126.9629,
+      "texto": "R$ 126,96",
+      "origem": "preço com margem zero no cenário"
+    },
+    "p3_8_8_preco_alvo": {
+      "valor": 151.9555,
+      "texto": "R$ 151,96",
+      "origem": "preço que dá a margem-alvo de 15% no cenário"
+    },
+    "p3_8_8_desc_max": {
+      "valor": 62.0111,
+      "texto": "62,0%",
+      "origem": "desconto máximo sobre o preço de hoje que ainda mantém a margem-alvo"
+    },
+    "p2_falta_ano": {
+      "valor": 27438.1569,
+      "texto": "R$ 27.438,16",
+      "origem": "(preço-alvo − preço de hoje) × qtd_mes × 12"
+    },
+    "itens_total": {
+      "valor": 4,
+      "texto": "4",
+      "origem": "produtos.csv (número de linhas)"
+    },
+    "itens_abaixo": {
+      "valor": 1,
+      "texto": "1",
+      "origem": "itens abaixo da margem-alvo no cenário principal"
+    }
+  },
+  "linhas": [
+    {
+      "item": "Gestão de redes sociais (mensal)",
+      "k": "p0",
+      "preco": 3500.0,
+      "qtd": 12.0,
+      "margem_hoje": 0.42064285714285715,
+      "cen": [
+        {
+          "aliq": 11.3,
+          "kk": "p0_11_3",
+          "margem": 0.3685979359770664,
+          "preco_min": 2045.5549313193546,
+          "preco_alvo": 2461.882257910811
+        },
+        {
+          "aliq": 8.8,
+          "kk": "p0_8_8",
+          "margem": 0.3881875203057812,
+          "preco_min": 2010.2452619843923,
+          "preco_alvo": 2405.9628332411626
+        }
+      ]
+    },
+    {
+      "item": "Site institucional",
+      "k": "p1",
+      "preco": 6000.0,
+      "qtd": 2.0,
+      "margem_hoje": 0.49683333333333335,
+      "cen": [
+        {
+          "aliq": 11.3,
+          "kk": "p1_11_3",
+          "margem": 0.4413561204013378,
+          "preco_min": 3014.502004049575,
+          "preco_alvo": 3628.037011658037
+        },
+        {
+          "aliq": 8.8,
+          "kk": "p1_8_8",
+          "margem": 0.4617050613154961,
+          "preco_min": 2962.466701871736,
+          "preco_alvo": 3545.629438460661
+        }
+      ]
+    },
+    {
+      "item": "Campanha de anúncios (mensal)",
+      "k": "p2",
+      "preco": 2500.0,
+      "qtd": 8.0,
+      "margem_hoje": 0.1035,
+      "cen": [
+        {
+          "aliq": 11.3,
+          "kk": "p2_11_3",
+          "margem": 0.06574199331103679,
+          "preco_min": 2314.706895966638,
+          "preco_alvo": 2785.814133951707
+        },
+        {
+          "aliq": 8.8,
+          "kk": "p2_8_8",
+          "margem": 0.08217075585284281,
+          "preco_min": 2274.7512175086545,
+          "preco_alvo": 2722.536890246579
+        }
+      ]
+    },
+    {
+      "item": "Consultoria avulsa (hora)",
+      "k": "p3",
+      "preco": 400.0,
+      "qtd": 20.0,
+      "margem_hoje": 0.6635,
+      "cen": [
+        {
+          "aliq": 11.3,
+          "kk": "p3_11_3",
+          "margem": 0.6005146488294314,
+          "preco_min": 129.19294303069609,
+          "preco_alvo": 155.48730049963015
+        },
+        {
+          "aliq": 8.8,
+          "kk": "p3_8_8",
+          "margem": 0.6225246822742475,
+          "preco_min": 126.96285865164583,
+          "preco_alvo": 151.95554736259973
+        }
+      ]
+    }
+  ],
+  "prioridades": [
+    {
+      "texto": "Rever o preço de Campanha de anúncios (mensal): para a margem-alvo, ele precisa ir de R$ 2.500,00 para R$ 2.785,81 (R$ 27.438,16 por ano, na quantidade de hoje).",
+      "chave": "p2_11_3_preco_alvo"
+    },
+    {
+      "texto": "Pedir aos fornecedores a nota com a CBS/IBS destacada: o crédito sobre o custo é o que segura o preço em 2027.",
+      "chave": "fator_credito_pct"
+    },
+    {
+      "texto": "Refazer a tabela quando o Senado fixar a alíquota de referência e a cada reajuste de custo.",
+      "chave": "margem_alvo"
+    }
+  ]
+}

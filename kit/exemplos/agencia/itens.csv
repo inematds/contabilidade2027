@@ -1,0 +1,6 @@
+item;tipo;codigo;cst;cclasstrib;reducao_pct;vendas_ano
+Gestão de redes sociais (mensal);servico;1.1506.10.00;000;000001;0;504000,00
+Site institucional;servico;1.1501.30.00;000;000001;0;144000,00
+Campanha de anúncios (mensal);servico;1.1506.20;000;;0;240000,00
+Consultoria avulsa (hora);servico;1.1302.00.00;000;200001;0;96000,00
+Curso de marketing para clientes;servico;1.2201.10.00;200;;60;1000,00

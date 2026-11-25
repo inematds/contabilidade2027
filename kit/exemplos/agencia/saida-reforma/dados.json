@@ -1,0 +1,210 @@
+{
+  "versao": "1.0.0",
+  "kit": "reforma_pronta",
+  "hoje": "2026-11-25",
+  "empresa": {
+    "nome": "Agência Exemplo Ltda (dados fictícios)",
+    "regime": "presumido",
+    "atividade": "agência de marketing digital (serviços)"
+  },
+  "numeros": {
+    "itens_total": {
+      "valor": 5,
+      "texto": "5",
+      "origem": "itens.csv (número de linhas)"
+    },
+    "itens_ok": {
+      "valor": 2,
+      "texto": "2",
+      "origem": "itens sem pendência de formato"
+    },
+    "itens_pend": {
+      "valor": 3,
+      "texto": "3",
+      "origem": "itens com ao menos uma pendência"
+    },
+    "pendencias": {
+      "valor": 5,
+      "texto": "5",
+      "origem": "soma das pendências de todos os itens"
+    },
+    "vendas_total": {
+      "valor": 985000.0,
+      "texto": "R$ 985.000,00",
+      "origem": "soma de vendas_ano em itens.csv"
+    },
+    "vendas_pend": {
+      "valor": 337000.0,
+      "texto": "R$ 337.000,00",
+      "origem": "vendas_ano dos itens com pendência"
+    },
+    "vendas_pend_pct": {
+      "valor": 34.2132,
+      "texto": "34,2%",
+      "origem": "vendas_pend ÷ vendas_total"
+    },
+    "itens_80": {
+      "valor": 3,
+      "texto": "3",
+      "origem": "menor número de itens que soma 80% das vendas (do maior para o menor)"
+    },
+    "itens_80_pct": {
+      "valor": 90.1523,
+      "texto": "90,2%",
+      "origem": "fatia das vendas desses itens"
+    },
+    "compras_total": {
+      "valor": 276000.0,
+      "texto": "R$ 276.000,00",
+      "origem": "soma de compras_ano em fornecedores.csv"
+    },
+    "compras_simples": {
+      "valor": 168000.0,
+      "texto": "R$ 168.000,00",
+      "origem": "compras de fornecedores do Simples ou MEI"
+    },
+    "compras_simples_pct": {
+      "valor": 60.8696,
+      "texto": "60,9%",
+      "origem": "compras_simples ÷ compras_total"
+    },
+    "forn_0_compras": {
+      "valor": 72000.0,
+      "texto": "R$ 72.000,00",
+      "origem": "fornecedores.csv: Freelancer de design (dados fictícios)"
+    },
+    "forn_1_compras": {
+      "valor": 60000.0,
+      "texto": "R$ 60.000,00",
+      "origem": "fornecedores.csv: Produtora de vídeo Exemplo"
+    },
+    "forn_2_compras": {
+      "valor": 36000.0,
+      "texto": "R$ 36.000,00",
+      "origem": "fornecedores.csv: Redator Exemplo"
+    },
+    "pront_sim": {
+      "valor": 2,
+      "texto": "2",
+      "origem": "respostas 'sim' em prontidao.json"
+    },
+    "pront_total": {
+      "valor": 6,
+      "texto": "6",
+      "origem": "perguntas de prontidão"
+    },
+    "vendas_top_pend": {
+      "valor": 240000.0,
+      "texto": "R$ 240.000,00",
+      "origem": "vendas dos itens de maior venda que têm pendência"
+    }
+  },
+  "pendencias": [
+    {
+      "item": "Campanha de anúncios (mensal)",
+      "linha": 4,
+      "campo": "codigo",
+      "problema": "NBS com 7 dígitos (o certo são 9)",
+      "o_que_fazer": "corrigir o código NBS no cadastro"
+    },
+    {
+      "item": "Campanha de anúncios (mensal)",
+      "linha": 4,
+      "campo": "cclasstrib",
+      "problema": "sem cClassTrib",
+      "o_que_fazer": "definir a classificação tributária (cClassTrib) do item"
+    },
+    {
+      "item": "Consultoria avulsa (hora)",
+      "linha": 5,
+      "campo": "cclasstrib",
+      "problema": "cClassTrib 200001 não começa pelo CST 000",
+      "o_que_fazer": "conferir o par CST/cClassTrib na tabela oficial"
+    },
+    {
+      "item": "Curso de marketing para clientes",
+      "linha": 6,
+      "campo": "cclasstrib",
+      "problema": "sem cClassTrib",
+      "o_que_fazer": "definir a classificação tributária (cClassTrib) do item"
+    },
+    {
+      "item": "Curso de marketing para clientes",
+      "linha": 6,
+      "campo": "reducao_pct",
+      "problema": "redução informada sem cClassTrib que a justifique",
+      "o_que_fazer": "definir o cClassTrib da redução, ou tirar a redução"
+    }
+  ],
+  "itens_80": [
+    "Gestão de redes sociais (mensal)",
+    "Campanha de anúncios (mensal)",
+    "Site institucional"
+  ],
+  "fornecedores": {
+    "maiores_simples": [
+      {
+        "fornecedor": "Freelancer de design (dados fictícios)",
+        "regime": "mei",
+        "compras_ano": 72000.0
+      },
+      {
+        "fornecedor": "Produtora de vídeo Exemplo",
+        "regime": "simples",
+        "compras_ano": 60000.0
+      },
+      {
+        "fornecedor": "Redator Exemplo",
+        "regime": "simples",
+        "compras_ano": 36000.0
+      }
+    ]
+  },
+  "prontidao": [
+    {
+      "chave": "erp_atualizado",
+      "texto": "O sistema de notas (ERP ou emissor) já tem os campos novos da CBS e do IBS (CST e cClassTrib)",
+      "estado": "sim"
+    },
+    {
+      "chave": "nota_teste",
+      "texto": "Já foi emitida uma nota de teste com a CBS e o IBS destacados",
+      "estado": "não"
+    },
+    {
+      "chave": "cadastro_revisado",
+      "texto": "O cadastro de produtos e serviços (NCM/NBS) foi revisado",
+      "estado": "não"
+    },
+    {
+      "chave": "contratos_revisados",
+      "texto": "Os contratos longos têm cláusula de repasse de tributo",
+      "estado": "não"
+    },
+    {
+      "chave": "precos_revisados",
+      "texto": "Os preços de 2027 foram revisados com o imposto novo",
+      "estado": "não respondido"
+    },
+    {
+      "chave": "equipe_treinada",
+      "texto": "A equipe de faturamento sabe o que muda na nota",
+      "estado": "sim"
+    }
+  ],
+  "simples": null,
+  "prioridades": [
+    {
+      "texto": "Corrigir primeiro o cadastro de Campanha de anúncios (mensal): é um dos itens de maior venda, com pendência (R$ 240.000,00 de vendas por ano).",
+      "chave": "vendas_top_pend"
+    },
+    {
+      "texto": "Emitir uma nota de teste com a CBS e o IBS antes de janeiro e conferir os valores no motor oficial da Receita.",
+      "chave": "pront_sim"
+    },
+    {
+      "texto": "Conversar com os fornecedores do Simples: 60,9% das compras vêm deles, e o crédito dessas compras é limitado ao que eles pagam no Simples.",
+      "chave": "compras_simples_pct"
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "versao": "1.0.0",
+  "kit": "reforma_pronta",
+  "hoje": "2026-11-25",
+  "empresa": {
+    "nome": "Loja Exemplo ME (dados fictícios)",
+    "regime": "simples",
+    "atividade": "comércio de material elétrico"
+  },
+  "numeros": {
+    "itens_total": {
+      "valor": 5,
+      "texto": "5",
+      "origem": "itens.csv (número de linhas)"
+    },
+    "itens_ok": {
+      "valor": 3,
+      "texto": "3",
+      "origem": "itens sem pendência de formato"
+    },
+    "itens_pend": {
+      "valor": 2,
+      "texto": "2",
+      "origem": "itens com ao menos uma pendência"
+    },
+    "pendencias": {
+      "valor": 4,
+      "texto": "4",
+      "origem": "soma das pendências de todos os itens"
+    },
+    "vendas_total": {
+      "valor": 400000.0,
+      "texto": "R$ 400.000,00",
+      "origem": "soma de vendas_ano em itens.csv"
+    },
+    "vendas_pend": {
+      "valor": 65000.0,
+      "texto": "R$ 65.000,00",
+      "origem": "vendas_ano dos itens com pendência"
+    },
+    "vendas_pend_pct": {
+      "valor": 16.25,
+      "texto": "16,2%",
+      "origem": "vendas_pend ÷ vendas_total"
+    },
+    "itens_80": {
+      "valor": 3,
+      "texto": "3",
+      "origem": "menor número de itens que soma 80% das vendas (do maior para o menor)"
+    },
+    "itens_80_pct": {
+      "valor": 83.75,
+      "texto": "83,8%",
+      "origem": "fatia das vendas desses itens"
+    },
+    "compras_total": {
+      "valor": 270000.0,
+      "texto": "R$ 270.000,00",
+      "origem": "soma de compras_ano em fornecedores.csv"
+    },
+    "compras_simples": {
+      "valor": 30000.0,
+      "texto": "R$ 30.000,00",
+      "origem": "compras de fornecedores do Simples ou MEI"
+    },
+    "compras_simples_pct": {
+      "valor": 11.1111,
+      "texto": "11,1%",
+      "origem": "compras_simples ÷ compras_total"
+    },
+    "forn_0_compras": {
+      "valor": 30000.0,
+      "texto": "R$ 30.000,00",
+      "origem": "fornecedores.csv: Fábrica de tomadas Exemplo"
+    },
+    "pront_sim": {
+      "valor": 0,
+      "texto": "0",
+      "origem": "respostas 'sim' em prontidao.json"
+    },
+    "pront_total": {
+      "valor": 6,
+      "texto": "6",
+      "origem": "perguntas de prontidão"
+    },
+    "vendas_empresas_pct": {
+      "valor": 60.0,
+      "texto": "60,0%",
+      "origem": "empresa.json (vendas_para_empresas_pct)"
+    }
+  },
+  "pendencias": [
+    {
+      "item": "Tomada 10 A",
+      "linha": 5,
+      "campo": "codigo",
+      "problema": "NCM com 6 dígitos (o certo são 8)",
+      "o_que_fazer": "corrigir o NCM no cadastro"
+    },
+    {
+      "item": "Serviço de instalação",
+      "linha": 6,
+      "campo": "codigo",
+      "problema": "sem código NBS",
+      "o_que_fazer": "preencher o código do item no cadastro"
+    },
+    {
+      "item": "Serviço de instalação",
+      "linha": 6,
+      "campo": "cst",
+      "problema": "sem CST da CBS/IBS",
+      "o_que_fazer": "definir o CST do item"
+    },
+    {
+      "item": "Serviço de instalação",
+      "linha": 6,
+      "campo": "cclasstrib",
+      "problema": "sem cClassTrib",
+      "o_que_fazer": "definir a classificação tributária (cClassTrib) do item"
+    }
+  ],
+  "itens_80": [
+    "Fio elétrico 2,5 mm (rolo 100 m)",
+    "Disjuntor 20 A",
+    "Lâmpada LED 9 W"
+  ],
+  "fornecedores": {
+    "maiores_simples": [
+      {
+        "fornecedor": "Fábrica de tomadas Exemplo",
+        "regime": "simples",
+        "compras_ano": 30000.0
+      }
+    ]
+  },
+  "prontidao": [
+    {
+      "chave": "erp_atualizado",
+      "texto": "O sistema de notas (ERP ou emissor) já tem os campos novos da CBS e do IBS (CST e cClassTrib)",
+      "estado": "não respondido"
+    },
+    {
+      "chave": "nota_teste",
+      "texto": "Já foi emitida uma nota de teste com a CBS e o IBS destacados",
+      "estado": "não respondido"
+    },
+    {
+      "chave": "cadastro_revisado",
+      "texto": "O cadastro de produtos e serviços (NCM/NBS) foi revisado",
+      "estado": "não respondido"
+    },
+    {
+      "chave": "contratos_revisados",
+      "texto": "Os contratos longos têm cláusula de repasse de tributo",
+      "estado": "não respondido"
+    },
+    {
+      "chave": "precos_revisados",
+      "texto": "Os preços de 2027 foram revisados com o imposto novo",
+      "estado": "não respondido"
+    },
+    {
+      "chave": "equipe_treinada",
+      "texto": "A equipe de faturamento sabe o que muda na nota",
+      "estado": "não respondido"
+    }
+  ],
+  "simples": {
+    "janela": "março de 2027",
+    "vale": "julho de 2027"
+  },
+  "prioridades": [
+    {
+      "texto": "Corrigir as 4 pendências de cadastro (lista em pendencias.csv).",
+      "chave": "pendencias"
+    },
+    {
+      "texto": "Emitir uma nota de teste com a CBS e o IBS antes de janeiro e conferir os valores no motor oficial da Receita.",
+      "chave": "pront_sim"
+    },
+    {
+      "texto": "Decidir na janela de março de 2027 se vale recolher a CBS/IBS fora do DAS: 60,0% das vendas são para empresas.",
+      "chave": "vendas_empresas_pct"
+    }
+  ]
+}

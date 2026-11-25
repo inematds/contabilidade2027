@@ -23,7 +23,30 @@ def normal(t):
     return t.replace(" ", "").replace("-R$", "R$").replace("R$-", "R$")
 
 
+NOMES = ("item", "fornecedor", "categoria", "nome", "atividade")
+
+
+def nomes(dados):
+    """Nomes de item, fornecedor e categoria: podem ter número ("Fio 2,5 mm") e não são valores calculados."""
+    achados = set()
+
+    def anda(x):
+        if isinstance(x, dict):
+            for k, v in x.items():
+                if k in NOMES and isinstance(v, str):
+                    achados.add(v)
+                else:
+                    anda(v)
+        elif isinstance(x, list):
+            for v in x:
+                anda(v)
+    anda(dados)
+    return sorted(achados, key=len, reverse=True)
+
+
 def conferir(texto, dados):
+    for nome in nomes(dados):
+        texto = texto.replace(nome, " ")
     validos = set()
     for item in dados["numeros"].values():
         validos.add(normal(item["texto"]))

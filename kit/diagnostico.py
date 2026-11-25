@@ -17,11 +17,12 @@ Arquivos da pasta (CSV com separador ; e vírgula decimal, como o Excel salva):
 Só lê e calcula. Não envia nada, não chama internet, não chama modelo de IA.
 Tudo o que é 2027 sai marcado como SIMULADO: a alíquota da CBS ainda não é a definitiva.
 """
-import csv
 import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from comum import ErroDados, Numeros, brl, ler_csv, num, pct  # noqa: E402
 VERSAO = "1.0.0"
 
 PADROES = {
@@ -39,52 +40,6 @@ PADROES = {
 
 CAMPOS_MENSAL = ["mes", "receita", "compras_com_credito", "custo_direto",
                  "despesas_operacionais", "pis_cofins_pago", "outros_impostos", "saldo_caixa_fim"]
-
-
-class ErroDados(Exception):
-    pass
-
-
-# ---------- formatação pt-BR ----------
-def brl(v):
-    s = f"{abs(v):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
-    return ("-R$ " if v < 0 else "R$ ") + s
-
-
-def pct(v, casas=1):
-    return f"{v:.{casas}f}".replace(".", ",") + "%"
-
-
-def num(texto, arquivo, linha, campo):
-    t = str(texto).strip().replace("R$", "").replace(" ", "")
-    if t == "":
-        return 0.0
-    if "," in t:
-        t = t.replace(".", "").replace(",", ".")
-    try:
-        return float(t)
-    except ValueError:
-        raise ErroDados(f"{arquivo} linha {linha}: '{campo}' não é número ('{texto}')")
-
-
-def ler_csv(caminho):
-    with open(caminho, encoding="utf-8-sig", newline="") as f:
-        amostra = f.read(2048)
-        f.seek(0)
-        sep = ";" if amostra.count(";") >= amostra.count(",") else ","
-        return list(csv.DictReader(f, delimiter=sep))
-
-
-# ---------- registro de números com origem ----------
-class Numeros:
-    def __init__(self):
-        self.itens = {}
-
-    def add(self, chave, valor, tipo, origem):
-        texto = brl(valor) if tipo == "brl" else pct(valor) if tipo == "pct" else str(valor)
-        self.itens[chave] = {"valor": round(valor, 4) if isinstance(valor, float) else valor,
-                             "texto": texto, "origem": origem}
-        return texto
 
 
 def carregar(pasta):
@@ -255,7 +210,7 @@ def diagnosticar(empresa, mensal, despesas, produtos):
             if m_2027 < alvo:
                 denom = (1 - t) - alvo / 100
                 preco_min = c * (1 - fc * t) / denom if denom > 0 else 0.0
-                N.add(f"prod_{j}_preco_min", preco_min, "brl", f"preço que devolve a margem-alvo de {pct(alvo,0)} no pior cenário")
+                N.add(f"prod_{j}_preco_min", preco_min, "brl", f"preço-alvo: devolve a margem-alvo de {pct(alvo,0)} no pior cenário")
                 itens_baixos.append({"item": p["item"], "j": j, "m_hoje": m_hoje, "m_2027": m_2027,
                                      "preco": P, "preco_min": preco_min, "qtd": p["qtd_mes"]})
         N.add("margem_alvo", alvo, "pct", "empresa.json (margem_alvo_pct)")
@@ -277,7 +232,7 @@ def diagnosticar(empresa, mensal, despesas, produtos):
         b = itens_baixos[0]
         perda = max(0.0, (b["preco_min"] - b["preco"]) * b["qtd"] * 12)
         cand.append({"valor": perda, "chave": f"prod_{b['j']}_preco_min", "servico": "Preço certo na Reforma",
-                     "texto": f"Rever o preço de {b['item']}: para manter a margem-alvo, o preço mínimo é {{v}}."})
+                     "texto": f"Rever o preço de {b['item']}: para manter a margem-alvo, o preço precisa ser de {{v}} (preço-alvo)."})
     if empresa["regime"] == "simples" and empresa["vendas_para_empresas_pct"] >= 50:
         cand.append({"valor": 0, "chave": "vendas_empresas_pct", "servico": "Reforma Tributária Pronta",
                      "texto": "Avaliar com o contador se vale recolher CBS/IBS fora do DAS (a opção é semestral, feita em setembro e março): {v} das vendas são para empresas, que vão querer crédito cheio."})
@@ -354,7 +309,7 @@ def relatorio(d):
     if d["itens_margem_baixa"]:
         for b in d["itens_margem_baixa"][:3]:
             j = b["j"]
-            L.append(f"- {b['item']}: margem depois do custo e do PIS/Cofins de {T(f'prod_{j}_margem_hoje')} hoje e {T(f'prod_{j}_margem_2027')} em 2027 no pior cenário; preço mínimo para margem de {T('margem_alvo')}: {T(f'prod_{j}_preco_min')}.")
+            L.append(f"- {b['item']}: margem depois do custo e do PIS/Cofins de {T(f'prod_{j}_margem_hoje')} hoje e {T(f'prod_{j}_margem_2027')} em 2027 no pior cenário; preço-alvo para a margem de {T('margem_alvo')}: {T(f'prod_{j}_preco_min')}.")
     if not d["despesas_fora"] and not d["itens_margem_baixa"]:
         L.append("- Nenhuma despesa fora do padrão nem item com margem baixa nos dados enviados.")
     L.append("")

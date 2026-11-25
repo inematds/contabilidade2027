@@ -193,7 +193,7 @@
     "prod_2_preco_min": {
       "valor": 2785.8141,
       "texto": "R$ 2.785,81",
-      "origem": "preço que devolve a margem-alvo de 15% no pior cenário"
+      "origem": "preço-alvo: devolve a margem-alvo de 15% no pior cenário"
     },
     "prod_3_margem_hoje": {
       "valor": 66.35,
@@ -268,7 +268,7 @@
       "chave": "cbs_11_3_diferenca_ano"
     },
     {
-      "texto": "Rever o preço de Campanha de anúncios (mensal): para manter a margem-alvo, o preço mínimo é R$ 2.785,81.",
+      "texto": "Rever o preço de Campanha de anúncios (mensal): para manter a margem-alvo, o preço precisa ser de R$ 2.785,81 (preço-alvo).",
       "servico": "Preço certo na Reforma",
       "chave": "prod_2_preco_min"
     },

@@ -8,6 +8,15 @@
 
 O seu cliente vai perguntar quanto a Reforma Tributária pesa no caixa dele em 2027. Este kit gratuito ajuda o contador a responder com os números do próprio cliente. Você coloca numa pasta o que já tem (o resumo mensal de receitas, custos, impostos e saldo e, se quiser, despesas e preços) e a sua IA monta um relatório de 2 páginas para o dono da empresa: quanto sobra, como está o caixa, quanto ele recolheria de CBS/IBS em 2027 em dois cenários de alíquota, o efeito do split payment, o que chamou a atenção e 3 prioridades. Um conferidor garante que todo número do relatório veio dos dados. É um kit do INEMA, não oficial, e não substitui a análise técnica do contador.
 
+## Os 4 kits (a mesma pasta do cliente serve para todos)
+
+| Kit | O que entrega | Programa | Guia |
+|---|---|---|---|
+| 1. Diagnóstico Reforma + Caixa | Relatório de 2 páginas: caixa, margem, CBS/IBS de 2027, split payment, 3 prioridades | `kit/diagnostico.py` | [guia](https://inematds.github.io/contabilidade2027/guia/) |
+| 2. Reforma Tributária Pronta | Plano por CNPJ: pendências do cadastro (NCM/NBS, CST, cClassTrib), fornecedores e crédito, checklist e prazos | `kit/reforma_pronta.py` | [guia](https://inematds.github.io/contabilidade2027/guia/reforma-pronta/) |
+| 3. Preço certo na Reforma | Preço mínimo e preço-alvo por produto em 2027 | em breve | — |
+| 4. Painel do Empresário | Caixa projetado e resultado do mês em texto simples | em breve | — |
+
 ## 📖 Guia de uso
 
 Guia completo: **https://inematds.github.io/contabilidade2027/guia/**
@@ -65,6 +74,30 @@ Copie `kit/modelo/` e preencha. CSV com separador `;` e vírgula decimal, como o
 - **Simples:** não simula mudança no DAS. Avisa quando a maior parte das vendas é para empresas. A opção de recolher CBS/IBS fora do DAS é semestral, feita em setembro e em março (LC 123, art. 13, §§ 9–10, com a redação da LC 227/2026).
 - **Tudo de 2027 sai marcado como SIMULADO.** A alíquota de referência da CBS é fixada pelo Senado (prazo 15/12/2026). Refaça quando sair.
 
+### Kit 2 — Reforma Tributária Pronta
+
+```bash
+python3 kit/reforma_pronta.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/plano.md, pendencias.csv e dados.json
+```
+
+Arquivos a mais na pasta do cliente (modelos em `kit/modelo/`):
+
+| Arquivo | Obrigatório | Colunas |
+|---|---|---|
+| `itens.csv` | sim | `item;tipo;codigo;cst;cclasstrib;reducao_pct;vendas_ano`. O `tipo` é `produto` (código NCM, 8 dígitos) ou `servico` (código NBS, 9 dígitos) |
+| `fornecedores.csv` | não | `fornecedor;regime;compras_ano`. O `regime` é `regular`, `simples` ou `mei` |
+| `prontidao.json` | não | `erp_atualizado`, `nota_teste`, `cadastro_revisado`, `contratos_revisados`, `precos_revisados`, `equipe_treinada`: `true`, `false` ou `null` (não sei) |
+
+O que ele confere:
+- Formato dos códigos: NCM com 8 dígitos, NBS com 9, CST com 3, cClassTrib com 6.
+- Se o cClassTrib começa pelo CST. Nos exemplos oficiais da calculadora aberta da Receita, 000 vem com 000001 e 200 com 200xxx; aqui é só "conferir", não erro.
+- Redução fora de 30/60/100%, ou redução sem cClassTrib.
+- Os itens que somam 80% das vendas.
+- A fatia das compras de fornecedor do Simples ou MEI, que geram crédito limitado ao que o fornecedor paga no Simples (LC 214, art. 47).
+- No Simples, a próxima janela da opção de recolher a CBS/IBS fora do DAS (setembro e março; LC 123, art. 13, § 10).
+
+Ele **não** diz se o código é o certo para o item: isso é com o contador, na tabela oficial ou no [motor da Receita](https://github.com/inematds/calculadora-da-reforma).
+
 ### O conferidor
 
 `kit/conferir.py relatorio.md dados.json` sai com código 1 se o texto tiver:
@@ -76,12 +109,21 @@ Serve para o passo em que a IA reescreve o relatório em linguagem simples.
 
 ### Os testes
 
-`tests/test_kit.py` (15) cobre:
+`tests/test_kit.py` (15, kit 1) cobre:
 - a conta conferida à mão no exemplo da agência (CBS, PIS/Cofins, split, despesa, preço mínimo);
 - o Simples;
 - o Lucro Real com crédito;
 - a redução de 60%;
 - o conferidor pegando número inventado, arredondado e premissa usada como número;
+- os erros de entrada e a linha de comando.
+
+`tests/test_reforma_pronta.py` (11, kit 2) cobre:
+- a contagem de pendências da agência e as vendas em risco;
+- os itens que somam 80% das vendas;
+- os fornecedores do Simples;
+- a prioridade 1;
+- cada regra de formato;
+- a janela do Simples em 3 datas;
 - os erros de entrada e a linha de comando.
 
 ## O processo, do início ao fim
@@ -93,7 +135,8 @@ Serve para o passo em que a IA reescreve o relatório em linguagem simples.
 5. 🧠 A IA reescreve em `relatorio.md`, em linguagem simples, sem mexer nos números.
 6. ⚙️ `python3 kit/conferir.py relatorio.md saida/dados.json`: tem de sair `ok`.
 7. 🧠 O contador revisa as premissas e leva o relatório para a reunião com o cliente.
-8. ⚙️ `python3 -m unittest discover -s tests`: antes de mudar o código.
+8. ⚙️ Kit 2: `python3 kit/reforma_pronta.py <pasta-do-cliente>` → `saida/plano.md` + `saida/pendencias.csv`. A pasta precisa ter o `itens.csv`.
+9. ⚙️ `python3 -m unittest discover -s tests`: antes de mudar o código.
 
 ## Base
 

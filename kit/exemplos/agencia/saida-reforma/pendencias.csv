@@ -1,0 +1,6 @@
+item;linha_itens_csv;campo;problema;o_que_fazer
+Campanha de anúncios (mensal);4;codigo;NBS com 7 dígitos (o certo são 9);corrigir o código NBS no cadastro
+Campanha de anúncios (mensal);4;cclasstrib;sem cClassTrib;definir a classificação tributária (cClassTrib) do item
+Consultoria avulsa (hora);5;cclasstrib;cClassTrib 200001 não começa pelo CST 000;conferir o par CST/cClassTrib na tabela oficial
+Curso de marketing para clientes;6;cclasstrib;sem cClassTrib;definir a classificação tributária (cClassTrib) do item
+Curso de marketing para clientes;6;reducao_pct;redução informada sem cClassTrib que a justifique;definir o cClassTrib da redução, ou tirar a redução
