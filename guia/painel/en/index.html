@@ -12,9 +12,6 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
-
-
-
 <style>
   :root{
     --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
@@ -288,15 +285,14 @@
 <div class="pedido" style="margin-top:8px;position:relative">
 <pre id="pedidoTxt" style="white-space:pre-wrap">Read the "contabilidade2027" kit at https://github.com/inematds/contabilidade2027 (the README explains everything).
 I want to put together the monthly Business Owner Dashboard (Painel do Empresário) for one of my clients. On this computer:
-1. Download the kit (ZIP or git) and first run kit/painel.py on the agency example, so I can see what the dashboard looks like.
-2. Help me update, in my client's folder, the mensal.csv with the month that just closed and, if I have them,
-   contas_receber.csv and contas_pagar.csv (with the due date), in the format found in kit/modelo/. Don't make up any numbers.
+1. Download the kit (ZIP or git) and first run kit/painel.py on the agency example with --hoje 2026-11-25, so I can see what the dashboard looks like.
+2. Help me update, in my client's folder, the mensal.csv and despesas.csv with the month that just closed and, if I have them,
+   contas_receber.csv and contas_pagar.csv (with the due date), in the format of kit/modelo/. Don't make up any numbers.
 3. Run kit/painel.py in the client's folder.
-4. Rewrite saida/painel/painel.md as a short text to send to the client via WhatsApp, without changing any numbers.
+4. Rewrite saida/painel/painel.md into a short text to send to the client via WhatsApp, without changing any number.
+   The output itself stays in Portuguese (Brazilian taxes).
 5. Run kit/conferir.py on the new text with saida/painel/dados.json and fix whatever it flags.
-6. Don't send anything to anyone: I review it, and I'm the one who talks to the client.
-
-The output itself stays in Portuguese (Brazilian taxes).</pre>
+6. Don't send anything to anyone: I review it and I'm the one who talks to the client.</pre>
 <button class="btn" id="copiarPedido" style="margin-top:10px">Copy the request</button>
 </div>
 <div class="grid g2" style="margin-top:16px">

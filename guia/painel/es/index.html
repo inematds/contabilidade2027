@@ -12,9 +12,6 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
-
-
-
 <style>
   :root{
     --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
@@ -288,12 +285,12 @@
 <div class="pedido" style="margin-top:8px;position:relative">
 <pre id="pedidoTxt" style="white-space:pre-wrap">Lee el kit "contabilidade2027" en https://github.com/inematds/contabilidade2027 (el README lo explica todo).
 Quiero armar el Panel del Empresario del mes de un cliente mío. En este computador:
-1. Descarga el kit (ZIP o git) y ejecuta primero kit/painel.py con el ejemplo de la agencia, para que yo vea cómo queda el panel.
-2. Ayúdame a actualizar en la carpeta de mi cliente el mensal.csv con el mes que cerró y, si lo tengo, contas_receber.csv y contas_pagar.csv (con el vencimiento), en el formato de kit/modelo/. No inventes ningún número.
+1. Descarga el kit (ZIP o git) y ejecuta primero kit/painel.py en el ejemplo de la agencia con --hoje 2026-11-25, para que yo vea cómo queda el panel.
+2. Ayúdame a actualizar en la carpeta de mi cliente el mensal.csv y el despesas.csv con el mes que cerró y, si los tengo, contas_receber.csv y contas_pagar.csv (con el vencimiento), en el formato de kit/modelo/. No inventes ningún número.
 3. Ejecuta kit/painel.py en la carpeta del cliente.
-4. Reescribe el saida/painel/painel.md en un texto corto para enviarle al cliente por WhatsApp, sin cambiar ningún número.
-Nota: la salida en sí permanece en portugués (impuestos de Brasil).
-5. Ejecuta kit/conferir.py sobre el texto nuevo con el saida/painel/dados.json y corrige lo que señale.
+4. Reescribe el saida/painel/painel.md en un texto corto para enviar al cliente por WhatsApp, sin cambiar ningún número.
+   El resultado (la salida) permanece en portugués, porque los impuestos son brasileños.
+5. Ejecuta kit/conferir.py en el texto nuevo con el saida/painel/dados.json y corrige lo que señale.
 6. No envíes nada a nadie: yo reviso y soy yo quien habla con el cliente.</pre>
 <button class="btn" id="copiarPedido" style="margin-top:10px">Copiar el pedido</button>
 </div>
