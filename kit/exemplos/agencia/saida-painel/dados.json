@@ -1,0 +1,257 @@
+{
+  "versao": "1.0.0",
+  "kit": "painel",
+  "hoje": "2026-11-25",
+  "empresa": {
+    "nome": "Agência Exemplo Ltda (dados fictícios)",
+    "regime": "presumido",
+    "atividade": "agência de marketing digital (serviços)"
+  },
+  "numeros": {
+    "mes": {
+      "valor": "11/2026",
+      "texto": "11/2026",
+      "origem": "último mês de mensal.csv (linha 13)"
+    },
+    "receita": {
+      "valor": 92000.0,
+      "texto": "R$ 92.000,00",
+      "origem": "mensal.csv 11/2026"
+    },
+    "custo": {
+      "valor": 28000.0,
+      "texto": "R$ 28.000,00",
+      "origem": "mensal.csv 11/2026"
+    },
+    "bruta": {
+      "valor": 64000.0,
+      "texto": "R$ 64.000,00",
+      "origem": "receita − custo_direto"
+    },
+    "despesas": {
+      "valor": 34500.0,
+      "texto": "R$ 34.500,00",
+      "origem": "mensal.csv 11/2026"
+    },
+    "impostos": {
+      "valor": 12558.0,
+      "texto": "R$ 12.558,00",
+      "origem": "pis_cofins_pago + outros_impostos"
+    },
+    "lucro": {
+      "valor": 16942.0,
+      "texto": "R$ 16.942,00",
+      "origem": "receita − custo − despesas − impostos"
+    },
+    "margem": {
+      "valor": 18.4152,
+      "texto": "18,4%",
+      "origem": "lucro ÷ receita"
+    },
+    "var_rec_ant": {
+      "valor": 5.7471,
+      "texto": "5,7%",
+      "origem": "receita de 11/2026 contra 10/2026"
+    },
+    "var_rec_ant_abs": {
+      "valor": 5.7471,
+      "texto": "5,7%",
+      "origem": "receita de 11/2026 contra 10/2026 (sem o sinal)"
+    },
+    "var_rec_med": {
+      "valor": 13.3259,
+      "texto": "13,3%",
+      "origem": "receita de 11/2026 contra a média dos 11 meses anteriores"
+    },
+    "var_rec_med_abs": {
+      "valor": 13.3259,
+      "texto": "13,3%",
+      "origem": "receita de 11/2026 contra a média dos 11 meses anteriores (sem o sinal)"
+    },
+    "var_luc_ant": {
+      "valor": -3.8725,
+      "texto": "-3,9%",
+      "origem": "lucro de 11/2026 contra 10/2026"
+    },
+    "var_luc_ant_abs": {
+      "valor": 3.8725,
+      "texto": "3,9%",
+      "origem": "lucro de 11/2026 contra 10/2026 (sem o sinal)"
+    },
+    "janela_dias": {
+      "valor": 30,
+      "texto": "30",
+      "origem": "janela de curto prazo do painel"
+    },
+    "meses_media": {
+      "valor": 3,
+      "texto": "3",
+      "origem": "meses usados na média da projeção"
+    },
+    "margem_media": {
+      "valor": 19.7527,
+      "texto": "19,8%",
+      "origem": "margem média dos 11 meses anteriores"
+    },
+    "margem_dif": {
+      "valor": -1.3375,
+      "texto": "-1,3%",
+      "origem": "margem do mês − margem média (pontos percentuais)"
+    },
+    "lucro_medio": {
+      "valor": 16191.4091,
+      "texto": "R$ 16.191,41",
+      "origem": "lucro médio dos 11 meses anteriores"
+    },
+    "saldo": {
+      "valor": 34000.0,
+      "texto": "R$ 34.000,00",
+      "origem": "saldo_caixa_fim de 11/2026"
+    },
+    "entrada_media": {
+      "valor": 89666.6667,
+      "texto": "R$ 89.666,67",
+      "origem": "receita média dos 3 últimos meses"
+    },
+    "saida_media": {
+      "valor": 71406.1667,
+      "texto": "R$ 71.406,17",
+      "origem": "saídas médias dos 3 últimos meses (custo + despesas + impostos)"
+    },
+    "proj_1": {
+      "valor": 52260.5,
+      "texto": "R$ 52.260,50",
+      "origem": "saldo + (entrada_media − saida_media) × 1  (12/2026)"
+    },
+    "proj_2": {
+      "valor": 70521.0,
+      "texto": "R$ 70.521,00",
+      "origem": "saldo + (entrada_media − saida_media) × 2  (01/2027)"
+    },
+    "proj_3": {
+      "valor": 88781.5,
+      "texto": "R$ 88.781,50",
+      "origem": "saldo + (entrada_media − saida_media) × 3  (02/2027)"
+    },
+    "receber_vencido": {
+      "valor": 17000.0,
+      "texto": "R$ 17.000,00",
+      "origem": "contas_receber.csv com vencimento antes de 25/11/2026"
+    },
+    "receber_vencido_qtd": {
+      "valor": 3,
+      "texto": "3",
+      "origem": "quantidade de contas vencidas"
+    },
+    "receber_30": {
+      "valor": 76000.0,
+      "texto": "R$ 76.000,00",
+      "origem": "a receber nos próximos 30 dias"
+    },
+    "venc_0": {
+      "valor": 7500.0,
+      "texto": "R$ 7.500,00",
+      "origem": "contas_receber.csv: Clínica Exemplo (campanha de outubro), venceu em 30/10/2026"
+    },
+    "venc_0_dias": {
+      "valor": 26,
+      "texto": "26",
+      "origem": "dias de atraso"
+    },
+    "venc_1": {
+      "valor": 6000.0,
+      "texto": "R$ 6.000,00",
+      "origem": "contas_receber.csv: Loja Exemplo (site), venceu em 10/11/2026"
+    },
+    "venc_1_dias": {
+      "valor": 15,
+      "texto": "15",
+      "origem": "dias de atraso"
+    },
+    "venc_2": {
+      "valor": 3500.0,
+      "texto": "R$ 3.500,00",
+      "origem": "contas_receber.csv: Restaurante Exemplo (redes sociais), venceu em 20/11/2026"
+    },
+    "venc_2_dias": {
+      "valor": 5,
+      "texto": "5",
+      "origem": "dias de atraso"
+    },
+    "pagar_30": {
+      "valor": 59058.0,
+      "texto": "R$ 59.058,00",
+      "origem": "a pagar nos próximos 30 dias"
+    },
+    "pagar_vencido": {
+      "valor": 0,
+      "texto": "R$ 0,00",
+      "origem": "contas_pagar.csv com vencimento antes de 25/11/2026"
+    },
+    "folga_30": {
+      "valor": 50942.0,
+      "texto": "R$ 50.942,00",
+      "origem": "saldo + a receber em 30 dias − a pagar em 30 dias"
+    },
+    "split_giro": {
+      "valor": 6183.6111,
+      "texto": "R$ 6.183,61",
+      "origem": "split_imposto_bruto_mes × split_dias ÷ 30 (estimativa máxima, sem descontar créditos)"
+    },
+    "desp_0_acima": {
+      "valor": 1980.0,
+      "texto": "R$ 1.980,00",
+      "origem": "desp_0_atual − desp_0_media"
+    },
+    "folego": {
+      "valor": 0.48,
+      "texto": "0,48",
+      "origem": "saldo ÷ saídas médias (meses de saídas que o caixa cobre)"
+    }
+  },
+  "projecao": [
+    {
+      "mes": "12/2026",
+      "saldo": 52260.5,
+      "k": 1
+    },
+    {
+      "mes": "01/2027",
+      "saldo": 70521.0,
+      "k": 2
+    },
+    {
+      "mes": "02/2027",
+      "saldo": 88781.5,
+      "k": 3
+    }
+  ],
+  "receber": {
+    "vencidos": [
+      {
+        "cliente": "Clínica Exemplo (campanha de outubro)",
+        "i": 0
+      },
+      {
+        "cliente": "Loja Exemplo (site)",
+        "i": 1
+      },
+      {
+        "cliente": "Restaurante Exemplo (redes sociais)",
+        "i": 2
+      }
+    ]
+  },
+  "tem_receber": true,
+  "tem_pagar": true,
+  "alertas": [
+    "Softwares e assinaturas ficou R$ 1.980,00 acima da média.",
+    "Há R$ 17.000,00 a receber já vencidos (3 contas).",
+    "O caixa cobre só 0,48 mês de saídas: qualquer atraso de cliente aperta."
+  ],
+  "fazer": [
+    "Cobrar Clínica Exemplo (campanha de outubro): R$ 7.500,00 vencidos há 26 dias.",
+    "Montar uma reserva de caixa: hoje o saldo cobre só 0,48 mês de saídas.",
+    "Entender por que Softwares e assinaturas subiu e decidir se continua."
+  ]
+}

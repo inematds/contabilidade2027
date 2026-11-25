@@ -23,7 +23,7 @@ def normal(t):
     return t.replace(" ", "").replace("-R$", "R$").replace("R$-", "R$")
 
 
-NOMES = ("item", "fornecedor", "categoria", "nome", "atividade")
+NOMES = ("item", "fornecedor", "cliente", "categoria", "nome", "atividade")
 
 
 def nomes(dados):
