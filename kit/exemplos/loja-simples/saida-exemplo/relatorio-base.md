@@ -18,7 +18,7 @@ Período analisado: 6 meses. Regime: simples. Números de 2027 = **SIMULADO** (a
 - Nenhuma despesa fora do padrão nem item com margem baixa nos dados enviados.
 
 ## 5. Suas 3 prioridades
-1. Avaliar com o contador se vale recolher CBS/IBS fora do DAS: 60,0% das vendas são para empresas, que vão querer crédito cheio. *(serviço: Reforma Tributária Pronta)*
+1. Avaliar com o contador se vale recolher CBS/IBS fora do DAS (a opção é semestral, feita em setembro e março): 60,0% das vendas são para empresas, que vão querer crédito cheio. *(serviço: Reforma Tributária Pronta)*
 2. Montar a previsão de caixa: em 06/2026, 07/2026, 08/2026, 09/2026, 10/2026, 11/2026 o saldo ficou abaixo de meio mês de saídas (saídas médias de R$ 42.796,67 por mês). *(serviço: Painel do Empresário)*
 
 ## Pauta da reunião (30 min)

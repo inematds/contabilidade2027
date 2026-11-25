@@ -25,8 +25,9 @@ from pathlib import Path
 VERSAO = "1.0.0"
 
 PADROES = {
-    "cenarios_cbs_pct": [8.8, 11.3],      # 8,8% exemplo oficial da Receita; 11,3% recomendação do TCU (10/11/2026)
-    "ibs_2027_pct": 0.1,                  # 0,05% estadual + 0,05% municipal em 2027
+    "cenarios_cbs_pct": [8.8, 11.3],      # alíquota de referência: 8,8% exemplo oficial da Receita; 11,3% TCU (28/10/2026)
+    "ibs_2027_pct": 0.1,                  # 0,05% estadual + 0,05% municipal (art. 344 LC 214); a CBS de 2027 é a
+                                          # referência − 0,1 p.p. (art. 347), então CBS + IBS = a própria referência
     "reducao_aliquota_pct": 0,            # 0, 30 ou 60 conforme a atividade (o contador confere)
     "prazo_medio_recebimento_dias": 0,
     "dia_vencimento_impostos": 25,        # do mês seguinte
@@ -172,8 +173,9 @@ def diagnosticar(empresa, mensal, despesas, produtos):
     compras = soma("compras_com_credito")
     N.add("pis_cofins_ano", pis_cof * fator_ano, "brl", f"pis_cofins_pago de {periodo}, anualizado (× 12 ÷ {n})")
     if empresa["regime"] in ("presumido", "real"):
+        N.add("ibs_pct", ibs, "pct", "IBS de 2027 (art. 344 LC 214: 0,05% estadual + 0,05% municipal)")
         for aliq in empresa["cenarios_cbs_pct"]:
-            total_pct = (aliq + ibs) * (1 - red)
+            total_pct = aliq * (1 - red)  # (referência − 0,1 de CBS) + 0,1 de IBS
             debito = receita * total_pct / 100
             credito = compras * total_pct / 100
             novo_ano = (debito - credito) * fator_ano
@@ -181,7 +183,7 @@ def diagnosticar(empresa, mensal, despesas, produtos):
             k = str(aliq).replace(".", "_")
             N.add(f"cbs_{k}_aliq", aliq, "pct", "cenário de alíquota da CBS (empresa.json)")
             N.add(f"cbs_{k}_imposto_ano", novo_ano, "brl",
-                  f"(receita − compras_com_credito) × ({pct(aliq)} CBS + {pct(ibs)} IBS) × (1 − {pct(red*100,0)} de redução), anualizado")
+                  f"(receita − compras_com_credito) × ({pct(aliq - ibs, 2)} CBS + {pct(ibs)} IBS = {pct(aliq)}) × (1 − {pct(red*100,0)} de redução), anualizado")
             N.add(f"cbs_{k}_diferenca_ano", dif, "brl", f"cbs_{k}_imposto_ano − pis_cofins_ano")
             c = {"aliq": aliq, "imposto_ano": novo_ano, "diferenca_ano": dif, "chave": k}
             reforma["cenarios"].append(c)
@@ -190,12 +192,12 @@ def diagnosticar(empresa, mensal, despesas, produtos):
         reforma["pior"] = pior
         # split payment: dinheiro do imposto que hoje passa pelo caixa
         venda_media = receita / n
-        imposto_bruto_mes = venda_media * (pior["aliq"] + ibs) * (1 - red) / 100
+        imposto_bruto_mes = venda_media * pior["aliq"] * (1 - red) / 100
         dias = max(0, 15 + empresa["dia_vencimento_impostos"] - empresa["prazo_medio_recebimento_dias"])
         giro = imposto_bruto_mes * dias / 30
         N.add("split_dias", dias, "int",
               f"venda no meio do mês, recebida em {empresa['prazo_medio_recebimento_dias']} dias, imposto vence dia {empresa['dia_vencimento_impostos']} do mês seguinte")
-        N.add("split_imposto_bruto_mes", imposto_bruto_mes, "brl", f"receita média × ({pct(pior['aliq'])} + {pct(ibs)}) × (1 − redução)")
+        N.add("split_imposto_bruto_mes", imposto_bruto_mes, "brl", f"receita média × {pct(pior['aliq'])} (CBS + IBS) × (1 − redução)")
         N.add("split_giro", giro, "brl", "split_imposto_bruto_mes × split_dias ÷ 30 (estimativa máxima, sem descontar créditos)")
         if saldo_final > 0:
             N.add("split_giro_pct_saldo", giro / saldo_final * 100, "pct", "split_giro ÷ saldo_final")
@@ -236,7 +238,7 @@ def diagnosticar(empresa, mensal, despesas, produtos):
         alvo = empresa["margem_alvo_pct"]
         imp_hoje = pis_cof / receita if receita else 0.0  # PIS/Cofins efetivo sobre a receita
         regular = empresa["regime"] in ("presumido", "real") and pior
-        t = (pior["aliq"] + ibs) * (1 - red) / 100 if regular else 0.0
+        t = pior["aliq"] * (1 - red) / 100 if regular else 0.0
         if regular:
             N.add("fator_credito_pct", fc * 100, "pct", "compras_com_credito ÷ custo_direto (parte do custo que gera crédito)")
         for j, p in enumerate(produtos):
@@ -264,7 +266,7 @@ def diagnosticar(empresa, mensal, despesas, produtos):
                      "texto": "Rever regime, créditos, cadastros e preços antes de 2027: no pior cenário, o que você recolhe de CBS/IBS fica {v} por ano acima do PIS/Cofins de hoje."})
     if empresa["regime"] in ("presumido", "real") and reforma.get("split_giro", 0) > 0:
         cand.append({"valor": reforma["split_giro"], "chave": "split_giro", "servico": "Painel do Empresário",
-                     "texto": "Preparar o caixa para o split payment: cerca de {v} de imposto deixam de passar pelo seu caixa antes do vencimento."})
+                     "texto": "Preparar o caixa para o split payment, que vai chegar aos poucos: cerca de {v} de imposto deixam de passar pelo seu caixa antes do vencimento."})
     if fora:
         f0 = fora[0]
         cand.append({"valor": f0["acima"] * 12, "chave": f"desp_{f0['i']}_acima", "servico": "Painel do Empresário",
@@ -276,7 +278,7 @@ def diagnosticar(empresa, mensal, despesas, produtos):
                      "texto": f"Rever o preço de {b['item']}: para manter a margem-alvo, o preço mínimo é {{v}}."})
     if empresa["regime"] == "simples" and empresa["vendas_para_empresas_pct"] >= 50:
         cand.append({"valor": 0, "chave": "vendas_empresas_pct", "servico": "Reforma Tributária Pronta",
-                     "texto": "Avaliar com o contador se vale recolher CBS/IBS fora do DAS: {v} das vendas são para empresas, que vão querer crédito cheio."})
+                     "texto": "Avaliar com o contador se vale recolher CBS/IBS fora do DAS (a opção é semestral, feita em setembro e março): {v} das vendas são para empresas, que vão querer crédito cheio."})
     if meses_aperto:
         cand.append({"valor": 0, "chave": "saidas_medias_mes", "servico": "Painel do Empresário",
                      "texto": "Montar a previsão de caixa: em " + ", ".join(meses_aperto) + " o saldo ficou abaixo de meio mês de saídas (saídas médias de {v} por mês)."})
@@ -321,8 +323,8 @@ def relatorio(d):
             L.append(f"- Com CBS de {T(f'cbs_{k}_aliq')}: você recolheria {T(f'cbs_{k}_imposto_ano')} por ano, {d['numeros'][f'cbs_{k}_diferenca_ano']['texto'].replace('-', '')} {sinal} que hoje.")
         if r.get("b2b", 0) >= 50:
             L.append(f"- {T('vendas_empresas_pct')} das suas vendas são para empresas. Elas poderão usar a CBS/IBS que você destaca como crédito, então parte desse valor pode ir no preço sem pesar para elas. O contador avalia o repasse.")
-        L.append("- Premissas: base = receita informada; crédito cheio só sobre as compras com crédito informadas (folha não dá crédito). Fornecedor do Simples ou MEI gera crédito menor; o contador ajusta. Atividade com redução de alíquota: o contador informa em empresa.json.")
-        L.append(f"- **Split payment:** quando estiver valendo para você, o imposto sai na hora do pagamento. Hoje cerca de {T('split_giro')} ficam no seu caixa até o vencimento"
+        L.append(f"- Premissas: em 2027 a CBS é a alíquota de referência menos {T('ibs_pct')} e o IBS é {T('ibs_pct')}, então o total é a própria referência. Base = receita informada (simplificação). Crédito só sobre as compras com crédito informadas; fornecedor do Simples gera crédito limitado ao que ele paga no Simples. Atividade com redução de alíquota: o contador informa em empresa.json.")
+        L.append(f"- **Split payment:** a implantação é gradual e ainda depende de ato do Comitê Gestor e da Receita. Quando valer para você, o imposto sai na hora do pagamento. Hoje cerca de {T('split_giro')} ficam no seu caixa até o vencimento"
                  + (f" ({T('split_giro_pct_saldo')} do saldo atual)." if "split_giro_pct_saldo" in d["numeros"] else "."))
     else:
         L.append("- No Simples Nacional, a CBS e o IBS ficam dentro do DAS; este diagnóstico não prevê mudança no valor do DAS em 2027.")

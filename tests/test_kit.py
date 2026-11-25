@@ -28,16 +28,16 @@ class Agencia(unittest.TestCase):
         self.assertAlmostEqual(self.n["receita_periodo"]["valor"], 985000.0)
 
     def test_cbs_conferida_a_mao(self):
-        # (985000 − 119200) × (11,3% + 0,1%) = 98.701,20 ; PIS/Cofins pagos = 35.952,50
-        self.assertAlmostEqual(self.n["cbs_11_3_imposto_ano"]["valor"], 98701.2, places=2)
+        # (985000 − 119200) × 11,3% (CBS 11,2% + IBS 0,1%) = 97.835,40 ; PIS/Cofins pagos = 35.952,50
+        self.assertAlmostEqual(self.n["cbs_11_3_imposto_ano"]["valor"], 97835.4, places=2)
         self.assertAlmostEqual(self.n["pis_cofins_ano"]["valor"], 35952.5, places=2)
-        self.assertAlmostEqual(self.n["cbs_11_3_diferenca_ano"]["valor"], 62748.7, places=2)
-        self.assertAlmostEqual(self.n["cbs_8_8_imposto_ano"]["valor"], 77056.2, places=2)
+        self.assertAlmostEqual(self.n["cbs_11_3_diferenca_ano"]["valor"], 61882.9, places=2)
+        self.assertAlmostEqual(self.n["cbs_8_8_imposto_ano"]["valor"], 76190.4, places=2)
 
     def test_split(self):
-        # venda média 82.083,33 × 11,4% = 9.357,50/mês ; 15 + 25 − 20 = 20 dias → 6.238,33
+        # venda média 82.083,33 × 11,3% = 9.275,42/mês ; 15 + 25 − 20 = 20 dias → 6.183,61
         self.assertEqual(self.n["split_dias"]["valor"], 20)
-        self.assertAlmostEqual(self.n["split_giro"]["valor"], 6238.33, places=2)
+        self.assertAlmostEqual(self.n["split_giro"]["valor"], 6183.61, places=2)
 
     def test_despesa_fora_do_padrao(self):
         cats = [f["categoria"] for f in self.d["despesas_fora"]]
@@ -48,7 +48,7 @@ class Agencia(unittest.TestCase):
         itens = [b["item"] for b in self.d["itens_margem_baixa"]]
         self.assertEqual(itens, ["Campanha de anúncios (mensal)"])
         b = self.d["itens_margem_baixa"][0]
-        t, fc = 0.114, 119200 / 299000  # mesma regra de crédito da empresa
+        t, fc = 0.113, 119200 / 299000  # mesma regra de crédito da empresa
         self.assertLess(b["m_2027"], b["m_hoje"])  # crédito parcial: margem piora, coerente com o imposto da empresa
         p = b["preco_min"]
         self.assertAlmostEqual((p - 2150 - (p - 2150 * fc) * t) / p, 0.15, places=6)  # o preço mínimo devolve a margem-alvo
@@ -86,8 +86,8 @@ class Regimes(unittest.TestCase):
             pasta_temp(t, {"nome": "Indústria", "regime": "real"},
                        [f"0{m}/2026;100000;60000;60000;20000;3700;5000;50000" for m in (9, 8, 7)])
             d = roda(t)
-            # (300000 − 180000) × 11,4% = 13.680 no trimestre → 54.720/ano ; PIS/Cofins 44.400/ano
-            self.assertAlmostEqual(d["numeros"]["cbs_11_3_imposto_ano"]["valor"], 54720.0, places=2)
+            # (300000 − 180000) × 11,3% = 13.560 no trimestre → 54.240/ano ; PIS/Cofins 44.400/ano
+            self.assertAlmostEqual(d["numeros"]["cbs_11_3_imposto_ano"]["valor"], 54240.0, places=2)
             self.assertAlmostEqual(d["numeros"]["pis_cofins_ano"]["valor"], 44400.0, places=2)
             self.assertEqual(C.conferir(D.relatorio(d), d), [])
 
@@ -96,8 +96,8 @@ class Regimes(unittest.TestCase):
             pasta_temp(t, {"nome": "Clínica", "regime": "presumido", "reducao_aliquota_pct": 60},
                        [f"0{m}/2026;50000;5000;10000;20000;1825;4000;30000" for m in (9, 8, 7)])
             d = roda(t)
-            # (150000 − 15000) × 11,4% × 40% = 6.156 no trimestre → 24.624/ano
-            self.assertAlmostEqual(d["numeros"]["cbs_11_3_imposto_ano"]["valor"], 24624.0, places=2)
+            # (150000 − 15000) × 11,3% × 40% = 6.102 no trimestre → 24.408/ano
+            self.assertAlmostEqual(d["numeros"]["cbs_11_3_imposto_ano"]["valor"], 24408.0, places=2)
 
 
 class Conferidor(unittest.TestCase):

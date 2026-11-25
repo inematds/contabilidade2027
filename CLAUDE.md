@@ -1,10 +1,12 @@
 # CLAUDE.md — contabilidade2027
 
-Projeto de análise e proposta: IA na contabilidade (escritórios, contador PF, serviços aos clientes, escala). Proposta em `PROPOSTA.md`; fontes em `fontes/` (PDFs fora do git, nunca publicar).
+Kit aberto **Diagnóstico Reforma + Caixa** (repo público inematds/contabilidade2027): `kit/diagnostico.py` + `kit/conferir.py` + exemplos + guia PT/EN/ES em `guia/`.
 
-- Commits: autor `inematds <inematds@gmail.com>`. Sem remoto até o Nei decidir.
-- Números de pesquisa e recursos de fornecedor vêm dos PDFs e não foram conferidos: conferir na fonte antes de usar em guia, vídeo ou post.
-- Projetos vizinhos para reaproveitar: `~/projetos/calculadora-da-reforma`, `~/projetos/contaviral`, `~/projetos/arquiteto-agentes-contabil`.
+- Commits: autor `inematds <inematds@gmail.com>`.
+- **Fora do git (nunca publicar):** `fontes/` (PDFs de pesquisa), `analise/` (PROPOSTA.md e VALIDACAO.md, estratégia interna), `canal.md`.
+- Antes de mudar o cálculo: `python3 -m unittest discover -s tests`. Mudou premissa → atualizar README ("Como o cálculo é feito") e guia nos 3 idiomas.
+- Tudo de 2027 é SIMULADO até o Senado fixar a alíquota da CBS; refazer os exemplos quando sair.
+- Vizinhos: `~/projetos/calculadora-da-reforma` (motor oficial), `~/projetos/atende-leads` (Recepção V2), `~/projetos/contaviral`.
 
 ## Self-learning
 

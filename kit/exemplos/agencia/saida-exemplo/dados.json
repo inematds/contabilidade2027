@@ -70,19 +70,24 @@
       "texto": "R$ 35.952,50",
       "origem": "pis_cofins_pago de mensal.csv, 12/2025 a 11/2026 (12 meses), anualizado (× 12 ÷ 12)"
     },
+    "ibs_pct": {
+      "valor": 0.1,
+      "texto": "0,1%",
+      "origem": "IBS de 2027 (art. 344 LC 214: 0,05% estadual + 0,05% municipal)"
+    },
     "cbs_8_8_aliq": {
       "valor": 8.8,
       "texto": "8,8%",
       "origem": "cenário de alíquota da CBS (empresa.json)"
     },
     "cbs_8_8_imposto_ano": {
-      "valor": 77056.2,
-      "texto": "R$ 77.056,20",
-      "origem": "(receita − compras_com_credito) × (8,8% CBS + 0,1% IBS) × (1 − 0% de redução), anualizado"
+      "valor": 76190.4,
+      "texto": "R$ 76.190,40",
+      "origem": "(receita − compras_com_credito) × (8,70% CBS + 0,1% IBS = 8,8%) × (1 − 0% de redução), anualizado"
     },
     "cbs_8_8_diferenca_ano": {
-      "valor": 41103.7,
-      "texto": "R$ 41.103,70",
+      "valor": 40237.9,
+      "texto": "R$ 40.237,90",
       "origem": "cbs_8_8_imposto_ano − pis_cofins_ano"
     },
     "cbs_11_3_aliq": {
@@ -91,13 +96,13 @@
       "origem": "cenário de alíquota da CBS (empresa.json)"
     },
     "cbs_11_3_imposto_ano": {
-      "valor": 98701.2,
-      "texto": "R$ 98.701,20",
-      "origem": "(receita − compras_com_credito) × (11,3% CBS + 0,1% IBS) × (1 − 0% de redução), anualizado"
+      "valor": 97835.4,
+      "texto": "R$ 97.835,40",
+      "origem": "(receita − compras_com_credito) × (11,20% CBS + 0,1% IBS = 11,3%) × (1 − 0% de redução), anualizado"
     },
     "cbs_11_3_diferenca_ano": {
-      "valor": 62748.7,
-      "texto": "R$ 62.748,70",
+      "valor": 61882.9,
+      "texto": "R$ 61.882,90",
       "origem": "cbs_11_3_imposto_ano − pis_cofins_ano"
     },
     "split_dias": {
@@ -106,18 +111,18 @@
       "origem": "venda no meio do mês, recebida em 20 dias, imposto vence dia 25 do mês seguinte"
     },
     "split_imposto_bruto_mes": {
-      "valor": 9357.5,
-      "texto": "R$ 9.357,50",
-      "origem": "receita média × (11,3% + 0,1%) × (1 − redução)"
+      "valor": 9275.4167,
+      "texto": "R$ 9.275,42",
+      "origem": "receita média × 11,3% (CBS + IBS) × (1 − redução)"
     },
     "split_giro": {
-      "valor": 6238.3333,
-      "texto": "R$ 6.238,33",
+      "valor": 6183.6111,
+      "texto": "R$ 6.183,61",
       "origem": "split_imposto_bruto_mes × split_dias ÷ 30 (estimativa máxima, sem descontar créditos)"
     },
     "split_giro_pct_saldo": {
-      "valor": 18.348,
-      "texto": "18,3%",
+      "valor": 18.1871,
+      "texto": "18,2%",
       "origem": "split_giro ÷ saldo_final"
     },
     "vendas_empresas_pct": {
@@ -151,8 +156,8 @@
       "origem": "produtos.csv linha 2: (preço − custo − PIS/Cofins efetivo) ÷ preço"
     },
     "prod_0_margem_2027": {
-      "valor": 36.7814,
-      "texto": "36,8%",
+      "valor": 36.8598,
+      "texto": "36,9%",
       "origem": "produtos.csv linha 2: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
     },
     "prod_1_margem_hoje": {
@@ -161,7 +166,7 @@
       "origem": "produtos.csv linha 3: (preço − custo − PIS/Cofins efetivo) ÷ preço"
     },
     "prod_1_margem_2027": {
-      "valor": 44.0542,
+      "valor": 44.1356,
       "texto": "44,1%",
       "origem": "produtos.csv linha 3: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
     },
@@ -171,13 +176,13 @@
       "origem": "produtos.csv linha 4: (preço − custo − PIS/Cofins efetivo) ÷ preço"
     },
     "prod_2_margem_2027": {
-      "valor": 6.5085,
-      "texto": "6,5%",
+      "valor": 6.5742,
+      "texto": "6,6%",
       "origem": "produtos.csv linha 4: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
     },
     "prod_2_preco_min": {
-      "valor": 2788.4346,
-      "texto": "R$ 2.788,43",
+      "valor": 2785.8141,
+      "texto": "R$ 2.785,81",
       "origem": "preço que devolve a margem-alvo de 15% no pior cenário"
     },
     "prod_3_margem_hoje": {
@@ -186,8 +191,8 @@
       "origem": "produtos.csv linha 5: (preço − custo − PIS/Cofins efetivo) ÷ preço"
     },
     "prod_3_margem_2027": {
-      "valor": 59.9634,
-      "texto": "60,0%",
+      "valor": 60.0515,
+      "texto": "60,1%",
       "origem": "produtos.csv linha 5: (preço − custo − (preço − custo × fator_credito) × alíquota do pior cenário) ÷ preço"
     },
     "margem_alvo": {
@@ -202,24 +207,24 @@
     "cenarios": [
       {
         "aliq": 8.8,
-        "imposto_ano": 77056.2,
-        "diferenca_ano": 41103.7,
+        "imposto_ano": 76190.4,
+        "diferenca_ano": 40237.899999999994,
         "chave": "8_8"
       },
       {
         "aliq": 11.3,
-        "imposto_ano": 98701.2,
-        "diferenca_ano": 62748.7,
+        "imposto_ano": 97835.4,
+        "diferenca_ano": 61882.899999999994,
         "chave": "11_3"
       }
     ],
     "pior": {
       "aliq": 11.3,
-      "imposto_ano": 98701.2,
-      "diferenca_ano": 62748.7,
+      "imposto_ano": 97835.4,
+      "diferenca_ano": 61882.899999999994,
       "chave": "11_3"
     },
-    "split_giro": 6238.333333333333,
+    "split_giro": 6183.61111111111,
     "b2b": 90
   },
   "despesas_fora": [
@@ -237,9 +242,9 @@
       "item": "Campanha de anúncios (mensal)",
       "j": 2,
       "m_hoje": 10.35,
-      "m_2027": 6.508484280936456,
+      "m_2027": 6.574199331103679,
       "preco": 2500.0,
-      "preco_min": 2788.4346371964516,
+      "preco_min": 2785.814133951707,
       "qtd": 8.0
     }
   ],
@@ -248,12 +253,12 @@
   ],
   "prioridades": [
     {
-      "texto": "Rever regime, créditos, cadastros e preços antes de 2027: no pior cenário, o que você recolhe de CBS/IBS fica R$ 62.748,70 por ano acima do PIS/Cofins de hoje.",
+      "texto": "Rever regime, créditos, cadastros e preços antes de 2027: no pior cenário, o que você recolhe de CBS/IBS fica R$ 61.882,90 por ano acima do PIS/Cofins de hoje.",
       "servico": "Reforma Tributária Pronta",
       "chave": "cbs_11_3_diferenca_ano"
     },
     {
-      "texto": "Rever o preço de Campanha de anúncios (mensal): para manter a margem-alvo, o preço mínimo é R$ 2.788,43.",
+      "texto": "Rever o preço de Campanha de anúncios (mensal): para manter a margem-alvo, o preço mínimo é R$ 2.785,81.",
       "servico": "Preço certo na Reforma",
       "chave": "prod_2_preco_min"
     },
