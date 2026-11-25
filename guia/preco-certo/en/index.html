@@ -203,7 +203,7 @@
 <div class="h-top"><span class="chip">Free kit for accountants · unofficial · kit 3 of 4</span>
 <h1>In 2027, your client can sell more and earn less. Find the price that still turns a profit with <span class="amb">Right price under the Reform</span></h1></div>
 <figure class="f1"><img alt="Accountant shows a store owner, on a tablet, the price table with up and down arrows" src="../../assets/preco-hero.jpg"/></figure>
-<div class="h-bot"><p class="lead">Under the Reform, the tax on sales changes, and so does the credit on what you buy. A price that makes a profit today may stop doing so. Your AI takes the client's products and services and shows, item by item: today's margin, the 2027 margin, the minimum price, the target price, and how much discount you can still give without losing the margin.</p>
+<div class="h-bot"><p class="lead">Under the Reform, the tax on sales changes, and so does the credit on what you buy. A price that is profitable today may stop being profitable. Your AI takes the client's products and services and shows, item by item, counting the taxes and each one's share of fixed expenses: today's margin and the 2027 margin, the minimum price, the target price, and the discount you can still afford to give.</p>
 <div class="cta">
 <a class="btn" href="#explicado">What you gain</a>
 <a class="btn ghost" href="#comecar">How to start</a>
@@ -214,7 +214,7 @@
 <main>
 <section class="resumo" id="resumo"><div class="wrap">
 <span class="chip">In one sentence</span>
-<p><strong>Almost every small business owner sets prices "by the market" and only finds out they lost margin when cash gets tight.</strong> This free kit is for accountants who want to show, before 2027, how much each product or service needs to cost. You use the same client folder as the Diagnostic and add, if you have them, the commission and the card or marketplace fee for each item. Your AI builds the table with today's margin, the 2027 margin with CBS and IBS (the new taxes) in two scenarios, the minimum price (below it, every sale loses money), the target price (the one that gives the margin the client wants), and the maximum discount. It also works for Simples companies, using the effective DAS rate. You need a computer and an AI such as Claude Code or Codex. It is kit 3 of 4 of the <a href="../../en/">Reform + Cash Diagnostic</a> and it is not official.</p>
+<p><strong>Almost every small business owner sets prices "by the market" and only finds out they lost margin when cash gets tight.</strong> This free kit is for accountants who want to show, before 2027, how much each product or service needs to cost. You use the same client folder as the Diagnostic and add, if available, the commission and the card or marketplace fee for each item. Your AI builds the table using the markup method: the price must cover the cost, the commission and the fee, the taxes, and the item's share of fixed expenses. For each item, you get today's margin, the 2027 margin with CBS and IBS (the new taxes) in two scenarios, the minimum price (below it, the sale does not cover its share of the overhead), the target price (the one that gives the margin the client wants), and the maximum discount. Under Simples, the calculation uses the effective DAS rate. Since CBS and IBS are included in the DAS, the table is valid for 2027 as long as the company does not choose to pay them outside it. You need a computer and an AI such as Claude Code or Codex. It is kit 3 of 4 of the <a href="../../en/">Reform + Cash Diagnostic</a> and it is not official.</p>
 </div></section>
 <section id="explicado"><div class="wrap">
 <span class="chip">The gain</span>
@@ -225,8 +225,8 @@
 </div>
 <div class="stats">
 <div class="stat"><b>3 prices</b><span>per item: the minimum (zero margin), the target (the margin the client wants) and the maximum discount over today's price.</span></div>
-<div class="stat"><b>2 scenarios</b><span>reference rate: 11.3% (calculated by the TCU) and 8.8% (the Receita's example). The Senate sets the final one by 12/15/2026.</span></div>
-<div class="stat"><b>+60%</b><span>of companies (in general) have not yet measured the impact of the Reform on their own business, and price is where it shows up first.</span></div>
+<div class="stat"><b>2 scenarios</b><span>of reference rate (the standard rate that the Senate sets and from which each activity starts): 11.3% (calculated by the TCU) and 8.8% (the Federal Revenue's example).</span></div>
+<div class="stat"><b>+60%</b><span>of companies (in general) have not yet measured the impact of the Reform on their own business.</span></div>
 </div>
 <p class="fonte">+60%: Qive's 2026 Accounts Payable Panorama survey, reported by <a href="https://www.infomoney.com.br/minhas-financas/reforma-tributaria-mais-de-60-das-empresas-ainda-nao-mediram-o-impacto-nos-negocios/" rel="noopener" target="_blank">InfoMoney</a>. Rates: <a href="#base">Base</a>.</p>
 </div></section>
@@ -245,7 +245,7 @@
 <h2>How this changes your <span class="amb">work</span></h2>
 <div class="grid g2">
 <div class="card"><h3>💬 "How much should I raise prices in 2027?"</h3><p><strong>Today:</strong> the answer is "it depends".</p><p><strong>With the kit:</strong> the target price of each item in both scenarios, and how much is missing per year to reach it, at the quantity it sells today.</p></div>
-<div class="card"><h3>🤝 "Can I give a 10% discount?"</h3><p><strong>Today:</strong> he gives it and then finds out he couldn't.</p><p><strong>With the kit:</strong> the maximum discount for each item, already with the new tax, the commission and the card fee.</p></div>
+<div class="card"><h3>🤝 "Can I give a 10% discount?"</h3><p><strong>Today:</strong> he gives it and then finds out he couldn't.</p><p><strong>With the kit:</strong> the maximum discount for each item, already including taxes, commission, card fee, and the share of fixed expenses.</p></div>
 <div class="card"><h3>📦 "Is this product worth it?"</h3><p><strong>Today:</strong> nobody knows the margin item by item.</p><p><strong>With the kit:</strong> the margin of each one, and a warning when it turns negative.</p></div>
 <div class="card"><h3>🧾 "Does the supplier import?"</h3><p><strong>Today:</strong> it seems that only the purchase price matters.</p><p><strong>With the kit:</strong> you show that costs that generate credit weigh less in 2027, and that asking for the invoice with CBS/IBS itemized helps hold the price.</p></div>
 </div>
@@ -261,15 +261,16 @@
 <h2>Three prices per item, <span class="amb">no jargon</span></h2>
 <figure style="margin:18px 0 22px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img alt="Right Price in the Reform: today's margin, 2027 margin, minimum price, target price, maximum discount, how to get started" loading="lazy" src="../../assets/banner-preco-grade-en.jpg" style="width:100%;display:block"/></figure>
 <div class="grid g3">
-<div class="card"><h3>🧱 Minimum price</h3><p>É o <strong>floor</strong>. It covers the cost, the commission, the fee and the tax, and nothing is left over. Below it, every sale is a loss.</p></div>
+<div class="card"><h3>🧱 Minimum price</h3><p>É o <strong>floor</strong>. It covers the cost, the commission, the fee, all taxes on the sale, and the item's share of fixed expenses, and nothing is left over. Below it, the sale does not cover its share of the overhead.</p></div>
 <div class="card"><h3>🎯 Target price</h3><p>É o <strong>price that gives the margin the client wants</strong> (it picks: 15%, 20%…). It is the target for your next price increases.</p></div>
 <div class="card"><h3>✂️ Maximum discount</h3><p>É o <strong>salesperson's limit</strong>: how much you can lower today's price without leaving the target margin. If the price is already below the target, the maximum discount is zero.</p></div>
 </div>
-<div class="card" style="margin-top:16px"><h3>🧮 How the tax comes in</h3><p>For Lucro Presumido and Lucro Real companies, the kit compares today's PIS/Cofins with the 2027 CBS and IBS. In 2027 the CBS is the reference rate minus 0.1 point, and the IBS is 0.1%, so the two add up to the reference rate itself. The new tax applies to the price, with a credit on the part of the cost that comes from purchases with the tax shown separately. If you don't enter that part item by item, the kit uses the company's overall proportion, the same rule as the Diagnostic. For Simples, the tax is the effective DAS rate.</p></div>
+<div class="card" style="margin-top:16px"><h3>🧮 How the calculation is done</h3><p>It is the markup the accountant knows: the price covers the cost, the commission and the fee, the other taxes on the sale (ISS or ICMS, which remain in 2027, and the IR/CSLL of Presumido), the share of fixed expenses (allocated by revenue, or by the allocation you provide), and the consumption tax. Under Lucro Presumido and Real, the kit compares today's PIS/Cofins with the 2027 CBS and IBS. In 2027, CBS is the reference rate minus 0.1 point, and IBS is 0.1%, so together they add up to the reference rate itself. The new tax applies to the price, with credit on the portion of the cost that comes from purchases with the tax itemized. If you do not provide this portion item by item, the kit uses the same proportion as the company, the same rule as the Diagnostic. Under Simples, the tax is the effective DAS rate.</p></div>
 <div class="card" style="margin-top:16px"><h3>⚠️ What it is NOT</h3><ul>
 <li><strong>It is not the price the market will accept.</strong> It's the price that gives you the margin. If the market won't pay it, the conversation is about cost or about no longer selling the item.</li>
 <li><strong>It doesn't have the final rate.</strong> That is why it uses two scenarios and marks 2027 as SIMULATED.</li>
-<li><strong>The base is simplified:</strong> the tax applies to the stated price. Items with a reduced rate, tax substitution or a specific regime need the accountant's attention.</li>
+<li><strong>The base is simplified:</strong> CBS and IBS are charged "on top" of the price, but the kit treats the tax as part of the stated price, which makes the calculation slightly heavier (conservative). Items with reduced rates, tax substitution, or a specific regime need the accountant's review.</li>
+<li><strong>Under Lucro Real, IR/CSLL is levied on profit,</strong> and here it enters as a fraction of revenue: it is an approximation.</li>
 </ul></div>
 </div></section>
 <section id="comecar"><div class="wrap">
@@ -279,21 +280,21 @@
 <div class="grid g3">
 <div class="card"><h3>1. Open your AI on your computer</h3><p>O <strong>Claude Code</strong> (from Claude) or the <strong>Codex</strong> (from ChatGPT), which come with their paid subscription.</p></div>
 <div class="card"><h3>2. Paste the request below</h3><p>The AI runs the example of a fictional agency, so you can see the table before using it with a client.</p></div>
-<div class="card"><h3>3. Pass in the product list</h3><p>Price, cost and monthly sales volume of each item. If available, the commission and the card fee. For Simples, the effective DAS rate, which comes from the PGDAS-D.</p></div>
+<div class="card"><h3>3. Pass in the product list</h3><p>Price, cost, and monthly sales volume of each item. If available, the commission and the card fee. The monthly spreadsheet must include taxes paid, expenses, and purchases with credit, because that is where each item's share comes from. Under Simples, the effective DAS rate, which comes from the PGDAS-D.</p></div>
 </div>
 <p class="mut" style="margin-top:20px">You don't need to understand the text below: it is for the AI. Copy and paste it.</p>
 <div class="pedido" style="margin-top:8px;position:relative">
 <pre id="pedidoTxt" style="white-space:pre-wrap">Read the "contabilidade2027" kit at https://github.com/inematds/contabilidade2027 (the README explains everything).
-I want to build the "Preço certo na Reforma" (Right Price under the Reform) table for a client of mine. On this computer:
+I want to build the "Preço certo na Reforma" (Right Price under the Reform) table for one of my clients. On this computer:
 1. Download the kit (ZIP or git) and first run kit/preco_certo.py on the agency example, so I can see what the table looks like.
 2. Help me build, in my client's folder, the produtos.csv (item, price, cost, quantity per month and, if I have them,
-   commission and card fee), plus the empresa.json and the mensal.csv, in the format of kit/modelo/.
-   For Simples, ask for the effective DAS rate. Don't make up numbers.
+   commission and card fee), plus the empresa.json and the mensal.csv (with taxes paid, expenses and purchases with credit),
+   in the format of kit/modelo/. For Simples Nacional, ask for the effective DAS rate. Don't make up any numbers.
 3. Run kit/preco_certo.py in the client's folder.
-4. Explain precos.md to me in plain language, without changing any numbers, and show me precos.csv.
-   The output itself stays in Portuguese (Brazilian taxes).
-5. If you rewrite the text, run kit/conferir.py on the new text with saida/dados.json and fix whatever it flags.
-6. Don't send anything to anyone: I will review it, and I'm the one who talks to the client.</pre>
+4. Explain saida/preco-certo/precos.md to me in plain language, without changing any numbers, and show me the precos.csv.
+   Note: the output itself stays in Portuguese (Brazilian taxes).
+5. If you rewrite the text, run kit/conferir.py on the new text with saida/preco-certo/dados.json and fix whatever it flags.
+6. Don't send anything to anyone: I review it, and I'm the one who talks to the client.</pre>
 <button class="btn" id="copiarPedido" style="margin-top:10px">Copy the request</button>
 </div>
 <div class="grid g2" style="margin-top:16px">
@@ -311,7 +312,7 @@ I want to build the "Preço certo na Reforma" (Right Price under the Reform) tab
 <div class="grid g3">
 <div class="card"><h3>📜 The Reform law</h3><p>LC 214/2025: in 2027 the CBS is the reference rate minus 0.1 point (art. 347), and the IBS is 0.05% state + 0.05% municipal (art. 344).</p><p><a href="https://legis.senado.leg.br/norma/40180341/publicacao/40181429" rel="noopener" target="_blank">Text of LC 214 in the Senate</a></p></div>
 <div class="card"><h3>⚖️ The two scenarios</h3><p><strong>11,3%</strong> is the reference rate calculated by the TCU on 10/28/2026 (main scenario). <strong>8,8%</strong> is just the value used in the Revenue Service's official simulator example, for comparison.</p><p><a href="https://portal.tcu.gov.br/imprensa/noticias/tcu-calcula-aliquota-de-referencia-de-113-para-novo-tributo-sobre-consumo" rel="noopener" target="_blank">TCU note</a></p></div>
-<div class="card"><h3>🧮 Same calculation as the Diagnostic</h3><p>The target price uses the same credit rule as kit 1. In the example, the ad campaign gives the same R$ 2.785,81 in both kits, and a test ensures it stays that way.</p><p><a href="../../en/">Reform + Cash Diagnostic</a></p></div>
+<div class="card"><h3>🧮 Same calculation as the Diagnostic</h3><p>The target price uses the same calculation as kit 1. In the example, the ad campaign comes out to the same R$ 4.860,31 in both kits, and a test ensures it stays that way.</p><p><a href="../../en/">Reform + Cash Diagnostic</a></p></div>
 </div>
 </div></section>
 <section id="prova"><div class="wrap">
@@ -319,15 +320,15 @@ I want to build the "Preço certo na Reforma" (Right Price under the Reform) tab
 <h2>We run on <span class="amb">two fictional examples</span></h2>
 <p class="sub">The Diagnostic's Presumed Profit (Lucro Presumido) agency and a Simples electrical supplies store, with made-up data (11/25/2026). The 2027 numbers are SIMULATED.</p>
 <div class="stats">
-<div class="stat"><b>R$ 2.785,81</b><span>is the target price of the agency's ad campaign in 2027, in the 11.3% scenario. Today it charges R$ 2.500,00.</span></div>
-<div class="stat"><b>R$ 27.438,16</b><span>per year is how much is missing, at today's quantity, for the campaign to reach the target margin.</span></div>
-<div class="stat"><b>R$ 15,33</b><span>is the target price of the Simples store's light bulb, which today sells for R$ 14,90, including commission and card fee.</span></div>
+<div class="stat"><b>-5,8%</b><span>is the ad campaign's margin today for the agency: with its share of fixed expenses, it already operates at a loss. In 2027, -11.0%.</span></div>
+<div class="stat"><b>R$ 4.860,31</b><span>is the campaign's target price in 2027, in the 11.3% scenario. Today it charges R$ 2.500,00: either the price goes up, the cost goes down, or it comes off the menu.</span></div>
+<div class="stat"><b>R$ 19,38</b><span>is the target price of the Simples store's light bulb, which today sells for R$ 14.90, with commission, card fee, and DAS.</span></div>
 </div>
 <div class="prova" style="margin-top:20px">
 <ol class="tl">
-<li><b>The agency's other services have room to spare.</b><br/><span class="mut">The consultancy can handle up to 61.1% discount without leaving the target margin; the campaign, none.</span></li>
-<li><b>The same number in both kits.</b><br/><span class="mut">The campaign target price is the same in the Diagnostic and here, because both use the same credit rule.</span></li>
-<li><b>9 tests check the calculations.</b><br/><span class="mut">Target price and minimum price return the right margin, the maximum discount, Simples with commission and fee, and input errors.</span></li>
+<li><b>The agency's other services have room to spare.</b><br/><span class="mut">The consulting service can take up to a 52.3% discount without falling below the target margin; the campaign, none. The average of the item margins matches the company's margin (about 19.8%).</span></li>
+<li><b>The same number in both kits.</b><br/><span class="mut">The campaign's target price is the same in the Diagnostic and here, because both use the same calculation.</span></li>
+<li><b>10 tests check the calculations.</b><br/><span class="mut">Target price and minimum price return the right margin, the average of the margins matches the company's, the maximum discount, Simples with commission, fee, and DAS, and input errors.</span></li>
 </ol>
 <p class="rod">The full example table is in <a href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-precos/precos.md" rel="noopener" target="_blank">precos.md</a>.</p>
 </div>

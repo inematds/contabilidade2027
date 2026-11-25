@@ -21,17 +21,17 @@ O fechamento do mês em linguagem simples. Preparado pelo seu contador com o kit
 - A receber nos próximos 30 dias: R$ 76.000,00. Já vencido: R$ 17.000,00.
 - A pagar nos próximos 30 dias: R$ 59.058,00.
 - Folga dos próximos 30 dias (saldo + a receber − a pagar): R$ 50.942,00. É um teto: só conta as contas lançadas e não conta os vencidos.
-- Reforma: quando o split payment chegar (ele vai entrar aos poucos), até R$ 6.183,61 de imposto deixam de passar pelo caixa antes do vencimento. Vale guardar essa reserva.
+- Reforma: em 2027 isso ainda é preparação. Quando o split payment chegar (ele vai entrar aos poucos), até R$ 6.183,61 de imposto deixam de passar pelo caixa antes do vencimento. Vale guardar essa reserva.
 
 ## 4. Alertas
 - Softwares e assinaturas ficou R$ 1.980,00 acima da média.
 - Há R$ 17.000,00 a receber já vencidos (3 contas).
 - O caixa cobre só 0,48 mês de saídas: qualquer atraso de cliente aperta.
-- O resultado e o caixa não batem: sobraram em média R$ 18.260,50 por mês no resultado, mas o saldo caiu R$ 2.333,33 por mês. Cerca de R$ 20.593,83 por mês saem fora do resultado: confira retiradas dos sócios, parcelas de empréstimo e investimentos.
+- O resultado e o caixa não batem: sobraram em média R$ 18.260,50 por mês no resultado, mas o saldo caiu R$ 2.333,33 por mês. A diferença, de cerca de R$ 20.593,83 por mês, pode ser cliente pagando mais tarde, estoque, fornecedor pago antes, retirada dos sócios, parcela de empréstimo ou investimento: vale conferir.
 
 ## 5. O que fazer este mês
 1. Cobrar Clínica Exemplo (campanha de outubro): R$ 7.500,00 vencidos há 26 dias.
-2. Conferir com o dono para onde foi o dinheiro que sobrou no resultado (retiradas, parcelas, investimentos).
+2. Conferir com o dono por que o caixa não acompanhou o resultado: clientes atrasando, estoque, retiradas, parcelas ou investimentos.
 3. Montar uma reserva de caixa: hoje o saldo cobre só 0,48 mês de saídas.
 
 Como ler: a projeção do caixa repete a variação média do saldo dos últimos meses e não conta com venda nova nem corte; serve para enxergar a tendência.

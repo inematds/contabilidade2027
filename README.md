@@ -49,7 +49,7 @@ git clone https://github.com/inematds/contabilidade2027 && cd contabilidade2027
 
 python3 kit/diagnostico.py kit/exemplos/agencia            # gera kit/exemplos/agencia/saida/
 python3 kit/conferir.py kit/exemplos/agencia/saida/relatorio-base.md kit/exemplos/agencia/saida/dados.json
-python3 -m unittest discover -s tests                        # 15 testes
+python3 -m unittest discover -s tests                        # 48 testes
 ```
 
 ### A pasta do cliente
@@ -69,7 +69,7 @@ Copie `kit/modelo/` e preencha. CSV com separador `;` e vírgula decimal, como o
 
 - **CBS/IBS de 2027 (regime regular):** `(receita − compras_com_credito) × alíquota de referência × (1 − redução)`, anualizado, comparado com o PIS/Cofins pago. Em 2027 a CBS é a referência menos 0,1 ponto (LC 214, art. 347) e o IBS é 0,05% estadual + 0,05% municipal (art. 344), então os dois somam a própria referência. É uma simplificação: a base é a receita informada, sem ajuste de outros tributos (a LC 214, art. 12, tira da base a própria CBS/IBS e o IPI).
 - **Crédito:** só sobre o que você informar em `compras_com_credito`. Compra de fornecedor do Simples gera crédito limitado ao que ele paga no Simples. Ajuste a coluna.
-- **Produto:** usa a mesma regra de crédito da empresa. A parte do custo que gera crédito é `compras_com_credito ÷ custo_direto` do período. O preço mínimo devolve a `margem_alvo_pct` no pior cenário.
+- **Produto:** usa a mesma conta do kit 3 (markup com impostos e rateio das despesas fixas, em `kit/comum.py`) e a mesma regra de crédito da empresa. A parte do custo que gera crédito é `compras_com_credito ÷ custo_direto` do período. O preço-alvo devolve a `margem_alvo_pct` no pior cenário (o mesmo preço-alvo do kit 3).
 - **Split payment:** `receita média × alíquota do pior cenário × dias ÷ 30`, com venda no meio do mês, recebimento em `prazo_medio_recebimento_dias` e vencimento no dia `dia_vencimento_impostos` do mês seguinte. É uma estimativa máxima, sem descontar créditos. A implantação é gradual e depende de ato conjunto do Comitê Gestor e da Receita (LC 214, art. 35).
 - **Simples:** não simula mudança no DAS. Avisa quando a maior parte das vendas é para empresas. A opção de recolher CBS/IBS fora do DAS é semestral, feita em setembro e em março (LC 123, art. 13, §§ 9–10, com a redação da LC 227/2026).
 - **Tudo de 2027 sai marcado como SIMULADO.** A alíquota de referência da CBS é fixada pelo Senado (prazo 15/12/2026). Refaça quando sair.
@@ -128,7 +128,7 @@ Como calcula (método do markup, a mesma conta do Diagnóstico, em `kit/comum.py
 python3 kit/painel.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/painel/painel.md e dados.json
 ```
 
-O mês do painel é o último do `mensal.csv`. Arquivos opcionais (modelos em `kit/modelo/`):
+O mês do painel é o último do `mensal.csv` (precisa de pelo menos 3 meses; com 12 as médias ficam melhores). Arquivos opcionais (modelos em `kit/modelo/`):
 - `contas_receber.csv`: `cliente;valor;vencimento`
 - `contas_pagar.csv`: `fornecedor;valor;vencimento`
 
@@ -166,7 +166,7 @@ Serve para o passo em que a IA reescreve o relatório em linguagem simples.
 - o conferidor pegando número inventado, arredondado e premissa usada como número;
 - os erros de entrada e a linha de comando.
 
-`tests/test_reforma_pronta.py` (11, kit 2) cobre:
+`tests/test_reforma_pronta.py` (12, kit 2) cobre:
 - a contagem de pendências da agência e as vendas em risco;
 - os itens que somam 80% das vendas;
 - os fornecedores do Simples;

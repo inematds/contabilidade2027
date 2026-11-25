@@ -170,8 +170,8 @@ def painel(emp, mensal, despesas, receber, pagar, hoje):
         alertas.append(f"O caixa cobre só {N.itens['folego']['texto']} mês de saídas: qualquer atraso de cliente aperta.")
     if diverge:
         alertas.append(f"O resultado e o caixa não batem: sobraram em média {N.itens['lucro_3m']['texto']} por mês no resultado, mas o saldo "
-                       + ("caiu" if var_saldo < 0 else "subiu só") + f" {N.itens['var_saldo_abs']['texto']} por mês. Cerca de {N.itens['fora_dre']['texto']} por mês saem "
-                       "fora do resultado: confira retiradas dos sócios, parcelas de empréstimo e investimentos.")
+                       + ("caiu" if var_saldo < 0 else "subiu só") + f" {N.itens['var_saldo_abs']['texto']} por mês. A diferença, de cerca de {N.itens['fora_dre']['texto']} por mês, pode ser cliente pagando "
+                       "mais tarde, estoque, fornecedor pago antes, retirada dos sócios, parcela de empréstimo ou investimento: vale conferir.")
     if negativo:
         alertas.append(f"O caixa projetado fica negativo em {negativo[0]['mes']} ({N.itens['proj_' + str(negativo[0]['k'])]['texto']}), "
                        "se nada mudar.")
@@ -184,7 +184,7 @@ def painel(emp, mensal, despesas, receber, pagar, hoje):
         c0 = rec["vencidos"][0]
         fazer.append(f"Cobrar {c0['cliente']}: {N.itens['venc_0']['texto']} vencidos há {N.itens['venc_0_dias']['texto']} dias.")
     if diverge:
-        fazer.append("Conferir com o dono para onde foi o dinheiro que sobrou no resultado (retiradas, parcelas, investimentos).")
+        fazer.append("Conferir com o dono por que o caixa não acompanhou o resultado: clientes atrasando, estoque, retiradas, parcelas ou investimentos.")
     if negativo or ("folga_30" in N.itens and N.itens["folga_30"]["valor"] < 0):
         fazer.append("Rever as saídas dos próximos meses ou antecipar recebimentos: o caixa projetado aperta.")
     if curto:
@@ -233,7 +233,7 @@ def painel_md(d):
     if "folga_30" in d["numeros"]:
         L.append(f"- Folga dos próximos 30 dias (saldo + a receber − a pagar): {T('folga_30')}. É um teto: só conta as contas lançadas e não conta os vencidos.")
     if "split_giro" in d["numeros"]:
-        L.append(f"- Reforma: quando o split payment chegar (ele vai entrar aos poucos), até {T('split_giro')} de imposto deixam de passar pelo caixa antes do vencimento. Vale guardar essa reserva.")
+        L.append(f"- Reforma: em 2027 isso ainda é preparação. Quando o split payment chegar (ele vai entrar aos poucos), até {T('split_giro')} de imposto deixam de passar pelo caixa antes do vencimento. Vale guardar essa reserva.")
     L.append("")
     L.append("## 4. Alertas")
     L += [f"- {a}" for a in d["alertas"]] or ["- Nenhum alerta neste mês."]

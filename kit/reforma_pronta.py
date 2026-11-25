@@ -120,9 +120,9 @@ def conferir_item(it):
 
 def proxima_janela_simples(hoje):
     """A opção do Simples pelo regime regular do IBS/CBS é feita em setembro e março (LC 123, art. 13, § 10)."""
-    if hoje.month < 3:
+    if hoje.month <= 3:  # em março a janela está aberta
         return dt.date(hoje.year, 3, 1), dt.date(hoje.year, 7, 1)
-    if hoje.month < 9:
+    if hoje.month <= 9:  # em setembro também
         return dt.date(hoje.year, 9, 1), dt.date(hoje.year + 1, 1, 1)
     return dt.date(hoje.year + 1, 3, 1), dt.date(hoje.year + 1, 7, 1)
 
@@ -257,7 +257,7 @@ def plano_md(d):
     L.append("## 3. Fornecedores e crédito")
     if d["fornecedores"]:
         L.append(f"- Das compras de {T('compras_total')} por ano, {T('compras_simples')} ({T('compras_simples_pct')}) vêm de fornecedores do Simples ou MEI. "
-                 "O crédito dessas compras é limitado ao que o fornecedor paga no Simples (LC 214, art. 47).")
+                 "O crédito dessas compras é limitado ao que o fornecedor paga no Simples (LC 214, art. 47); no MEI, que paga valor fixo, tende a ser quase nenhum.")
         for k, f in enumerate(d["fornecedores"]["maiores_simples"]):
             L.append(f"- {f['fornecedor']} ({f['regime']}): {T(f'forn_{k}_compras')} por ano.")
     else:
@@ -272,7 +272,7 @@ def plano_md(d):
         L.append(f"- {marca} {r['texto']}: {r['estado']}.")
     L.append("")
     L.append("## 5. Plano por prazo")
-    L.append("- **Até 15/12/2026:** o Senado fixa a alíquota de referência da CBS. Refazer as simulações com o número oficial.")
+    L.append("- **Até 15/12/2026 (prazo previsto):** o Senado deve fixar a alíquota de referência da CBS. Refazer as simulações com o número oficial.")
     L.append("- **Até 31/12/2026:** cadastro sem pendências, sistema atualizado e uma nota de teste emitida e conferida.")
     L.append("- **Janeiro de 2027:** a CBS passa a ser cobrada no lugar do PIS e da Cofins. Conferir as primeiras notas reais no motor oficial.")
     if d["simples"]:

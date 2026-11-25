@@ -75,6 +75,9 @@ class Regras(unittest.TestCase):
         self.assertEqual(R.proxima_janela_simples(dt.date(2026, 11, 25)), (dt.date(2027, 3, 1), dt.date(2027, 7, 1)))
         self.assertEqual(R.proxima_janela_simples(dt.date(2027, 2, 10)), (dt.date(2027, 3, 1), dt.date(2027, 7, 1)))
         self.assertEqual(R.proxima_janela_simples(dt.date(2027, 4, 1)), (dt.date(2027, 9, 1), dt.date(2028, 1, 1)))
+        # dentro do mês da janela, ela está aberta
+        self.assertEqual(R.proxima_janela_simples(dt.date(2027, 3, 10)), (dt.date(2027, 3, 1), dt.date(2027, 7, 1)))
+        self.assertEqual(R.proxima_janela_simples(dt.date(2026, 9, 5)), (dt.date(2026, 9, 1), dt.date(2027, 1, 1)))
 
 
 class Simples(unittest.TestCase):

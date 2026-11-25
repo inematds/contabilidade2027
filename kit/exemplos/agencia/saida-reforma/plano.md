@@ -15,7 +15,7 @@ Regime: presumido. Conferido em 25/11/2026. Este plano confere o formato e a coe
 - Curso de marketing para clientes: redução informada sem cClassTrib que a justifique → definir o cClassTrib da redução, ou tirar a redução.
 
 ## 3. Fornecedores e crédito
-- Das compras de R$ 276.000,00 por ano, R$ 168.000,00 (60,9%) vêm de fornecedores do Simples ou MEI. O crédito dessas compras é limitado ao que o fornecedor paga no Simples (LC 214, art. 47).
+- Das compras de R$ 276.000,00 por ano, R$ 168.000,00 (60,9%) vêm de fornecedores do Simples ou MEI. O crédito dessas compras é limitado ao que o fornecedor paga no Simples (LC 214, art. 47); no MEI, que paga valor fixo, tende a ser quase nenhum.
 - Freelancer de design (dados fictícios) (mei): R$ 72.000,00 por ano.
 - Produtora de vídeo Exemplo (simples): R$ 60.000,00 por ano.
 - Redator Exemplo (simples): R$ 36.000,00 por ano.
@@ -29,7 +29,7 @@ Regime: presumido. Conferido em 25/11/2026. Este plano confere o formato e a coe
 - ✅ A equipe de faturamento sabe o que muda na nota: sim.
 
 ## 5. Plano por prazo
-- **Até 15/12/2026:** o Senado fixa a alíquota de referência da CBS. Refazer as simulações com o número oficial.
+- **Até 15/12/2026 (prazo previsto):** o Senado deve fixar a alíquota de referência da CBS. Refazer as simulações com o número oficial.
 - **Até 31/12/2026:** cadastro sem pendências, sistema atualizado e uma nota de teste emitida e conferida.
 - **Janeiro de 2027:** a CBS passa a ser cobrada no lugar do PIS e da Cofins. Conferir as primeiras notas reais no motor oficial.
 

@@ -14,7 +14,7 @@ Regime: simples. Conferido em 25/11/2026. Este plano confere o formato e a coer�
 - Serviço de instalação: sem cClassTrib → definir a classificação tributária (cClassTrib) do item.
 
 ## 3. Fornecedores e crédito
-- Das compras de R$ 270.000,00 por ano, R$ 30.000,00 (11,1%) vêm de fornecedores do Simples ou MEI. O crédito dessas compras é limitado ao que o fornecedor paga no Simples (LC 214, art. 47).
+- Das compras de R$ 270.000,00 por ano, R$ 30.000,00 (11,1%) vêm de fornecedores do Simples ou MEI. O crédito dessas compras é limitado ao que o fornecedor paga no Simples (LC 214, art. 47); no MEI, que paga valor fixo, tende a ser quase nenhum.
 - Fábrica de tomadas Exemplo (simples): R$ 30.000,00 por ano.
 - Esta empresa é do Simples: 60,0% das vendas são para empresas. A opção de recolher a CBS/IBS fora do DAS é feita em setembro e março; a próxima janela é março de 2027, para valer a partir de julho de 2027.
 
@@ -27,7 +27,7 @@ Regime: simples. Conferido em 25/11/2026. Este plano confere o formato e a coer�
 - ❔ A equipe de faturamento sabe o que muda na nota: não respondido.
 
 ## 5. Plano por prazo
-- **Até 15/12/2026:** o Senado fixa a alíquota de referência da CBS. Refazer as simulações com o número oficial.
+- **Até 15/12/2026 (prazo previsto):** o Senado deve fixar a alíquota de referência da CBS. Refazer as simulações com o número oficial.
 - **Até 31/12/2026:** cadastro sem pendências, sistema atualizado e uma nota de teste emitida e conferida.
 - **Janeiro de 2027:** a CBS passa a ser cobrada no lugar do PIS e da Cofins. Conferir as primeiras notas reais no motor oficial.
 - **Março de 2027:** janela da opção do Simples pelo regime regular da CBS/IBS.

@@ -187,5 +187,11 @@
 "f224ba5e0fbaac3f": "🧮 Códigos y motor oficial",
 "152cd70f868b32bf": "🧾 \"¿El sistema ya está adaptado?\"",
 "a6901982fe0d8cb8": "El cierre del mes en texto simple: resultado, caja y alertas.",
-"07513bd777ec4e92": "Precio mínimo, precio objetivo y descuento máximo por producto en 2027."
+"07513bd777ec4e92": "Precio mínimo, precio objetivo y descuento máximo por producto en 2027.",
+"89e5ec9045e343e3": ". Verifica que cada ítem tenga los códigos y que estén en el formato correcto: NCM con 8 dígitos, NBS con 9, CST con 3 y cClassTrib con 6. También verifica que el cClassTrib comience con el CST, como en los ejemplos oficiales, y que la reducción de alícuota coincida con el CST: reducción con CST 000 (tributación integral), CST 200 (alícuota reducida) sin reducción, o reducción sin cClassTrib. Una reducción distinta de 30%, 60% o 100% se marca como \"revisa\", no como un error: hay regímenes específicos con otros rangos.",
+"254a3ff9668dcb58": "15/12: plazo citado en la nota del TCU del 28/10/2026, que envió el cálculo al Senado. Septiembre y marzo: LC 123, art. 13, § 10, con la redacción de la LC 227/2026: la opción vale \"para los semestres iniciados en enero y julio de cada año\" y debe \"ejercerse en los meses de septiembre y marzo\". Enlaces en",
+"0430fc45da7024f0": "La CBS es el impuesto federal que sustituye al PIS y a la Cofins. El cliente cree que el sistema \"ya está adaptado\". Tu IA lee la lista de productos y servicios del cliente y señala, ítem por ítem, el código que falta o que está en el formato incorrecto. También muestra los proveedores que van a dar menos crédito y lo que aún falta en el sistema y en los contratos. Sale un plan por CNPJ, con plazos y 3 prioridades, para que lo lleves hasta enero.",
+"5cb341e64652a973": "calculadora abierta de la Receita (kit de INEMA)",
+"ada9d5cd073f24e5": "pendientes en 3 de los 5 ítems: un código con dígitos faltantes, cClassTrib en blanco en 2 ítems, un par CST/cClassTrib que no coincide y una reducción sin cClassTrib.",
+"214d70e1f6bb0d75": "es la fecha prevista para que el Senado fije la alícuota de referencia de la CBS de 2027 (la alícuota estándar de la que parte cada actividad)."
 }

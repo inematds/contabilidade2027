@@ -187,5 +187,11 @@
 "f224ba5e0fbaac3f": "🧮 Codes and official engine",
 "152cd70f868b32bf": "🧾 \"Is the system already adapted?\"",
 "a6901982fe0d8cb8": "The month-end close in plain text: results, cash, and alerts.",
-"07513bd777ec4e92": "Minimum price, target price, and maximum discount per product in 2027."
+"07513bd777ec4e92": "Minimum price, target price, and maximum discount per product in 2027.",
+"89e5ec9045e343e3": ". Checks that each item has its codes and that they are in the right format: NCM with 8 digits, NBS with 9, CST with 3, and cClassTrib with 6. It also checks that the cClassTrib starts with the CST, as in the official examples, and that the rate reduction matches the CST: a reduction with CST 000 (full taxation), CST 200 (reduced rate) with no reduction, or a reduction with no cClassTrib. A reduction outside 30%, 60%, or 100% becomes a \"check this\", not an error: there are specific regimes with other ranges.",
+"254a3ff9668dcb58": "12/15: deadline cited in the TCU note of 10/28/2026, which sent the calculation to the Senate. September and March: LC 123, art. 13, § 10, as worded by LC 227/2026: the option applies \"to the semesters starting in January and July of each year\" and must be \"exercised in the months of September and March\". Links in",
+"0430fc45da7024f0": "CBS is the federal tax that replaces PIS and Cofins. Your client thinks the system is \"already adapted\". Your AI reads their list of products and services and points out, item by item, the code that is missing or in the wrong format. It also shows the suppliers that will give less credit and what is still missing in the system and contracts. The result is a plan per CNPJ, with deadlines and 3 priorities, for you to carry through to January.",
+"5cb341e64652a973": "open calculator from the Receita (INEMA kit)",
+"ada9d5cd073f24e5": "issues in 3 of the 5 items: a code with missing digits, a blank cClassTrib in 2 items, a CST/cClassTrib pair that doesn't match, and a reduction with no cClassTrib.",
+"214d70e1f6bb0d75": "is the expected date for the Senate to set the CBS reference rate for 2027 (the default rate from which each activity starts)."
 }
