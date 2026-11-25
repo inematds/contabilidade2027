@@ -20,14 +20,14 @@ O fechamento do mês em linguagem simples. Preparado pelo seu contador com o kit
 - Se o saldo continuar nesse ritmo: 12/2026: R$ 31.666,67; 01/2027: R$ 29.333,33; 02/2027: R$ 27.000,00.
 - A receber nos próximos 30 dias: R$ 76.000,00. Já vencido: R$ 17.000,00.
 - A pagar nos próximos 30 dias: R$ 59.058,00.
-- Folga dos próximos 30 dias (saldo + a receber − a pagar): R$ 50.942,00. É um teto: só conta as contas lançadas e não conta os vencidos.
-- Reforma: em 2027 isso ainda é preparação. Quando o split payment chegar (ele vai entrar aos poucos), até R$ 6.183,61 de imposto deixam de passar pelo caixa antes do vencimento. Vale guardar essa reserva.
+- Folga dos próximos 30 dias (saldo + a receber − a pagar): R$ 50.942,00. É um teto: só existe se o que está a receber entrar em dia, só conta as contas lançadas e não conta os vencidos.
+- Reforma: em 2027 isso ainda é preparação. Quando o split payment chegar (ele vai entrar aos poucos), no cenário de 11,3% e sem descontar créditos, até R$ 6.183,61 de imposto deixam de passar pelo caixa antes do vencimento. Vale guardar essa reserva.
 
 ## 4. Alertas
 - Softwares e assinaturas ficou R$ 1.980,00 acima da média.
 - Há R$ 17.000,00 a receber já vencidos (3 contas).
 - O caixa cobre só 0,48 mês de saídas: qualquer atraso de cliente aperta.
-- O resultado e o caixa não batem: sobraram em média R$ 18.260,50 por mês no resultado, mas o saldo caiu R$ 2.333,33 por mês. A diferença, de cerca de R$ 20.593,83 por mês, pode ser cliente pagando mais tarde, estoque, fornecedor pago antes, retirada dos sócios, parcela de empréstimo ou investimento: vale conferir.
+- O resultado e o caixa não batem: nos últimos 3 meses sobraram em média R$ 18.260,50 por mês no resultado, mas o saldo caiu R$ 2.333,33 por mês. A diferença, de cerca de R$ 20.593,83 por mês, pode ser cliente pagando mais tarde, estoque, fornecedor pago antes, retirada dos sócios, parcela de empréstimo ou investimento: vale conferir.
 
 ## 5. O que fazer este mês
 1. Cobrar Clínica Exemplo (campanha de outubro): R$ 7.500,00 vencidos há 26 dias.

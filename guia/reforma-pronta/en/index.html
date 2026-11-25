@@ -218,7 +218,7 @@
 <span class="chip">The gain</span>
 <h2>From "I think it's ready" <span class="amb">to the list of what's missing</span></h2>
 <div class="grid g2">
-<div class="card"><h3>😟 Today</h3><p>The client says the system vendor "already updated." Nobody looked at the registry item by item. In January the invoice is rejected, or goes out with the wrong classification and the error shows up months later.</p></div>
+<div class="card"><h3>😟 Today</h3><p>The customer says the system vendor "already updated" it. Nobody checked the registry item by item. In January the invoice may be rejected, or go out with the wrong classification, and the error shows up months later.</p></div>
 <div class="card"><h3>😌 With the plan</h3><p>You deliver a list of what's missing in each item, in order of how much it sells, plus what's missing in the system, the contracts, and the prices. Each deadline has a task, and you lead the adaptation as a project.</p></div>
 </div>
 <div class="stats">
@@ -261,7 +261,7 @@
 <div class="grid g2">
 <div class="card"><h3>🏷️ The registration, item by item</h3><p>É o <strong>form reviewer</strong>. Checks that each item has its codes and that they are in the right format: NCM with 8 digits, NBS with 9, CST with 3, and cClassTrib with 6. It also checks that the cClassTrib starts with the CST, as in the official examples, and that the rate reduction matches the CST: a reduction with CST 000 (full taxation), CST 200 (reduced rate) with no reduction, or a reduction with no cClassTrib. A reduction outside 30%, 60%, or 100% becomes a "check this", not an error: there are specific regimes with other ranges.</p></div>
 <div class="card"><h3>📊 What weighs the most</h3><p>É a <strong>queue by importance</strong>. It ranks the items by sales and shows the few that make up 80% of sales. A pending issue there matters more than on an item that hardly sells.</p></div>
-<div class="card"><h3>🤝 The suppliers</h3><p>É o <strong>credit map</strong>. It shows how much of your purchases come from Simples or MEI suppliers. On those purchases, the CBS and IBS credit is limited to what the supplier pays under Simples.</p></div>
+<div class="card"><h3>🤝 The suppliers</h3><p>É o <strong>credit map</strong>. Shows how much of your purchases come from Simples or MEI suppliers. On those purchases, the CBS and IBS credit is limited to what the supplier pays under Simples; for MEI, which pays a fixed amount, it tends to be almost nothing.</p></div>
 <div class="card"><h3>✅ The checklist</h3><p>There are <strong>6 yes-or-no questions</strong>: the system has the new fields, a test invoice has already been issued, the registry was reviewed, the contracts have a pass-through clause, prices were reviewed, and the team knows what changes.</p></div>
 </div>
 <div class="card" style="margin-top:16px"><h3>⚠️ What it is NOT</h3><ul>
@@ -279,6 +279,7 @@
 <div class="card"><h3>2. Paste the request below</h3><p>The AI runs the example of a fictional agency, so you can see the plan before using it with a client.</p></div>
 <div class="card"><h3>3. Hand over the list of items</h3><p>Export from the system the list of products and services with their codes and how much each one sells per year. The AI builds the spreadsheet with you and generates the plan.</p></div>
 </div>
+<div class="card" style="margin-top:16px"><h3>🧰 Don't have Claude Code or Codex yet?</h3><p>These are assistants you install on your computer (Windows or Mac) and that come with the paid Claude or ChatGPT subscription. Each one's page has the download button and the step-by-step instructions, and you only install it once: <a href="https://claude.com/product/claude-code" rel="noopener" target="_blank">Claude Code</a> · <a href="https://openai.com/codex/" rel="noopener" target="_blank">Codex</a>. The kit was built and tested to run on your computer with either of the two.</p></div>
 <p class="mut" style="margin-top:20px">You don't need to understand the text below: it's for the AI. Copy and paste.</p>
 <div class="pedido" style="margin-top:8px;position:relative">
 <pre id="pedidoTxt" style="white-space:pre-wrap">Read the "contabilidade2027" kit at https://github.com/inematds/contabilidade2027 (the README explains everything).
@@ -325,7 +326,7 @@ I want to build the Reforma Tributária Pronta plan for one of my clients. On th
 <ol class="tl">
 <li><b>The 3 priorities came out in order of weight.</b><br/><span class="mut">Fix the ad campaign registry (R$ 240,000.00 in sales per year), issue a test invoice before January, and talk to the Simples suppliers.</span></li>
 <li><b>At a Simples store, it flagged the window.</b><br/><span class="mut">The option's next window is March 2027, to take effect starting July 2027.</span></li>
-<li><b>11 tests check the rules.</b><br/><span class="mut">Formats, CST/cClassTrib pair, reduction, items that add up to 80% of sales, suppliers, Simples window, and input errors.</span></li>
+<li><b>12 tests check the rules.</b><br/><span class="mut">Formats, the CST/cClassTrib pair, CST against reduction, items that add up to 80% of sales, suppliers, the Simples window (including within its own month), and input errors.</span></li>
 </ol>
 <p class="rod">The full plan for the example is at <a href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-reforma/plano.md" rel="noopener" target="_blank">plano.md</a>.</p>
 </div>

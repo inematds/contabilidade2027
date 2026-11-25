@@ -202,5 +202,14 @@
 "60fc8f9d1387aba4": "the cash projected month by month at the real pace of the balance and, with accounts entered, the headroom for the next 30 days.",
 "14b70d6c3e0bf080": "that the owner understands. Profit is before partner withdrawals and installments.",
 "eb834fa4833d38d9": "repeats the average change in the balance over recent months. It doesn't account for new sales, seasonality, or cuts.",
-"cb5f2d4d9fbd556f": "is the projected balance for February if cash keeps falling at the pace of recent months. Today it covers only 0.48 month of outflows."
+"cb5f2d4d9fbd556f": "is the projected balance for February if cash keeps falling at the pace of recent months. Today it covers only 0.48 month of outflows.",
+"51d57d2427ffd1fd": ". The kit was built and tested to run on your computer with either one of the two.",
+"b327dd7bc87bfb57": "The spreadsheet columns, the formulas, and the tests are on the kit's GitHub page (the README).",
+"bbbb91398d7e08cd": "Margin falling, out-of-pattern expenses, customers owing money, tight or negative cash, and the most useful one: when there's money left over in the result but cash is dropping. It could be a customer paying later, inventory, a supplier paid early, owner withdrawals, an installment, or an investment, and the dashboard tells you to check.",
+"fdb0eb20209ca7b7": "If the AI rewrites the text, the kit's checker blocks any value that didn't come from the data. It doesn't catch a change of meaning (went up instead of went down) or a forgotten alert: your own read before sending is still necessary.",
+"c14d6c5b044b60c3": "An average of R$ 18.260,50 per month was left over in the result, but the balance fell R$ 2.333,33 per month. The difference could be the R$ 17.000,00 from late-paying customers, inventory, withdrawals, or installments: the 2nd action is to check with the owner.",
+"5868a89a907316da": "These are assistants you install on your computer (Windows or Mac) and that come with a paid Claude or ChatGPT subscription. Each one's page has the download button and the step-by-step, and the installation is done only once:",
+"4c9225cddc230f72": "A new row in the monthly spreadsheet, with what you've already closed. The dashboard needs at least 3 months (with 12, the averages get better). If you have them, the accounts receivable and payable with their due dates.",
+"18cd70b030b34824": "if you're on Presumido or Real, the dashboard reminds you to set aside the reserve for split payment, the tax withheld at the moment the customer pays, with the amount calculated the same way as in the Diagnóstico. In 2027 this is still preparation: split payment phases in gradually, and the amount is a ceiling.",
+"c8cef9d36d0d23ae": "🧰 Don't have Claude Code or Codex yet?"
 }

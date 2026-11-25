@@ -60,7 +60,10 @@ def variacao(a, b):
 
 def painel(emp, mensal, despesas, receber, pagar, hoje):
     N = Numeros()
-    diag = D.diagnosticar(emp, mensal, despesas, [])   # mesmas contas do Diagnóstico (split, despesas fora do padrão)
+    # despesas.csv só vale se tiver o mesmo mês do painel; senão o alerta seria de um mês velho
+    ult_desp = despesas[-1]["mes"] if despesas else None
+    desp_ok = bool(despesas) and any(x["mes"] == mensal[-1]["mes"] for x in despesas)
+    diag = D.diagnosticar(emp, mensal, despesas if desp_ok else [], [])   # mesmas contas do Diagnóstico (split, despesas fora do padrão)
     m = mensal[-1]
     ant = mensal[-2]
     hist = mensal[:-1]
@@ -151,6 +154,8 @@ def painel(emp, mensal, despesas, receber, pagar, hoje):
     # split payment (mesma conta do Diagnóstico)
     if "split_giro" in diag["numeros"]:
         N.itens["split_giro"] = diag["numeros"]["split_giro"]
+        ch = diag["reforma"]["pior"]["chave"]
+        N.itens["split_aliq"] = diag["numeros"][f"cbs_{ch}_aliq"]
 
     # alertas
     alertas = []
@@ -168,8 +173,10 @@ def painel(emp, mensal, despesas, receber, pagar, hoje):
     curto = folego < 0.5
     if curto:
         alertas.append(f"O caixa cobre só {N.itens['folego']['texto']} mês de saídas: qualquer atraso de cliente aperta.")
+    if despesas and not desp_ok:
+        alertas.append(f"O despesas.csv vai só até {ult_desp}: atualize com {mes} para o painel conferir as despesas do mês.")
     if diverge:
-        alertas.append(f"O resultado e o caixa não batem: sobraram em média {N.itens['lucro_3m']['texto']} por mês no resultado, mas o saldo "
+        alertas.append(f"O resultado e o caixa não batem: nos últimos 3 meses sobraram em média {N.itens['lucro_3m']['texto']} por mês no resultado, mas o saldo "
                        + ("caiu" if var_saldo < 0 else "subiu só") + f" {N.itens['var_saldo_abs']['texto']} por mês. A diferença, de cerca de {N.itens['fora_dre']['texto']} por mês, pode ser cliente pagando "
                        "mais tarde, estoque, fornecedor pago antes, retirada dos sócios, parcela de empréstimo ou investimento: vale conferir.")
     if negativo:
@@ -231,9 +238,9 @@ def painel_md(d):
     if d["tem_pagar"]:
         L.append(f"- A pagar nos próximos 30 dias: {T('pagar_30')}.")
     if "folga_30" in d["numeros"]:
-        L.append(f"- Folga dos próximos 30 dias (saldo + a receber − a pagar): {T('folga_30')}. É um teto: só conta as contas lançadas e não conta os vencidos.")
+        L.append(f"- Folga dos próximos 30 dias (saldo + a receber − a pagar): {T('folga_30')}. É um teto: só existe se o que está a receber entrar em dia, só conta as contas lançadas e não conta os vencidos.")
     if "split_giro" in d["numeros"]:
-        L.append(f"- Reforma: em 2027 isso ainda é preparação. Quando o split payment chegar (ele vai entrar aos poucos), até {T('split_giro')} de imposto deixam de passar pelo caixa antes do vencimento. Vale guardar essa reserva.")
+        L.append(f"- Reforma: em 2027 isso ainda é preparação. Quando o split payment chegar (ele vai entrar aos poucos), no cenário de {T('split_aliq')} e sem descontar créditos, até {T('split_giro')} de imposto deixam de passar pelo caixa antes do vencimento. Vale guardar essa reserva.")
     L.append("")
     L.append("## 4. Alertas")
     L += [f"- {a}" for a in d["alertas"]] or ["- Nenhum alerta neste mês."]

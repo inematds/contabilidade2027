@@ -193,5 +193,12 @@
 "0430fc45da7024f0": "CBS is the federal tax that replaces PIS and Cofins. Your client thinks the system is \"already adapted\". Your AI reads their list of products and services and points out, item by item, the code that is missing or in the wrong format. It also shows the suppliers that will give less credit and what is still missing in the system and contracts. The result is a plan per CNPJ, with deadlines and 3 priorities, for you to carry through to January.",
 "5cb341e64652a973": "open calculator from the Receita (INEMA kit)",
 "ada9d5cd073f24e5": "issues in 3 of the 5 items: a code with missing digits, a blank cClassTrib in 2 items, a CST/cClassTrib pair that doesn't match, and a reduction with no cClassTrib.",
-"214d70e1f6bb0d75": "is the expected date for the Senate to set the CBS reference rate for 2027 (the default rate from which each activity starts)."
+"214d70e1f6bb0d75": "is the expected date for the Senate to set the CBS reference rate for 2027 (the default rate from which each activity starts).",
+"7af8ded3f57463d1": ". Shows how much of your purchases come from Simples or MEI suppliers. On those purchases, the CBS and IBS credit is limited to what the supplier pays under Simples; for MEI, which pays a fixed amount, it tends to be almost nothing.",
+"51d57d2427ffd1fd": ". The kit was built and tested to run on your computer with either of the two.",
+"046d3b2095750285": "12 tests check the rules.",
+"c4aed5ce28405c05": "Formats, the CST/cClassTrib pair, CST against reduction, items that add up to 80% of sales, suppliers, the Simples window (including within its own month), and input errors.",
+"0cdbd40ee9a38729": "The customer says the system vendor \"already updated\" it. Nobody checked the registry item by item. In January the invoice may be rejected, or go out with the wrong classification, and the error shows up months later.",
+"5868a89a907316da": "These are assistants you install on your computer (Windows or Mac) and that come with the paid Claude or ChatGPT subscription. Each one's page has the download button and the step-by-step instructions, and you only install it once:",
+"c8cef9d36d0d23ae": "🧰 Don't have Claude Code or Codex yet?"
 }

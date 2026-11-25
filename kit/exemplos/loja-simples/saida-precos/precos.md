@@ -21,7 +21,7 @@ Regime: Simples. Margem-alvo: 12,0%. O preço cobre o custo, a comissão/taxa, o
 2. Rever o preço de Lâmpada LED 9 W: para a margem-alvo, ele precisa ir de R$ 14,90 para R$ 19,38 (R$ 18.259,46 por ano, na quantidade de hoje).
 3. Rever ou parar de vender o que não paga a sua parte da estrutura: Lâmpada LED 9 W fica com margem negativa.
 
-Como ler: margem = o que sobra de cada venda depois do custo, da comissão/taxa, dos impostos e da parte das despesas fixas. Preço mínimo = o preço de equilíbrio (lucro zero): abaixo dele a venda não paga a sua parte da estrutura. Preço-alvo = o preço que dá a margem que a empresa quer. Desconto máximo = quanto dá para baixar o preço de hoje sem sair da margem-alvo (0,0% quando o preço já está abaixo). O rateio pela receita pesa mais nos itens de custo alto; se a empresa usa outro rateio, informe rateio_fixas_pct no empresa.json.
+Como ler: margem = o que sobra de cada venda depois do custo, da comissão/taxa, dos impostos e da parte das despesas fixas. Preço mínimo = o preço de equilíbrio (lucro zero): abaixo dele a venda não paga a sua parte da estrutura. Preço-alvo = o preço que dá a margem que a empresa quer. Desconto máximo = quanto dá para baixar o preço de hoje sem sair da margem-alvo (0,0% quando o preço já está abaixo). O rateio é a mesma porcentagem do preço em todos os itens, então come uma parte maior da sobra nos itens de margem bruta baixa; se a empresa usa outro percentual, informe rateio_fixas_pct no empresa.json.
 
 ---
 Origem de cada número: `dados.json`. Tabela: `precos.csv`. Kit Preço certo na Reforma v1.0.0 (INEMA, não oficial).

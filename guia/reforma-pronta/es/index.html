@@ -218,7 +218,7 @@
 <span class="chip">La ganancia</span>
 <h2>Del "creo que está listo" <span class="amb">a la lista de lo que falta</span></h2>
 <div class="grid g2">
-<div class="card"><h3>😟 Hoy</h3><p>El cliente dice que el proveedor del sistema "ya actualizó". Nadie revisó el registro ítem por ítem. En enero la factura es rechazada, o sale con la clasificación incorrecta y el error aparece meses después.</p></div>
+<div class="card"><h3>😟 Hoy</h3><p>El cliente dice que el proveedor del sistema "ya actualizó". Nadie revisó el registro ítem por ítem. En enero la factura puede ser rechazada, o salir con la clasificación equivocada, y el error aparece meses después.</p></div>
 <div class="card"><h3>😌 Con el plan</h3><p>Entregas una lista de lo que falta en cada ítem, ordenada por cuánto vende, más lo que falta en el sistema, en los contratos y en los precios. Cada plazo tiene una tarea, y tú conduces la adecuación como un proyecto.</p></div>
 </div>
 <div class="stats">
@@ -261,7 +261,7 @@
 <div class="grid g2">
 <div class="card"><h3>🏷️ El registro, ítem por ítem</h3><p>É o <strong>revisor de ficha</strong>. Verifica que cada ítem tenga los códigos y que estén en el formato correcto: NCM con 8 dígitos, NBS con 9, CST con 3 y cClassTrib con 6. También verifica que el cClassTrib comience con el CST, como en los ejemplos oficiales, y que la reducción de alícuota coincida con el CST: reducción con CST 000 (tributación integral), CST 200 (alícuota reducida) sin reducción, o reducción sin cClassTrib. Una reducción distinta de 30%, 60% o 100% se marca como "revisa", no como un error: hay regímenes específicos con otros rangos.</p></div>
 <div class="card"><h3>📊 Lo que más pesa</h3><p>É a <strong>cola por importancia</strong>. Ordena los ítems por lo que venden y muestra los pocos que hacen el 80% de las ventas. Una pendiente ahí vale más que en un ítem que casi no se vende.</p></div>
-<div class="card"><h3>🤝 Los proveedores</h3><p>É o <strong>mapa del crédito</strong>. Muestra cuánto de las compras viene de proveedores del Simples o MEI. En esas compras el crédito de CBS e IBS queda limitado a lo que el proveedor paga en el Simples.</p></div>
+<div class="card"><h3>🤝 Los proveedores</h3><p>É o <strong>mapa del crédito</strong>. Muestra qué parte de las compras viene de proveedores del Simples o MEI. En esas compras el crédito de CBS e IBS queda limitado a lo que el proveedor paga en el Simples; en el MEI, que paga un valor fijo, tiende a ser casi nulo.</p></div>
 <div class="card"><h3>✅ El checklist</h3><p>Son <strong>6 preguntas de sí o no</strong>: el sistema tiene los campos nuevos, ya salió una nota de prueba, el registro fue revisado, los contratos tienen cláusula de traspaso, los precios fueron revisados y el equipo sabe qué cambia.</p></div>
 </div>
 <div class="card" style="margin-top:16px"><h3>⚠️ Lo que NO es</h3><ul>
@@ -279,6 +279,7 @@
 <div class="card"><h3>2. Pega el pedido de abajo</h3><p>La IA ejecuta el ejemplo de una agencia ficticia, para que veas el plan antes de usarlo con un cliente.</p></div>
 <div class="card"><h3>3. Pasa la lista de ítems</h3><p>Exporta del sistema la lista de productos y servicios con los códigos y cuánto vende cada uno en el año. La IA arma la planilla contigo y genera el plan.</p></div>
 </div>
+<div class="card" style="margin-top:16px"><h3>🧰 ¿Aún no tienes Claude Code ni Codex?</h3><p>Son asistentes que instalas en tu computador (Windows o Mac) y que vienen con la suscripción de pago de Claude o de ChatGPT. La página de cada uno tiene el botón de descarga y el paso a paso, y la instalación se hace una sola vez: <a href="https://claude.com/product/claude-code" rel="noopener" target="_blank">Claude Code</a> · <a href="https://openai.com/codex/" rel="noopener" target="_blank">Codex</a>. El kit fue hecho y probado para ejecutarse en tu computador con uno de los dos.</p></div>
 <p class="mut" style="margin-top:20px">No necesitas entender el texto de abajo: es para la IA. Cópialo y pégalo.</p>
 <div class="pedido" style="margin-top:8px;position:relative">
 <pre id="pedidoTxt" style="white-space:pre-wrap">Lee el kit "contabilidade2027" en https://github.com/inematds/contabilidade2027 (el README lo explica todo).
@@ -325,7 +326,7 @@ La salida en sí permanece en portugués (impuestos brasileños).
 <ol class="tl">
 <li><b>Las 3 prioridades salieron por orden de peso.</b><br/><span class="mut">Corregir el registro de la campaña de anuncios (R$ 240.000,00 de ventas por año), emitir una nota de prueba antes de enero y conversar con los proveedores del Simples.</span></li>
 <li><b>En una tienda del Simples, señaló la ventana.</b><br/><span class="mut">La próxima ventana de la opción es marzo de 2027, para regir a partir de julio de 2027.</span></li>
-<li><b>11 pruebas verifican las reglas.</b><br/><span class="mut">Formatos, par CST/cClassTrib, reducción, ítems que suman el 80% de las ventas, proveedores, ventana del Simples y errores de entrada.</span></li>
+<li><b>12 pruebas verifican las reglas.</b><br/><span class="mut">Formatos, par CST/cClassTrib, CST contra reducción, ítems que suman el 80% de las ventas, proveedores, ventana del Simples (incluso en su propio mes) y errores de entrada.</span></li>
 </ol>
 <p class="rod">El plan completo del ejemplo está en <a href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-reforma/plano.md" rel="noopener" target="_blank">plano.md</a>.</p>
 </div>

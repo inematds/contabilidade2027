@@ -246,7 +246,7 @@
 <div class="card"><h3>📉 "Por que sobrou menos este mês?"</h3><p><strong>Hoje:</strong> você abre o balancete e explica conta por conta.</p><p><strong>Com o kit:</strong> o painel já mostra a margem do mês contra a média e a despesa que fugiu do padrão.</p></div>
 <div class="card"><h3>💸 "Vou ter dinheiro em fevereiro?"</h3><p><strong>Hoje:</strong> ninguém sabe.</p><p><strong>Com o kit:</strong> o caixa projetado mês a mês pelo ritmo real do saldo e, com as contas lançadas, a folga dos próximos 30 dias.</p></div>
 <div class="card"><h3>📞 "Quem está me devendo?"</h3><p><strong>Hoje:</strong> o empresário lembra quando falta dinheiro.</p><p><strong>Com o kit:</strong> os recebíveis vencidos, com o valor e os dias de atraso, e o maior deles vira a 1ª ação do mês.</p></div>
-<div class="card"><h3>🧾 "E a Reforma?"</h3><p><strong>Hoje:</strong> é só notícia.</p><p><strong>Com o kit:</strong> para quem é do Presumido ou do Real, o painel lembra de guardar a reserva para o split payment, o imposto descontado na hora em que o cliente paga, com o valor calculado do mesmo jeito que no Diagnóstico. Em 2027 isso ainda é preparação: o split payment entra aos poucos, e o valor é um teto.</p></div>
+<div class="card"><h3>🧾 "E a Reforma?"</h3><p><strong>Hoje:</strong> é só notícia.</p><p><strong>Com o kit:</strong> para quem é do Presumido ou do Real (no Simples o painel não calcula), o painel lembra de guardar a reserva para o split payment, o imposto descontado na hora em que o cliente paga, com o valor calculado do mesmo jeito que no Diagnóstico. Em 2027 isso ainda é preparação: o split payment entra aos poucos, e o valor é um teto.</p></div>
 </div>
 </div></section>
 <section id="video"><div class="wrap">
@@ -280,7 +280,7 @@
 <div class="grid g3">
 <div class="card"><h3>1. Abra a sua IA no computador</h3><p>O <strong>Claude Code</strong> (do Claude) ou o <strong>Codex</strong> (do ChatGPT), que vêm com a assinatura paga deles.</p></div>
 <div class="card"><h3>2. Cole o pedido abaixo</h3><p>A IA roda o exemplo de uma agência fictícia, para você ver o painel antes de usar com um cliente.</p></div>
-<div class="card"><h3>3. Acrescente o mês</h3><p>Uma linha nova na planilha mensal, com o que você já fechou. O painel precisa de pelo menos 3 meses (com 12, as médias ficam melhores). Se tiver, as contas a receber e a pagar com o vencimento.</p></div>
+<div class="card"><h3>3. Acrescente o mês</h3><p>Uma linha nova na planilha mensal, com o que você já fechou, e as despesas do mês por tipo (é delas que sai o alerta de despesa fora do padrão). O painel precisa de pelo menos 3 meses (com 12, as médias ficam melhores). Se tiver, as contas a receber e a pagar com o vencimento.</p></div>
 </div>
 <div class="card" style="margin-top:16px"><h3>🧰 Ainda não tem o Claude Code nem o Codex?</h3><p>São assistentes que você instala no computador (Windows ou Mac) e que vêm com a assinatura paga do Claude ou do ChatGPT. A página de cada um tem o botão de baixar e o passo a passo, e a instalação é feita uma vez só: <a href="https://claude.com/product/claude-code" rel="noopener" target="_blank">Claude Code</a> · <a href="https://openai.com/codex/" rel="noopener" target="_blank">Codex</a>. O kit foi feito e testado para rodar no seu computador com um dos dois.</p></div>
 <p class="mut" style="margin-top:20px">Não precisa entender o texto abaixo: ele é para a IA. Copie e cole.</p>
@@ -288,7 +288,7 @@
 <pre id="pedidoTxt" style="white-space:pre-wrap">Leia o kit "contabilidade2027" em https://github.com/inematds/contabilidade2027 (o README explica tudo).
 Quero montar o Painel do Empresário do mês de um cliente meu. Neste computador:
 1. Baixe o kit (ZIP ou git) e rode primeiro kit/painel.py no exemplo da agência, para eu ver como fica o painel.
-2. Me ajude a atualizar na pasta do meu cliente o mensal.csv com o mês que fechou e, se eu tiver,
+2. Me ajude a atualizar na pasta do meu cliente o mensal.csv e o despesas.csv com o mês que fechou e, se eu tiver,
    contas_receber.csv e contas_pagar.csv (com o vencimento), no formato de kit/modelo/. Não invente número.
 3. Rode kit/painel.py na pasta do cliente.
 4. Reescreva o saida/painel/painel.md num texto curto para mandar ao cliente pelo WhatsApp, sem mudar nenhum número.
@@ -310,7 +310,7 @@ Quero montar o Painel do Empresário do mês de um cliente meu. Neste computador
 <h2>Os números vêm <span class="amb">do seu fechamento</span></h2>
 <div class="grid g3">
 <div class="card"><h3>📒 O que você já tem</h3><p>O painel usa o resumo mensal do cliente: receita, custos, despesas, impostos pagos e saldo. Nada de dado novo para inventar.</p></div>
-<div class="card"><h3>🧾 Split payment</h3><p>A reserva para o split payment é calculada com a mesma regra do Diagnóstico. A implantação é gradual e depende de ato do Comitê Gestor e da Receita (LC 214, art. 35).</p><p><a href="https://legis.senado.leg.br/norma/40180341/publicacao/40181429" rel="noopener" target="_blank">Texto da LC 214 no Senado</a></p></div>
+<div class="card"><h3>🧾 Split payment</h3><p>A reserva para o split payment é calculada com a mesma regra do Diagnóstico. A implantação é gradual e depende de ato do Comitê Gestor do IBS (formado por estados e municípios) e da Receita (LC 214, art. 35). O valor é um teto, no cenário de 11,3% e sem descontar créditos. No Simples, o painel não calcula essa reserva.</p><p><a href="https://legis.senado.leg.br/norma/40180341/publicacao/40181429" rel="noopener" target="_blank">Texto da LC 214 no Senado</a></p></div>
 <div class="card"><h3>🔗 Os outros kits</h3><p>Margem caindo? O painel aponta o <a href="../preco-certo/">Preço certo</a>. Dúvida sobre a Reforma? O <a href="../reforma-pronta/">Reforma Pronta</a>. Visão geral? O <a href="../">Diagnóstico</a>.</p></div>
 </div>
 </div></section>
@@ -325,9 +325,9 @@ Quero montar o Painel do Empresário do mês de um cliente meu. Neste computador
 </div>
 <div class="prova" style="margin-top:20px">
 <ol class="tl">
-<li><b>O painel viu o que o lucro esconde.</b><br/><span class="mut">Sobraram em média R$ 18.260,50 por mês no resultado, mas o saldo caiu R$ 2.333,33 por mês. A diferença pode ser os R$ 17.000,00 de clientes atrasados, estoque, retiradas ou parcelas: a 2ª ação é conferir com o dono.</span></li>
+<li><b>O painel viu o que o lucro esconde.</b><br/><span class="mut">Nos últimos 3 meses sobraram em média R$ 18.260,50 por mês no resultado, mas o saldo caiu R$ 2.333,33 por mês. A diferença pode ser os R$ 17.000,00 de clientes atrasados, estoque, retiradas ou parcelas: a 2ª ação é conferir com o dono.</span></li>
 <li><b>Os números batem com os outros kits.</b><br/><span class="mut">A reserva do split payment, de até R$ 6.183,61, e a despesa fora do padrão saem da mesma conta do Diagnóstico, e um teste garante isso.</span></li>
-<li><b>11 testes conferem as contas.</b><br/><span class="mut">O resultado do mês, as comparações, a projeção pelo saldo real, o alerta de dinheiro saindo por fora, as contas vencidas e dos próximos 30 dias, o Simples sem contas lançadas e os erros de data.</span></li>
+<li><b>12 testes conferem as contas.</b><br/><span class="mut">O resultado do mês, as comparações, a projeção pelo saldo real, o alerta de resultado e caixa que não batem, o despesas.csv desatualizado, as contas vencidas e dos próximos 30 dias, o Simples sem contas lançadas e os erros de data.</span></li>
 </ol>
 <p class="rod">O painel completo do exemplo está em <a href="https://github.com/inematds/contabilidade2027/blob/main/kit/exemplos/agencia/saida-painel/painel.md" rel="noopener" target="_blank">painel.md</a>.</p>
 </div>
@@ -348,7 +348,7 @@ Quero montar o Painel do Empresário do mês de um cliente meu. Neste computador
 <div class="grid g2">
 <div class="card"><h3>Preciso saber programar?</h3><p>Não. Você cola o pedido e a IA faz o resto.</p></div>
 <div class="card"><h3>Quanto custa?</h3><p>O kit e este guia são grátis. O caminho mais fácil usa o Claude Code ou o Codex, que vêm com a assinatura paga deles.</p></div>
-<div class="card"><h3>Dá para mandar pelo WhatsApp?</h3><p>Dá: o pedido já manda a IA reescrever o painel num texto curto, e o conferidor garante que os números continuam os mesmos.</p></div>
+<div class="card"><h3>Dá para mandar pelo WhatsApp?</h3><p>Dá: o pedido já manda a IA reescrever o painel num texto curto. O conferidor barra número que não veio dos dados; a troca de sentido (subiu no lugar de caiu) você confere na leitura.</p></div>
 <div class="card"><h3>E se eu não tiver as contas a receber e a pagar?</h3><p>O painel sai sem a folga de 30 dias e pede para lançar no mês seguinte. O resto funciona igual.</p></div>
 </div>
 <p class="fonte" style="margin-top:22px">E você: quantos clientes seus sabem, todo mês, quanto sobrou e como fica o caixa, sem ter de perguntar? Grátis no inema.club, direto na internet.</p>

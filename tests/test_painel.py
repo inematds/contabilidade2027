@@ -74,6 +74,18 @@ class SemContas(unittest.TestCase):
         self.assertEqual(C.conferir(PN.painel_md(d), d), [])
 
 
+class DespesasVelhas(unittest.TestCase):
+    def test_despesas_de_mes_anterior_nao_viram_alerta(self):
+        with tempfile.TemporaryDirectory() as t:
+            for f in ("empresa.json", "despesas.csv"):
+                Path(t, f).write_text((EX / "agencia" / f).read_text(encoding="utf-8"), encoding="utf-8")
+            m = (EX / "agencia" / "mensal.csv").read_text(encoding="utf-8").rstrip("\n") + "\n12/2026;90000,00;10500,00;27000,00;31000,00;3285,00;9000,00;33000,00\n"
+            Path(t, "mensal.csv").write_text(m, encoding="utf-8")
+            d = PN.painel(*PN.carregar(t), HOJE)
+            self.assertFalse(any("Softwares" in a for a in d["alertas"]))
+            self.assertTrue(any("despesas.csv vai só até 11/2026" in a for a in d["alertas"]))
+
+
 class Entradas(unittest.TestCase):
     def test_vencimento_invalido(self):
         with tempfile.TemporaryDirectory() as t:

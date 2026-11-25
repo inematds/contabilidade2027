@@ -49,7 +49,7 @@ git clone https://github.com/inematds/contabilidade2027 && cd contabilidade2027
 
 python3 kit/diagnostico.py kit/exemplos/agencia            # gera kit/exemplos/agencia/saida/
 python3 kit/conferir.py kit/exemplos/agencia/saida/relatorio-base.md kit/exemplos/agencia/saida/dados.json
-python3 -m unittest discover -s tests                        # 48 testes
+python3 -m unittest discover -s tests                        # 49 testes
 ```
 
 ### A pasta do cliente
@@ -129,6 +129,7 @@ python3 kit/painel.py kit/exemplos/agencia --hoje 2026-11-25   # gera saida/pain
 ```
 
 O mês do painel é o último do `mensal.csv` (precisa de pelo menos 3 meses; com 12 as médias ficam melhores). Arquivos opcionais (modelos em `kit/modelo/`):
+- `despesas.csv`: `mes;categoria;valor`. Atualize junto com o `mensal.csv`: se o último mês dele for outro, o painel não dá o alerta de despesa e avisa.
 - `contas_receber.csv`: `cliente;valor;vencimento`
 - `contas_pagar.csv`: `fornecedor;valor;vencimento`
 
@@ -175,7 +176,7 @@ Serve para o passo em que a IA reescreve o relatório em linguagem simples.
 - a janela do Simples em 3 datas;
 - os erros de entrada e a linha de comando.
 
-`tests/test_reforma_pronta.py` (12, kit 2), `tests/test_preco_certo.py` (10, kit 3) e `tests/test_painel.py` (11, kit 4) conferem as contas à mão nos dois exemplos, a coerência com o Diagnóstico e os erros de entrada. Total: 48 testes.
+`tests/test_reforma_pronta.py` (12, kit 2), `tests/test_preco_certo.py` (10, kit 3) e `tests/test_painel.py` (12, kit 4) conferem as contas à mão nos dois exemplos, a coerência com o Diagnóstico e os erros de entrada. Total: 49 testes.
 
 ## O processo, do início ao fim
 

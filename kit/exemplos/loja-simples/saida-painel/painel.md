@@ -21,7 +21,7 @@ O fechamento do mês em linguagem simples. Preparado pelo seu contador com o kit
 
 ## 4. Alertas
 - O caixa cobre só 0,33 mês de saídas: qualquer atraso de cliente aperta.
-- O resultado e o caixa não batem: sobraram em média R$ 3.380,00 por mês no resultado, mas o saldo subiu só R$ 1.333,33 por mês. A diferença, de cerca de R$ 2.046,67 por mês, pode ser cliente pagando mais tarde, estoque, fornecedor pago antes, retirada dos sócios, parcela de empréstimo ou investimento: vale conferir.
+- O resultado e o caixa não batem: nos últimos 3 meses sobraram em média R$ 3.380,00 por mês no resultado, mas o saldo subiu só R$ 1.333,33 por mês. A diferença, de cerca de R$ 2.046,67 por mês, pode ser cliente pagando mais tarde, estoque, fornecedor pago antes, retirada dos sócios, parcela de empréstimo ou investimento: vale conferir.
 
 ## 5. O que fazer este mês
 1. Conferir com o dono por que o caixa não acompanhou o resultado: clientes atrasando, estoque, retiradas, parcelas ou investimentos.

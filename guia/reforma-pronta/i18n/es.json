@@ -193,5 +193,12 @@
 "0430fc45da7024f0": "La CBS es el impuesto federal que sustituye al PIS y a la Cofins. El cliente cree que el sistema \"ya está adaptado\". Tu IA lee la lista de productos y servicios del cliente y señala, ítem por ítem, el código que falta o que está en el formato incorrecto. También muestra los proveedores que van a dar menos crédito y lo que aún falta en el sistema y en los contratos. Sale un plan por CNPJ, con plazos y 3 prioridades, para que lo lleves hasta enero.",
 "5cb341e64652a973": "calculadora abierta de la Receita (kit de INEMA)",
 "ada9d5cd073f24e5": "pendientes en 3 de los 5 ítems: un código con dígitos faltantes, cClassTrib en blanco en 2 ítems, un par CST/cClassTrib que no coincide y una reducción sin cClassTrib.",
-"214d70e1f6bb0d75": "es la fecha prevista para que el Senado fije la alícuota de referencia de la CBS de 2027 (la alícuota estándar de la que parte cada actividad)."
+"214d70e1f6bb0d75": "es la fecha prevista para que el Senado fije la alícuota de referencia de la CBS de 2027 (la alícuota estándar de la que parte cada actividad).",
+"7af8ded3f57463d1": ". Muestra qué parte de las compras viene de proveedores del Simples o MEI. En esas compras el crédito de CBS e IBS queda limitado a lo que el proveedor paga en el Simples; en el MEI, que paga un valor fijo, tiende a ser casi nulo.",
+"51d57d2427ffd1fd": ". El kit fue hecho y probado para ejecutarse en tu computador con uno de los dos.",
+"046d3b2095750285": "12 pruebas verifican las reglas.",
+"c4aed5ce28405c05": "Formatos, par CST/cClassTrib, CST contra reducción, ítems que suman el 80% de las ventas, proveedores, ventana del Simples (incluso en su propio mes) y errores de entrada.",
+"0cdbd40ee9a38729": "El cliente dice que el proveedor del sistema \"ya actualizó\". Nadie revisó el registro ítem por ítem. En enero la factura puede ser rechazada, o salir con la clasificación equivocada, y el error aparece meses después.",
+"5868a89a907316da": "Son asistentes que instalas en tu computador (Windows o Mac) y que vienen con la suscripción de pago de Claude o de ChatGPT. La página de cada uno tiene el botón de descarga y el paso a paso, y la instalación se hace una sola vez:",
+"c8cef9d36d0d23ae": "🧰 ¿Aún no tienes Claude Code ni Codex?"
 }

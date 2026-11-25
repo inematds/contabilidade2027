@@ -228,6 +228,11 @@
       "texto": "R$ 6.183,61",
       "origem": "split_imposto_bruto_mes × split_dias ÷ 30 (estimativa máxima, sem descontar créditos)"
     },
+    "split_aliq": {
+      "valor": 11.3,
+      "texto": "11,3%",
+      "origem": "cenário de alíquota da CBS (empresa.json)"
+    },
     "desp_0_acima": {
       "valor": 1980.0,
       "texto": "R$ 1.980,00",
@@ -278,7 +283,7 @@
     "Softwares e assinaturas ficou R$ 1.980,00 acima da média.",
     "Há R$ 17.000,00 a receber já vencidos (3 contas).",
     "O caixa cobre só 0,48 mês de saídas: qualquer atraso de cliente aperta.",
-    "O resultado e o caixa não batem: sobraram em média R$ 18.260,50 por mês no resultado, mas o saldo caiu R$ 2.333,33 por mês. A diferença, de cerca de R$ 20.593,83 por mês, pode ser cliente pagando mais tarde, estoque, fornecedor pago antes, retirada dos sócios, parcela de empréstimo ou investimento: vale conferir."
+    "O resultado e o caixa não batem: nos últimos 3 meses sobraram em média R$ 18.260,50 por mês no resultado, mas o saldo caiu R$ 2.333,33 por mês. A diferença, de cerca de R$ 20.593,83 por mês, pode ser cliente pagando mais tarde, estoque, fornecedor pago antes, retirada dos sócios, parcela de empréstimo ou investimento: vale conferir."
   ],
   "fazer": [
     "Cobrar Clínica Exemplo (campanha de outubro): R$ 7.500,00 vencidos há 26 dias.",

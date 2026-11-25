@@ -202,5 +202,14 @@
 "60fc8f9d1387aba4": "la caja proyectada mes a mes según el ritmo real del saldo y, con las cuentas registradas, el margen de los próximos 30 días.",
 "14b70d6c3e0bf080": "que el dueño entiende. La utilidad es antes de los retiros de los socios y de las cuotas.",
 "eb834fa4833d38d9": "repite la variación promedio del saldo de los últimos meses. No cuenta con ventas nuevas, estacionalidad ni recortes.",
-"cb5f2d4d9fbd556f": "es el saldo proyectado para febrero si la caja sigue bajando al ritmo de los últimos meses. Hoy cubre solo 0,48 mes de salidas."
+"cb5f2d4d9fbd556f": "es el saldo proyectado para febrero si la caja sigue bajando al ritmo de los últimos meses. Hoy cubre solo 0,48 mes de salidas.",
+"51d57d2427ffd1fd": ". El kit fue hecho y probado para correr en tu computadora con uno de los dos.",
+"b327dd7bc87bfb57": "Las columnas de la planilla, las fórmulas y las pruebas están en la página del kit en GitHub (el README).",
+"bbbb91398d7e08cd": "Margen en caída, gasto fuera de lo normal, cliente con deuda, caja corta o negativa, y lo más útil: cuando sobra en el resultado pero la caja baja. Puede ser un cliente que paga más tarde, inventario, un proveedor pagado antes, retiros de los socios, una cuota o una inversión, y el panel te pide que lo revises.",
+"fdb0eb20209ca7b7": "Si la IA reescribe el texto, el verificador del kit bloquea cualquier valor que no provenga de los datos. No detecta un cambio de sentido (subió en lugar de bajó) ni una alerta olvidada: tu lectura antes de enviar sigue siendo necesaria.",
+"c14d6c5b044b60c3": "Sobraron en promedio R$ 18.260,50 por mes en el resultado, pero el saldo cayó R$ 2.333,33 por mes. La diferencia puede ser los R$ 17.000,00 de clientes atrasados, inventario, retiros o cuotas: la 2ª acción es confirmarlo con el dueño.",
+"5868a89a907316da": "Son asistentes que instalas en tu computadora (Windows o Mac) y que vienen con la suscripción paga de Claude o de ChatGPT. La página de cada uno tiene el botón de descarga y el paso a paso, y la instalación se hace una sola vez:",
+"4c9225cddc230f72": "Una fila nueva en la planilla mensual, con lo que ya cerraste. El panel necesita al menos 3 meses (con 12, los promedios mejoran). Si los tienes, las cuentas por cobrar y por pagar con su vencimiento.",
+"18cd70b030b34824": "para quien es del Presumido o del Real, el panel te recuerda guardar la reserva para el split payment, el impuesto que se descuenta en el momento en que el cliente paga, con el valor calculado del mismo modo que en el Diagnóstico. En 2027 esto aún es preparación: el split payment entra poco a poco, y el valor es un tope.",
+"c8cef9d36d0d23ae": "🧰 ¿Todavía no tienes Claude Code ni Codex?"
 }
